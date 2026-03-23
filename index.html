@@ -44,11 +44,24 @@
     font-family: var(--font-display);
     font-weight: 800;
     font-size: 1.15rem;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.01em;
     color: var(--white);
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    gap: 0.18rem;
   }
-  .nav-logo span { color: var(--accent); }
+  .nav-logo .logo-wordmark { display: flex; align-items: baseline; }
+  .nav-logo .logo-dot { color: var(--accent); font-size: 1.4rem; line-height: 1; }
+  .nav-logo .logo-sub {
+    font-family: var(--font-display);
+    font-size: 0.52rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: var(--text-muted);
@@ -542,12 +555,15 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Strand<span>.</span></a>
+  <a href="#" class="nav-logo">
+    <span class="logo-wordmark">Strand<span class="logo-dot">.</span></span>
+    <span class="logo-sub">Performance</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#hemsidor">Hemsidor</a></li>
     <li><a href="#ads">Meta Ads</a></li>
     <li><a href="#engangstjanster">Tjänster</a></li>
-    <li><a href="mailto:info@strandperformance.com" class="nav-cta">Boka Gratis Audit</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#aec7c0c8c1eedddadccfc0cadecbdcc8c1dcc3cfc0cdcb80cdc1c3" class="nav-cta">Boka Gratis Audit</a></li>
   </ul>
 </nav>
 
@@ -558,7 +574,7 @@
   <h1>Fler kunder.<br>Varje <em>vecka.</em></h1>
   <p class="hero-sub">Vi bygger hemsidor, kör Meta Ads och sätter upp alla digitala verktyg ett modernt svenskt företag behöver.</p>
   <div class="hero-actions">
-    <a href="mailto:info@strandperformance.com" class="btn-primary">Boka Gratis Audit →</a>
+    <a href="/cdn-cgi/l/email-protection#0861666e67487b7c7a69666c786d7a6e677a6569666b6d266b6765" class="btn-primary">Boka Gratis Audit →</a>
     <a href="#hemsidor" class="btn-ghost">Se paket ↓</a>
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div></div>
@@ -591,7 +607,7 @@
         <li>Google Maps-integration</li>
         <li>Leverans inom 1 vecka</li>
       </ul>
-      <a href="mailto:info@strandperformance.com" class="tier-cta">Kom igång</a>
+      <a href="/cdn-cgi/l/email-protection#036a6d656c43707771626d67736671656c716e626d60662d606c6e" class="tier-cta">Kom igång</a>
     </div>
 
     <!-- BUSINESS -->
@@ -611,7 +627,7 @@
         <li>Mobiloptimerad & snabb</li>
         <li>Leverans inom 2 veckor</li>
       </ul>
-      <a href="mailto:info@strandperformance.com" class="tier-cta">Kom igång</a>
+      <a href="/cdn-cgi/l/email-protection#b1d8dfd7def1c2c5c3d0dfd5c1d4c3d7dec3dcd0dfd2d49fd2dedc" class="tier-cta">Kom igång</a>
     </div>
 
     <!-- PRO -->
@@ -630,11 +646,11 @@
         <li>Prioriterad support i 30 dagar</li>
         <li>Leverans inom 2–3 veckor</li>
       </ul>
-      <a href="mailto:info@strandperformance.com" class="tier-cta">Kom igång</a>
+      <a href="/cdn-cgi/l/email-protection#2940474f46695a5d5b48474d594c5b4f465b4448474a4c074a4644" class="tier-cta">Kom igång</a>
     </div>
   </div>
 
-  <!-- ADDON -->
+  <!-- ADDON: Bokningssystem -->
   <div class="addon-box">
     <div>
       <h3>➕ Tillägg: Bokningssystem</h3>
@@ -642,6 +658,38 @@
     </div>
     <div>
       <div class="addon-price">+2 495 kr</div>
+    </div>
+  </div>
+
+  <!-- UNDERHÅLL -->
+  <div style="margin-top: 1rem;">
+    <div class="addon-box" style="border-color: rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); flex-wrap: wrap; gap: 2rem;">
+      <div style="flex: 1; min-width: 260px;">
+        <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">🔧 Underhåll & hosting</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 520px; line-height: 1.7;">Efter leverans väljer du om du vill att vi sköter hosting, uppdateringar och teknisk support — eller om du vill ta hand om det själv. Inget krav, inget krångel.</p>
+      </div>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-start;">
+        <div style="background: var(--gray); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.5rem 1.8rem; text-align: center; min-width: 160px;">
+          <div style="font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: var(--white); line-height: 1;">399 kr</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 1rem;">per månad · exkl. moms</div>
+          <div style="font-size: 0.8rem; color: rgba(245,243,238,0.7); line-height: 1.6; text-align: left;">
+            <div style="margin-bottom: 0.35rem;">→ Hosting inkluderad</div>
+            <div style="margin-bottom: 0.35rem;">→ Textändringar</div>
+            <div style="margin-bottom: 0.35rem;">→ Teknisk support</div>
+            <div>→ Säkerhetskopiering</div>
+          </div>
+        </div>
+        <div style="background: var(--gray); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.5rem 1.8rem; text-align: center; min-width: 160px;">
+          <div style="font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: var(--text-muted); line-height: 1;">0 kr</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 1rem;">sköt det själv</div>
+          <div style="font-size: 0.8rem; color: rgba(245,243,238,0.4); line-height: 1.6; text-align: left;">
+            <div style="margin-bottom: 0.35rem;">→ Du får all kod</div>
+            <div style="margin-bottom: 0.35rem;">→ Gratis hosting via GitHub</div>
+            <div style="margin-bottom: 0.35rem;">→ Du kopplar din domän</div>
+            <div>→ Support vid behov</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -664,7 +712,7 @@
         <li>Grundläggande målgruppsoptimering</li>
         <li>Månadsrapport</li>
       </ul>
-      <a href="mailto:info@strandperformance.com" class="ads-cta">Kom igång</a>
+      <a href="/cdn-cgi/l/email-protection#4c25222a230c3f383e2d22283c293e2a233e212d222f29622f2321" class="ads-cta">Kom igång</a>
     </div>
     <div class="ads-card featured">
       <p class="ads-tier-name">Growth</p>
@@ -677,7 +725,7 @@
         <li>Bi-weekly optimering</li>
         <li>Månatligt strategimejl</li>
       </ul>
-      <a href="mailto:info@strandperformance.com" class="ads-cta">Kom igång</a>
+      <a href="/cdn-cgi/l/email-protection#4920272f26093a3d3b28272d392c3b2f263b2428272a2c672a2624" class="ads-cta">Kom igång</a>
     </div>
   </div>
 </section>
@@ -752,15 +800,4 @@
 <div class="cta-band">
   <h2>Redo att växa?</h2>
   <p>Boka en gratis 15-minuters audit idag. Vi tittar på din digitala närvaro och berättar exakt vad vi kan göra för dig.</p>
-  <a href="mailto:info@strandperformance.com" class="btn-primary">Boka Gratis Audit →</a>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <a href="#" class="nav-logo" style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#f5f3ee;text-decoration:none;">Strand<span style="color:#c8f135">.</span></a>
-  <p>© 2025 Strand Performance. All rights reserved.</p>
-  <a href="mailto:info@strandperformance.com">info@strandperformance.com</a>
-</footer>
-
-</body>
-</html>
+  <a href="/cdn-cgi/l/email-protection#c9a0a7afa689babdbba8a7adb9acbbafa6bba4a8a7aaace7aaa6a4" class="btn-primary">Boka Gratis
