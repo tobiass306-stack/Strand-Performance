@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strand Performance – Allt Digitalt för Ditt Företag</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f3ee;
+    --accent: #c8f135;
+    --accent-dark: #9ebb1f;
+    --gray: #1e1e1e;
+    --gray-mid: #2e2e2e;
+    --text-muted: #888;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 2.5rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    gap: 0.18rem;
+  }
+  .nav-logo .logo-wordmark { display: flex; align-items: baseline; }
+  .nav-logo .logo-dot { color: var(--accent); font-size: 1.4rem; line-height: 1; }
+  .nav-logo .logo-sub {
+    font-family: var(--font-display);
+    font-size: 0.52rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--accent);
+    color: var(--black) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 100px;
+    font-weight: 500 !important;
+    color: var(--black);
+  }
+  .nav-cta:hover { background: var(--accent-dark) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 2.5rem;
+    padding-top: 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,241,53,0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 20% 80%, rgba(200,241,53,0.04) 0%, transparent 60%);
+  }
+  .hero-tag {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 8vw, 7.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-sub {
+    margin-top: 2rem;
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center;
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .btn-ghost {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--white); }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; right: 2.5rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0.4;
+  }
+  .scroll-line {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--white), transparent);
+    animation: scrollLine 1.5s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 2.5rem; }
+
+  .section-label {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .section-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    margin: 0 2.5rem;
+    width: calc(100% - 5rem);
+  }
+
+  /* WEBSITE TIERS */
+  #hemsidor { background: var(--black); }
+  .tiers-intro {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: end;
+    margin-bottom: 4rem;
+  }
+  .tiers-intro p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 420px;
+    margin-top: 1.5rem;
+    line-height: 1.8;
+  }
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1.5px solid rgba(255,255,255,0.06);
+  }
+  .tier-card {
+    background: var(--gray);
+    padding: 2.5rem;
+    display: flex; flex-direction: column;
+    position: relative;
+    transition: background 0.25s;
+  }
+  .tier-card:hover { background: #252525; }
+  .tier-card.featured {
+    background: #191f0d;
+    border: 1.5px solid rgba(200,241,53,0.25);
+    margin: -1.5px;
+    z-index: 1;
+    border-radius: 2px;
+  }
+  .tier-badge {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    background: var(--accent);
+    color: var(--black);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+  }
+  .tier-name {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .tier-price {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.6rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .tier-price-note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 1.8rem;
+  }
+  .tier-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 1.5rem;
+  }
+  .tier-features { list-style: none; flex: 1; }
+  .tier-features li {
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    font-size: 0.9rem;
+    color: rgba(245,243,238,0.8);
+    margin-bottom: 0.85rem;
+    line-height: 1.5;
+  }
+  .tier-features li::before {
+    content: '→';
+    color: var(--accent);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+  .tier-cta {
+    margin-top: 2.5rem;
+    display: block;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--white);
+  }
+  .tier-cta:hover { border-color: var(--accent); color: var(--accent); }
+  .tier-card.featured .tier-cta {
+    background: var(--accent);
+    color: var(--black);
+    border-color: var(--accent);
+  }
+  .tier-card.featured .tier-cta:hover { background: var(--accent-dark); }
+
+  /* ADDON */
+  .addon-box {
+    margin-top: 2rem;
+    padding: 2rem 2.5rem;
+    border: 1px solid rgba(200,241,53,0.2);
+    border-radius: 16px;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 2rem;
+    background: rgba(200,241,53,0.03);
+  }
+  .addon-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .addon-box p { color: var(--text-muted); font-size: 0.9rem; max-width: 480px; }
+  .addon-price {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* ADS SECTION */
+  #ads { background: var(--gray); }
+  .ads-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1.5px solid rgba(255,255,255,0.06);
+    margin-top: 4rem;
+  }
+  .ads-card {
+    background: var(--gray-mid);
+    padding: 2.5rem;
+    transition: background 0.25s;
+  }
+  .ads-card:hover { background: #2a2a2a; }
+  .ads-card.featured {
+    background: #191f0d;
+    border: 1.5px solid rgba(200,241,53,0.2);
+    margin: -1.5px;
+    z-index: 1;
+  }
+  .ads-tier-name {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .ads-price {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+  .ads-cycle { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .ads-features { list-style: none; }
+  .ads-features li {
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    font-size: 0.9rem;
+    color: rgba(245,243,238,0.75);
+    margin-bottom: 0.75rem;
+  }
+  .ads-features li::before {
+    content: '→';
+    color: var(--accent);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+  .ads-cta {
+    margin-top: 2rem;
+    display: block; text-align: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--white);
+  }
+  .ads-cta:hover { border-color: var(--accent); color: var(--accent); }
+  .ads-card.featured .ads-cta {
+    background: var(--accent); color: var(--black); border-color: var(--accent);
+  }
+  .ads-card.featured .ads-cta:hover { background: var(--accent-dark); }
+
+  /* ENGÅNGS */
+  #engangstjanster { background: var(--black); }
+  .onetimes-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 4rem;
+  }
+  .onetime-card {
+    background: var(--gray);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .onetime-card:hover {
+    border-color: rgba(200,241,53,0.3);
+    transform: translateY(-3px);
+  }
+  .onetime-icon {
+    font-size: 1.5rem; margin-bottom: 1rem;
+  }
+  .onetime-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+  .onetime-price {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--accent);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .onetime-features { list-style: none; }
+  .onetime-features li {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .onetime-features li::before {
+    content: '·';
+    position: absolute; left: 0;
+    color: var(--accent);
+  }
+
+  /* WHY */
+  #varfor { background: var(--gray); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  .why-card {
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .why-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(200,241,53,0.2);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .why-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+  .why-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+  /* CTA BAND */
+  .cta-band {
+    padding: 5rem 2.5rem;
+    background: #0e1505;
+    border-top: 1px solid rgba(200,241,53,0.15);
+    border-bottom: 1px solid rgba(200,241,53,0.15);
+    text-align: center;
+  }
+  .cta-band h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .cta-band p {
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    font-size: 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer p { font-size: 0.82rem; color: var(--text-muted); }
+  footer a { color: var(--text-muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    .hero { padding: 1.5rem; padding-top: 90px; }
+    .tiers-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .tiers-grid { grid-template-columns: 1fr; }
+    .tier-card.featured { margin: 0; }
+    .ads-grid { grid-template-columns: 1fr; }
+    .ads-card.featured { margin: 0; }
+    .onetimes-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: 1fr; }
+    .addon-box { flex-direction: column; align-items: flex-start; }
+    .divider { margin: 0 1.5rem; width: calc(100% - 3rem); }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 600px) {
+    .onetimes-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="logo-wordmark">Strand<span class="logo-dot">.</span></span>
+    <span class="logo-sub">Performance</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#hemsidor">Hemsidor</a></li>
+    <li><a href="#ads">Meta Ads</a></li>
+    <li><a href="#engangstjanster">Tjänster</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#aec7c0c8c1eedddadccfc0cadecbdcc8c1dcc3cfc0cdcb80cdc1c3" class="nav-cta">Boka Gratis Audit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <p class="hero-tag">Allt Digitalt för Ditt Företag</p>
+  <h1>Fler kunder.<br>Varje <em>vecka.</em></h1>
+  <p class="hero-sub">Vi bygger hemsidor, kör Meta Ads och sätter upp alla digitala verktyg ett modernt svenskt företag behöver.</p>
+  <div class="hero-actions">
+    <a href="/cdn-cgi/l/email-protection#0861666e67487b7c7a69666c786d7a6e677a6569666b6d266b6765" class="btn-primary">Boka Gratis Audit →</a>
+    <a href="#hemsidor" class="btn-ghost">Se paket ↓</a>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HEMSIDOR -->
+<section id="hemsidor">
+  <div class="tiers-intro">
+    <div>
+      <p class="section-label">Hemsidor</p>
+      <h2 class="section-title">En proffsig hemsida<br>till <em>fast pris</em></h2>
+    </div>
+    <p>Vi levererar mobiloptimerade, snabba hemsidor specifikt för svenska småföretag. Fast pris, ingen bindningstid, leverans inom 1–2 veckor.</p>
+  </div>
+
+  <div class="tiers-grid">
+    <!-- STARTER -->
+    <div class="tier-card">
+      <p class="tier-name">Starter</p>
+      <p class="tier-price">4 995 kr</p>
+      <p class="tier-price-note">Engångspris · exkl. moms</p>
+      <p class="tier-desc">Perfekt för dig som behöver en enkel, professionell närvaro online — snabbt och prisvärt.</p>
+      <ul class="tier-features">
+        <li>1–2 sidor (startsida + kontaktsida)</li>
+        <li>Mobiloptimerad & snabb</li>
+        <li>Kontaktknapp & mejlformulär</li>
+        <li>SEO-grundinställningar</li>
+        <li>Google Maps-integration</li>
+        <li>Leverans inom 1 vecka</li>
+      </ul>
+      <a href="/cdn-cgi/l/email-protection#036a6d656c43707771626d67736671656c716e626d60662d606c6e" class="tier-cta">Kom igång</a>
+    </div>
+
+    <!-- BUSINESS -->
+    <div class="tier-card featured">
+      <span class="tier-badge">Populärast</span>
+      <p class="tier-name">Business</p>
+      <p class="tier-price">9 995 kr</p>
+      <p class="tier-price-note">Engångspris · exkl. moms</p>
+      <p class="tier-desc">För dig som vill ha en komplett hemsida som faktiskt konverterar besökare till kunder.</p>
+      <ul class="tier-features">
+        <li>Upp till 5 sidor</li>
+        <li>Professionell kontaktformulär</li>
+        <li>Bildgalleri / tjänstesidor</li>
+        <li>Google My Business-integration</li>
+        <li>SEO på varje sida</li>
+        <li>Google Analytics-koppling</li>
+        <li>Mobiloptimerad & snabb</li>
+        <li>Leverans inom 2 veckor</li>
+      </ul>
+      <a href="/cdn-cgi/l/email-protection#b1d8dfd7def1c2c5c3d0dfd5c1d4c3d7dec3dcd0dfd2d49fd2dedc" class="tier-cta">Kom igång</a>
+    </div>
+
+    <!-- PRO -->
+    <div class="tier-card">
+      <p class="tier-name">Pro</p>
+      <p class="tier-price">16 995 kr</p>
+      <p class="tier-price-note">Engångspris · exkl. moms</p>
+      <p class="tier-desc">Hela paketet — för dig som vill ha en hemsida som arbetar hårt för ditt företag dygnet runt.</p>
+      <ul class="tier-features">
+        <li>Upp till 10 sidor</li>
+        <li>Inbyggt bokningssystem</li>
+        <li>Blogg / nyhetssektion</li>
+        <li>Avancerad SEO-optimering</li>
+        <li>Google My Business-setup</li>
+        <li>Automatiska påminnelser</li>
+        <li>Prioriterad support i 30 dagar</li>
+        <li>Leverans inom 2–3 veckor</li>
+      </ul>
+      <a href="/cdn-cgi/l/email-protection#2940474f46695a5d5b48474d594c5b4f465b4448474a4c074a4644" class="tier-cta">Kom igång</a>
+    </div>
+  </div>
+
+  <!-- ADDON: Bokningssystem -->
+  <div class="addon-box">
+    <div>
+      <h3>➕ Tillägg: Bokningssystem</h3>
+      <p>Lägg till ett komplett bokningssystem på valfritt paket. Calendly/Bokadirekt-integration, koppling till din hemsida och automatiska påminnelser via mejl och SMS.</p>
+    </div>
+    <div>
+      <div class="addon-price">+2 495 kr</div>
+    </div>
+  </div>
+
+  <!-- UNDERHÅLL -->
+  <div style="margin-top: 1rem;">
+    <div class="addon-box" style="border-color: rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); flex-wrap: wrap; gap: 2rem;">
+      <div style="flex: 1; min-width: 260px;">
+        <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">🔧 Underhåll & hosting</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 520px; line-height: 1.7;">Efter leverans väljer du om du vill att vi sköter hosting, uppdateringar och teknisk support — eller om du vill ta hand om det själv. Inget krav, inget krångel.</p>
+      </div>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-start;">
+        <div style="background: var(--gray); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.5rem 1.8rem; text-align: center; min-width: 160px;">
+          <div style="font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: var(--white); line-height: 1;">399 kr</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 1rem;">per månad · exkl. moms</div>
+          <div style="font-size: 0.8rem; color: rgba(245,243,238,0.7); line-height: 1.6; text-align: left;">
+            <div style="margin-bottom: 0.35rem;">→ Hosting inkluderad</div>
+            <div style="margin-bottom: 0.35rem;">→ Textändringar</div>
+            <div style="margin-bottom: 0.35rem;">→ Teknisk support</div>
+            <div>→ Säkerhetskopiering</div>
+          </div>
+        </div>
+        <div style="background: var(--gray); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.5rem 1.8rem; text-align: center; min-width: 160px;">
+          <div style="font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: var(--text-muted); line-height: 1;">0 kr</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 1rem;">sköt det själv</div>
+          <div style="font-size: 0.8rem; color: rgba(245,243,238,0.4); line-height: 1.6; text-align: left;">
+            <div style="margin-bottom: 0.35rem;">→ Du får all kod</div>
+            <div style="margin-bottom: 0.35rem;">→ Gratis hosting via GitHub</div>
+            <div style="margin-bottom: 0.35rem;">→ Du kopplar din domän</div>
+            <div>→ Support vid behov</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- META ADS -->
+<section id="ads">
+  <p class="section-label">Meta Ads</p>
+  <h2 class="section-title">10–20 nya bokningar<br><em>varje månad</em></h2>
+
+  <div class="ads-grid">
+    <div class="ads-card">
+      <p class="ads-tier-name">Starter</p>
+      <p class="ads-price">2 995 kr</p>
+      <p class="ads-cycle">per månad · exkl. moms</p>
+      <ul class="ads-features">
+        <li>Meta Ads setup (Facebook + Instagram)</li>
+        <li>Lead generation-kampanj</li>
+        <li>Grundläggande målgruppsoptimering</li>
+        <li>Månadsrapport</li>
+      </ul>
+      <a href="/cdn-cgi/l/email-protection#4c25222a230c3f383e2d22283c293e2a233e212d222f29622f2321" class="ads-cta">Kom igång</a>
+    </div>
+    <div class="ads-card featured">
+      <p class="ads-tier-name">Growth</p>
+      <p class="ads-price">5 995 kr</p>
+      <p class="ads-cycle">per månad · exkl. moms</p>
+      <ul class="ads-features">
+        <li>Allt i Starter</li>
+        <li>Remarketing-kampanj</li>
+        <li>2–3 kreativa annonser per månad</li>
+        <li>Bi-weekly optimering</li>
+        <li>Månatligt strategimejl</li>
+      </ul>
+      <a href="/cdn-cgi/l/email-protection#4920272f26093a3d3b28272d392c3b2f263b2428272a2c672a2624" class="ads-cta">Kom igång</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ENGÅNGS -->
+<section id="engangstjanster">
+  <p class="section-label">Engångstjänster</p>
+  <h2 class="section-title">Snabba <em>digitala</em><br>uppstarter</h2>
+  <div class="onetimes-grid">
+    <div class="onetime-card">
+      <div class="onetime-icon">📱</div>
+      <p class="onetime-name">Social Media Setup</p>
+      <p class="onetime-price">1 995 kr</p>
+      <ul class="onetime-features">
+        <li>Facebook Business Manager</li>
+        <li>Instagram Business-konto</li>
+        <li>Pixel-installation</li>
+        <li>Profiloptimering</li>
+      </ul>
+    </div>
+    <div class="onetime-card">
+      <div class="onetime-icon">📅</div>
+      <p class="onetime-name">Bokningssystem</p>
+      <p class="onetime-price">1 495 kr</p>
+      <ul class="onetime-features">
+        <li>Calendly/Bokadirekt setup</li>
+        <li>Integration med hemsida</li>
+        <li>Automatiska påminnelser</li>
+      </ul>
+    </div>
+    <div class="onetime-card">
+      <div class="onetime-icon">📍</div>
+      <p class="onetime-name">Google My Business</p>
+      <p class="onetime-price">1 245 kr</p>
+      <ul class="onetime-features">
+        <li>Profiloptimering</li>
+        <li>Bilder & beskrivning</li>
+        <li>Recensionshantering setup</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VARFÖR -->
+<section id="varfor">
+  <p class="section-label">Varför Strand Performance</p>
+  <h2 class="section-title">Vi levererar<br><em>resultat</em></h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <p class="why-num">10+</p>
+      <p class="why-title">Års erfarenhet</p>
+      <p class="why-text">Vi har hjälpt svenska företag att växa digitalt — med Meta Ads, hemsidor och hela den digitala infrastrukturen.</p>
+    </div>
+    <div class="why-card">
+      <p class="why-num">Data</p>
+      <p class="why-title">Datadriven approach</p>
+      <p class="why-text">Varje beslut baseras på faktisk data och resultat. Ingen gissning, bara optimering av det som faktiskt fungerar.</p>
+    </div>
+    <div class="why-card">
+      <p class="why-num">1 v</p>
+      <p class="why-title">Snabba resultat</p>
+      <p class="why-text">Första leads syns ofta inom en vecka. Hemsidor levereras inom 1–2 veckor. Vi respekterar din tid.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Redo att växa?</h2>
+  <p>Boka en gratis 15-minuters audit idag. Vi tittar på din digitala närvaro och berättar exakt vad vi kan göra för dig.</p>
+  <a href="/cdn-cgi/l/email-protection#c9a0a7afa689babdbba8a7adb9acbbafa6bba4a8a7aaace7aaa6a4" class="btn-primary">Boka Gratis 
