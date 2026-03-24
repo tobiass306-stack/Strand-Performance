@@ -533,21 +533,38 @@
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { display: none; }
-    section { padding: 5rem 1.5rem; }
-    .hero { padding: 1.5rem; padding-top: 90px; }
-    .tiers-intro { grid-template-columns: 1fr; gap: 1.5rem; }
-    .tiers-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.2rem; }
+    .hero { padding: 1.2rem; padding-top: 85px; min-height: auto; }
+    .hero h1 { font-size: clamp(2.8rem, 11vw, 5rem); }
+    .hero-sub { font-size: 0.95rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .btn-primary { width: 100%; text-align: center; justify-content: center; }
+    .section-title { font-size: clamp(1.9rem, 7vw, 2.8rem); }
+    .tiers-intro { grid-template-columns: 1fr; gap: 1.2rem; }
+    .tiers-grid { grid-template-columns: 1fr; gap: 0; border-radius: 12px; }
+    .tier-card { padding: 1.8rem; }
     .tier-card.featured { margin: 0; }
-    .ads-grid { grid-template-columns: 1fr; }
+    .ads-grid { grid-template-columns: 1fr; gap: 0; }
     .ads-card.featured { margin: 0; }
-    .onetimes-grid { grid-template-columns: repeat(2, 1fr); }
-    .why-grid { grid-template-columns: 1fr; }
-    .addon-box { flex-direction: column; align-items: flex-start; }
-    .divider { margin: 0 1.5rem; width: calc(100% - 3rem); }
-    footer { flex-direction: column; align-items: flex-start; }
+    .onetimes-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .why-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+    .addon-box { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .divider { margin: 0; width: 100%; }
+    footer { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    /* Portfolio grid — 2 cols on tablet, 1 on phone */
+    #portfolio > div:last-child { grid-template-columns: repeat(2,1fr) !important; gap: 1rem !important; }
+    #portfolio > div:first-child { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
+    /* Underhåll addon cards */
+    .addon-box > div:last-child { flex-direction: column !important; width: 100%; }
+    .addon-box > div:last-child > div { min-width: unset !important; width: 100%; }
+    /* Why cards */
+    .why-num { font-size: 2rem; }
   }
   @media (max-width: 600px) {
     .onetimes-grid { grid-template-columns: 1fr; }
+    section { padding: 3.5rem 1rem; }
+    .hero { padding: 1rem; padding-top: 80px; }
+    .tier-price { font-size: 2rem; }
   }
 </style>
 </head>
@@ -743,7 +760,7 @@
     <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;max-width:420px;">Tre exempel på hemsidor vi byggt för hälsokliniker i Sverige — från enkel Starter till komplex Pro-lösning med flera kliniker och bokningssystem.</p>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;">
 
     <!-- ÖSTERMALM -->
     <a href="https://tobiass306-stack.github.io/ostermalm-osteopati/" target="_blank" style="text-decoration:none;display:block;background:var(--gray);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;transition:transform 0.25s,border-color 0.25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(200,241,53,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.06)'">
@@ -798,6 +815,25 @@
         <div style="display:flex;justify-content:space-between;align-items:center;">
           <span style="font-size:0.78rem;color:rgba(200,241,53,0.7);letter-spacing:0.08em;text-transform:uppercase;">Se hemsidan →</span>
           <span style="font-size:0.78rem;color:var(--text-muted);">Från 16 995 kr</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- SMILE STUDIO -->
+    <a href="https://tobiass306-stack.github.io/smile-studio-stockholm/" target="_blank" style="text-decoration:none;display:block;background:var(--gray);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;transition:transform 0.25s,border-color 0.25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(200,241,53,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.06)'">
+      <div style="height:200px;background:linear-gradient(135deg,#f3f0e8,#e8f2ee);display:flex;align-items:center;justify-content:center;position:relative;">
+        <div style="text-align:center;">
+          <div style="font-size:1.3rem;font-weight:600;color:#1a1814;letter-spacing:-0.01em;">Smile <span style="color:#2c6e5a;font-style:italic">Studio</span></div>
+          <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8580;margin-top:0.4rem;">Exklusiv · Premium · Tandvård</div>
+        </div>
+        <div style="position:absolute;top:1rem;right:1rem;background:rgba(44,110,90,0.12);border:1px solid rgba(44,110,90,0.3);border-radius:100px;padding:0.25rem 0.7rem;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#2c6e5a;">Tandläkare</div>
+      </div>
+      <div style="padding:1.5rem;">
+        <h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;color:var(--white);">Smile Studio Stockholm</h3>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.2rem;line-height:1.6;">Premium tandläkarsida med bokningsmodal, behandlingsfilter, prislista och FAQ.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:0.78rem;color:rgba(200,241,53,0.7);letter-spacing:0.08em;text-transform:uppercase;">Se hemsidan →</span>
+          <span style="font-size:0.78rem;color:var(--text-muted);">Från 25 000 kr</span>
         </div>
       </div>
     </a>
