@@ -3,84 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- SEO -->
-<title>Strand Performance – Webbyrå för svenska småföretag | Hemsidor & Meta Ads</title>
-<meta name="description" content="Vi bygger professionella hemsidor från 6 995 kr och kör Meta Ads för svenska småföretag. Fast pris, leverans inom 1–2 veckor. Boka gratis audit idag.">
-<meta name="keywords" content="webbyrå sverige, hemsida småföretag, bygga hemsida, webbdesign stockholm, meta ads sverige, facebook ads, hemsida osteopat, hemsida naprapat, hemsida tandläkare, digital marknadsföring sverige">
-<meta name="author" content="Strand Performance">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://strandperformance.se/">
-
-<!-- Open Graph (Facebook / LinkedIn) -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://strandperformance.se/">
-<meta property="og:title" content="Strand Performance – Hemsidor & Meta Ads för svenska småföretag">
-<meta property="og:description" content="Professionella hemsidor från 6 995 kr. Meta Ads som ger 10–20 nya bokningar per månad. Fast pris, ingen bindningstid.">
-<meta property="og:image" content="https://strandperformance.se/og-image.jpg">
-<meta property="og:locale" content="sv_SE">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Strand Performance – Hemsidor & Meta Ads">
-<meta name="twitter:description" content="Vi bygger hemsidor och kör Meta Ads för svenska småföretag. Från 6 995 kr.">
-
-<!-- Schema.org strukturerad data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Strand Performance",
-  "url": "https://strandperformance.se",
-  "email": "info@strandperformance.com",
-  "description": "Digital byrå specialiserad på hemsidor och Meta Ads för svenska småföretag.",
-  "areaServed": "SE",
-  "serviceType": ["Webbdesign", "Meta Ads", "Digital marknadsföring"],
-  "priceRange": "6 995 kr – 19 995 kr",
-  "offers": [
-    {
-      "@type": "Offer",
-      "name": "Starter hemsida",
-      "price": "6995",
-      "priceCurrency": "SEK"
-    },
-    {
-      "@type": "Offer",
-      "name": "Business hemsida",
-      "price": "12995",
-      "priceCurrency": "SEK"
-    },
-    {
-      "@type": "Offer",
-      "name": "Pro hemsida",
-      "price": "19995",
-      "priceCurrency": "SEK"
-    }
-  ]
-}
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<title>Strand Performance — AI som sparar tid och pengar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
     --black: #0a0a0a;
     --white: #f5f3ee;
-    --accent: #c8f135;
-    --accent-dark: #9ebb1f;
-    --gray: #1e1e1e;
-    --gray-mid: #2e2e2e;
-    --text-muted: #888;
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
+    --cream: #ede9e0;
+    --accent: #c8f04e;
+    --accent-dark: #9bbf2a;
+    --mid: #6b6b5e;
+    --border: rgba(245,243,238,0.12);
   }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   html { scroll-behavior: smooth; }
 
   body {
     background: var(--black);
     color: var(--white);
-    font-family: var(--font-body);
+    font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     line-height: 1.6;
     overflow-x: hidden;
@@ -90,891 +34,528 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 1.4rem 2.5rem;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 4rem;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    background: rgba(10,10,10,0.7);
   }
-  .nav-logo {
-    font-family: var(--font-display);
+  .logo {
+    font-family: 'Syne', sans-serif;
     font-weight: 800;
-    font-size: 1.15rem;
-    letter-spacing: -0.01em;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
     color: var(--white);
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-    gap: 0.18rem;
   }
-  .nav-logo .logo-wordmark { display: flex; align-items: baseline; }
-  .nav-logo .logo-dot { color: var(--accent); font-size: 1.4rem; line-height: 1; }
-  .nav-logo .logo-sub {
-    font-family: var(--font-display);
-    font-size: 0.52rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
+  .logo span { color: var(--accent); }
+  nav a.cta-nav {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.88rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--white); }
-  .nav-cta {
-    background: var(--accent);
-    color: var(--black) !important;
-    padding: 0.5rem 1.2rem;
-    border-radius: 100px;
-    font-weight: 500 !important;
     color: var(--black);
+    background: var(--accent);
+    padding: 0.6rem 1.5rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 400;
+    transition: background 0.2s;
   }
-  .nav-cta:hover { background: var(--accent-dark) !important; }
+  nav a.cta-nav:hover { background: var(--accent-dark); }
 
   /* HERO */
   .hero {
     min-height: 100vh;
     display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 2.5rem;
-    padding-top: 100px;
+    padding: 0 4rem 6rem;
     position: relative;
     overflow: hidden;
   }
   .hero-bg {
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,241,53,0.07) 0%, transparent 70%),
-                radial-gradient(ellipse 50% 40% at 20% 80%, rgba(200,241,53,0.04) 0%, transparent 60%);
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,240,78,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(200,240,78,0.04) 0%, transparent 50%);
   }
-  .hero-tag {
-    font-family: var(--font-display);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
+  .hero-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
+    animation: fadeUp 0.8s ease forwards 0.2s;
   }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(3.2rem, 8vw, 7.5rem);
+  h1 {
+    font-family: 'Syne', sans-serif;
     font-weight: 800;
+    font-size: clamp(3.5rem, 8vw, 8rem);
     line-height: 0.95;
     letter-spacing: -0.02em;
     max-width: 900px;
     opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
+    animation: fadeUp 0.8s ease forwards 0.4s;
   }
-  .hero h1 em {
+  h1 em {
     font-style: normal;
     color: var(--accent);
   }
   .hero-sub {
-    margin-top: 2rem;
-    font-size: 1.15rem;
-    color: var(--text-muted);
+    margin-top: 3rem;
     max-width: 480px;
+    font-size: 1.1rem;
+    color: rgba(245,243,238,0.6);
     opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
+    animation: fadeUp 0.8s ease forwards 0.6s;
   }
-  .hero-actions {
+  .hero-cta {
+    margin-top: 3rem;
     display: flex; gap: 1rem; align-items: center;
-    margin-top: 2.5rem;
     opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
+    animation: fadeUp 0.8s ease forwards 0.8s;
   }
   .btn-primary {
+    display: inline-block;
     background: var(--accent);
     color: var(--black);
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.95rem;
-    padding: 0.85rem 2rem;
-    border-radius: 100px;
+    padding: 1rem 2.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 400;
     text-decoration: none;
+    border-radius: 2px;
     transition: background 0.2s, transform 0.15s;
-    border: none; cursor: pointer;
   }
   .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
   .btn-ghost {
-    color: var(--text-muted);
     font-size: 0.9rem;
+    color: rgba(245,243,238,0.5);
     text-decoration: none;
-    display: flex; align-items: center; gap: 0.4rem;
+    letter-spacing: 0.04em;
     transition: color 0.2s;
   }
   .btn-ghost:hover { color: var(--white); }
+
   .hero-scroll {
-    position: absolute; bottom: 2rem; right: 2.5rem;
-    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-    opacity: 0.4;
+    position: absolute;
+    right: 4rem; bottom: 6rem;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0; animation: fadeIn 1s ease forwards 1.2s;
+  }
+  .hero-scroll span {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--mid); writing-mode: vertical-rl;
   }
   .scroll-line {
-    width: 1px; height: 60px;
-    background: linear-gradient(to bottom, var(--white), transparent);
-    animation: scrollLine 1.5s ease-in-out infinite;
+    width: 1px; height: 60px; background: var(--border);
+    position: relative; overflow: hidden;
   }
-  @keyframes scrollLine {
-    0%, 100% { opacity: 0.4; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.2); }
-  }
-
-  /* SECTIONS */
-  section { padding: 6rem 2.5rem; }
-
-  .section-label {
-    font-family: var(--font-display);
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 4vw, 3.5rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-  }
-  .section-title em {
-    font-style: normal;
-    color: var(--accent);
+  .scroll-line::after {
+    content: ''; position: absolute; top: -100%; left: 0; right: 0;
+    height: 100%; background: var(--accent);
+    animation: scrollLine 2s ease infinite;
   }
 
-  /* DIVIDER */
-  .divider {
-    width: 100%; height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
-    margin: 0 2.5rem;
-    width: calc(100% - 5rem);
-  }
-
-  /* WEBSITE TIERS */
-  #hemsidor { background: var(--black); }
-  .tiers-intro {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 4rem; align-items: end;
-    margin-bottom: 4rem;
-  }
-  .tiers-intro p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    max-width: 420px;
-    margin-top: 1.5rem;
-    line-height: 1.8;
-  }
-  .tiers-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 20px;
+  /* TICKER */
+  .ticker {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     overflow: hidden;
-    border: 1.5px solid rgba(255,255,255,0.06);
+    padding: 1.2rem 0;
+    background: rgba(200,240,78,0.03);
   }
-  .tier-card {
-    background: var(--gray);
-    padding: 2.5rem;
-    display: flex; flex-direction: column;
-    position: relative;
-    transition: background 0.25s;
-  }
-  .tier-card:hover { background: #252525; }
-  .tier-card.featured {
-    background: #191f0d;
-    border: 1.5px solid rgba(200,241,53,0.25);
-    margin: -1.5px;
-    z-index: 1;
-    border-radius: 2px;
-  }
-  .tier-badge {
-    position: absolute; top: 1.5rem; right: 1.5rem;
-    background: var(--accent);
-    color: var(--black);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.7rem;
-    border-radius: 100px;
-  }
-  .tier-name {
-    font-family: var(--font-display);
-    font-size: 0.8rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 0.75rem;
-  }
-  .tier-price {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 2.6rem;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--white);
-    margin-bottom: 0.3rem;
-  }
-  .tier-price-note {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin-bottom: 1.8rem;
-  }
-  .tier-desc {
-    font-size: 0.92rem;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    line-height: 1.7;
-    border-top: 1px solid rgba(255,255,255,0.07);
-    padding-top: 1.5rem;
-  }
-  .tier-features { list-style: none; flex: 1; }
-  .tier-features li {
-    display: flex; align-items: flex-start; gap: 0.7rem;
-    font-size: 0.9rem;
-    color: rgba(245,243,238,0.8);
-    margin-bottom: 0.85rem;
-    line-height: 1.5;
-  }
-  .tier-features li::before {
-    content: '→';
-    color: var(--accent);
-    font-size: 0.85rem;
-    flex-shrink: 0;
-    margin-top: 0.05rem;
-  }
-  .tier-cta {
-    margin-top: 2.5rem;
-    display: block;
-    text-align: center;
-    padding: 0.8rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.2s;
-    border: 1px solid rgba(255,255,255,0.15);
-    color: var(--white);
-  }
-  .tier-cta:hover { border-color: var(--accent); color: var(--accent); }
-  .tier-card.featured .tier-cta {
-    background: var(--accent);
-    color: var(--black);
-    border-color: var(--accent);
-  }
-  .tier-card.featured .tier-cta:hover { background: var(--accent-dark); }
-
-  /* ADDON */
-  .addon-box {
-    margin-top: 2rem;
-    padding: 2rem 2.5rem;
-    border: 1px solid rgba(200,241,53,0.2);
-    border-radius: 16px;
-    display: flex; justify-content: space-between; align-items: center;
-    gap: 2rem;
-    background: rgba(200,241,53,0.03);
-  }
-  .addon-box h3 {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-  }
-  .addon-box p { color: var(--text-muted); font-size: 0.9rem; max-width: 480px; }
-  .addon-price {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.8rem;
-    color: var(--accent);
+  .ticker-inner {
+    display: flex; gap: 4rem;
+    animation: ticker 25s linear infinite;
     white-space: nowrap;
   }
-
-  /* ADS SECTION */
-  #ads { background: var(--gray); }
-  .ads-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 1.5px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1.5px solid rgba(255,255,255,0.06);
-    margin-top: 4rem;
-  }
-  .ads-card {
-    background: var(--gray-mid);
-    padding: 2.5rem;
-    transition: background 0.25s;
-  }
-  .ads-card:hover { background: #2a2a2a; }
-  .ads-card.featured {
-    background: #191f0d;
-    border: 1.5px solid rgba(200,241,53,0.2);
-    margin: -1.5px;
-    z-index: 1;
-  }
-  .ads-tier-name {
-    font-family: var(--font-display);
-    font-size: 0.78rem;
+  .ticker-item {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--mid);
+    flex-shrink: 0;
+  }
+  .ticker-item span { color: var(--accent); margin-right: 4rem; }
+
+  /* SECTION */
+  section { padding: 8rem 4rem; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.5rem;
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    max-width: 700px;
+  }
+
+  /* WHAT WE DO */
+  .services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-top: 5rem;
+    border: 1px solid var(--border);
+  }
+  .service {
+    padding: 3rem;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .service::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service:hover { background: rgba(200,240,78,0.04); }
+  .service:hover::before { transform: scaleX(1); }
+  .service-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.2em; color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .service h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem; font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .service p { color: rgba(245,243,238,0.55); font-size: 0.95rem; line-height: 1.7; }
+
+  /* NUMBERS */
+  .numbers {
+    background: var(--cream);
+    color: var(--black);
+    padding: 6rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+  }
+  .number-item {
+    padding: 3rem;
+    border-right: 1px solid rgba(10,10,10,0.1);
+  }
+  .number-item:last-child { border-right: none; }
+  .number-big {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--black);
     margin-bottom: 0.5rem;
   }
-  .ads-price {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 2.2rem;
-    line-height: 1;
-    color: var(--white);
-    margin-bottom: 0.25rem;
+  .number-big span { color: #5a8a00; }
+  .number-label { font-size: 0.9rem; color: #6b6b5e; }
+
+  /* HOW IT WORKS */
+  .steps { margin-top: 5rem; }
+  .step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
   }
-  .ads-cycle { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-  .ads-features { list-style: none; }
-  .ads-features li {
-    display: flex; align-items: flex-start; gap: 0.7rem;
-    font-size: 0.9rem;
-    color: rgba(245,243,238,0.75);
+  .step:first-child { border-top: 1px solid var(--border); }
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem; font-weight: 800;
+    color: var(--border);
+    line-height: 1;
+    padding-top: 4px;
+  }
+  .step h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem; font-weight: 700;
     margin-bottom: 0.75rem;
   }
-  .ads-features li::before {
-    content: '→';
-    color: var(--accent);
-    font-size: 0.85rem;
-    flex-shrink: 0;
-    margin-top: 0.05rem;
-  }
-  .ads-cta {
-    margin-top: 2rem;
-    display: block; text-align: center;
-    padding: 0.75rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.2s;
-    border: 1px solid rgba(255,255,255,0.12);
-    color: var(--white);
-  }
-  .ads-cta:hover { border-color: var(--accent); color: var(--accent); }
-  .ads-card.featured .ads-cta {
-    background: var(--accent); color: var(--black); border-color: var(--accent);
-  }
-  .ads-card.featured .ads-cta:hover { background: var(--accent-dark); }
+  .step p { color: rgba(245,243,238,0.55); font-size: 0.95rem; }
 
-  /* ENGÅNGS */
-  #engangstjanster { background: var(--black); }
-  .onetimes-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 4rem;
+  /* CONTACT */
+  .contact-section {
+    background: var(--accent);
+    color: var(--black);
+    padding: 8rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
   }
-  .onetime-card {
-    background: var(--gray);
-    padding: 2rem;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: border-color 0.2s, transform 0.2s;
+  .contact-section h2 { color: var(--black); max-width: 500px; }
+  .contact-section .section-label { color: rgba(10,10,10,0.5); }
+  form { display: flex; flex-direction: column; gap: 1rem; }
+  input, textarea {
+    background: rgba(10,10,10,0.08);
+    border: 1px solid rgba(10,10,10,0.2);
+    border-radius: 2px;
+    padding: 1rem 1.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--black);
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+    width: 100%;
   }
-  .onetime-card:hover {
-    border-color: rgba(200,241,53,0.3);
-    transform: translateY(-3px);
+  input::placeholder, textarea::placeholder { color: rgba(10,10,10,0.4); }
+  input:focus, textarea:focus {
+    border-color: rgba(10,10,10,0.5);
+    background: rgba(10,10,10,0.12);
   }
-  .onetime-icon {
-    font-size: 1.5rem; margin-bottom: 1rem;
-  }
-  .onetime-name {
-    font-family: var(--font-display);
+  textarea { resize: none; height: 120px; }
+  button[type=submit] {
+    background: var(--black);
+    color: var(--accent);
+    border: none;
+    padding: 1rem 2rem;
+    font-family: 'Syne', sans-serif;
     font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
-  }
-  .onetime-price {
-    font-family: var(--font-display);
-    font-weight: 800;
-    color: var(--accent);
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-  }
-  .onetime-features { list-style: none; }
-  .onetime-features li {
     font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 0.4rem;
-    padding-left: 1rem;
-    position: relative;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: opacity 0.2s, transform 0.15s;
   }
-  .onetime-features li::before {
-    content: '·';
-    position: absolute; left: 0;
-    color: var(--accent);
-  }
-
-  /* WHY */
-  #varfor { background: var(--gray); }
-  .why-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 4rem;
-  }
-  .why-card {
-    padding: 2rem;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.05);
-  }
-  .why-num {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    font-weight: 800;
-    color: rgba(200,241,53,0.2);
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-  .why-title {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 0.6rem;
-  }
-  .why-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
-
-  /* CTA BAND */
-  .cta-band {
-    padding: 5rem 2.5rem;
-    background: #0e1505;
-    border-top: 1px solid rgba(200,241,53,0.15);
-    border-bottom: 1px solid rgba(200,241,53,0.15);
-    text-align: center;
-  }
-  .cta-band h2 {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 800;
-    margin-bottom: 1rem;
-    letter-spacing: -0.02em;
-  }
-  .cta-band p {
-    color: var(--text-muted);
-    max-width: 480px;
-    margin: 0 auto 2.5rem;
-    font-size: 1rem;
-  }
+  button[type=submit]:hover { opacity: 0.85; transform: translateY(-1px); }
 
   /* FOOTER */
   footer {
-    padding: 3rem 2.5rem;
+    padding: 3rem 4rem;
+    border-top: 1px solid var(--border);
     display: flex; justify-content: space-between; align-items: center;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    flex-wrap: wrap; gap: 1rem;
+    color: var(--mid);
+    font-size: 0.8rem;
   }
-  footer p { font-size: 0.82rem; color: var(--text-muted); }
-  footer a { color: var(--text-muted); text-decoration: none; }
+  footer a { color: var(--mid); text-decoration: none; transition: color 0.2s; }
   footer a:hover { color: var(--accent); }
 
   /* ANIMATIONS */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
-    section { padding: 4rem 1.2rem; }
-    .hero { padding: 1.2rem; padding-top: 85px; min-height: auto; }
-    .hero h1 { font-size: clamp(2.8rem, 11vw, 5rem); }
-    .hero-sub { font-size: 0.95rem; }
-    .hero-actions { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-    .btn-primary { width: 100%; text-align: center; justify-content: center; }
-    .section-title { font-size: clamp(1.9rem, 7vw, 2.8rem); }
-    .tiers-intro { grid-template-columns: 1fr; gap: 1.2rem; }
-    .tiers-grid { grid-template-columns: 1fr; gap: 0; border-radius: 12px; }
-    .tier-card { padding: 1.8rem; }
-    .tier-card.featured { margin: 0; }
-    .ads-grid { grid-template-columns: 1fr; gap: 0; }
-    .ads-card.featured { margin: 0; }
-    .onetimes-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-    .why-grid { grid-template-columns: 1fr; gap: 0.75rem; }
-    .addon-box { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .divider { margin: 0; width: 100%; }
-    footer { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-    #portfolio > div:last-child { grid-template-columns: repeat(2,1fr) !important; gap: 1rem !important; }
-    #portfolio > div:first-child { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
-    .addon-box > div:last-child { flex-direction: column !important; width: 100%; }
-    .addon-box > div:last-child > div { min-width: unset !important; width: 100%; }
-    .why-num { font-size: 2rem; }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
   }
-  @media (max-width: 600px) {
-    .onetimes-grid { grid-template-columns: 1fr; }
-    section { padding: 3.5rem 1rem; }
-    .hero { padding: 1rem; padding-top: 80px; }
-    .tier-price { font-size: 2rem; }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes scrollLine {
+    0% { top: -100%; } 100% { top: 100%; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .hero { padding-bottom: 4rem; }
+    .services { grid-template-columns: 1fr; }
+    .numbers { grid-template-columns: 1fr; }
+    .number-item { border-right: none; border-bottom: 1px solid rgba(10,10,10,0.1); }
+    .contact-section { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-scroll { display: none; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
-    <span class="logo-wordmark">Strand<span class="logo-dot">.</span></span>
-    <span class="logo-sub">Performance</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#hemsidor">Hemsidor</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#ads">Meta Ads</a></li>
-    <li><a href="#engangstjanster">Tjänster</a></li>
-    <li><a href="https://forms.gle/3YM86bbDueNzz5Qt7" class="nav-cta">Boka Gratis Audit</a></li>
-  </ul>
+  <a class="logo" href="#">STRAND<span>.</span></a>
+  <a class="cta-nav" href="#kontakt">Boka samtal</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <p class="hero-tag">Allt Digitalt för Ditt Företag</p>
-  <h1>Fler kunder.<br>Varje <em>vecka.</em></h1>
-  <p class="hero-sub">Vi bygger hemsidor, kör Meta Ads och sätter upp alla digitala verktyg ett modernt svenskt företag behöver.</p>
-  <div class="hero-actions">
-    <a href="https://forms.gle/3YM86bbDueNzz5Qt7" class="btn-primary">Boka Gratis Audit →</a>
-    <a href="#hemsidor" class="btn-ghost">Se paket ↓</a>
+  <p class="hero-label">Digitalbyrå · AI · Webflow · Framer · Google</p>
+  <h1>Vi bygger din<br><em>digitala motor</em><br>från grunden.</h1>
+  <p class="hero-sub">Strand Performance kombinerar professionell webbutveckling i Webflow och Framer med skräddarsydd AI-automatisering och Google-närvaro — allt under ett tak.</p>
+  <div class="hero-cta">
+    <a class="btn-primary" href="#kontakt">Boka ett gratis samtal</a>
+    <a class="btn-ghost" href="#hur">Hur det fungerar →</a>
   </div>
-  <div class="hero-scroll"><div class="scroll-line"></div></div>
-</section>
-
-<div class="divider"></div>
-
-<!-- HEMSIDOR -->
-<section id="hemsidor">
-  <div class="tiers-intro">
-    <div>
-      <p class="section-label">Hemsidor</p>
-      <h2 class="section-title">En proffsig hemsida<br>till <em>fast pris</em></h2>
-    </div>
-    <p>Vi levererar mobiloptimerade, snabba hemsidor specifikt för svenska småföretag. Fast pris, ingen bindningstid, leverans inom 1–2 veckor.</p>
-  </div>
-
-  <div class="tiers-grid">
-    <!-- STARTER -->
-    <div class="tier-card">
-      <p class="tier-name">Starter</p>
-      <p class="tier-price">6 995 kr</p>
-      <p class="tier-price-note">Engångspris · exkl. moms</p>
-      <p class="tier-desc">Perfekt för dig som behöver en enkel, professionell närvaro online — snabbt och prisvärt.</p>
-      <ul class="tier-features">
-        <li>1–2 sidor (startsida + kontaktsida)</li>
-        <li>Mobiloptimerad & snabb</li>
-        <li>Kontaktknapp & mejlformulär</li>
-        <li>SEO-grundinställningar</li>
-        <li>Google Maps-integration</li>
-        <li>Leverans inom 1 vecka</li>
-      </ul>
-      <a href="https://forms.gle/3YM86bbDueNzz5Qt7" class="tier-cta">Kom igång</a>
-    </div>
-
-    <!-- BUSINESS -->
-    <div class="tier-card featured">
-      <span class="tier-badge">Populärast</span>
-      <p class="tier-name">Business</p>
-      <p class="tier-price">12 995 kr</p>
-      <p class="tier-price-note">Engångspris · exkl. moms</p>
-      <p class="tier-desc">För dig som vill ha en komplett hemsida som faktiskt konverterar besökare till kunder.</p>
-      <ul class="tier-features">
-        <li>Upp till 5 sidor</li>
-        <li>Professionell kontaktformulär</li>
-        <li>Bildgalleri / tjänstesidor</li>
-        <li>Google My Business-integration</li>
-        <li>SEO på varje sida</li>
-        <li>Google Analytics-koppling</li>
-        <li>Mobiloptimerad & snabb</li>
-        <li>Leverans inom 2 veckor</li>
-      </ul>
-      <a href="https://forms.gle/3YM86bbDueNzz5Qt7" class="tier-cta">Kom igång</a>
-    </div>
-
-    <!-- PRO -->
-    <div class="tier-card">
-      <p class="tier-name">Pro</p>
-      <p class="tier-price">19 995 kr</p>
-      <p class="tier-price-note">Engångspris · exkl. moms</p>
-      <p class="tier-desc">Hela paketet — för dig som vill ha en hemsida som arbetar hårt för ditt företag dygnet runt.</p>
-      <ul class="tier-features">
-        <li>Upp till 10 sidor</li>
-        <li>Inbyggt bokningssystem</li>
-        <li>Blogg / nyhetssektion</li>
-        <li>Avancerad SEO-optimering</li>
-        <li>Google My Business-setup</li>
-        <li>Automatiska påminnelser</li>
-        <li>Prioriterad support i 30 dagar</li>
-        <li>Leverans inom 2–3 veckor</li>
-      </ul>
-      <a href="https://forms.gle/3YM86bbDueNzz5Qt7" class="tier-cta">Kom igång</a>
-    </div>
-  </div>
-
-  <!-- ADDON: Bokningssystem -->
-  <div class="addon-box">
-    <div>
-      <h3>➕ Tillägg: Bokningssystem</h3>
-      <p>Lägg till ett komplett bokningssystem på valfritt paket. Calendly/Bokadirekt-integration, koppling till din hemsida och automatiska påminnelser via mejl och SMS.</p>
-    </div>
-    <div>
-      <div class="addon-price">+2 995 kr</div>
-    </div>
-  </div>
-
-  <!-- UNDERHÅLL -->
-  <div style="margin-top: 1rem;">
-    <div class="addon-box" style="border-color: rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); flex-wrap: wrap; gap: 2rem;">
-      <div style="flex: 1; min-width: 260px;">
-        <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">🔧 Underhåll & hosting</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 520px; line-height: 1.7;">Efter leverans väljer du om du vill att vi sköter hosting, uppdateringar och teknisk support — eller om du vill ta hand om det själv. Inget krav, inget krångel.</p>
-      </div>
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-start;">
-        <div style="background: var(--gray); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.5rem 1.8rem; text-align: center; min-width: 160px;">
-          <div style="font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: var(--white); line-height: 1;">799 kr</div>
-          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 1rem;">per månad · exkl. moms</div>
-          <div style="font-size: 0.8rem; color: rgba(245,243,238,0.7); line-height: 1.6; text-align: left;">
-            <div style="margin-bottom: 0.35rem;">→ Hosting inkluderad</div>
-            <div style="margin-bottom: 0.35rem;">→ Textändringar</div>
-            <div style="margin-bottom: 0.35rem;">→ Teknisk support</div>
-            <div>→ Säkerhetskopiering</div>
-          </div>
-        </div>
-        <div style="background: var(--gray); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.5rem 1.8rem; text-align: center; min-width: 160px;">
-          <div style="font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: var(--text-muted); line-height: 1;">0 kr</div>
-          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 1rem;">sköt det själv</div>
-          <div style="font-size: 0.8rem; color: rgba(245,243,238,0.4); line-height: 1.6; text-align: left;">
-            <div style="margin-bottom: 0.35rem;">→ Du får all kod</div>
-            <div style="margin-bottom: 0.35rem;">→ Gratis hosting via GitHub</div>
-            <div style="margin-bottom: 0.35rem;">→ Du kopplar din domän</div>
-            <div>→ Support vid behov</div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- META ADS -->
-<section id="ads">
-  <p class="section-label">Meta Ads</p>
-  <h2 class="section-title">10–20 nya bokningar<br><em>varje månad</em></h2>
-
-  <div class="ads-grid">
-    <div class="ads-card">
-      <p class="ads-tier-name">Starter</p>
-      <p class="ads-price">3 995 kr</p>
-      <p class="ads-cycle">per månad · exkl. moms</p>
-      <ul class="ads-features">
-        <li>Meta Ads setup (Facebook + Instagram)</li>
-        <li>Lead generation-kampanj</li>
-        <li>Grundläggande målgruppsoptimering</li>
-        <li>Månadsrapport</li>
-      </ul>
-      <a href="https://forms.gle/3YM86bbDueNzz5Qt7" class="ads-cta">Kom igång</a>
-    </div>
-    <div class="ads-card featured">
-      <p class="ads-tier-name">Growth</p>
-      <p class="ads-price">6 995 kr</p>
-      <p class="ads-cycle">per månad · exkl. moms</p>
-      <ul class="ads-features">
-        <li>Allt i Starter</li>
-        <li>Remarketing-kampanj</li>
-        <li>2–3 kreativa annonser per månad</li>
-        <li>Bi-weekly optimering</li>
-        <li>Månatligt strategimejl</li>
-      </ul>
-      <a href="https://forms.gle/3YM86bbDueNzz5Qt7" class="ads-cta">Kom igång</a>
-    </div>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">AI-automatisering <span>✦</span></span>
+    <span class="ticker-item">Webflow & Framer <span>✦</span></span>
+    <span class="ticker-item">Google Business <span>✦</span></span>
+    <span class="ticker-item">Hemsidor som konverterar <span>✦</span></span>
+    <span class="ticker-item">AI-genererade offerter <span>✦</span></span>
+    <span class="ticker-item">Kundservice-botar <span>✦</span></span>
+    <span class="ticker-item">Sökmotoroptimering <span>✦</span></span>
+    <span class="ticker-item">Rapport-sammanfattningar <span>✦</span></span>
+    <span class="ticker-item">AI-automatisering <span>✦</span></span>
+    <span class="ticker-item">Webflow & Framer <span>✦</span></span>
+    <span class="ticker-item">Google Business <span>✦</span></span>
+    <span class="ticker-item">Hemsidor som konverterar <span>✦</span></span>
+    <span class="ticker-item">AI-genererade offerter <span>✦</span></span>
+    <span class="ticker-item">Kundservice-botar <span>✦</span></span>
+    <span class="ticker-item">Sökmotoroptimering <span>✦</span></span>
+    <span class="ticker-item">Rapport-sammanfattningar <span>✦</span></span>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PORTFOLIO -->
-<section id="portfolio" style="background: var(--black);">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem;">
-    <div>
-      <p class="section-label">Portfolio</p>
-      <h2 class="section-title">Exempel på<br>vad vi <em>bygger</em></h2>
-    </div>
-    <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;max-width:420px;">Tre exempel på hemsidor vi byggt för hälsokliniker i Sverige — från enkel Starter till komplex Pro-lösning med flera kliniker och bokningssystem.</p>
-  </div>
-
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;">
-
-    <!-- ÖSTERMALM -->
-    <a href="https://tobiass306-stack.github.io/ostermalm-osteopati/" target="_blank" style="text-decoration:none;display:block;background:var(--gray);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;transition:transform 0.25s,border-color 0.25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(200,241,53,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.06)'">
-      <div style="height:200px;overflow:hidden;background:linear-gradient(135deg,#f8f5ef,#e8ddd0);display:flex;align-items:center;justify-content:center;position:relative;">
-        <div style="text-align:center;">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#1c1a17;">Östermalm <em>Osteopati</em></div>
-          <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#9a9590;margin-top:0.4rem;">Ljus · Premium · Elegant</div>
-        </div>
-        <div style="position:absolute;top:1rem;right:1rem;background:rgba(139,111,78,0.15);border:1px solid rgba(139,111,78,0.3);border-radius:100px;padding:0.25rem 0.7rem;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#8b6f4e;">Starter</div>
-      </div>
-      <div style="padding:1.5rem;">
-        <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;color:var(--white);">Östermalm Osteopati</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.2rem;line-height:1.6;">Ljus och elegant hemsida med bokningsformulär, behandlingssidor och om-oss-sektion.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:0.78rem;color:rgba(200,241,53,0.7);letter-spacing:0.08em;text-transform:uppercase;">Se hemsidan →</span>
-          <span style="font-size:0.78rem;color:var(--text-muted);">Från 6 995 kr</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- STOCKHOLM NAPRAPAT -->
-    <a href="https://tobiass306-stack.github.io/stockholm-naprapat/" target="_blank" style="text-decoration:none;display:block;background:var(--gray);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;transition:transform 0.25s,border-color 0.25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(200,241,53,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.06)'">
-      <div style="height:200px;overflow:hidden;background:linear-gradient(135deg,#080808,#111111);display:flex;align-items:center;justify-content:center;position:relative;">
-        <div style="text-align:center;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.06em;color:#f0eeea;">STOCKHOLM <span style="color:#e8f542">NAPRAPAT</span></div>
-          <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#777;margin-top:0.4rem;">Mörk · Energisk · Modern</div>
-        </div>
-        <div style="position:absolute;top:1rem;right:1rem;background:rgba(232,245,66,0.1);border:1px solid rgba(232,245,66,0.3);border-radius:100px;padding:0.25rem 0.7rem;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#e8f542;">Business</div>
-      </div>
-      <div style="padding:1.5rem;">
-        <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;color:var(--white);">Stockholm Naprapat</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.2rem;line-height:1.6;">Mörk och energisk design med tjänstelistning, statistikband och komplett bokningsformulär.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:0.78rem;color:rgba(200,241,53,0.7);letter-spacing:0.08em;text-transform:uppercase;">Se hemsidan →</span>
-          <span style="font-size:0.78rem;color:var(--text-muted);">Från 12 995 kr</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- NORDIC HEALTH -->
-    <a href="https://tobiass306-stack.github.io/nordic-health-clinic/" target="_blank" style="text-decoration:none;display:block;background:var(--gray);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;transition:transform 0.25s,border-color 0.25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(200,241,53,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.06)'">
-      <div style="height:200px;overflow:hidden;background:linear-gradient(135deg,#06080a,#111620);display:flex;align-items:center;justify-content:center;position:relative;">
-        <div style="text-align:center;">
-          <div style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#eef0f4;">Nordic Health <em style="color:#d4a853">Clinics</em></div>
-          <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#6b7280;margin-top:0.4rem;">6 kliniker · 40+ specialister</div>
-        </div>
-        <div style="position:absolute;top:1rem;right:1rem;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:100px;padding:0.25rem 0.7rem;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#3b82f6;">Pro</div>
-      </div>
-      <div style="padding:1.5rem;">
-        <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;color:var(--white);">Nordic Health Clinics</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.2rem;line-height:1.6;">Premium multisite-lösning med 6 kliniker, teamsektion, behandlingskatalog och avancerat bokningssystem.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:0.78rem;color:rgba(200,241,53,0.7);letter-spacing:0.08em;text-transform:uppercase;">Se hemsidan →</span>
-          <span style="font-size:0.78rem;color:var(--text-muted);">Från 19 995 kr</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- SMILE STUDIO -->
-    <a href="https://tobiass306-stack.github.io/smile-studio-stockholm/" target="_blank" style="text-decoration:none;display:block;background:var(--gray);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;transition:transform 0.25s,border-color 0.25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(200,241,53,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.06)'">
-      <div style="height:200px;background:linear-gradient(135deg,#f3f0e8,#e8f2ee);display:flex;align-items:center;justify-content:center;position:relative;">
-        <div style="text-align:center;">
-          <div style="font-size:1.3rem;font-weight:600;color:#1a1814;letter-spacing:-0.01em;">Smile <span style="color:#2c6e5a;font-style:italic">Studio</span></div>
-          <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8580;margin-top:0.4rem;">Exklusiv · Premium · Tandvård</div>
-        </div>
-        <div style="position:absolute;top:1rem;right:1rem;background:rgba(44,110,90,0.12);border:1px solid rgba(44,110,90,0.3);border-radius:100px;padding:0.25rem 0.7rem;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#2c6e5a;">Tandläkare</div>
-      </div>
-      <div style="padding:1.5rem;">
-        <h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:0.4rem;color:var(--white);">Smile Studio Stockholm</h3>
-        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.2rem;line-height:1.6;">Premium tandläkarsida med bokningsmodal, behandlingsfilter, prislista och FAQ.</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:0.78rem;color:rgba(200,241,53,0.7);letter-spacing:0.08em;text-transform:uppercase;">Se hemsidan →</span>
-          <span style="font-size:0.78rem;color:var(--text-muted);">Från 25 000 kr</span>
-        </div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ENGÅNGS -->
-<section id="engangstjanster">
-  <p class="section-label">Engångstjänster</p>
-  <h2 class="section-title">Snabba <em>digitala</em><br>uppstarter</h2>
-  <div class="onetimes-grid">
-    <div class="onetime-card">
-      <div class="onetime-icon">📱</div>
-      <p class="onetime-name">Social Media Setup</p>
-      <p class="onetime-price">2 495 kr</p>
-      <ul class="onetime-features">
-        <li>Facebook Business Manager</li>
-        <li>Instagram Business-konto</li>
-        <li>Pixel-installation</li>
-        <li>Profiloptimering</li>
-      </ul>
-    </div>
-    <div class="onetime-card">
-      <div class="onetime-icon">📅</div>
-      <p class="onetime-name">Bokningssystem</p>
-      <p class="onetime-price">1 995 kr</p>
-      <ul class="onetime-features">
-        <li>Calendly/Bokadirekt setup</li>
-        <li>Integration med hemsida</li>
-        <li>Automatiska påminnelser</li>
-      </ul>
-    </div>
-    <div class="onetime-card">
-      <div class="onetime-icon">📍</div>
-      <p class="onetime-name">Google My Business</p>
-      <p class="onetime-price">1 495 kr</p>
-      <ul class="onetime-features">
-        <li>Profiloptimering</li>
-        <li>Bilder & beskrivning</li>
-        <li>Recensionshantering setup</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- VARFÖR -->
-<section id="varfor">
-  <p class="section-label">Varför Strand Performance</p>
-  <h2 class="section-title">Vi levererar<br><em>resultat</em></h2>
-  <div class="why-grid">
-    <div class="why-card">
-      <p class="why-num">10+</p>
-      <p class="why-title">Års erfarenhet</p>
-      <p class="why-text">Vi har hjälpt svenska företag att växa digitalt — med Meta Ads, hemsidor och hela den digitala infrastrukturen.</p>
-    </div>
-    <div class="why-card">
-      <p class="why-num">Data</p>
-      <p class="why-title">Datadriven approach</p>
-      <p class="why-text">Varje beslut baseras på faktisk data och resultat. Ingen gissning, bara optimering av det som faktiskt fungerar.</p>
-    </div>
-    <div class="why-card">
-      <p class="why-num">1 v</p>
-      <p class="why-title">Snabba resultat</p>
-      <p class="why-text">Första leads syns ofta inom en vecka. Hemsidor levereras inom 1–2 veckor. Vi respekterar din tid.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BAND -->
-<div class="cta-band">
-  <h2>Redo att växa?</h2>
-  <p>Boka en gratis 15-minuters audit idag. Vi tittar på din digitala närvaro och berättar exakt vad vi kan göra för dig.</p>
-  <a href="https://forms.gle/3YM86bbDueNzz5Qt7" class="btn-primary">Boka Gratis Audit →</a>
 </div>
 
-<!-- FOOTER -->
+<!-- SERVICES -->
+<section>
+  <p class="section-label">Vad vi gör</p>
+  <h2>Allt ditt företag behöver — på ett ställe</h2>
+  <div class="services">
+    <div class="service">
+      <p class="service-num">01</p>
+      <h3>Hemsidor i Webflow & Framer</h3>
+      <p>Vi designar och bygger professionella hemsidor i Webflow och Framer — inte i lättköpta AI-byggare. Resultatet är snabbt, skalbart och ser ut som om det kostat dubbelt.</p>
+    </div>
+    <div class="service">
+      <p class="service-num">02</p>
+      <h3>AI-automatisering</h3>
+      <p>Vi identifierar vad som tar mest tid i din vardag och bygger AI-system som tar över. Klientmejl, offerter, rapporter och påminnelser — automatiserat på dina villkor.</p>
+    </div>
+    <div class="service">
+      <p class="service-num">03</p>
+      <h3>Google Business & lokal SEO</h3>
+      <p>Vi optimerar din Google Business-profil och lokala söknärvaro så att kunder hittar dig — inte konkurrenten — när de söker på Google Maps och i sökresultaten.</p>
+    </div>
+    <div class="service">
+      <p class="service-num">04</p>
+      <h3>Interna AI-assistenter</h3>
+      <p>En assistent tränad på ditt företags kunskap — svarar på vanliga frågor, guidar ny personal och hanterar standardärenden utan att du behöver vara inblandad.</p>
+    </div>
+    <div class="service">
+      <p class="service-num">05</p>
+      <h3>AI-genererade dokument</h3>
+      <p>Offerter, rapporter och sammanfattningar genereras på sekunder. Det som tog en timme tar nu tio minuter — med din röst och dina mallar.</p>
+    </div>
+    <div class="service">
+      <p class="service-num">06</p>
+      <h3>Löpande digital partner</h3>
+      <p>Vi är inte en leverantör du anlitar en gång. Vi fungerar som din externa digitala avdelning — uppdaterar, optimerar och skalar med dig löpande.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="number-item">
+    <div class="number-big">5–10<span>h</span></div>
+    <div class="number-label">Sparad tid per konsult och vecka i genomsnitt</div>
+  </div>
+  <div class="number-item">
+    <div class="number-big">2<span>v</span></div>
+    <div class="number-label">Från första samtal till fungerande AI-lösning</div>
+  </div>
+  <div class="number-item">
+    <div class="number-big">0<span>kr</span></div>
+    <div class="number-label">Kostnad för det första samtalet — alltid</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="hur">
+  <p class="section-label">Hur det fungerar</p>
+  <h2>Tre steg från problem till lösning</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <h3>Vi kartlägger din tidsslukare</h3>
+        <p>I ett 30-minuters samtal identifierar vi exakt vilka arbetsuppgifter som tar mest tid och som AI kan ta över. Du behöver inte kunna något om teknik — vi översätter åt dig.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <h3>Vi bygger och testar</h3>
+        <p>Inom två veckor har vi en fungerande lösning anpassad för ditt företag. Vi testar den mot verkliga arbetsuppgifter och justerar tills den levererar.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <h3>Du sparar tid, vi finsliper löpande</h3>
+        <p>Lösningen rullar och du märker skillnaden direkt. Vi finns kvar som löpande support och justerar systemet när dina behov förändras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="kontakt">
+  <div>
+    <p class="section-label">Kom i kontakt</p>
+    <h2>Redo att spara fem timmar i veckan?</h2>
+    <p style="margin-top:1.5rem; color:rgba(10,10,10,0.6); font-size:0.95rem; line-height:1.7;">
+      Boka ett kostnadsfritt 30-minuterssamtal. Vi tittar på din hemsida, din Google-närvaro och dina arbetsflöden — och berättar konkret vad vi kan förbättra. Utan säljsnack.
+    </p>
+  </div>
+  <form action="https://formspree.io/f/xkokkjwl" method="POST" onsubmit="handleSubmit(event)">
+    <input type="text" name="namn" placeholder="Ditt namn" required>
+    <input type="email" name="email" placeholder="E-postadress" required>
+    <input type="text" name="foretag" placeholder="Företag">
+    <input type="hidden" name="_replyto" value="info@strandperformance.com">
+    <input type="hidden" name="_subject" value="Ny förfrågan från strandperformance.com">
+    <textarea name="meddelande" placeholder="Vad tar mest tid i din vardag? (valfritt)"></textarea>
+    <button type="submit">Boka samtal →</button>
+  </form>
+</div>
+
 <footer>
-  <a href="#" class="nav-logo">
-    <span class="logo-wordmark">Strand<span class="logo-dot">.</span></span>
-    <span class="logo-sub">Performance</span>
-  </a>
-  <p>© 2025 Strand Performance. All rights reserved.</p>
-  <a href="mailto:info@strandperformance.com" style="color:var(--text-muted);text-decoration:none;font-size:0.82rem;">info@strandperformance.com</a>
+  <span>© 2026 Strand Performance</span>
+  <span>Åland · Sverige · <a href="mailto:info@strandperformance.com">info@strandperformance.com</a></span>
 </footer>
+
+<script>
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button');
+  btn.textContent = 'Skickar...';
+  btn.disabled = true;
+
+  const data = new FormData(form);
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      btn.textContent = 'Skickat! Vi hör av oss inom 24h. ✦';
+      btn.style.background = '#0a0a0a';
+      btn.style.color = '#c8f04e';
+      form.reset();
+    } else {
+      btn.textContent = 'Något gick fel — maila oss direkt';
+      btn.disabled = false;
+    }
+  } catch {
+    btn.textContent = 'Något gick fel — maila oss direkt';
+    btn.disabled = false;
+  }
+}
+</script>
 
 </body>
 </html>
