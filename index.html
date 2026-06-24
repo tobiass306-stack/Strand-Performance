@@ -1,561 +1,967 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Strand Performance — AI som sparar tid och pengar</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strand Performance — AI Assistants for Salons & Clinics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f3ee;
-    --cream: #ede9e0;
-    --accent: #c8f04e;
-    --accent-dark: #9bbf2a;
-    --mid: #6b6b5e;
-    --border: rgba(245,243,238,0.12);
-  }
+    :root {
+      --ink: #0d0d0d;
+      --ink2: #1a1a1a;
+      --cream: #f7f4ef;
+      --warm: #ede9e1;
+      --gold: #c9a96e;
+      --gold-light: #e8d5b0;
+      --text: #3a3a3a;
+      --muted: #888;
+      --white: #ffffff;
+    }
 
-  html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
 
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.5rem 4rem;
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(20px);
-    background: rgba(10,10,10,0.7);
-  }
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    color: var(--white);
-    text-decoration: none;
-  }
-  .logo span { color: var(--accent); }
-  nav a.cta-nav {
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--black);
-    background: var(--accent);
-    padding: 0.6rem 1.5rem;
-    border-radius: 2px;
-    text-decoration: none;
-    font-weight: 400;
-    transition: background 0.2s;
-  }
-  nav a.cta-nav:hover { background: var(--accent-dark); }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 3rem;
+      mix-blend-mode: normal;
+    }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 0 4rem 6rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,240,78,0.07) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(200,240,78,0.04) 0%, transparent 50%);
-  }
-  .hero-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.2s;
-  }
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(3.5rem, 8vw, 8rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    max-width: 900px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.4s;
-  }
-  h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
-  .hero-sub {
-    margin-top: 3rem;
-    max-width: 480px;
-    font-size: 1.1rem;
-    color: rgba(245,243,238,0.6);
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.6s;
-  }
-  .hero-cta {
-    margin-top: 3rem;
-    display: flex; gap: 1rem; align-items: center;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.8s;
-  }
-  .btn-primary {
-    display: inline-block;
-    background: var(--accent);
-    color: var(--black);
-    padding: 1rem 2.5rem;
-    font-size: 0.9rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-weight: 400;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
-  .btn-ghost {
-    font-size: 0.9rem;
-    color: rgba(245,243,238,0.5);
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    transition: color 0.2s;
-  }
-  .btn-ghost:hover { color: var(--white); }
+    nav::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(247,244,239,0.85);
+      backdrop-filter: blur(16px);
+      z-index: -1;
+      border-bottom: 1px solid rgba(201,169,110,0.2);
+    }
 
-  .hero-scroll {
-    position: absolute;
-    right: 4rem; bottom: 6rem;
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    opacity: 0; animation: fadeIn 1s ease forwards 1.2s;
-  }
-  .hero-scroll span {
-    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--mid); writing-mode: vertical-rl;
-  }
-  .scroll-line {
-    width: 1px; height: 60px; background: var(--border);
-    position: relative; overflow: hidden;
-  }
-  .scroll-line::after {
-    content: ''; position: absolute; top: -100%; left: 0; right: 0;
-    height: 100%; background: var(--accent);
-    animation: scrollLine 2s ease infinite;
-  }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
 
-  /* TICKER */
-  .ticker {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-    padding: 1.2rem 0;
-    background: rgba(200,240,78,0.03);
-  }
-  .ticker-inner {
-    display: flex; gap: 4rem;
-    animation: ticker 25s linear infinite;
-    white-space: nowrap;
-  }
-  .ticker-item {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--mid);
-    flex-shrink: 0;
-  }
-  .ticker-item span { color: var(--accent); margin-right: 4rem; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
 
-  /* SECTION */
-  section { padding: 8rem 4rem; }
-  .section-label {
-    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 1.5rem;
-  }
-  h2 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    max-width: 700px;
-  }
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
 
-  /* WHAT WE DO */
-  .services {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    margin-top: 5rem;
-    border: 1px solid var(--border);
-  }
-  .service {
-    padding: 3rem;
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-    cursor: default;
-  }
-  .service::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-  .service:hover { background: rgba(200,240,78,0.04); }
-  .service:hover::before { transform: scaleX(1); }
-  .service-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.7rem; letter-spacing: 0.2em; color: var(--accent);
-    margin-bottom: 1.5rem;
-  }
-  .service h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.4rem; font-weight: 700;
-    margin-bottom: 1rem;
-  }
-  .service p { color: rgba(245,243,238,0.55); font-size: 0.95rem; line-height: 1.7; }
+    .nav-link:hover { color: var(--ink); }
 
-  /* NUMBERS */
-  .numbers {
-    background: var(--cream);
-    color: var(--black);
-    padding: 6rem 4rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-  }
-  .number-item {
-    padding: 3rem;
-    border-right: 1px solid rgba(10,10,10,0.1);
-  }
-  .number-item:last-child { border-right: none; }
-  .number-big {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--black);
-    margin-bottom: 0.5rem;
-  }
-  .number-big span { color: #5a8a00; }
-  .number-label { font-size: 0.9rem; color: #6b6b5e; }
+    .btn-nav {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 0.65rem 1.6rem;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.25s;
+    }
 
-  /* HOW IT WORKS */
-  .steps { margin-top: 5rem; }
-  .step {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 2rem;
-    padding: 3rem 0;
-    border-bottom: 1px solid var(--border);
-    align-items: start;
-  }
-  .step:first-child { border-top: 1px solid var(--border); }
-  .step-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 3rem; font-weight: 800;
-    color: var(--border);
-    line-height: 1;
-    padding-top: 4px;
-  }
-  .step h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.3rem; font-weight: 700;
-    margin-bottom: 0.75rem;
-  }
-  .step p { color: rgba(245,243,238,0.55); font-size: 0.95rem; }
+    .btn-nav:hover { background: var(--gold); color: var(--ink); }
 
-  /* CONTACT */
-  .contact-section {
-    background: var(--accent);
-    color: var(--black);
-    padding: 8rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-  .contact-section h2 { color: var(--black); max-width: 500px; }
-  .contact-section .section-label { color: rgba(10,10,10,0.5); }
-  form { display: flex; flex-direction: column; gap: 1rem; }
-  input, textarea {
-    background: rgba(10,10,10,0.08);
-    border: 1px solid rgba(10,10,10,0.2);
-    border-radius: 2px;
-    padding: 1rem 1.2rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--black);
-    transition: border-color 0.2s, background 0.2s;
-    outline: none;
-    width: 100%;
-  }
-  input::placeholder, textarea::placeholder { color: rgba(10,10,10,0.4); }
-  input:focus, textarea:focus {
-    border-color: rgba(10,10,10,0.5);
-    background: rgba(10,10,10,0.12);
-  }
-  textarea { resize: none; height: 120px; }
-  button[type=submit] {
-    background: var(--black);
-    color: var(--accent);
-    border: none;
-    padding: 1rem 2rem;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: opacity 0.2s, transform 0.15s;
-  }
-  button[type=submit]:hover { opacity: 0.85; transform: translateY(-1px); }
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 3rem 0 3rem;
+      padding-top: 6rem;
+      gap: 4rem;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* FOOTER */
-  footer {
-    padding: 3rem 4rem;
-    border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between; align-items: center;
-    color: var(--mid);
-    font-size: 0.8rem;
-  }
-  footer a { color: var(--mid); text-decoration: none; transition: color 0.2s; }
-  footer a:hover { color: var(--accent); }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; } to { opacity: 1; }
-  }
-  @keyframes ticker {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  @keyframes scrollLine {
-    0% { top: -100%; } 100% { top: 100%; }
-  }
+    .hero-left {
+      position: relative;
+      z-index: 1;
+    }
 
-  /* MOBILE */
-  @media (max-width: 768px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .hero { padding-bottom: 4rem; }
-    .services { grid-template-columns: 1fr; }
-    .numbers { grid-template-columns: 1fr; }
-    .number-item { border-right: none; border-bottom: 1px solid rgba(10,10,10,0.1); }
-    .contact-section { grid-template-columns: 1fr; gap: 3rem; }
-    .hero-scroll { display: none; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
-  }
-</style>
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 4.5vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+
+    h1 .italic {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-body {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.8;
+      max-width: 420px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 1rem 2.4rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--gold); color: var(--ink); transform: translateY(-1px); }
+
+    .btn-ghost {
+      font-size: 0.85rem;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--ink); }
+    .btn-ghost::after { content: '↓'; }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(201,169,110,0.25);
+    }
+
+    .stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+
+    /* hero right — demo panel */
+    .hero-right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .demo-phone {
+      width: 100%;
+      max-width: 400px;
+      background: var(--ink2);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06),
+        0 40px 100px rgba(0,0,0,0.35),
+        0 80px 160px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .demo-topbar {
+      background: var(--ink2);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .demo-avatar {
+      width: 36px; height: 36px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .demo-info { flex: 1; }
+
+    .demo-name {
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .demo-status {
+      font-size: 0.7rem;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.1rem;
+    }
+
+    .demo-status::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: #4ade80;
+      border-radius: 50%;
+    }
+
+    iframe.bot-frame {
+      width: 100%;
+      height: 480px;
+      border: none;
+      display: block;
+      background: #111;
+    }
+
+    .demo-float-label {
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 1.2rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    /* ── LOGOS / TRUST ── */
+    .trust-section {
+      background: var(--ink);
+      padding: 3rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-right: 1rem;
+    }
+
+    .trust-item {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.05em;
+      padding: 0.4rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 2px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-section {
+      padding: 9rem 3rem;
+      background: var(--cream);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 4rem;
+      margin-bottom: 6rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--gold);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .section-aside {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.8;
+      max-width: 340px;
+      padding-top: 3.5rem;
+      font-weight: 300;
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .step {
+      padding: 3rem;
+      border-left: 1px solid rgba(201,169,110,0.2);
+      position: relative;
+    }
+
+    .step:first-child { border-left: none; padding-left: 0; }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(201,169,110,0.15);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: var(--ink);
+    }
+
+    .step p {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ── FEATURES ── */
+    .features-section {
+      background: var(--ink);
+      padding: 9rem 3rem;
+      color: var(--cream);
+    }
+
+    .features-section .section-eyebrow { color: var(--gold); }
+    .features-section h2 { color: var(--cream); }
+    .features-section .section-aside { color: rgba(247,244,239,0.5); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 5rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .feature-card {
+      background: var(--ink2);
+      padding: 2.5rem;
+      transition: background 0.3s;
+    }
+
+    .feature-card:hover { background: #222; }
+
+    .feature-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      color: rgba(247,244,239,0.45);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ── PRICING ── */
+    .pricing-section {
+      background: var(--cream);
+      padding: 9rem 3rem;
+    }
+
+    .pricing-section .section-header { margin-bottom: 4rem; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      border: 1px solid rgba(201,169,110,0.2);
+      padding: 3rem 2.5rem;
+      border-radius: 2px;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .pricing-card:hover { border-color: var(--gold); }
+
+    .pricing-card.featured {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--cream);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -1px; right: 2.5rem;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .plan-name {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .plan-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .pricing-card.featured .plan-price { color: var(--cream); }
+
+    .plan-price sup {
+      font-size: 1.4rem;
+      font-weight: 700;
+      vertical-align: super;
+    }
+
+    .plan-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .pricing-card.featured .plan-desc { color: rgba(247,244,239,0.45); }
+
+    .plan-list {
+      list-style: none;
+      margin-bottom: 2.5rem;
+    }
+
+    .plan-list li {
+      font-size: 0.875rem;
+      padding: 0.75rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(201,169,110,0.12);
+      color: var(--text);
+      font-weight: 300;
+    }
+
+    .pricing-card.featured .plan-list li {
+      color: rgba(247,244,239,0.7);
+      border-color: rgba(255,255,255,0.07);
+    }
+
+    .plan-list li::before {
+      content: '—';
+      color: var(--gold);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+
+    .btn-plan {
+      display: block;
+      text-align: center;
+      padding: 0.9rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .btn-plan-outline {
+      border: 1px solid var(--ink);
+      color: var(--ink);
+    }
+
+    .btn-plan-outline:hover { background: var(--ink); color: var(--cream); }
+
+    .btn-plan-gold {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .btn-plan-gold:hover { background: #b8924f; }
+
+    .pricing-note {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--ink);
+      padding: 10rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1.1;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .cta-section h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .cta-section p {
+      color: rgba(247,244,239,0.45);
+      font-size: 1rem;
+      font-weight: 300;
+      max-width: 420px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+
+    .btn-cta-big {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 1.2rem 3.5rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.15s;
+    }
+
+    .btn-cta-big:hover { background: #b8924f; transform: translateY(-2px); }
+
+    .cta-sub {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink2);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: rgba(247,244,239,0.4);
+      text-decoration: none;
+    }
+
+    .footer-right {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .footer-right a { color: rgba(255,255,255,0.2); text-decoration: none; }
+    .footer-right a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-link { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; gap: 4rem; }
+      .hero-right { display: none; }
+      .how-section, .features-section, .pricing-section, .cta-section { padding: 6rem 1.5rem; }
+      .section-header { flex-direction: column; gap: 1rem; margin-bottom: 3rem; }
+      .section-aside { padding-top: 0; }
+      .steps-row { grid-template-columns: 1fr; }
+      .step { border-left: none; border-top: 1px solid rgba(201,169,110,0.2); padding: 2.5rem 0; }
+      .step:first-child { border-top: none; padding-top: 0; }
+      .features-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .trust-section { padding: 2rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a class="logo" href="#">STRAND<span>.</span></a>
-  <a class="cta-nav" href="#kontakt">Boka samtal</a>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="#">Strand Performance</a>
+    <div class="nav-right">
+      <a class="nav-link" href="#demo">Live demo</a>
+      <a class="nav-link" href="#pricing">Pricing</a>
+      <a class="btn-nav" href="https://calendly.com/tobiass306/30min" target="_blank">Book a call</a>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <p class="hero-label">Digitalbyrå · AI · Webflow · Framer · Google</p>
-  <h1>Vi bygger din<br><em>digitala motor</em><br>från grunden.</h1>
-  <p class="hero-sub">Strand Performance kombinerar professionell webbutveckling i Webflow och Framer med skräddarsydd AI-automatisering och Google-närvaro — allt under ett tak.</p>
-  <div class="hero-cta">
-    <a class="btn-primary" href="#kontakt">Boka ett gratis samtal</a>
-    <a class="btn-ghost" href="#hur">Hur det fungerar →</a>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">AI-automatisering <span>✦</span></span>
-    <span class="ticker-item">Webflow & Framer <span>✦</span></span>
-    <span class="ticker-item">Google Business <span>✦</span></span>
-    <span class="ticker-item">Hemsidor som konverterar <span>✦</span></span>
-    <span class="ticker-item">AI-genererade offerter <span>✦</span></span>
-    <span class="ticker-item">Kundservice-botar <span>✦</span></span>
-    <span class="ticker-item">Sökmotoroptimering <span>✦</span></span>
-    <span class="ticker-item">Rapport-sammanfattningar <span>✦</span></span>
-    <span class="ticker-item">AI-automatisering <span>✦</span></span>
-    <span class="ticker-item">Webflow & Framer <span>✦</span></span>
-    <span class="ticker-item">Google Business <span>✦</span></span>
-    <span class="ticker-item">Hemsidor som konverterar <span>✦</span></span>
-    <span class="ticker-item">AI-genererade offerter <span>✦</span></span>
-    <span class="ticker-item">Kundservice-botar <span>✦</span></span>
-    <span class="ticker-item">Sökmotoroptimering <span>✦</span></span>
-    <span class="ticker-item">Rapport-sammanfattningar <span>✦</span></span>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section>
-  <p class="section-label">Vad vi gör</p>
-  <h2>Allt ditt företag behöver — på ett ställe</h2>
-  <div class="services">
-    <div class="service">
-      <p class="service-num">01</p>
-      <h3>Hemsidor i Webflow & Framer</h3>
-      <p>Vi designar och bygger professionella hemsidor i Webflow och Framer — inte i lättköpta AI-byggare. Resultatet är snabbt, skalbart och ser ut som om det kostat dubbelt.</p>
-    </div>
-    <div class="service">
-      <p class="service-num">02</p>
-      <h3>AI-automatisering</h3>
-      <p>Vi identifierar vad som tar mest tid i din vardag och bygger AI-system som tar över. Klientmejl, offerter, rapporter och påminnelser — automatiserat på dina villkor.</p>
-    </div>
-    <div class="service">
-      <p class="service-num">03</p>
-      <h3>Google Business & lokal SEO</h3>
-      <p>Vi optimerar din Google Business-profil och lokala söknärvaro så att kunder hittar dig — inte konkurrenten — när de söker på Google Maps och i sökresultaten.</p>
-    </div>
-    <div class="service">
-      <p class="service-num">04</p>
-      <h3>Interna AI-assistenter</h3>
-      <p>En assistent tränad på ditt företags kunskap — svarar på vanliga frågor, guidar ny personal och hanterar standardärenden utan att du behöver vara inblandad.</p>
-    </div>
-    <div class="service">
-      <p class="service-num">05</p>
-      <h3>AI-genererade dokument</h3>
-      <p>Offerter, rapporter och sammanfattningar genereras på sekunder. Det som tog en timme tar nu tio minuter — med din röst och dina mallar.</p>
-    </div>
-    <div class="service">
-      <p class="service-num">06</p>
-      <h3>Löpande digital partner</h3>
-      <p>Vi är inte en leverantör du anlitar en gång. Vi fungerar som din externa digitala avdelning — uppdaterar, optimerar och skalar med dig löpande.</p>
-    </div>
-  </div>
-</section>
-
-<!-- NUMBERS -->
-<div class="numbers">
-  <div class="number-item">
-    <div class="number-big">5–10<span>h</span></div>
-    <div class="number-label">Sparad tid per konsult och vecka i genomsnitt</div>
-  </div>
-  <div class="number-item">
-    <div class="number-big">2<span>v</span></div>
-    <div class="number-label">Från första samtal till fungerande AI-lösning</div>
-  </div>
-  <div class="number-item">
-    <div class="number-big">0<span>kr</span></div>
-    <div class="number-label">Kostnad för det första samtalet — alltid</div>
-  </div>
-</div>
-
-<!-- HOW IT WORKS -->
-<section id="hur">
-  <p class="section-label">Hur det fungerar</p>
-  <h2>Tre steg från problem till lösning</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <div>
-        <h3>Vi kartlägger din tidsslukare</h3>
-        <p>I ett 30-minuters samtal identifierar vi exakt vilka arbetsuppgifter som tar mest tid och som AI kan ta över. Du behöver inte kunna något om teknik — vi översätter åt dig.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">AI for salons &amp; clinics</div>
+      <h1>Your salon,<br>always <span class="italic">open.</span></h1>
+      <p class="hero-body">We build AI assistants that handle bookings, answer questions and follow up with customers — 24 hours a day, while you focus on what you do best.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://calendly.com/tobiass306/30min" target="_blank">Book a free call</a>
+        <a class="btn-ghost" href="#demo">See it live</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-val">5–10h</div>
+          <div class="stat-label">saved per week</div>
+        </div>
+        <div>
+          <div class="stat-val">24/7</div>
+          <div class="stat-label">always on</div>
+        </div>
+        <div>
+          <div class="stat-val">3 days</div>
+          <div class="stat-label">to go live</div>
+        </div>
       </div>
     </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <div>
-        <h3>Vi bygger och testar</h3>
-        <p>Inom två veckor har vi en fungerande lösning anpassad för ditt företag. Vi testar den mot verkliga arbetsuppgifter och justerar tills den levererar.</p>
+
+    <div class="hero-right">
+      <div class="demo-phone">
+        <div class="demo-topbar">
+          <div class="demo-avatar">✂️</div>
+          <div class="demo-info">
+            <div class="demo-name">Manipulate Hair Studio</div>
+            <div class="demo-status">AI Assistant · Online now</div>
+          </div>
+        </div>
+        <iframe
+          class="bot-frame"
+          src="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/06/24/10/20260624101543-VFNB2OSK.json"
+          title="Demo chatbot"
+          allow="clipboard-write"
+          id="demo"
+        ></iframe>
+        <div class="demo-float-label">Live demo — try it</div>
       </div>
     </div>
-    <div class="step">
-      <div class="step-num">03</div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-section">
+    <span class="trust-label">Built for</span>
+    <span class="trust-item">Hair Salons</span>
+    <span class="trust-item">Beauty Clinics</span>
+    <span class="trust-item">Nail Studios</span>
+    <span class="trust-item">Skin & Laser Clinics</span>
+    <span class="trust-item">Barbershops</span>
+    <span class="trust-item">Wellness Spas</span>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <div class="section-header">
       <div>
-        <h3>Du sparar tid, vi finsliper löpande</h3>
-        <p>Lösningen rullar och du märker skillnaden direkt. Vi finns kvar som löpande support och justerar systemet när dina behov förändras.</p>
+        <div class="section-eyebrow">The process</div>
+        <h2>From zero<br>to live in 3 days</h2>
+      </div>
+      <p class="section-aside">No technical knowledge needed on your end. We handle everything — from building to installing. You just approve it and watch it work.</p>
+    </div>
+
+    <div class="steps-row">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>Discovery call</h3>
+        <p>We spend 30 minutes learning about your business, your services, and what you want your AI to handle. No prep needed from you.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>We build it</h3>
+        <p>We build a fully custom AI assistant — trained on your prices, services, hours and booking system. Takes 1 to 2 days.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>Goes live</h3>
+        <p>We install it directly on your website. From day one, it handles customer questions and bookings — automatically.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONTACT -->
-<div class="contact-section" id="kontakt">
-  <div>
-    <p class="section-label">Kom i kontakt</p>
-    <h2>Redo att spara fem timmar i veckan?</h2>
-    <p style="margin-top:1.5rem; color:rgba(10,10,10,0.6); font-size:0.95rem; line-height:1.7;">
-      Boka ett kostnadsfritt 30-minuterssamtal. Vi tittar på din hemsida, din Google-närvaro och dina arbetsflöden — och berättar konkret vad vi kan förbättra. Utan säljsnack.
-    </p>
-  </div>
-  <form action="https://formspree.io/f/xkokkjwl" method="POST" onsubmit="handleSubmit(event)">
-    <input type="text" name="namn" placeholder="Ditt namn" required>
-    <input type="email" name="email" placeholder="E-postadress" required>
-    <input type="text" name="foretag" placeholder="Företag">
-    <input type="hidden" name="_replyto" value="info@strandperformance.com">
-    <input type="hidden" name="_subject" value="Ny förfrågan från strandperformance.com">
-    <textarea name="meddelande" placeholder="Vad tar mest tid i din vardag? (valfritt)"></textarea>
-    <button type="submit">Boka samtal →</button>
-  </form>
-</div>
+  <!-- FEATURES -->
+  <section class="features-section">
+    <div class="section-header" style="max-width:1100px;margin-left:auto;margin-right:auto;margin-bottom:0;">
+      <div>
+        <div class="section-eyebrow">What's included</div>
+        <h2>Everything your<br>front desk handles</h2>
+      </div>
+      <p class="section-aside">Your AI assistant works every hour of the day — answering questions, taking bookings and representing your brand perfectly.</p>
+    </div>
 
-<footer>
-  <span>© 2026 Strand Performance</span>
-  <span>Åland · Sverige · <a href="mailto:info@strandperformance.com">info@strandperformance.com</a></span>
-</footer>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">📅</span>
+        <h3>Appointment booking</h3>
+        <p>Customers book directly through the chat, connected to your existing booking system — no double-handling.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💬</span>
+        <h3>Instant FAQ replies</h3>
+        <p>Prices, hours, parking, what to expect — answered instantly, any time of day or night.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌙</span>
+        <h3>24/7 availability</h3>
+        <p>Customers browsing at midnight get a real answer — not a voicemail or an unanswered form.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌍</span>
+        <h3>Multilingual</h3>
+        <p>The AI responds in the customer's own language automatically. No setup required.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <h3>Installed in 3 days</h3>
+        <p>We handle the entire setup and install it directly on your site. Zero technical work on your end.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔧</span>
+        <h3>Always up to date</h3>
+        <p>As your services and prices change, we update the AI. It always knows exactly what to say.</p>
+      </div>
+    </div>
+  </section>
 
-<script>
-async function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const btn = form.querySelector('button');
-  btn.textContent = 'Skickar...';
-  btn.disabled = true;
+  <!-- PRICING -->
+  <section class="pricing-section">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Pricing</div>
+        <h2>Simple,<br>transparent pricing</h2>
+      </div>
+      <p class="section-aside">No hidden fees. No long-term contracts. Pay once for setup and own it — or add a retainer for ongoing care.</p>
+    </div>
 
-  const data = new FormData(form);
-  try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (res.ok) {
-      btn.textContent = 'Skickat! Vi hör av oss inom 24h. ✦';
-      btn.style.background = '#0a0a0a';
-      btn.style.color = '#c8f04e';
-      form.reset();
-    } else {
-      btn.textContent = 'Något gick fel — maila oss direkt';
-      btn.disabled = false;
-    }
-  } catch {
-    btn.textContent = 'Något gick fel — maila oss direkt';
-    btn.disabled = false;
-  }
-}
-</script>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price"><sup>€</sup>500</div>
+        <div class="plan-desc">One-time setup fee</div>
+        <ul class="plan-list">
+          <li>Custom AI chat assistant</li>
+          <li>Trained on your services & prices</li>
+          <li>Installed on your website</li>
+          <li>Booking & FAQ handling</li>
+          <li>30 days of support</li>
+        </ul>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-plan btn-plan-outline">Book a free call</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price"><sup>€</sup>900</div>
+        <div class="plan-desc">One-time setup fee</div>
+        <ul class="plan-list">
+          <li>Everything in Starter</li>
+          <li>Email follow-up automation</li>
+          <li>Booking system integration</li>
+          <li>Multilingual responses</li>
+          <li>60 days of support</li>
+        </ul>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-plan btn-plan-gold">Book a free call</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="plan-name">Retainer</div>
+        <div class="plan-price"><sup>€</sup>150<span style="font-size:1.2rem;font-weight:500">/mo</span></div>
+        <div class="plan-desc">After initial setup</div>
+        <ul class="plan-list">
+          <li>Monthly updates & improvements</li>
+          <li>Service & price updates</li>
+          <li>Performance monitoring</li>
+          <li>Priority support</li>
+          <li>New features as they launch</li>
+        </ul>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-plan btn-plan-outline">Book a free call</a>
+      </div>
+    </div>
+
+    <p class="pricing-note">All packages start with a free 30-minute discovery call. No payment until you're happy with the plan.</p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Stop answering the same <em>questions</em> every day</h2>
+    <p>Book a free 30-minute call. We'll show you exactly what an AI assistant would look like for your specific business.</p>
+    <a class="btn-cta-big" href="https://calendly.com/tobiass306/30min" target="_blank">Book your free call</a>
+    <p class="cta-sub">No commitment &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; Just a conversation</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-logo" href="#">Strand Performance</a>
+    <div class="footer-right">
+      <span>Remote · Worldwide</span>
+      <a href="mailto:tobiass306@gmail.com">tobiass306@gmail.com</a>
+      <span>© 2026</span>
+    </div>
+  </footer>
 
 </body>
 </html>
