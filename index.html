@@ -32,7 +32,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -41,7 +41,6 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.4rem 3rem;
-      mix-blend-mode: normal;
     }
 
     nav::after {
@@ -95,7 +94,7 @@
 
     .btn-nav:hover { background: var(--gold); color: var(--ink); }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -118,10 +117,7 @@
       pointer-events: none;
     }
 
-    .hero-left {
-      position: relative;
-      z-index: 1;
-    }
+    .hero-left { position: relative; z-index: 1; }
 
     .hero-tag {
       display: inline-flex;
@@ -224,7 +220,6 @@
       margin-top: 0.4rem;
     }
 
-    /* hero right — demo panel */
     .hero-right {
       position: relative;
       display: flex;
@@ -242,7 +237,6 @@
         0 0 0 1px rgba(255,255,255,0.06),
         0 40px 100px rgba(0,0,0,0.35),
         0 80px 160px rgba(0,0,0,0.2);
-      position: relative;
     }
 
     .demo-topbar {
@@ -297,26 +291,65 @@
       background: #111;
     }
 
-    .demo-float-label {
-      position: absolute;
-      bottom: -16px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--gold);
-      color: var(--ink);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.35rem 1.2rem;
-      border-radius: 100px;
-      white-space: nowrap;
+    /* DEMO MOBILE SECTION */
+    .demo-mobile-section {
+      background: #111;
+      padding: 5rem 1.5rem;
+      text-align: center;
+      display: none;
     }
 
-    /* ── LOGOS / TRUST ── */
+    .demo-mobile-section .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .demo-mobile-section h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--cream);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .demo-mobile-section p {
+      color: rgba(247,244,239,0.45);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .demo-mobile-inner {
+      max-width: 400px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .demo-mobile-bar {
+      background: #1a1a1a;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .demo-mobile-avatar {
+      width: 32px; height: 32px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* TRUST */
     .trust-section {
       background: var(--ink);
-      padding: 3rem 3rem;
+      padding: 3rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -341,7 +374,7 @@
       border-radius: 2px;
     }
 
-    /* ── HOW IT WORKS ── */
+    /* HOW IT WORKS */
     .how-section {
       padding: 9rem 3rem;
       background: var(--cream);
@@ -433,7 +466,7 @@
       font-weight: 300;
     }
 
-    /* ── FEATURES ── */
+    /* FEATURES */
     .features-section {
       background: var(--ink);
       padding: 9rem 3rem;
@@ -485,13 +518,11 @@
       font-weight: 300;
     }
 
-    /* ── PRICING ── */
+    /* PRICING */
     .pricing-section {
       background: var(--cream);
       padding: 9rem 3rem;
     }
-
-    .pricing-section .section-header { margin-bottom: 4rem; }
 
     .pricing-grid {
       display: grid;
@@ -631,7 +662,7 @@
       margin-right: auto;
     }
 
-    /* ── CTA ── */
+    /* CTA */
     .cta-section {
       background: var(--ink);
       padding: 10rem 3rem;
@@ -697,7 +728,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
       background: var(--ink2);
       padding: 2.5rem 3rem;
@@ -725,22 +756,30 @@
     .footer-right a { color: rgba(255,255,255,0.2); text-decoration: none; }
     .footer-right a:hover { color: var(--gold); }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 1.2rem 1.5rem; }
       .nav-link { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; gap: 4rem; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 4rem;
+        gap: 0;
+        min-height: auto;
+      }
       .hero-right { display: none; }
-      .how-section, .features-section, .pricing-section, .cta-section { padding: 6rem 1.5rem; }
+      .demo-mobile-section { display: block; }
+      .how-section, .features-section, .pricing-section, .cta-section { padding: 5rem 1.5rem; }
       .section-header { flex-direction: column; gap: 1rem; margin-bottom: 3rem; }
-      .section-aside { padding-top: 0; }
+      .section-aside { padding-top: 0; max-width: 100%; }
       .steps-row { grid-template-columns: 1fr; }
       .step { border-left: none; border-top: 1px solid rgba(201,169,110,0.2); padding: 2.5rem 0; }
       .step:first-child { border-top: none; padding-top: 0; }
       .features-grid { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
-      .trust-section { padding: 2rem 1.5rem; }
+      .trust-section { padding: 2rem 1.5rem; gap: 0.75rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+      .footer-right { flex-direction: column; gap: 0.5rem; }
+      .hero-stats { gap: 2rem; }
     }
   </style>
 </head>
@@ -764,7 +803,7 @@
       <p class="hero-body">We build AI assistants that handle bookings, answer questions and follow up with customers — 24 hours a day, while you focus on what you do best.</p>
       <div class="hero-actions">
         <a class="btn-primary" href="https://calendly.com/tobiass306/30min" target="_blank">Book a free call</a>
-        <a class="btn-ghost" href="#demo">See it live</a>
+        <a class="btn-ghost" href="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/06/24/10/20260624101543-VFNB2OSK.json" target="_blank">See it live</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -796,10 +835,30 @@
           src="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/06/24/10/20260624101543-VFNB2OSK.json"
           title="Demo chatbot"
           allow="clipboard-write"
-          id="demo"
         ></iframe>
-        <div class="demo-float-label">Live demo — try it</div>
       </div>
+    </div>
+  </section>
+
+  <!-- DEMO MOBILE -->
+  <section class="demo-mobile-section" id="demo">
+    <p class="eyebrow">Live demo</p>
+    <h2>Try it yourself</h2>
+    <p>A real AI assistant built for a hair salon in Sydney</p>
+    <div class="demo-mobile-inner">
+      <div class="demo-mobile-bar">
+        <div class="demo-mobile-avatar">✂️</div>
+        <div style="margin-left:0.75rem">
+          <div style="color:#fff;font-size:0.8rem;font-weight:500">Manipulate Hair Studio</div>
+          <div style="color:#c9a96e;font-size:0.7rem">AI Assistant · Online</div>
+        </div>
+      </div>
+      <iframe
+        src="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/06/24/10/20260624101543-VFNB2OSK.json"
+        style="width:100%;height:500px;border:none;display:block"
+        title="Demo chatbot"
+        allow="clipboard-write"
+      ></iframe>
     </div>
   </section>
 
@@ -833,19 +892,19 @@
       <div class="step">
         <span class="step-num">02</span>
         <h3>We build it</h3>
-        <p>We build a fully custom AI assistant — trained on your prices, services, hours and booking system. Takes 1 to 2 days.</p>
+        <p>We build a fully custom AI assistant trained on your prices, services, hours and booking system. Takes 1 to 2 days.</p>
       </div>
       <div class="step">
         <span class="step-num">03</span>
         <h3>Goes live</h3>
-        <p>We install it directly on your website. From day one, it handles customer questions and bookings — automatically.</p>
+        <p>We install it directly on your website. From day one it handles customer questions and bookings — automatically.</p>
       </div>
     </div>
   </section>
 
   <!-- FEATURES -->
   <section class="features-section">
-    <div class="section-header" style="max-width:1100px;margin-left:auto;margin-right:auto;margin-bottom:0;">
+    <div class="section-header" style="max-width:1100px;margin-left:auto;margin-right:auto;margin-bottom:0">
       <div>
         <div class="section-eyebrow">What's included</div>
         <h2>Everything your<br>front desk handles</h2>
@@ -888,7 +947,7 @@
   </section>
 
   <!-- PRICING -->
-  <section class="pricing-section">
+  <section class="pricing-section" id="pricing">
     <div class="section-header">
       <div>
         <div class="section-eyebrow">Pricing</div>
@@ -958,7 +1017,7 @@
     <a class="footer-logo" href="#">Strand Performance</a>
     <div class="footer-right">
       <span>Remote · Worldwide</span>
-      <a href="mailto:info@strandperformance.com">info@strandperformance.com</a>
+      <a href="mailto:din@mejl.com">din@mejl.com</a>
       <span>© 2026</span>
     </div>
   </footer>
