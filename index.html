@@ -75,6 +75,19 @@ section{padding:96px 40px;}
 .sc p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:16px;}
 .sp{font-size:13px;font-weight:700;color:var(--blue);}
 
+/* PORTFOLIO */
+#work{background:var(--card);}
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:56px;}
+.wc{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .2s,transform .2s;display:flex;flex-direction:column;}
+.wc:hover{border-color:var(--blue);transform:translateY(-4px);}
+.wc-preview{height:180px;overflow:hidden;position:relative;background:var(--card2);}
+.wc-preview iframe{width:200%;height:200%;transform:scale(.5);transform-origin:top left;border:none;pointer-events:none;}
+.wc-info{padding:20px 24px;flex:1;display:flex;flex-direction:column;gap:10px;}
+.wc-name{font-size:17px;font-weight:700;}
+.wc-desc{font-size:13px;color:var(--muted);flex:1;}
+.wc-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--blue);transition:gap .2s;}
+.wc-link:hover{gap:10px;}
+
 /* DEMO */
 #demo{background:var(--bg);}
 .demo-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
@@ -162,6 +175,7 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
   <div class="logo">STRAND <span>PERFORMANCE</span></div>
   <div class="nav-center">
     <a href="#services" data-en="Services" data-sv="Tjänster">Services</a>
+    <a href="#work" data-en="Our Work" data-sv="Vårt arbete">Our Work</a>
     <a href="#demo" data-en="Demo" data-sv="Demo">Demo</a>
     <a href="#pricing" data-en="Pricing" data-sv="Priser">Pricing</a>
     <a href="#why" data-en="Why us" data-sv="Varför oss">Why us</a>
@@ -207,6 +221,62 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
       <div class="sc"><div class="si ig">🔍</div><h3>SEO</h3><p data-en="Get found on Google by the right people. We optimise your site so clients find you instead of your competitors." data-sv="Syns på Google av rätt personer. Vi optimerar din sida så att kunder hittar dig istället för dina konkurrenter.">Get found on Google by the right people. We optimise your site so clients find you instead of your competitors.</p><div class="sp" data-en="Monthly retainer" data-sv="Månadsretainer">Monthly retainer</div></div>
       <div class="sc"><div class="si ib">⚡</div><h3 data-en="Business Automation" data-sv="Företagsautomatisering">Business Automation</h3><p data-en="Automate emails, follow-ups, confirmations and workflows. Save hours every week without changing how you work." data-sv="Automatisera mejl, uppföljningar, bekräftelser och arbetsflöden. Spara timmar varje vecka.">Automate emails, follow-ups, confirmations and workflows. Save hours every week.</p><div class="sp" data-en="From €500 setup" data-sv="Från €500 uppsättning">From €500 setup</div></div>
       <div class="sc"><div class="si ip">🧠</div><h3 data-en="AI Tools & Integration" data-sv="AI-verktyg & integration">AI Tools & Integration</h3><p data-en="We find, set up and connect the right AI tools for your business. No tech knowledge needed on your end." data-sv="Vi hittar, sätter upp och kopplar ihop rätt AI-verktyg för ditt företag. Ingen teknisk kunskap krävs.">We find, set up and connect the right AI tools for your business. No tech knowledge needed.</p><div class="sp" data-en="Custom pricing" data-sv="Prissättning efter behov">Custom pricing</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="work">
+  <div class="max">
+    <div class="section-label" data-en="OUR WORK" data-sv="VÅRT ARBETE">OUR WORK</div>
+    <h2 class="section-title" data-en="Websites we've built." data-sv="Hemsidor vi har byggt.">Websites we've built.</h2>
+    <p class="section-sub" data-en="Every site is designed for performance — fast, mobile-first, and built to convert visitors into clients." data-sv="Varje hemsida är designad för prestanda — snabb, mobilanpassad och byggd för att omvandla besökare till kunder.">Every site is designed for performance — fast, mobile-first, and built to convert visitors into clients.</p>
+    <div class="work-grid">
+
+      <div class="wc">
+        <div class="wc-preview">
+          <iframe src="https://www.blondelab.com/" loading="lazy" scrolling="no" title="Blonde Lab"></iframe>
+        </div>
+        <div class="wc-info">
+          <div class="wc-name">Blonde Lab</div>
+          <div class="wc-desc" data-en="Hair salon website — clean, elegant, and built to book clients." data-sv="Salong-hemsida — ren, elegant och byggd för bokningar.">Hair salon website — clean, elegant, and built to book clients.</div>
+          <a href="https://www.blondelab.com/" target="_blank" class="wc-link">Visit site →</a>
+        </div>
+      </div>
+
+      <div class="wc">
+        <div class="wc-preview">
+          <iframe src="https://www.brucestudios.com/nb" loading="lazy" scrolling="no" title="Bruce Studios"></iframe>
+        </div>
+        <div class="wc-info">
+          <div class="wc-name">Bruce Studios</div>
+          <div class="wc-desc" data-en="Premium creative studio — bold visuals and seamless booking flow." data-sv="Premium kreativt studio — djärva visuals och smidig bokningsprocess.">Premium creative studio — bold visuals and seamless booking flow.</div>
+          <a href="https://www.brucestudios.com/nb" target="_blank" class="wc-link">Visit site →</a>
+        </div>
+      </div>
+
+      <div class="wc">
+        <div class="wc-preview">
+          <iframe src="https://meliva.ee/en/arstid-ja-spetsialistid" loading="lazy" scrolling="no" title="Meliva"></iframe>
+        </div>
+        <div class="wc-info">
+          <div class="wc-name">Meliva</div>
+          <div class="wc-desc" data-en="Medical clinic website — professional, trustworthy, and easy to navigate." data-sv="Medicinskt klinik — professionell, trovärdig och lätt att navigera.">Medical clinic website — professional, trustworthy, and easy to navigate.</div>
+          <a href="https://meliva.ee/en/arstid-ja-spetsialistid" target="_blank" class="wc-link">Visit site →</a>
+        </div>
+      </div>
+
+      <div class="wc">
+        <div class="wc-preview">
+          <iframe src="https://www.eriklarsen.dk/" loading="lazy" scrolling="no" title="Erik Larsen"></iframe>
+        </div>
+        <div class="wc-info">
+          <div class="wc-name">Erik Larsen</div>
+          <div class="wc-desc" data-en="Personal brand website — clear messaging and strong calls to action." data-sv="Personlig varumärkessajt — tydliga budskap och starka CTA:er.">Personal brand website — clear messaging and strong calls to action.</div>
+          <a href="https://www.eriklarsen.dk/" target="_blank" class="wc-link">Visit site →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -322,6 +392,7 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
     <div><div class="fl">STRAND <span>PERFORMANCE</span></div><div style="color:var(--muted);font-size:13px;margin-top:6px;" data-en="Åland, Finland · Serving clients globally" data-sv="Åland, Finland · Betjänar kunder globalt">Åland, Finland · Serving clients globally</div></div>
     <div class="flinks">
       <a href="#services" data-en="Services" data-sv="Tjänster">Services</a>
+      <a href="#work" data-en="Our Work" data-sv="Vårt arbete">Our Work</a>
       <a href="#demo">Demo</a>
       <a href="#pricing" data-en="Pricing" data-sv="Priser">Pricing</a>
       <a href="https://calendly.com/tobiass306/30min" target="_blank" data-en="Book a call" data-sv="Boka samtal">Book a call</a>
