@@ -6,165 +6,172 @@
 <title>Strand Performance — Digital Growth for Modern Businesses</title>
 <meta name="description" content="AI chatbots, websites, social media, SEO and automation for salons and businesses worldwide."/>
 <style>
-:root{
-  --bg:#050A14;
-  --card:#0D1526;
-  --card2:#111C30;
-  --blue:#2563EB;
-  --purple:#7C3AED;
-  --orange:#F97316;
-  --green:#10B981;
-  --white:#FFFFFF;
-  --muted:#8BA0BE;
-  --border:#1E2E4A;
-  --radius:12px;
-}
+:root{--bg:#050A14;--card:#0D1526;--card2:#111C30;--blue:#2563EB;--purple:#7C3AED;--orange:#F97316;--green:#10B981;--white:#FFFFFF;--muted:#8BA0BE;--border:#1E2E4A;--r:12px;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;}
 a{color:inherit;text-decoration:none;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,10,20,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.logo{font-size:20px;font-weight:700;letter-spacing:1px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,10,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.logo{font-size:18px;font-weight:700;letter-spacing:1px;white-space:nowrap;}
 .logo span{background:linear-gradient(135deg,#2563EB,#7C3AED);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.nav-links{display:flex;align-items:center;gap:32px;}
-.nav-links a{color:var(--muted);font-size:15px;transition:color .2s;}
-.nav-links a:hover{color:var(--white);}
-.lang-toggle{display:flex;align-items:center;gap:0;background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
-.lang-btn{padding:6px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--muted);background:none;border:none;}
+.nav-center{display:flex;align-items:center;gap:28px;}
+.nav-center a{color:var(--muted);font-size:14px;transition:color .2s;}
+.nav-center a:hover{color:var(--white);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.lang-toggle{display:flex;background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;flex-shrink:0;}
+.lang-btn{padding:5px 14px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;color:var(--muted);background:none;border:none;line-height:1.4;}
 .lang-btn.active{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;}
-.nav-cta{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;transition:opacity .2s;}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;white-space:nowrap;transition:opacity .2s;}
 .nav-cta:hover{opacity:.85;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-center{display:none;}
+  .nav-cta{display:none;}
+  .logo{font-size:15px;}
+  .lang-btn{padding:6px 14px;font-size:13px;}
+}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:120px 40px 80px;position:relative;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(37,99,235,.12) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 80% 70%,rgba(124,58,237,.08) 0%,transparent 60%);}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(37,99,235,.12),transparent 70%),radial-gradient(ellipse 50% 40% at 80% 70%,rgba(124,58,237,.08),transparent 60%);}
 .hero-content{max-width:680px;position:relative;z-index:1;}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.3);color:#93C5FD;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:28px;letter-spacing:.5px;}
-.hero h1{font-size:clamp(40px,6vw,72px);font-weight:800;line-height:1.1;margin-bottom:24px;}
-.hero h1 .grad{background:linear-gradient(135deg,#60A5FA,#A78BFA,#FB923C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero h1{font-size:clamp(36px,6vw,72px);font-weight:800;line-height:1.1;margin-bottom:24px;}
+.grad{background:linear-gradient(135deg,#60A5FA,#A78BFA,#FB923C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .hero p{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:40px;line-height:1.7;}
 .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
-.btn-primary{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;padding:16px 32px;border-radius:10px;font-size:16px;font-weight:700;transition:transform .2s,opacity .2s;}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;padding:16px 32px;border-radius:10px;font-size:16px;font-weight:700;transition:transform .2s,opacity .2s;display:inline-block;}
 .btn-primary:hover{transform:translateY(-2px);opacity:.9;}
-.btn-secondary{background:transparent;color:white;padding:16px 32px;border-radius:10px;font-size:16px;font-weight:600;border:1.5px solid var(--border);transition:border-color .2s;}
-.btn-secondary:hover{border-color:#2563EB;}
-.hero-stats{display:flex;gap:40px;margin-top:56px;padding-top:40px;border-top:1px solid var(--border);}
+.btn-secondary{background:transparent;color:white;padding:16px 32px;border-radius:10px;font-size:16px;font-weight:600;border:1.5px solid var(--border);transition:border-color .2s;display:inline-block;}
+.btn-secondary:hover{border-color:var(--blue);}
+.hero-stats{display:flex;gap:40px;margin-top:56px;padding-top:40px;border-top:1px solid var(--border);flex-wrap:wrap;}
 .stat-num{font-size:32px;font-weight:800;background:linear-gradient(135deg,#60A5FA,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .stat-label{font-size:13px;color:var(--muted);margin-top:2px;}
+@media(max-width:768px){.hero{padding:100px 20px 60px;}.hero-stats{gap:24px;}}
 
 /* SECTIONS */
 section{padding:96px 40px;}
 .section-label{font-size:12px;font-weight:700;letter-spacing:3px;color:var(--blue);text-transform:uppercase;margin-bottom:16px;}
-.section-title{font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.section-title{font-size:clamp(26px,4vw,48px);font-weight:800;line-height:1.15;margin-bottom:16px;}
 .section-sub{font-size:17px;color:var(--muted);max-width:520px;line-height:1.7;}
 .max{max-width:1100px;margin:0 auto;}
+@media(max-width:768px){section{padding:64px 20px;}}
 
 /* SERVICES */
 #services{background:var(--card);}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:56px;}
-.service-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:border-color .2s,transform .2s;position:relative;overflow:hidden;}
-.service-card:hover{border-color:var(--blue);transform:translateY(-4px);}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--purple));opacity:0;transition:opacity .2s;}
-.service-card:hover::before{opacity:1;}
-.service-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;}
-.icon-blue{background:rgba(37,99,235,.15);}
-.icon-purple{background:rgba(124,58,237,.15);}
-.icon-orange{background:rgba(249,115,22,.15);}
-.icon-green{background:rgba(16,185,129,.15);}
-.service-card h3{font-size:20px;font-weight:700;margin-bottom:10px;}
-.service-card p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:16px;}
-.service-price{font-size:13px;font-weight:700;color:var(--blue);}
+.sc{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:32px;transition:border-color .2s,transform .2s;position:relative;overflow:hidden;}
+.sc:hover{border-color:var(--blue);transform:translateY(-4px);}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--purple));opacity:0;transition:opacity .2s;}
+.sc:hover::before{opacity:1;}
+.si{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;}
+.ib{background:rgba(37,99,235,.15);}
+.ip{background:rgba(124,58,237,.15);}
+.io{background:rgba(249,115,22,.15);}
+.ig{background:rgba(16,185,129,.15);}
+.sc h3{font-size:20px;font-weight:700;margin-bottom:10px;}
+.sc p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:16px;}
+.sp{font-size:13px;font-weight:700;color:var(--blue);}
 
 /* DEMO */
 #demo{background:var(--bg);}
 .demo-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+@media(max-width:900px){.demo-inner{grid-template-columns:1fr;}}
 .demo-text .tag{display:inline-block;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:#6EE7B7;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:24px;}
-.demo-visual{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;position:relative;}
-.demo-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border);}
-.demo-dot{width:8px;height:8px;border-radius:50%;background:var(--green);}
-.demo-salon{font-weight:700;font-size:15px;}
-.demo-loc{font-size:12px;color:var(--muted);}
-.msg{padding:10px 14px;border-radius:10px;font-size:14px;max-width:80%;margin-bottom:10px;line-height:1.5;}
-.msg-user{background:var(--card2);color:var(--white);margin-left:auto;}
-.msg-ai{background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(124,58,237,.2));border:1px solid rgba(37,99,235,.25);color:var(--white);}
-.msg-time{font-size:10px;color:var(--muted);text-align:right;margin-top:2px;}
-.demo-badge{position:absolute;top:-12px;right:20px;background:linear-gradient(135deg,var(--green),#059669);color:white;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;}
+
+/* CHAT WIDGET */
+.chat-widget{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;position:relative;}
+.chat-head{background:var(--card2);padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
+.chat-dot{width:10px;height:10px;border-radius:50%;background:var(--green);}
+.chat-name{font-weight:700;font-size:15px;}
+.chat-sub{font-size:12px;color:var(--muted);}
+.chat-badge{margin-left:auto;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);color:#6EE7B7;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700;}
+.chat-msgs{padding:20px;height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;}
+.chat-msgs::-webkit-scrollbar{width:4px;}
+.chat-msgs::-webkit-scrollbar-track{background:transparent;}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.msg-wrap{display:flex;flex-direction:column;}
+.msg-wrap.user{align-items:flex-end;}
+.bubble{padding:10px 14px;border-radius:12px;font-size:14px;max-width:82%;line-height:1.5;}
+.bubble.user{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;border-radius:12px 12px 2px 12px;}
+.bubble.ai{background:var(--card2);border:1px solid var(--border);color:var(--white);border-radius:12px 12px 12px 2px;}
+.bubble.typing{color:var(--muted);}
+.msg-time{font-size:10px;color:var(--muted);margin-top:3px;}
+.chat-input-row{padding:14px 16px;border-top:1px solid var(--border);display:flex;gap:10px;align-items:center;}
+.chat-input{flex:1;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--white);outline:none;font-family:inherit;transition:border-color .2s;}
+.chat-input:focus{border-color:var(--blue);}
+.chat-input::placeholder{color:var(--muted);}
+.chat-send{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;border:none;border-radius:8px;padding:10px 16px;cursor:pointer;font-size:14px;font-weight:600;transition:opacity .2s;white-space:nowrap;}
+.chat-send:hover{opacity:.85;}
+.chat-hint{padding:0 16px 12px;font-size:12px;color:var(--muted);}
+.quick-btns{display:flex;gap:8px;flex-wrap:wrap;padding:0 16px 14px;}
+.qb{background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:20px;font-size:12px;cursor:pointer;transition:all .2s;font-family:inherit;}
+.qb:hover{border-color:var(--blue);color:var(--white);}
 
 /* PRICING */
 #pricing{background:var(--card);}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:56px;}
-.price-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:36px;position:relative;}
-.price-card.featured{border-color:var(--blue);background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(124,58,237,.06));}
-.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--blue),var(--purple));color:white;padding:6px 20px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap;}
-.price-name{font-size:16px;font-weight:700;color:var(--muted);margin-bottom:12px;letter-spacing:1px;}
-.price-amount{font-size:48px;font-weight:800;line-height:1;margin-bottom:6px;}
-.price-amount span{font-size:20px;font-weight:400;color:var(--muted);}
-.price-desc{font-size:14px;color:var(--muted);margin-bottom:24px;}
-.price-features{list-style:none;margin-bottom:32px;}
-.price-features li{font-size:14px;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
-.price-features li::before{content:'✓';color:var(--green);font-weight:700;}
-.price-cta{display:block;text-align:center;padding:14px;border-radius:8px;font-weight:700;font-size:15px;transition:all .2s;}
-.price-cta-outline{border:1.5px solid var(--border);color:var(--white);}
-.price-cta-outline:hover{border-color:var(--blue);}
-.price-cta-filled{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;}
-.price-cta-filled:hover{opacity:.9;}
-.price-cta-ghost{border:1.5px solid var(--orange);color:var(--orange);}
-.price-cta-ghost:hover{background:rgba(249,115,22,.1);}
+.pc{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:36px;position:relative;}
+.pc.feat{border-color:var(--blue);background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(124,58,237,.06));}
+.pbadge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--blue),var(--purple));color:white;padding:6px 20px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap;}
+.pname{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:12px;letter-spacing:1px;}
+.pamount{font-size:48px;font-weight:800;line-height:1;margin-bottom:6px;}
+.pamount s{font-size:20px;font-weight:400;color:var(--muted);}
+.pdesc{font-size:14px;color:var(--muted);margin-bottom:24px;}
+.pfeats{list-style:none;margin-bottom:32px;}
+.pfeats li{font-size:14px;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.pfeats li::before{content:'✓';color:var(--green);font-weight:700;}
+.pcta{display:block;text-align:center;padding:14px;border-radius:8px;font-weight:700;font-size:15px;transition:all .2s;}
+.pcta-o{border:1.5px solid var(--border);color:var(--white);}
+.pcta-o:hover{border-color:var(--blue);}
+.pcta-f{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;}
+.pcta-f:hover{opacity:.9;}
+.pcta-g{border:1.5px solid var(--orange);color:var(--orange);}
+.pcta-g:hover{background:rgba(249,115,22,.1);}
 
 /* WHY */
 #why{background:var(--bg);}
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:56px;}
-.why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;}
-.why-num{font-size:40px;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;}
-.why-card h4{font-size:17px;font-weight:700;margin-bottom:8px;}
-.why-card p{font-size:14px;color:var(--muted);line-height:1.6;}
+.wc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px;}
+.wnum{font-size:40px;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;}
+.wc h4{font-size:17px;font-weight:700;margin-bottom:8px;}
+.wc p{font-size:14px;color:var(--muted);line-height:1.6;}
 
-/* CTA BANNER */
+/* CTA */
 #cta{background:linear-gradient(135deg,rgba(37,99,235,.15),rgba(124,58,237,.15));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 40px;text-align:center;}
-#cta h2{font-size:clamp(28px,4vw,52px);font-weight:800;margin-bottom:16px;}
+#cta h2{font-size:clamp(26px,4vw,52px);font-weight:800;margin-bottom:16px;}
 #cta p{font-size:17px;color:var(--muted);margin-bottom:40px;}
+@media(max-width:768px){#cta{padding:60px 20px;}}
 
 /* FOOTER */
 footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--border);}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
-.footer-logo{font-size:18px;font-weight:700;}
-.footer-logo span{background:linear-gradient(135deg,#2563EB,#7C3AED);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.footer-links{display:flex;gap:32px;}
-.footer-links a{color:var(--muted);font-size:14px;transition:color .2s;}
-.footer-links a:hover{color:var(--white);}
-.footer-copy{color:var(--muted);font-size:13px;}
-
-@media(max-width:768px){
-  nav{padding:16px 20px;}
-  .nav-links{display:none;}
-  .hero{padding:100px 20px 60px;}
-  .hero-stats{gap:24px;flex-wrap:wrap;}
-  section{padding:64px 20px;}
-  .demo-inner{grid-template-columns:1fr;}
-  footer{padding:40px 20px;}
-  .footer-inner{flex-direction:column;text-align:center;}
-  .footer-links{flex-wrap:wrap;justify-content:center;}
-}
+.fi{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
+.fl{font-size:18px;font-weight:700;}
+.fl span{background:linear-gradient(135deg,#2563EB,#7C3AED);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.flinks{display:flex;gap:32px;flex-wrap:wrap;}
+.flinks a{color:var(--muted);font-size:14px;transition:color .2s;}
+.flinks a:hover{color:var(--white);}
+@media(max-width:768px){footer{padding:40px 20px;}.fi{flex-direction:column;text-align:center;}.flinks{justify-content:center;}}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="logo">STRAND <span>PERFORMANCE</span></div>
-  <div class="nav-links">
+  <div class="nav-center">
     <a href="#services" data-en="Services" data-sv="Tjänster">Services</a>
     <a href="#demo" data-en="Demo" data-sv="Demo">Demo</a>
     <a href="#pricing" data-en="Pricing" data-sv="Priser">Pricing</a>
     <a href="#why" data-en="Why us" data-sv="Varför oss">Why us</a>
   </div>
-  <div style="display:flex;align-items:center;gap:16px;">
+  <div class="nav-right">
     <div class="lang-toggle">
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('sv')">SV</button>
     </div>
-    <a href="https://calendly.com/tobiass306/30min" target="_blank" class="nav-cta" data-en="Book free call" data-sv="Boka gratis samtal">Book free call</a>
+    <a href="https://calendly.com/tobiass306/30min" target="_blank" class="nav-cta" data-en="Book free call" data-sv="Boka gratis">Book free call</a>
   </div>
 </nav>
 
@@ -177,7 +184,7 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
     <p data-en="AI chatbots, modern websites, social media, SEO and automation — built for businesses that want to grow without working more hours." data-sv="AI-chatbottar, moderna hemsidor, sociala medier, SEO och automatisering — byggt för företag som vill växa utan att jobba mer.">AI chatbots, modern websites, social media, SEO and automation — built for businesses that want to grow without working more hours.</p>
     <div class="hero-btns">
       <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-primary" data-en="Book a free 30-min call" data-sv="Boka ett gratis 30-minuterssamtal">Book a free 30-min call</a>
-      <a href="#demo" class="btn-secondary" data-en="See live demo →" data-sv="Se live-demo →">See live demo →</a>
+      <a href="#demo" class="btn-secondary" data-en="Try the live demo →" data-sv="Prova live-demon →">Try the live demo →</a>
     </div>
     <div class="hero-stats">
       <div><div class="stat-num">24/7</div><div class="stat-label" data-en="Always online" data-sv="Alltid online">Always online</div></div>
@@ -191,52 +198,15 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
 <section id="services">
   <div class="max">
     <div class="section-label" data-en="WHAT WE DO" data-sv="VAD VI GÖR">WHAT WE DO</div>
-    <h2 class="section-title" data-en="Everything your business<br>needs to grow online." data-sv="Allt ditt företag<br>behöver för att växa online.">Everything your business<br>needs to grow online.</h2>
+    <h2 class="section-title" data-en="Everything your business needs to grow online." data-sv="Allt ditt företag behöver för att växa online.">Everything your business needs to grow online.</h2>
     <p class="section-sub" data-en="We handle the digital side — you focus on running your business." data-sv="Vi hanterar det digitala — du fokuserar på att driva ditt företag.">We handle the digital side — you focus on running your business.</p>
     <div class="services-grid">
-
-      <div class="service-card">
-        <div class="service-icon icon-blue">🤖</div>
-        <h3 data-en="AI Chat Assistants" data-sv="AI-chatassistenter">AI Chat Assistants</h3>
-        <p data-en="Answer client questions, handle bookings and FAQs automatically — 24/7, even when you're asleep." data-sv="Svara på kundfrågor, hantera bokningar och vanliga frågor automatiskt — dygnet runt, även när du sover.">Answer client questions, handle bookings and FAQs automatically — 24/7, even when you're asleep.</p>
-        <div class="service-price" data-en="From €500 one-time" data-sv="Från €500 engångsbetalning">From €500 one-time</div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon icon-purple">🌐</div>
-        <h3 data-en="Modern Websites" data-sv="Moderna hemsidor">Modern Websites</h3>
-        <p data-en="Fast, beautiful, mobile-first websites that convert visitors into clients. Built to represent your brand properly." data-sv="Snabba, vackra, mobilanpassade hemsidor som omvandlar besökare till kunder. Byggda för att representera ditt varumärke ordentligt.">Fast, beautiful, mobile-first websites that convert visitors into clients. Built to represent your brand properly.</p>
-        <div class="service-price" data-en="Custom pricing" data-sv="Prissättning efter behov">Custom pricing</div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon icon-orange">📱</div>
-        <h3 data-en="Social Media" data-sv="Sociala medier">Social Media</h3>
-        <p data-en="Content creation, scheduling and management for Instagram, TikTok and Facebook — consistently, without you lifting a finger." data-sv="Innehållsskapande, schemaläggning och hantering för Instagram, TikTok och Facebook — konsekvent, utan att du behöver lyfta ett finger.">Content creation, scheduling and management for Instagram, TikTok and Facebook.</p>
-        <div class="service-price" data-en="Monthly retainer from €150" data-sv="Månadsretainer från €150">Monthly retainer from €150</div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon icon-green">🔍</div>
-        <h3>SEO</h3>
-        <p data-en="Get found on Google by the right people. We optimise your site and content so clients find you instead of your competitors." data-sv="Syns på Google av rätt personer. Vi optimerar din sida och ditt innehåll så att kunder hittar dig istället för dina konkurrenter.">Get found on Google by the right people. We optimise your site and content so clients find you instead of your competitors.</p>
-        <div class="service-price" data-en="Monthly retainer" data-sv="Månadsretainer">Monthly retainer</div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon icon-blue">⚡</div>
-        <h3 data-en="Business Automation" data-sv="Företagsautomatisering">Business Automation</h3>
-        <p data-en="Automate your emails, follow-ups, confirmations and workflows. Save hours every week without changing how you work." data-sv="Automatisera dina mejl, uppföljningar, bekräftelser och arbetsflöden. Spara timmar varje vecka utan att ändra hur du arbetar.">Automate your emails, follow-ups, confirmations and workflows. Save hours every week.</p>
-        <div class="service-price" data-en="From €500 setup" data-sv="Från €500 uppsättning">From €500 setup</div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon icon-purple">🧠</div>
-        <h3 data-en="AI Tools & Integration" data-sv="AI-verktyg & integration">AI Tools & Integration</h3>
-        <p data-en="We find, set up and connect the right AI tools for your business. No tech knowledge needed on your end." data-sv="Vi hittar, sätter upp och kopplar ihop rätt AI-verktyg för ditt företag. Ingen teknisk kunskap krävs från din sida.">We find, set up and connect the right AI tools for your business. No tech knowledge needed.</p>
-        <div class="service-price" data-en="Custom pricing" data-sv="Prissättning efter behov">Custom pricing</div>
-      </div>
-
+      <div class="sc"><div class="si ib">🤖</div><h3 data-en="AI Chat Assistants" data-sv="AI-chatassistenter">AI Chat Assistants</h3><p data-en="Answer client questions, handle bookings and FAQs automatically — 24/7, even when you're asleep." data-sv="Svara på kundfrågor, hantera bokningar och vanliga frågor automatiskt — dygnet runt, även när du sover.">Answer client questions, handle bookings and FAQs automatically — 24/7, even when you're asleep.</p><div class="sp" data-en="From €500 one-time" data-sv="Från €500 engångsbetalning">From €500 one-time</div></div>
+      <div class="sc"><div class="si ip">🌐</div><h3 data-en="Modern Websites" data-sv="Moderna hemsidor">Modern Websites</h3><p data-en="Fast, beautiful, mobile-first websites that convert visitors into clients. Built to represent your brand properly." data-sv="Snabba, vackra, mobilanpassade hemsidor som omvandlar besökare till kunder.">Fast, beautiful, mobile-first websites that convert visitors into clients. Built to represent your brand properly.</p><div class="sp" data-en="Custom pricing" data-sv="Prissättning efter behov">Custom pricing</div></div>
+      <div class="sc"><div class="si io">📱</div><h3 data-en="Social Media" data-sv="Sociala medier">Social Media</h3><p data-en="Content creation, scheduling and management for Instagram, TikTok and Facebook — consistently, without you lifting a finger." data-sv="Innehållsskapande, schemaläggning och hantering för Instagram, TikTok och Facebook.">Content creation, scheduling and management for Instagram, TikTok and Facebook.</p><div class="sp" data-en="Monthly retainer from €150" data-sv="Månadsretainer från €150">Monthly retainer from €150</div></div>
+      <div class="sc"><div class="si ig">🔍</div><h3>SEO</h3><p data-en="Get found on Google by the right people. We optimise your site so clients find you instead of your competitors." data-sv="Syns på Google av rätt personer. Vi optimerar din sida så att kunder hittar dig istället för dina konkurrenter.">Get found on Google by the right people. We optimise your site so clients find you instead of your competitors.</p><div class="sp" data-en="Monthly retainer" data-sv="Månadsretainer">Monthly retainer</div></div>
+      <div class="sc"><div class="si ib">⚡</div><h3 data-en="Business Automation" data-sv="Företagsautomatisering">Business Automation</h3><p data-en="Automate emails, follow-ups, confirmations and workflows. Save hours every week without changing how you work." data-sv="Automatisera mejl, uppföljningar, bekräftelser och arbetsflöden. Spara timmar varje vecka.">Automate emails, follow-ups, confirmations and workflows. Save hours every week.</p><div class="sp" data-en="From €500 setup" data-sv="Från €500 uppsättning">From €500 setup</div></div>
+      <div class="sc"><div class="si ip">🧠</div><h3 data-en="AI Tools & Integration" data-sv="AI-verktyg & integration">AI Tools & Integration</h3><p data-en="We find, set up and connect the right AI tools for your business. No tech knowledge needed on your end." data-sv="Vi hittar, sätter upp och kopplar ihop rätt AI-verktyg för ditt företag. Ingen teknisk kunskap krävs.">We find, set up and connect the right AI tools for your business. No tech knowledge needed.</p><div class="sp" data-en="Custom pricing" data-sv="Prissättning efter behov">Custom pricing</div></div>
     </div>
   </div>
 </section>
@@ -246,25 +216,30 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
   <div class="max">
     <div class="demo-inner">
       <div class="demo-text">
-        <div class="tag" data-en="✓ LIVE EXAMPLE" data-sv="✓ LEVANDE EXEMPEL">✓ LIVE EXAMPLE</div>
-        <h2 class="section-title" data-en="See it in action.<br>Right now." data-sv="Se det i praktiken.<br>Just nu.">See it in action.<br>Right now.</h2>
-        <p style="color:var(--muted);font-size:17px;line-height:1.7;margin-bottom:32px;" data-en="We built a live AI assistant for Manipulate Hair Studio in Sydney. It handles bookings, answers FAQs, and talks to clients 24/7 — with no one on the other end." data-sv="Vi byggde en live AI-assistent för Manipulate Hair Studio i Sydney. Den hanterar bokningar, svarar på vanliga frågor och pratar med kunder dygnet runt — utan att någon behöver vara tillgänglig.">We built a live AI assistant for Manipulate Hair Studio in Sydney. It handles bookings, answers FAQs, and talks to clients 24/7 — with no one on the other end.</p>
-        <a href="https://strandperformance.se" target="_blank" class="btn-primary" data-en="Test the demo →" data-sv="Testa demon →">Test the demo →</a>
+        <div class="tag" data-en="✓ LIVE INTERACTIVE DEMO" data-sv="✓ LEVANDE INTERAKTIV DEMO">✓ LIVE INTERACTIVE DEMO</div>
+        <h2 class="section-title" data-en="Chat with our AI.<br>Right here, right now." data-sv="Chatta med vår AI.<br>Direkt här, direkt nu.">Chat with our AI.<br>Right here, right now.</h2>
+        <p style="color:var(--muted);font-size:17px;line-height:1.7;margin-bottom:24px;" data-en="This is the same AI assistant we built for Manipulate Hair Studio in Sydney. Ask it anything a client might ask — bookings, pricing, services, hours." data-sv="Det här är samma AI-assistent vi byggde för Manipulate Hair Studio i Sydney. Fråga den vad som helst — bokningar, priser, tjänster, öppettider.">This is the same AI assistant we built for Manipulate Hair Studio in Sydney. Ask it anything a client might ask — bookings, pricing, services, hours.</p>
+        <p style="color:var(--muted);font-size:15px;line-height:1.7;" data-en="Want one of these for your business? Takes 5–7 days to go live." data-sv="Vill du ha en sån här för ditt företag? Det tar 5–7 dagar att gå live.">Want one of these for your business? Takes 5–7 days to go live.</p>
+        <br/>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-primary" data-en="Build mine →" data-sv="Bygg min →">Build mine →</a>
       </div>
-      <div class="demo-visual">
-        <div class="demo-badge">🟢 LIVE</div>
-        <div class="demo-header">
-          <div class="demo-dot"></div>
-          <div>
-            <div class="demo-salon">Manipulate Hair Studio</div>
-            <div class="demo-loc">Sydney, Australia</div>
-          </div>
+      <div class="chat-widget">
+        <div class="chat-head">
+          <div class="chat-dot"></div>
+          <div><div class="chat-name">Manipulate Hair Studio</div><div class="chat-sub">Sydney, Australia</div></div>
+          <div class="chat-badge" data-en="Online 24/7" data-sv="Online dygnet runt">Online 24/7</div>
         </div>
-        <div class="msg msg-user" data-en="Hi! Do you have any spots this Saturday?" data-sv="Hej! Har ni några lediga tider på lördag?">Hi! Do you have any spots this Saturday?</div>
-        <div class="msg-time" style="color:var(--muted);font-size:11px;text-align:right;margin-bottom:8px;">10:47 PM</div>
-        <div class="msg msg-ai" data-en="Hi! 👋 Yes, we have availability on Saturday. Could I get your name and which service you're looking for? We offer cuts, colour, and treatments." data-sv="Hej! 👋 Ja, vi har lediga tider på lördag. Kan jag få ditt namn och vilken tjänst du är intresserad av? Vi erbjuder klippning, färgning och behandlingar.">Hi! 👋 Yes, we have availability on Saturday. Could I get your name and which service you're looking for? We offer cuts, colour, and treatments.</div>
-        <div class="msg-time" style="color:var(--muted);font-size:11px;margin-bottom:8px;">10:47 PM · Answered in 3 seconds</div>
-        <div style="text-align:center;padding:16px 0 4px;color:var(--muted);font-size:13px;" data-en="Your salon could work exactly like this." data-sv="Din salong skulle kunna fungera precis så här.">Your salon could work exactly like this.</div>
+        <div class="chat-msgs" id="chatMsgs"></div>
+        <div class="quick-btns" id="quickBtns">
+          <button class="qb" onclick="sendQuick(this)" data-en="Book an appointment" data-sv="Boka en tid">Book an appointment</button>
+          <button class="qb" onclick="sendQuick(this)" data-en="What are your prices?" data-sv="Vad kostar det?">What are your prices?</button>
+          <button class="qb" onclick="sendQuick(this)" data-en="What services do you offer?" data-sv="Vilka tjänster erbjuder ni?">What services do you offer?</button>
+          <button class="qb" onclick="sendQuick(this)" data-en="What are your opening hours?" data-sv="Vilka är era öppettider?">What are your opening hours?</button>
+        </div>
+        <div class="chat-input-row">
+          <input class="chat-input" id="chatInput" type="text" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMsg()"/>
+          <button class="chat-send" onclick="sendMsg()" data-en="Send" data-sv="Skicka">Send</button>
+        </div>
       </div>
     </div>
   </div>
@@ -277,48 +252,44 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
     <h2 class="section-title" data-en="Simple, transparent pricing." data-sv="Enkla, transparenta priser.">Simple, transparent pricing.</h2>
     <p class="section-sub" data-en="No hidden fees. No long contracts. Start when you're ready." data-sv="Inga dolda avgifter. Inga långa kontrakt. Börja när du är redo.">No hidden fees. No long contracts. Start when you're ready.</p>
     <div class="pricing-grid">
-
-      <div class="price-card">
-        <div class="price-name" data-en="AI CHAT — STARTER" data-sv="AI-CHAT — STARTER">AI CHAT — STARTER</div>
-        <div class="price-amount">€500<span data-en=" one-time" data-sv=" engång"> one-time</span></div>
-        <div class="price-desc" data-en="+ €150/month maintenance (optional)" data-sv="+ €150/månad underhåll (valfritt)">+ €150/month maintenance (optional)</div>
-        <ul class="price-features">
+      <div class="pc">
+        <div class="pname" data-en="AI CHAT — STARTER" data-sv="AI-CHAT — STARTER">AI CHAT — STARTER</div>
+        <div class="pamount">€500<s data-en=" one-time" data-sv=" engång"> one-time</s></div>
+        <div class="pdesc" data-en="+ €150/month maintenance (optional)" data-sv="+ €150/mån underhåll (valfritt)">+ €150/month maintenance (optional)</div>
+        <ul class="pfeats">
           <li data-en="AI assistant on your website" data-sv="AI-assistent på din hemsida">AI assistant on your website</li>
           <li data-en="Answers FAQs & takes bookings" data-sv="Svarar på frågor & tar bokningar">Answers FAQs & takes bookings</li>
-          <li data-en="Works 24/7 automatically" data-sv="Fungerar dygnet runt automatiskt">Works 24/7 automatically</li>
+          <li data-en="Works 24/7 automatically" data-sv="Fungerar dygnet runt">Works 24/7 automatically</li>
           <li data-en="Setup in 5–7 days" data-sv="Driftsatt på 5–7 dagar">Setup in 5–7 days</li>
         </ul>
-        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="price-cta price-cta-outline" data-en="Book a call" data-sv="Boka ett samtal">Book a call</a>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="pcta pcta-o" data-en="Book a call" data-sv="Boka ett samtal">Book a call</a>
       </div>
-
-      <div class="price-card featured">
-        <div class="price-badge" data-en="MOST POPULAR" data-sv="MEST POPULÄR">MOST POPULAR</div>
-        <div class="price-name" data-en="AI CHAT — PRO" data-sv="AI-CHAT — PRO">AI CHAT — PRO</div>
-        <div class="price-amount">€900<span data-en=" one-time" data-sv=" engång"> one-time</span></div>
-        <div class="price-desc" data-en="+ €150/month maintenance (optional)" data-sv="+ €150/månad underhåll (valfritt)">+ €150/month maintenance (optional)</div>
-        <ul class="price-features">
+      <div class="pc feat">
+        <div class="pbadge" data-en="MOST POPULAR" data-sv="MEST POPULÄR">MOST POPULAR</div>
+        <div class="pname" data-en="AI CHAT — PRO" data-sv="AI-CHAT — PRO">AI CHAT — PRO</div>
+        <div class="pamount">€900<s data-en=" one-time" data-sv=" engång"> one-time</s></div>
+        <div class="pdesc" data-en="+ €150/month maintenance (optional)" data-sv="+ €150/mån underhåll (valfritt)">+ €150/month maintenance (optional)</div>
+        <ul class="pfeats">
           <li data-en="Everything in Starter" data-sv="Allt i Starter">Everything in Starter</li>
           <li data-en="Custom personality & tone" data-sv="Anpassad personlighet & ton">Custom personality & tone</li>
           <li data-en="Booking system integration" data-sv="Integration med bokningssystem">Booking system integration</li>
           <li data-en="Lead capture & follow-up" data-sv="Leadkapturering & uppföljning">Lead capture & follow-up</li>
           <li data-en="Priority support" data-sv="Prioriterad support">Priority support</li>
         </ul>
-        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="price-cta price-cta-filled" data-en="Book a call" data-sv="Boka ett samtal">Book a call</a>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="pcta pcta-f" data-en="Book a call" data-sv="Boka ett samtal">Book a call</a>
       </div>
-
-      <div class="price-card">
-        <div class="price-name" data-en="WEBSITES & MORE" data-sv="HEMSIDOR & MER">WEBSITES & MORE</div>
-        <div class="price-amount" style="font-size:36px;" data-en="Custom" data-sv="Anpassat">Custom</div>
-        <div class="price-desc" data-en="Websites, social media, SEO, automation" data-sv="Hemsidor, sociala medier, SEO, automatisering">Websites, social media, SEO, automation</div>
-        <ul class="price-features">
+      <div class="pc">
+        <div class="pname" data-en="WEBSITES & MORE" data-sv="HEMSIDOR & MER">WEBSITES & MORE</div>
+        <div class="pamount" style="font-size:38px;" data-en="Custom" data-sv="Anpassat">Custom</div>
+        <div class="pdesc" data-en="Websites, social media, SEO, automation" data-sv="Hemsidor, sociala medier, SEO, automatisering">Websites, social media, SEO, automation</div>
+        <ul class="pfeats">
           <li data-en="Modern website design" data-sv="Modern hemsidedesign">Modern website design</li>
           <li data-en="Social media management" data-sv="Hantering av sociala medier">Social media management</li>
           <li data-en="SEO & Google visibility" data-sv="SEO & synlighet på Google">SEO & Google visibility</li>
-          <li data-en="Business automation setup" data-sv="Uppsättning av företagsautomatisering">Business automation setup</li>
+          <li data-en="Business automation setup" data-sv="Automatiseringsuppsättning">Business automation setup</li>
         </ul>
-        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="price-cta price-cta-ghost" data-en="Get a quote" data-sv="Få en offert">Get a quote</a>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="pcta pcta-g" data-en="Get a quote" data-sv="Få en offert">Get a quote</a>
       </div>
-
     </div>
   </div>
 </section>
@@ -327,70 +298,144 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
 <section id="why">
   <div class="max">
     <div class="section-label" data-en="WHY STRAND" data-sv="VARFÖR STRAND">WHY STRAND</div>
-    <h2 class="section-title" data-en="Built for business owners,<br>not tech teams." data-sv="Byggt för företagare,<br>inte teknikteam.">Built for business owners,<br>not tech teams.</h2>
+    <h2 class="section-title" data-en="Built for business owners, not tech teams." data-sv="Byggt för företagare, inte teknikteam.">Built for business owners, not tech teams.</h2>
     <div class="why-grid">
-      <div class="why-card">
-        <div class="why-num">01</div>
-        <h4 data-en="No tech skills needed" data-sv="Ingen teknisk kunskap krävs">No tech skills needed</h4>
-        <p data-en="We handle everything. You just tell us what you want — we make it happen." data-sv="Vi hanterar allt. Du berättar bara vad du vill ha — vi ser till att det händer.">We handle everything. You just tell us what you want — we make it happen.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-num">02</div>
-        <h4 data-en="Fast turnaround" data-sv="Snabb leverans">Fast turnaround</h4>
-        <p data-en="AI assistants live in 5–7 days. Websites in 2–3 weeks. No endless back-and-forth." data-sv="AI-assistenter live på 5–7 dagar. Hemsidor på 2–3 veckor. Inget evigt fram och tillbaka.">AI assistants live in 5–7 days. Websites in 2–3 weeks. No endless back-and-forth.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-num">03</div>
-        <h4 data-en="One person you can actually reach" data-sv="En person du faktiskt kan nå">One person you can actually reach</h4>
-        <p data-en="You work directly with Tobias — not an agency, not a helpdesk. Real answers, fast." data-sv="Du jobbar direkt med Tobias — inte en byrå, inte en helpdesk. Riktiga svar, snabbt.">You work directly with Tobias — not an agency, not a helpdesk. Real answers, fast.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-num">04</div>
-        <h4 data-en="Results you can measure" data-sv="Resultat du kan mäta">Results you can measure</h4>
-        <p data-en="More bookings. More visibility. Less admin. We track what's working and adjust." data-sv="Fler bokningar. Mer synlighet. Mindre administration. Vi spårar vad som fungerar och justerar.">More bookings. More visibility. Less admin. We track what's working and adjust.</p>
-      </div>
+      <div class="wc"><div class="wnum">01</div><h4 data-en="No tech skills needed" data-sv="Ingen teknisk kunskap krävs">No tech skills needed</h4><p data-en="We handle everything. You just tell us what you want — we make it happen." data-sv="Vi hanterar allt. Du berättar bara vad du vill ha — vi ser till att det händer.">We handle everything. You just tell us what you want — we make it happen.</p></div>
+      <div class="wc"><div class="wnum">02</div><h4 data-en="Fast turnaround" data-sv="Snabb leverans">Fast turnaround</h4><p data-en="AI assistants live in 5–7 days. Websites in 2–3 weeks. No endless back-and-forth." data-sv="AI-assistenter live på 5–7 dagar. Hemsidor på 2–3 veckor.">AI assistants live in 5–7 days. Websites in 2–3 weeks. No endless back-and-forth.</p></div>
+      <div class="wc"><div class="wnum">03</div><h4 data-en="One person you can actually reach" data-sv="En person du faktiskt kan nå">One person you can actually reach</h4><p data-en="You work directly with Tobias — not an agency, not a helpdesk. Real answers, fast." data-sv="Du jobbar direkt med Tobias — inte en byrå, inte en helpdesk. Riktiga svar, snabbt.">You work directly with Tobias — not an agency, not a helpdesk. Real answers, fast.</p></div>
+      <div class="wc"><div class="wnum">04</div><h4 data-en="Results you can measure" data-sv="Resultat du kan mäta">Results you can measure</h4><p data-en="More bookings. More visibility. Less admin. We track what's working and adjust." data-sv="Fler bokningar. Mer synlighet. Mindre administration. Vi spårar vad som fungerar.">More bookings. More visibility. Less admin. We track what's working and adjust.</p></div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section id="cta">
-  <div class="max" style="text-align:center;">
-    <h2 data-en="Ready to see what this<br>looks like for your business?" data-sv="Redo att se hur det här<br>ser ut för ditt företag?">Ready to see what this<br>looks like for your business?</h2>
+  <div class="max">
+    <h2 data-en="Ready to see what this looks like for your business?" data-sv="Redo att se hur det här ser ut för ditt företag?">Ready to see what this looks like for your business?</h2>
     <p data-en="30-minute call. No pitch, no pressure. Just an honest look at what's possible." data-sv="30-minuterssamtal. Ingen pitch, inget tryck. Bara en ärlig titt på vad som är möjligt.">30-minute call. No pitch, no pressure. Just an honest look at what's possible.</p>
-    <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-primary" style="display:inline-block;font-size:18px;padding:20px 48px;" data-en="Book your free call →" data-sv="Boka ditt gratis samtal →">Book your free call →</a>
+    <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-primary" style="font-size:18px;padding:20px 48px;" data-en="Book your free call →" data-sv="Boka ditt gratis samtal →">Book your free call →</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">STRAND <span>PERFORMANCE</span></div>
-      <div style="color:var(--muted);font-size:13px;margin-top:6px;" data-en="Åland, Finland · Serving clients globally" data-sv="Åland, Finland · Betjänar kunder globalt">Åland, Finland · Serving clients globally</div>
-    </div>
-    <div class="footer-links">
+  <div class="fi">
+    <div><div class="fl">STRAND <span>PERFORMANCE</span></div><div style="color:var(--muted);font-size:13px;margin-top:6px;" data-en="Åland, Finland · Serving clients globally" data-sv="Åland, Finland · Betjänar kunder globalt">Åland, Finland · Serving clients globally</div></div>
+    <div class="flinks">
       <a href="#services" data-en="Services" data-sv="Tjänster">Services</a>
       <a href="#demo">Demo</a>
       <a href="#pricing" data-en="Pricing" data-sv="Priser">Pricing</a>
       <a href="https://calendly.com/tobiass306/30min" target="_blank" data-en="Book a call" data-sv="Boka samtal">Book a call</a>
     </div>
-    <div class="footer-copy">© 2025 Strand Performance</div>
+    <div style="color:var(--muted);font-size:13px;">© 2025 Strand Performance</div>
   </div>
 </footer>
 
 <script>
-let currentLang='en';
-function setLang(lang){
-  currentLang=lang;
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===lang));
-  document.querySelectorAll('[data-'+lang+']').forEach(el=>{
-    const val=el.getAttribute('data-'+lang);
-    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val;}
-    else{el.innerHTML=val;}
+// ── LANGUAGE ──────────────────────────────────────────────────────
+let lang='en';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));
+  document.querySelectorAll('[data-'+l+']').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder=v;
+    else el.innerHTML=v;
   });
+  // update chat placeholder
+  const inp=document.getElementById('chatInput');
+  if(inp) inp.placeholder=l==='en'?'Type a message...':'Skriv ett meddelande...';
 }
-// smooth nav links
+
+// ── CHAT ──────────────────────────────────────────────────────────
+const responses={
+  en:{
+    greeting:"Hi there! 👋 I'm the AI assistant for Manipulate Hair Studio. How can I help you today?",
+    booking:"I'd love to help you book! We have availability this week on Wednesday afternoon, Thursday morning, and all day Saturday. What service are you looking for?",
+    price:"Our prices: Haircuts from $65, Colour from $120, Balayage from $180, Treatments from $85, Blowdry from $45. Would you like to book any of these?",
+    services:"We offer haircuts, colouring, balayage, highlights, keratin treatments, blowdrys and styling. Is there something specific you're interested in?",
+    hours:"We're open Tuesday to Saturday, 9am–6pm. Closed Sunday and Monday. Would you like to book an appointment?",
+    location:"We're located in Sydney — you can find our full address and directions on our website. Would you like to book a visit?",
+    thanks:"You're welcome! 😊 Is there anything else I can help you with?",
+    default:"Thanks for your message! Let me help with that. Could you tell me a little more about what you're looking for — are you interested in booking, pricing, or something else?"
+  },
+  sv:{
+    greeting:"Hej! 👋 Jag är AI-assistenten för Manipulate Hair Studio. Hur kan jag hjälpa dig idag?",
+    booking:"Jag hjälper dig gärna med en bokning! Vi har lediga tider den här veckan på onsdag eftermiddag, torsdag förmiddag och hela lördagen. Vilken tjänst är du intresserad av?",
+    price:"Våra priser: Klippning från 65$, Färgning från 120$, Balayage från 180$, Behandlingar från 85$, Blåsning från 45$. Vill du boka något av detta?",
+    services:"Vi erbjuder klippning, färgning, balayage, slingor, keratinbehandlingar, blåsning och styling. Finns det något specifikt du är intresserad av?",
+    hours:"Vi har öppet tisdag till lördag, 9–18. Stängt söndag och måndag. Vill du boka en tid?",
+    location:"Vi finns i Sydney — du hittar vår adress och vägbeskrivning på vår hemsida. Vill du boka ett besök?",
+    thanks:"Varsågod! 😊 Kan jag hjälpa dig med något mer?",
+    default:"Tack för ditt meddelande! Kan du berätta lite mer om vad du letar efter — vill du boka, veta mer om priser eller något annat?"
+  }
+};
+
+function getReply(msg){
+  const m=msg.toLowerCase();
+  const r=responses[lang];
+  if(/book|appoint|schedul|availab|boka|tid|ledig/.test(m)) return r.booking;
+  if(/price|cost|how much|pric|kost|hur mycket|priser/.test(m)) return r.price;
+  if(/service|offer|do you|vad|tjänst|erbjud/.test(m)) return r.services;
+  if(/hour|open|close|when|öppet|öppn|stäng|när/.test(m)) return r.hours;
+  if(/where|address|location|adress|var|hitt/.test(m)) return r.location;
+  if(/thank|tack|great|bra|perfect|perfekt/.test(m)) return r.thanks;
+  return r.default;
+}
+
+function addMsg(text,who){
+  const msgs=document.getElementById('chatMsgs');
+  const now=new Date();
+  const t=now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
+  const wrap=document.createElement('div');
+  wrap.className='msg-wrap'+(who==='user'?' user':'');
+  wrap.innerHTML=`<div class="bubble ${who}">${text}</div><div class="msg-time">${t}</div>`;
+  msgs.appendChild(wrap);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function addTyping(){
+  const msgs=document.getElementById('chatMsgs');
+  const el=document.createElement('div');
+  el.className='msg-wrap';
+  el.id='typing';
+  el.innerHTML='<div class="bubble ai typing">●●●</div>';
+  msgs.appendChild(el);
+  msgs.scrollTop=msgs.scrollHeight;
+  return el;
+}
+
+function sendMsg(){
+  const inp=document.getElementById('chatInput');
+  const txt=inp.value.trim();
+  if(!txt) return;
+  inp.value='';
+  // hide quick buttons after first message
+  document.getElementById('quickBtns').style.display='none';
+  addMsg(txt,'user');
+  const typing=addTyping();
+  setTimeout(()=>{
+    typing.remove();
+    addMsg(getReply(txt),'ai');
+  },900+Math.random()*600);
+}
+
+function sendQuick(btn){
+  const txt=btn.textContent;
+  document.getElementById('quickBtns').style.display='none';
+  addMsg(txt,'user');
+  const typing=addTyping();
+  setTimeout(()=>{
+    typing.remove();
+    addMsg(getReply(txt),'ai');
+  },900+Math.random()*600);
+}
+
+// init greeting
+window.addEventListener('load',()=>{
+  setTimeout(()=>addMsg(responses[lang].greeting,'ai'),400);
+});
+
+// smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
