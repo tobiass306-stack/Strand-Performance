@@ -1,1026 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strand Performance — AI Assistants for Salons & Clinics</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --ink: #0d0d0d;
-      --ink2: #1a1a1a;
-      --cream: #f7f4ef;
-      --warm: #ede9e1;
-      --gold: #c9a96e;
-      --gold-light: #e8d5b0;
-      --text: #3a3a3a;
-      --muted: #888;
-      --white: #ffffff;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.4rem 3rem;
-    }
-
-    nav::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(247,244,239,0.85);
-      backdrop-filter: blur(16px);
-      z-index: -1;
-      border-bottom: 1px solid rgba(201,169,110,0.2);
-    }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: 0.01em;
-      color: var(--ink);
-      text-decoration: none;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-    }
-
-    .nav-link {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
-
-    .nav-link:hover { color: var(--ink); }
-
-    .btn-nav {
-      background: var(--ink);
-      color: var(--cream);
-      padding: 0.65rem 1.6rem;
-      border-radius: 2px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: background 0.25s;
-    }
-
-    .btn-nav:hover { background: var(--gold); color: var(--ink); }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 0 3rem 0 3rem;
-      padding-top: 6rem;
-      gap: 4rem;
-      background: var(--cream);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -200px; right: -200px;
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-left { position: relative; z-index: 1; }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-tag::before {
-      content: '';
-      width: 28px; height: 1px;
-      background: var(--gold);
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 900;
-      font-size: clamp(3rem, 4.5vw, 5rem);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 2rem;
-    }
-
-    h1 .italic {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .hero-body {
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: var(--text);
-      line-height: 1.8;
-      max-width: 420px;
-      margin-bottom: 3rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .btn-primary {
-      background: var(--ink);
-      color: var(--cream);
-      padding: 1rem 2.4rem;
-      border-radius: 2px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.25s, transform 0.15s;
-      display: inline-block;
-    }
-
-    .btn-primary:hover { background: var(--gold); color: var(--ink); transform: translateY(-1px); }
-
-    .btn-ghost {
-      font-size: 0.85rem;
-      color: var(--text);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: color 0.2s;
-    }
-
-    .btn-ghost:hover { color: var(--ink); }
-    .btn-ghost::after { content: '↓'; }
-
-    .hero-stats {
-      display: flex;
-      gap: 3rem;
-      margin-top: 4rem;
-      padding-top: 3rem;
-      border-top: 1px solid rgba(201,169,110,0.25);
-    }
-
-    .stat-val {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-top: 0.4rem;
-    }
-
-    .hero-right {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .demo-phone {
-      width: 100%;
-      max-width: 400px;
-      background: var(--ink2);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.06),
-        0 40px 100px rgba(0,0,0,0.35),
-        0 80px 160px rgba(0,0,0,0.2);
-    }
-
-    .demo-topbar {
-      background: var(--ink2);
-      padding: 1.2rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .demo-avatar {
-      width: 36px; height: 36px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .demo-info { flex: 1; }
-
-    .demo-name {
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    .demo-status {
-      font-size: 0.7rem;
-      color: var(--gold);
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      margin-top: 0.1rem;
-    }
-
-    .demo-status::before {
-      content: '';
-      width: 5px; height: 5px;
-      background: #4ade80;
-      border-radius: 50%;
-    }
-
-    iframe.bot-frame {
-      width: 100%;
-      height: 480px;
-      border: none;
-      display: block;
-      background: #111;
-    }
-
-    /* DEMO MOBILE SECTION */
-    .demo-mobile-section {
-      background: #111;
-      padding: 5rem 1.5rem;
-      text-align: center;
-      display: none;
-    }
-
-    .demo-mobile-section .eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-
-    .demo-mobile-section h2 {
-      font-family: 'Playfair Display', serif;
-      color: var(--cream);
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .demo-mobile-section p {
-      color: rgba(247,244,239,0.45);
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
-    }
-
-    .demo-mobile-inner {
-      max-width: 400px;
-      margin: 0 auto;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-
-    .demo-mobile-bar {
-      background: #1a1a1a;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .demo-mobile-avatar {
-      width: 32px; height: 32px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* TRUST */
-    .trust-section {
-      background: var(--ink);
-      padding: 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .trust-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      margin-right: 1rem;
-    }
-
-    .trust-item {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 0.05em;
-      padding: 0.4rem 1.2rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 2px;
-    }
-
-    /* HOW IT WORKS */
-    .how-section {
-      padding: 9rem 3rem;
-      background: var(--cream);
-    }
-
-    .section-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 4rem;
-      margin-bottom: 6rem;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .section-eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .section-eyebrow::before {
-      content: '';
-      width: 20px; height: 1px;
-      background: var(--gold);
-    }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-
-    .section-aside {
-      font-size: 0.95rem;
-      color: var(--text);
-      line-height: 1.8;
-      max-width: 340px;
-      padding-top: 3.5rem;
-      font-weight: 300;
-    }
-
-    .steps-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .step {
-      padding: 3rem;
-      border-left: 1px solid rgba(201,169,110,0.2);
-      position: relative;
-    }
-
-    .step:first-child { border-left: none; padding-left: 0; }
-
-    .step-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      font-weight: 900;
-      color: rgba(201,169,110,0.15);
-      line-height: 1;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-
-    .step h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-      color: var(--ink);
-    }
-
-    .step p {
-      font-size: 0.9rem;
-      color: var(--text);
-      line-height: 1.75;
-      font-weight: 300;
-    }
-
-    /* FEATURES */
-    .features-section {
-      background: var(--ink);
-      padding: 9rem 3rem;
-      color: var(--cream);
-    }
-
-    .features-section .section-eyebrow { color: var(--gold); }
-    .features-section h2 { color: var(--cream); }
-    .features-section .section-aside { color: rgba(247,244,239,0.5); }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      margin-top: 5rem;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .feature-card {
-      background: var(--ink2);
-      padding: 2.5rem;
-      transition: background 0.3s;
-    }
-
-    .feature-card:hover { background: #222; }
-
-    .feature-icon {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-
-    .feature-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--cream);
-      margin-bottom: 0.6rem;
-    }
-
-    .feature-card p {
-      font-size: 0.85rem;
-      color: rgba(247,244,239,0.45);
-      line-height: 1.75;
-      font-weight: 300;
-    }
-
-    /* PRICING */
-    .pricing-section {
-      background: var(--cream);
-      padding: 9rem 3rem;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .pricing-card {
-      border: 1px solid rgba(201,169,110,0.2);
-      padding: 3rem 2.5rem;
-      border-radius: 2px;
-      position: relative;
-      transition: border-color 0.3s;
-    }
-
-    .pricing-card:hover { border-color: var(--gold); }
-
-    .pricing-card.featured {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: var(--cream);
-    }
-
-    .pricing-badge {
-      position: absolute;
-      top: -1px; right: 2.5rem;
-      background: var(--gold);
-      color: var(--ink);
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.35rem 0.9rem;
-      border-radius: 0 0 4px 4px;
-    }
-
-    .plan-name {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-
-    .plan-price {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 900;
-      line-height: 1;
-      color: var(--ink);
-      margin-bottom: 0.3rem;
-    }
-
-    .pricing-card.featured .plan-price { color: var(--cream); }
-
-    .plan-price sup {
-      font-size: 1.4rem;
-      font-weight: 700;
-      vertical-align: super;
-    }
-
-    .plan-desc {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 2.5rem;
-      font-weight: 300;
-    }
-
-    .pricing-card.featured .plan-desc { color: rgba(247,244,239,0.45); }
-
-    .plan-list {
-      list-style: none;
-      margin-bottom: 2.5rem;
-    }
-
-    .plan-list li {
-      font-size: 0.875rem;
-      padding: 0.75rem 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      border-bottom: 1px solid rgba(201,169,110,0.12);
-      color: var(--text);
-      font-weight: 300;
-    }
-
-    .pricing-card.featured .plan-list li {
-      color: rgba(247,244,239,0.7);
-      border-color: rgba(255,255,255,0.07);
-    }
-
-    .plan-list li::before {
-      content: '—';
-      color: var(--gold);
-      font-size: 0.7rem;
-      flex-shrink: 0;
-      margin-top: 0.2rem;
-    }
-
-    .btn-plan {
-      display: block;
-      text-align: center;
-      padding: 0.9rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.25s;
-    }
-
-    .btn-plan-outline {
-      border: 1px solid var(--ink);
-      color: var(--ink);
-    }
-
-    .btn-plan-outline:hover { background: var(--ink); color: var(--cream); }
-
-    .btn-plan-gold {
-      background: var(--gold);
-      color: var(--ink);
-    }
-
-    .btn-plan-gold:hover { background: #b8924f; }
-
-    .pricing-note {
-      text-align: center;
-      margin-top: 2.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-weight: 300;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* CTA */
-    .cta-section {
-      background: var(--ink);
-      padding: 10rem 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .cta-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 900;
-      color: var(--cream);
-      line-height: 1.1;
-      max-width: 700px;
-      margin: 0 auto 1.5rem;
-    }
-
-    .cta-section h2 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .cta-section p {
-      color: rgba(247,244,239,0.45);
-      font-size: 1rem;
-      font-weight: 300;
-      max-width: 420px;
-      margin: 0 auto 3rem;
-      line-height: 1.8;
-    }
-
-    .btn-cta-big {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--ink);
-      padding: 1.2rem 3.5rem;
-      border-radius: 2px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.25s, transform 0.15s;
-    }
-
-    .btn-cta-big:hover { background: #b8924f; transform: translateY(-2px); }
-
-    .cta-sub {
-      margin-top: 1.5rem;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.2);
-      letter-spacing: 0.05em;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--ink2);
-      padding: 2.5rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      color: rgba(247,244,239,0.4);
-      text-decoration: none;
-    }
-
-    .footer-right {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.2);
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .footer-right a { color: rgba(255,255,255,0.2); text-decoration: none; }
-    .footer-right a:hover { color: var(--gold); }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .nav-link { display: none; }
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 7rem 1.5rem 4rem;
-        gap: 0;
-        min-height: auto;
-      }
-      .hero-right { display: none; }
-      .demo-mobile-section { display: block; }
-      .how-section, .features-section, .pricing-section, .cta-section { padding: 5rem 1.5rem; }
-      .section-header { flex-direction: column; gap: 1rem; margin-bottom: 3rem; }
-      .section-aside { padding-top: 0; max-width: 100%; }
-      .steps-row { grid-template-columns: 1fr; }
-      .step { border-left: none; border-top: 1px solid rgba(201,169,110,0.2); padding: 2.5rem 0; }
-      .step:first-child { border-top: none; padding-top: 0; }
-      .features-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .trust-section { padding: 2rem 1.5rem; gap: 0.75rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
-      .footer-right { flex-direction: column; gap: 0.5rem; }
-      .hero-stats { gap: 2rem; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Strand Performance — Digital Growth for Modern Businesses</title>
+<meta name="description" content="AI chatbots, websites, social media, SEO and automation for salons and businesses worldwide."/>
+<style>
+:root{
+  --bg:#050A14;
+  --card:#0D1526;
+  --card2:#111C30;
+  --blue:#2563EB;
+  --purple:#7C3AED;
+  --orange:#F97316;
+  --green:#10B981;
+  --white:#FFFFFF;
+  --muted:#8BA0BE;
+  --border:#1E2E4A;
+  --radius:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,10,20,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.logo{font-size:20px;font-weight:700;letter-spacing:1px;}
+.logo span{background:linear-gradient(135deg,#2563EB,#7C3AED);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{color:var(--muted);font-size:15px;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.lang-toggle{display:flex;align-items:center;gap:0;background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.lang-btn{padding:6px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--muted);background:none;border:none;}
+.lang-btn.active{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;transition:opacity .2s;}
+.nav-cta:hover{opacity:.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 40px 80px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(37,99,235,.12) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 80% 70%,rgba(124,58,237,.08) 0%,transparent 60%);}
+.hero-content{max-width:680px;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.3);color:#93C5FD;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:28px;letter-spacing:.5px;}
+.hero h1{font-size:clamp(40px,6vw,72px);font-weight:800;line-height:1.1;margin-bottom:24px;}
+.hero h1 .grad{background:linear-gradient(135deg,#60A5FA,#A78BFA,#FB923C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:40px;line-height:1.7;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;padding:16px 32px;border-radius:10px;font-size:16px;font-weight:700;transition:transform .2s,opacity .2s;}
+.btn-primary:hover{transform:translateY(-2px);opacity:.9;}
+.btn-secondary{background:transparent;color:white;padding:16px 32px;border-radius:10px;font-size:16px;font-weight:600;border:1.5px solid var(--border);transition:border-color .2s;}
+.btn-secondary:hover{border-color:#2563EB;}
+.hero-stats{display:flex;gap:40px;margin-top:56px;padding-top:40px;border-top:1px solid var(--border);}
+.stat-num{font-size:32px;font-weight:800;background:linear-gradient(135deg,#60A5FA,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-label{font-size:13px;color:var(--muted);margin-top:2px;}
+
+/* SECTIONS */
+section{padding:96px 40px;}
+.section-label{font-size:12px;font-weight:700;letter-spacing:3px;color:var(--blue);text-transform:uppercase;margin-bottom:16px;}
+.section-title{font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.section-sub{font-size:17px;color:var(--muted);max-width:520px;line-height:1.7;}
+.max{max-width:1100px;margin:0 auto;}
+
+/* SERVICES */
+#services{background:var(--card);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:56px;}
+.service-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:border-color .2s,transform .2s;position:relative;overflow:hidden;}
+.service-card:hover{border-color:var(--blue);transform:translateY(-4px);}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--purple));opacity:0;transition:opacity .2s;}
+.service-card:hover::before{opacity:1;}
+.service-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;}
+.icon-blue{background:rgba(37,99,235,.15);}
+.icon-purple{background:rgba(124,58,237,.15);}
+.icon-orange{background:rgba(249,115,22,.15);}
+.icon-green{background:rgba(16,185,129,.15);}
+.service-card h3{font-size:20px;font-weight:700;margin-bottom:10px;}
+.service-card p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:16px;}
+.service-price{font-size:13px;font-weight:700;color:var(--blue);}
+
+/* DEMO */
+#demo{background:var(--bg);}
+.demo-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.demo-text .tag{display:inline-block;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:#6EE7B7;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:24px;}
+.demo-visual{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;position:relative;}
+.demo-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.demo-dot{width:8px;height:8px;border-radius:50%;background:var(--green);}
+.demo-salon{font-weight:700;font-size:15px;}
+.demo-loc{font-size:12px;color:var(--muted);}
+.msg{padding:10px 14px;border-radius:10px;font-size:14px;max-width:80%;margin-bottom:10px;line-height:1.5;}
+.msg-user{background:var(--card2);color:var(--white);margin-left:auto;}
+.msg-ai{background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(124,58,237,.2));border:1px solid rgba(37,99,235,.25);color:var(--white);}
+.msg-time{font-size:10px;color:var(--muted);text-align:right;margin-top:2px;}
+.demo-badge{position:absolute;top:-12px;right:20px;background:linear-gradient(135deg,var(--green),#059669);color:white;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;}
+
+/* PRICING */
+#pricing{background:var(--card);}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:56px;}
+.price-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:36px;position:relative;}
+.price-card.featured{border-color:var(--blue);background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(124,58,237,.06));}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--blue),var(--purple));color:white;padding:6px 20px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap;}
+.price-name{font-size:16px;font-weight:700;color:var(--muted);margin-bottom:12px;letter-spacing:1px;}
+.price-amount{font-size:48px;font-weight:800;line-height:1;margin-bottom:6px;}
+.price-amount span{font-size:20px;font-weight:400;color:var(--muted);}
+.price-desc{font-size:14px;color:var(--muted);margin-bottom:24px;}
+.price-features{list-style:none;margin-bottom:32px;}
+.price-features li{font-size:14px;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.price-features li::before{content:'✓';color:var(--green);font-weight:700;}
+.price-cta{display:block;text-align:center;padding:14px;border-radius:8px;font-weight:700;font-size:15px;transition:all .2s;}
+.price-cta-outline{border:1.5px solid var(--border);color:var(--white);}
+.price-cta-outline:hover{border-color:var(--blue);}
+.price-cta-filled{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;}
+.price-cta-filled:hover{opacity:.9;}
+.price-cta-ghost{border:1.5px solid var(--orange);color:var(--orange);}
+.price-cta-ghost:hover{background:rgba(249,115,22,.1);}
+
+/* WHY */
+#why{background:var(--bg);}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:56px;}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;}
+.why-num{font-size:40px;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;}
+.why-card h4{font-size:17px;font-weight:700;margin-bottom:8px;}
+.why-card p{font-size:14px;color:var(--muted);line-height:1.6;}
+
+/* CTA BANNER */
+#cta{background:linear-gradient(135deg,rgba(37,99,235,.15),rgba(124,58,237,.15));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 40px;text-align:center;}
+#cta h2{font-size:clamp(28px,4vw,52px);font-weight:800;margin-bottom:16px;}
+#cta p{font-size:17px;color:var(--muted);margin-bottom:40px;}
+
+/* FOOTER */
+footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--border);}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
+.footer-logo{font-size:18px;font-weight:700;}
+.footer-logo span{background:linear-gradient(135deg,#2563EB,#7C3AED);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.footer-links{display:flex;gap:32px;}
+.footer-links a{color:var(--muted);font-size:14px;transition:color .2s;}
+.footer-links a:hover{color:var(--white);}
+.footer-copy{color:var(--muted);font-size:13px;}
+
+@media(max-width:768px){
+  nav{padding:16px 20px;}
+  .nav-links{display:none;}
+  .hero{padding:100px 20px 60px;}
+  .hero-stats{gap:24px;flex-wrap:wrap;}
+  section{padding:64px 20px;}
+  .demo-inner{grid-template-columns:1fr;}
+  footer{padding:40px 20px;}
+  .footer-inner{flex-direction:column;text-align:center;}
+  .footer-links{flex-wrap:wrap;justify-content:center;}
+}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a class="logo" href="#">Strand Performance</a>
-    <div class="nav-right">
-      <a class="nav-link" href="#demo">Live demo</a>
-      <a class="nav-link" href="#pricing">Pricing</a>
-      <a class="btn-nav" href="https://calendly.com/tobiass306/30min" target="_blank">Book a call</a>
+<nav>
+  <div class="logo">STRAND <span>PERFORMANCE</span></div>
+  <div class="nav-links">
+    <a href="#services" data-en="Services" data-sv="Tjänster">Services</a>
+    <a href="#demo" data-en="Demo" data-sv="Demo">Demo</a>
+    <a href="#pricing" data-en="Pricing" data-sv="Priser">Pricing</a>
+    <a href="#why" data-en="Why us" data-sv="Varför oss">Why us</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('sv')">SV</button>
     </div>
-  </nav>
+    <a href="https://calendly.com/tobiass306/30min" target="_blank" class="nav-cta" data-en="Book free call" data-sv="Boka gratis samtal">Book free call</a>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <div class="hero-tag">AI for salons &amp; clinics</div>
-      <h1>Your salon,<br>always <span class="italic">open.</span></h1>
-      <p class="hero-body">We build AI assistants that handle bookings, answer questions and follow up with customers — 24 hours a day, while you focus on what you do best.</p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="https://calendly.com/tobiass306/30min" target="_blank">Book a free call</a>
-        <a class="btn-ghost" href="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/06/24/10/20260624101543-VFNB2OSK.json" target="_blank">See it live</a>
-      </div>
-      <div class="hero-stats">
-        <div>
-          <div class="stat-val">5–10h</div>
-          <div class="stat-label">saved per week</div>
-        </div>
-        <div>
-          <div class="stat-val">24/7</div>
-          <div class="stat-label">always on</div>
-        </div>
-        <div>
-          <div class="stat-val">3 days</div>
-          <div class="stat-label">to go live</div>
-        </div>
-      </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⚡ <span data-en="Digital services that actually work" data-sv="Digitala tjänster som faktiskt fungerar">Digital services that actually work</span></div>
+    <h1 data-en="Grow your business<br>with <span class='grad'>smart digital<br>tools.</span>" data-sv="Väx ditt företag<br>med <span class='grad'>smarta digitala<br>verktyg.</span>">Grow your business<br>with <span class="grad">smart digital<br>tools.</span></h1>
+    <p data-en="AI chatbots, modern websites, social media, SEO and automation — built for businesses that want to grow without working more hours." data-sv="AI-chatbottar, moderna hemsidor, sociala medier, SEO och automatisering — byggt för företag som vill växa utan att jobba mer.">AI chatbots, modern websites, social media, SEO and automation — built for businesses that want to grow without working more hours.</p>
+    <div class="hero-btns">
+      <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-primary" data-en="Book a free 30-min call" data-sv="Boka ett gratis 30-minuterssamtal">Book a free 30-min call</a>
+      <a href="#demo" class="btn-secondary" data-en="See live demo →" data-sv="Se live-demo →">See live demo →</a>
     </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">24/7</div><div class="stat-label" data-en="Always online" data-sv="Alltid online">Always online</div></div>
+      <div><div class="stat-num">€500</div><div class="stat-label" data-en="Starting price" data-sv="Startpris">Starting price</div></div>
+      <div><div class="stat-num">3s</div><div class="stat-label" data-en="AI response time" data-sv="AI-svarstid">AI response time</div></div>
+    </div>
+  </div>
+</section>
 
-    <div class="hero-right">
-      <div class="demo-phone">
-        <div class="demo-topbar">
-          <div class="demo-avatar">✂️</div>
-          <div class="demo-info">
-            <div class="demo-name">Manipulate Hair Studio</div>
-            <div class="demo-status">AI Assistant · Online now</div>
+<!-- SERVICES -->
+<section id="services">
+  <div class="max">
+    <div class="section-label" data-en="WHAT WE DO" data-sv="VAD VI GÖR">WHAT WE DO</div>
+    <h2 class="section-title" data-en="Everything your business<br>needs to grow online." data-sv="Allt ditt företag<br>behöver för att växa online.">Everything your business<br>needs to grow online.</h2>
+    <p class="section-sub" data-en="We handle the digital side — you focus on running your business." data-sv="Vi hanterar det digitala — du fokuserar på att driva ditt företag.">We handle the digital side — you focus on running your business.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon icon-blue">🤖</div>
+        <h3 data-en="AI Chat Assistants" data-sv="AI-chatassistenter">AI Chat Assistants</h3>
+        <p data-en="Answer client questions, handle bookings and FAQs automatically — 24/7, even when you're asleep." data-sv="Svara på kundfrågor, hantera bokningar och vanliga frågor automatiskt — dygnet runt, även när du sover.">Answer client questions, handle bookings and FAQs automatically — 24/7, even when you're asleep.</p>
+        <div class="service-price" data-en="From €500 one-time" data-sv="Från €500 engångsbetalning">From €500 one-time</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-purple">🌐</div>
+        <h3 data-en="Modern Websites" data-sv="Moderna hemsidor">Modern Websites</h3>
+        <p data-en="Fast, beautiful, mobile-first websites that convert visitors into clients. Built to represent your brand properly." data-sv="Snabba, vackra, mobilanpassade hemsidor som omvandlar besökare till kunder. Byggda för att representera ditt varumärke ordentligt.">Fast, beautiful, mobile-first websites that convert visitors into clients. Built to represent your brand properly.</p>
+        <div class="service-price" data-en="Custom pricing" data-sv="Prissättning efter behov">Custom pricing</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-orange">📱</div>
+        <h3 data-en="Social Media" data-sv="Sociala medier">Social Media</h3>
+        <p data-en="Content creation, scheduling and management for Instagram, TikTok and Facebook — consistently, without you lifting a finger." data-sv="Innehållsskapande, schemaläggning och hantering för Instagram, TikTok och Facebook — konsekvent, utan att du behöver lyfta ett finger.">Content creation, scheduling and management for Instagram, TikTok and Facebook.</p>
+        <div class="service-price" data-en="Monthly retainer from €150" data-sv="Månadsretainer från €150">Monthly retainer from €150</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-green">🔍</div>
+        <h3>SEO</h3>
+        <p data-en="Get found on Google by the right people. We optimise your site and content so clients find you instead of your competitors." data-sv="Syns på Google av rätt personer. Vi optimerar din sida och ditt innehåll så att kunder hittar dig istället för dina konkurrenter.">Get found on Google by the right people. We optimise your site and content so clients find you instead of your competitors.</p>
+        <div class="service-price" data-en="Monthly retainer" data-sv="Månadsretainer">Monthly retainer</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-blue">⚡</div>
+        <h3 data-en="Business Automation" data-sv="Företagsautomatisering">Business Automation</h3>
+        <p data-en="Automate your emails, follow-ups, confirmations and workflows. Save hours every week without changing how you work." data-sv="Automatisera dina mejl, uppföljningar, bekräftelser och arbetsflöden. Spara timmar varje vecka utan att ändra hur du arbetar.">Automate your emails, follow-ups, confirmations and workflows. Save hours every week.</p>
+        <div class="service-price" data-en="From €500 setup" data-sv="Från €500 uppsättning">From €500 setup</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-purple">🧠</div>
+        <h3 data-en="AI Tools & Integration" data-sv="AI-verktyg & integration">AI Tools & Integration</h3>
+        <p data-en="We find, set up and connect the right AI tools for your business. No tech knowledge needed on your end." data-sv="Vi hittar, sätter upp och kopplar ihop rätt AI-verktyg för ditt företag. Ingen teknisk kunskap krävs från din sida.">We find, set up and connect the right AI tools for your business. No tech knowledge needed.</p>
+        <div class="service-price" data-en="Custom pricing" data-sv="Prissättning efter behov">Custom pricing</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section id="demo">
+  <div class="max">
+    <div class="demo-inner">
+      <div class="demo-text">
+        <div class="tag" data-en="✓ LIVE EXAMPLE" data-sv="✓ LEVANDE EXEMPEL">✓ LIVE EXAMPLE</div>
+        <h2 class="section-title" data-en="See it in action.<br>Right now." data-sv="Se det i praktiken.<br>Just nu.">See it in action.<br>Right now.</h2>
+        <p style="color:var(--muted);font-size:17px;line-height:1.7;margin-bottom:32px;" data-en="We built a live AI assistant for Manipulate Hair Studio in Sydney. It handles bookings, answers FAQs, and talks to clients 24/7 — with no one on the other end." data-sv="Vi byggde en live AI-assistent för Manipulate Hair Studio i Sydney. Den hanterar bokningar, svarar på vanliga frågor och pratar med kunder dygnet runt — utan att någon behöver vara tillgänglig.">We built a live AI assistant for Manipulate Hair Studio in Sydney. It handles bookings, answers FAQs, and talks to clients 24/7 — with no one on the other end.</p>
+        <a href="https://strandperformance.se" target="_blank" class="btn-primary" data-en="Test the demo →" data-sv="Testa demon →">Test the demo →</a>
+      </div>
+      <div class="demo-visual">
+        <div class="demo-badge">🟢 LIVE</div>
+        <div class="demo-header">
+          <div class="demo-dot"></div>
+          <div>
+            <div class="demo-salon">Manipulate Hair Studio</div>
+            <div class="demo-loc">Sydney, Australia</div>
           </div>
         </div>
-        <iframe
-          class="bot-frame"
-          src="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/06/24/10/20260624101543-VFNB2OSK.json"
-          title="Demo chatbot"
-          allow="clipboard-write"
-        ></iframe>
+        <div class="msg msg-user" data-en="Hi! Do you have any spots this Saturday?" data-sv="Hej! Har ni några lediga tider på lördag?">Hi! Do you have any spots this Saturday?</div>
+        <div class="msg-time" style="color:var(--muted);font-size:11px;text-align:right;margin-bottom:8px;">10:47 PM</div>
+        <div class="msg msg-ai" data-en="Hi! 👋 Yes, we have availability on Saturday. Could I get your name and which service you're looking for? We offer cuts, colour, and treatments." data-sv="Hej! 👋 Ja, vi har lediga tider på lördag. Kan jag få ditt namn och vilken tjänst du är intresserad av? Vi erbjuder klippning, färgning och behandlingar.">Hi! 👋 Yes, we have availability on Saturday. Could I get your name and which service you're looking for? We offer cuts, colour, and treatments.</div>
+        <div class="msg-time" style="color:var(--muted);font-size:11px;margin-bottom:8px;">10:47 PM · Answered in 3 seconds</div>
+        <div style="text-align:center;padding:16px 0 4px;color:var(--muted);font-size:13px;" data-en="Your salon could work exactly like this." data-sv="Din salong skulle kunna fungera precis så här.">Your salon could work exactly like this.</div>
       </div>
     </div>
-  </section>
-
-  <!-- DEMO MOBILE -->
-  <section class="demo-mobile-section" id="demo">
-    <p class="eyebrow">Live demo</p>
-    <h2>Try it yourself</h2>
-    <p>A real AI assistant built for a hair salon in Sydney</p>
-    <div class="demo-mobile-inner">
-      <div class="demo-mobile-bar">
-        <div class="demo-mobile-avatar">✂️</div>
-        <div style="margin-left:0.75rem">
-          <div style="color:#fff;font-size:0.8rem;font-weight:500">Manipulate Hair Studio</div>
-          <div style="color:#c9a96e;font-size:0.7rem">AI Assistant · Online</div>
-        </div>
-      </div>
-      <iframe
-        src="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/06/24/10/20260624101543-VFNB2OSK.json"
-        style="width:100%;height:500px;border:none;display:block"
-        title="Demo chatbot"
-        allow="clipboard-write"
-      ></iframe>
-    </div>
-  </section>
-
-  <!-- TRUST BAR -->
-  <div class="trust-section">
-    <span class="trust-label">Built for</span>
-    <span class="trust-item">Hair Salons</span>
-    <span class="trust-item">Beauty Clinics</span>
-    <span class="trust-item">Nail Studios</span>
-    <span class="trust-item">Skin & Laser Clinics</span>
-    <span class="trust-item">Barbershops</span>
-    <span class="trust-item">Wellness Spas</span>
   </div>
+</section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how-section">
-    <div class="section-header">
-      <div>
-        <div class="section-eyebrow">The process</div>
-        <h2>From zero<br>to live in 3 days</h2>
-      </div>
-      <p class="section-aside">No technical knowledge needed on your end. We handle everything — from building to installing. You just approve it and watch it work.</p>
-    </div>
-
-    <div class="steps-row">
-      <div class="step">
-        <span class="step-num">01</span>
-        <h3>Discovery call</h3>
-        <p>We spend 30 minutes learning about your business, your services, and what you want your AI to handle. No prep needed from you.</p>
-      </div>
-      <div class="step">
-        <span class="step-num">02</span>
-        <h3>We build it</h3>
-        <p>We build a fully custom AI assistant trained on your prices, services, hours and booking system. Takes 1 to 2 days.</p>
-      </div>
-      <div class="step">
-        <span class="step-num">03</span>
-        <h3>Goes live</h3>
-        <p>We install it directly on your website. From day one it handles customer questions and bookings — automatically.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="features-section">
-    <div class="section-header" style="max-width:1100px;margin-left:auto;margin-right:auto;margin-bottom:0">
-      <div>
-        <div class="section-eyebrow">What's included</div>
-        <h2>Everything your<br>front desk handles</h2>
-      </div>
-      <p class="section-aside">Your AI assistant works every hour of the day — answering questions, taking bookings and representing your brand perfectly.</p>
-    </div>
-
-    <div class="features-grid">
-      <div class="feature-card">
-        <span class="feature-icon">📅</span>
-        <h3>Appointment booking</h3>
-        <p>Customers book directly through the chat, connected to your existing booking system — no double-handling.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">💬</span>
-        <h3>Instant FAQ replies</h3>
-        <p>Prices, hours, parking, what to expect — answered instantly, any time of day or night.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">🌙</span>
-        <h3>24/7 availability</h3>
-        <p>Customers browsing at midnight get a real answer — not a voicemail or an unanswered form.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">🌍</span>
-        <h3>Multilingual</h3>
-        <p>The AI responds in the customer's own language automatically. No setup required.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">⚡</span>
-        <h3>Installed in 3 days</h3>
-        <p>We handle the entire setup and install it directly on your site. Zero technical work on your end.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">🔧</span>
-        <h3>Always up to date</h3>
-        <p>As your services and prices change, we update the AI. It always knows exactly what to say.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="pricing-section" id="pricing">
-    <div class="section-header">
-      <div>
-        <div class="section-eyebrow">Pricing</div>
-        <h2>Simple,<br>transparent pricing</h2>
-      </div>
-      <p class="section-aside">No hidden fees. No long-term contracts. Pay once for setup and own it — or add a retainer for ongoing care.</p>
-    </div>
-
+<!-- PRICING -->
+<section id="pricing">
+  <div class="max">
+    <div class="section-label" data-en="PRICING" data-sv="PRISER">PRICING</div>
+    <h2 class="section-title" data-en="Simple, transparent pricing." data-sv="Enkla, transparenta priser.">Simple, transparent pricing.</h2>
+    <p class="section-sub" data-en="No hidden fees. No long contracts. Start when you're ready." data-sv="Inga dolda avgifter. Inga långa kontrakt. Börja när du är redo.">No hidden fees. No long contracts. Start when you're ready.</p>
     <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="plan-name">Starter</div>
-        <div class="plan-price"><sup>€</sup>500</div>
-        <div class="plan-desc">One-time setup fee</div>
-        <ul class="plan-list">
-          <li>Custom AI chat assistant</li>
-          <li>Trained on your services & prices</li>
-          <li>Installed on your website</li>
-          <li>Booking & FAQ handling</li>
-          <li>30 days of support</li>
+
+      <div class="price-card">
+        <div class="price-name" data-en="AI CHAT — STARTER" data-sv="AI-CHAT — STARTER">AI CHAT — STARTER</div>
+        <div class="price-amount">€500<span data-en=" one-time" data-sv=" engång"> one-time</span></div>
+        <div class="price-desc" data-en="+ €150/month maintenance (optional)" data-sv="+ €150/månad underhåll (valfritt)">+ €150/month maintenance (optional)</div>
+        <ul class="price-features">
+          <li data-en="AI assistant on your website" data-sv="AI-assistent på din hemsida">AI assistant on your website</li>
+          <li data-en="Answers FAQs & takes bookings" data-sv="Svarar på frågor & tar bokningar">Answers FAQs & takes bookings</li>
+          <li data-en="Works 24/7 automatically" data-sv="Fungerar dygnet runt automatiskt">Works 24/7 automatically</li>
+          <li data-en="Setup in 5–7 days" data-sv="Driftsatt på 5–7 dagar">Setup in 5–7 days</li>
         </ul>
-        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-plan btn-plan-outline">Book a free call</a>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="price-cta price-cta-outline" data-en="Book a call" data-sv="Boka ett samtal">Book a call</a>
       </div>
 
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Most popular</div>
-        <div class="plan-name">Pro</div>
-        <div class="plan-price"><sup>€</sup>900</div>
-        <div class="plan-desc">One-time setup fee</div>
-        <ul class="plan-list">
-          <li>Everything in Starter</li>
-          <li>Email follow-up automation</li>
-          <li>Booking system integration</li>
-          <li>Multilingual responses</li>
-          <li>60 days of support</li>
+      <div class="price-card featured">
+        <div class="price-badge" data-en="MOST POPULAR" data-sv="MEST POPULÄR">MOST POPULAR</div>
+        <div class="price-name" data-en="AI CHAT — PRO" data-sv="AI-CHAT — PRO">AI CHAT — PRO</div>
+        <div class="price-amount">€900<span data-en=" one-time" data-sv=" engång"> one-time</span></div>
+        <div class="price-desc" data-en="+ €150/month maintenance (optional)" data-sv="+ €150/månad underhåll (valfritt)">+ €150/month maintenance (optional)</div>
+        <ul class="price-features">
+          <li data-en="Everything in Starter" data-sv="Allt i Starter">Everything in Starter</li>
+          <li data-en="Custom personality & tone" data-sv="Anpassad personlighet & ton">Custom personality & tone</li>
+          <li data-en="Booking system integration" data-sv="Integration med bokningssystem">Booking system integration</li>
+          <li data-en="Lead capture & follow-up" data-sv="Leadkapturering & uppföljning">Lead capture & follow-up</li>
+          <li data-en="Priority support" data-sv="Prioriterad support">Priority support</li>
         </ul>
-        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-plan btn-plan-gold">Book a free call</a>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="price-cta price-cta-filled" data-en="Book a call" data-sv="Boka ett samtal">Book a call</a>
       </div>
 
-      <div class="pricing-card">
-        <div class="plan-name">Retainer</div>
-        <div class="plan-price"><sup>€</sup>150<span style="font-size:1.2rem;font-weight:500">/mo</span></div>
-        <div class="plan-desc">After initial setup</div>
-        <ul class="plan-list">
-          <li>Monthly updates & improvements</li>
-          <li>Service & price updates</li>
-          <li>Performance monitoring</li>
-          <li>Priority support</li>
-          <li>New features as they launch</li>
+      <div class="price-card">
+        <div class="price-name" data-en="WEBSITES & MORE" data-sv="HEMSIDOR & MER">WEBSITES & MORE</div>
+        <div class="price-amount" style="font-size:36px;" data-en="Custom" data-sv="Anpassat">Custom</div>
+        <div class="price-desc" data-en="Websites, social media, SEO, automation" data-sv="Hemsidor, sociala medier, SEO, automatisering">Websites, social media, SEO, automation</div>
+        <ul class="price-features">
+          <li data-en="Modern website design" data-sv="Modern hemsidedesign">Modern website design</li>
+          <li data-en="Social media management" data-sv="Hantering av sociala medier">Social media management</li>
+          <li data-en="SEO & Google visibility" data-sv="SEO & synlighet på Google">SEO & Google visibility</li>
+          <li data-en="Business automation setup" data-sv="Uppsättning av företagsautomatisering">Business automation setup</li>
         </ul>
-        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-plan btn-plan-outline">Book a free call</a>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="price-cta price-cta-ghost" data-en="Get a quote" data-sv="Få en offert">Get a quote</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="max">
+    <div class="section-label" data-en="WHY STRAND" data-sv="VARFÖR STRAND">WHY STRAND</div>
+    <h2 class="section-title" data-en="Built for business owners,<br>not tech teams." data-sv="Byggt för företagare,<br>inte teknikteam.">Built for business owners,<br>not tech teams.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h4 data-en="No tech skills needed" data-sv="Ingen teknisk kunskap krävs">No tech skills needed</h4>
+        <p data-en="We handle everything. You just tell us what you want — we make it happen." data-sv="Vi hanterar allt. Du berättar bara vad du vill ha — vi ser till att det händer.">We handle everything. You just tell us what you want — we make it happen.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h4 data-en="Fast turnaround" data-sv="Snabb leverans">Fast turnaround</h4>
+        <p data-en="AI assistants live in 5–7 days. Websites in 2–3 weeks. No endless back-and-forth." data-sv="AI-assistenter live på 5–7 dagar. Hemsidor på 2–3 veckor. Inget evigt fram och tillbaka.">AI assistants live in 5–7 days. Websites in 2–3 weeks. No endless back-and-forth.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h4 data-en="One person you can actually reach" data-sv="En person du faktiskt kan nå">One person you can actually reach</h4>
+        <p data-en="You work directly with Tobias — not an agency, not a helpdesk. Real answers, fast." data-sv="Du jobbar direkt med Tobias — inte en byrå, inte en helpdesk. Riktiga svar, snabbt.">You work directly with Tobias — not an agency, not a helpdesk. Real answers, fast.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <h4 data-en="Results you can measure" data-sv="Resultat du kan mäta">Results you can measure</h4>
+        <p data-en="More bookings. More visibility. Less admin. We track what's working and adjust." data-sv="Fler bokningar. Mer synlighet. Mindre administration. Vi spårar vad som fungerar och justerar.">More bookings. More visibility. Less admin. We track what's working and adjust.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <p class="pricing-note">All packages start with a free 30-minute discovery call. No payment until you're happy with the plan.</p>
-  </section>
+<!-- CTA -->
+<section id="cta">
+  <div class="max" style="text-align:center;">
+    <h2 data-en="Ready to see what this<br>looks like for your business?" data-sv="Redo att se hur det här<br>ser ut för ditt företag?">Ready to see what this<br>looks like for your business?</h2>
+    <p data-en="30-minute call. No pitch, no pressure. Just an honest look at what's possible." data-sv="30-minuterssamtal. Ingen pitch, inget tryck. Bara en ärlig titt på vad som är möjligt.">30-minute call. No pitch, no pressure. Just an honest look at what's possible.</p>
+    <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-primary" style="display:inline-block;font-size:18px;padding:20px 48px;" data-en="Book your free call →" data-sv="Boka ditt gratis samtal →">Book your free call →</a>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <h2>Stop answering the same <em>questions</em> every day</h2>
-    <p>Book a free 30-minute call. We'll show you exactly what an AI assistant would look like for your specific business.</p>
-    <a class="btn-cta-big" href="https://calendly.com/tobiass306/30min" target="_blank">Book your free call</a>
-    <p class="cta-sub">No commitment &nbsp;·&nbsp; No credit card &nbsp;·&nbsp; Just a conversation</p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <a class="footer-logo" href="#">Strand Performance</a>
-    <div class="footer-right">
-      <span>Remote · Worldwide</span>
-      <a href="mailto:din@mejl.com">din@mejl.com</a>
-      <span>© 2026</span>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">STRAND <span>PERFORMANCE</span></div>
+      <div style="color:var(--muted);font-size:13px;margin-top:6px;" data-en="Åland, Finland · Serving clients globally" data-sv="Åland, Finland · Betjänar kunder globalt">Åland, Finland · Serving clients globally</div>
     </div>
-  </footer>
+    <div class="footer-links">
+      <a href="#services" data-en="Services" data-sv="Tjänster">Services</a>
+      <a href="#demo">Demo</a>
+      <a href="#pricing" data-en="Pricing" data-sv="Priser">Pricing</a>
+      <a href="https://calendly.com/tobiass306/30min" target="_blank" data-en="Book a call" data-sv="Boka samtal">Book a call</a>
+    </div>
+    <div class="footer-copy">© 2025 Strand Performance</div>
+  </div>
+</footer>
 
+<script>
+let currentLang='en';
+function setLang(lang){
+  currentLang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===lang));
+  document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+    const val=el.getAttribute('data-'+lang);
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val;}
+    else{el.innerHTML=val;}
+  });
+}
+// smooth nav links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+  });
+});
+</script>
 </body>
 </html>
