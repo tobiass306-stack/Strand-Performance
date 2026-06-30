@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Strand Performance — Digital Growth for Modern Businesses</title>
-<meta name="description" content="AI chatbots, websites, social media, SEO and automation for salons and businesses worldwide."/>
+<title>Strand Performance — Lead Generation & Digital Growth</title>
+<meta name="description" content="B2B lead generation, AI chatbots, modern websites and automation for businesses worldwide. Cold email-as-a-service from €1500/month."/>
 <style>
 :root{--bg:#050A14;--card:#0D1526;--card2:#111C30;--blue:#2563EB;--purple:#7C3AED;--orange:#F97316;--green:#10B981;--white:#FFFFFF;--muted:#8BA0BE;--border:#1E2E4A;--r:12px;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;}
 a{color:inherit;text-decoration:none;}
-
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,10,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 .logo{font-size:18px;font-weight:700;letter-spacing:1px;white-space:nowrap;}
@@ -32,15 +31,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 40px;height:64px;d
   .logo{font-size:15px;}
   .lang-btn{padding:6px 14px;font-size:13px;}
 }
-
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:120px 40px 80px;position:relative;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(37,99,235,.12),transparent 70%),radial-gradient(ellipse 50% 40% at 80% 70%,rgba(124,58,237,.08),transparent 60%);}
-.hero-content{max-width:680px;position:relative;z-index:1;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.3);color:#93C5FD;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:28px;letter-spacing:.5px;}
+.hero-content{max-width:760px;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:#6EE7B7;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:28px;letter-spacing:.5px;}
 .hero h1{font-size:clamp(36px,6vw,72px);font-weight:800;line-height:1.1;margin-bottom:24px;}
 .grad{background:linear-gradient(135deg,#60A5FA,#A78BFA,#FB923C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hero p{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:40px;line-height:1.7;}
+.hero p{font-size:18px;color:var(--muted);max-width:560px;margin-bottom:40px;line-height:1.7;}
 .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
 .btn-primary{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;padding:16px 32px;border-radius:10px;font-size:16px;font-weight:700;transition:transform .2s,opacity .2s;display:inline-block;}
 .btn-primary:hover{transform:translateY(-2px);opacity:.9;}
@@ -50,7 +48,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 40px;height:64px;d
 .stat-num{font-size:32px;font-weight:800;background:linear-gradient(135deg,#60A5FA,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .stat-label{font-size:13px;color:var(--muted);margin-top:2px;}
 @media(max-width:768px){.hero{padding:100px 20px 60px;}.hero-stats{gap:24px;}}
-
 /* SECTIONS */
 section{padding:96px 40px;}
 .section-label{font-size:12px;font-weight:700;letter-spacing:3px;color:var(--blue);text-transform:uppercase;margin-bottom:16px;}
@@ -58,7 +55,26 @@ section{padding:96px 40px;}
 .section-sub{font-size:17px;color:var(--muted);max-width:520px;line-height:1.7;}
 .max{max-width:1100px;margin:0 auto;}
 @media(max-width:768px){section{padding:64px 20px;}}
-
+/* FEATURED OUTREACH */
+#outreach{background:linear-gradient(135deg,rgba(37,99,235,.08),rgba(124,58,237,.08));border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.outreach-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+@media(max-width:900px){.outreach-grid{grid-template-columns:1fr;}}
+.outreach-text .tag{display:inline-block;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:#6EE7B7;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:24px;}
+.outreach-text h2{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.15;margin-bottom:18px;}
+.outreach-text p{color:var(--muted);font-size:17px;line-height:1.7;margin-bottom:24px;}
+.outreach-bullets{list-style:none;margin-bottom:32px;}
+.outreach-bullets li{padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;font-size:15px;color:var(--white);}
+.outreach-bullets li::before{content:'✓';color:var(--green);font-weight:700;font-size:18px;}
+.outreach-visual{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;}
+.metric-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);}
+.metric-row:last-child{border-bottom:none;}
+.metric-label{color:var(--muted);font-size:14px;}
+.metric-value{font-size:24px;font-weight:800;background:linear-gradient(135deg,#60A5FA,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.metric-meta{font-size:11px;color:var(--muted);text-align:right;margin-top:2px;}
+.outreach-cta-box{margin-top:24px;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:10px;text-align:center;}
+.outreach-cta-box .price{font-size:32px;font-weight:800;line-height:1;margin-bottom:6px;}
+.outreach-cta-box .price s{font-size:18px;color:var(--muted);font-weight:400;}
+.outreach-cta-box .price-sub{font-size:13px;color:var(--muted);margin-bottom:14px;}
 /* SERVICES */
 #services{background:var(--card);}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:56px;}
@@ -66,15 +82,17 @@ section{padding:96px 40px;}
 .sc:hover{border-color:var(--blue);transform:translateY(-4px);}
 .sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--purple));opacity:0;transition:opacity .2s;}
 .sc:hover::before{opacity:1;}
+.sc.feat::before{opacity:1;}
+.sc.feat{border-color:rgba(37,99,235,.4);}
 .si{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;}
 .ib{background:rgba(37,99,235,.15);}
 .ip{background:rgba(124,58,237,.15);}
 .io{background:rgba(249,115,22,.15);}
 .ig{background:rgba(16,185,129,.15);}
 .sc h3{font-size:20px;font-weight:700;margin-bottom:10px;}
+.sc .badge-new{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--purple));color:white;padding:3px 10px;border-radius:12px;font-size:10px;font-weight:700;letter-spacing:1px;margin-left:8px;vertical-align:middle;}
 .sc p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:16px;}
 .sp{font-size:13px;font-weight:700;color:var(--blue);}
-
 /* PORTFOLIO */
 #work{background:var(--card);}
 .work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:56px;}
@@ -87,13 +105,11 @@ section{padding:96px 40px;}
 .wc-desc{font-size:13px;color:var(--muted);flex:1;}
 .wc-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--blue);transition:gap .2s;}
 .wc-link:hover{gap:10px;}
-
 /* DEMO */
 #demo{background:var(--bg);}
 .demo-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
 @media(max-width:900px){.demo-inner{grid-template-columns:1fr;}}
 .demo-text .tag{display:inline-block;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:#6EE7B7;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:24px;}
-
 /* CHAT WIDGET */
 .chat-widget{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;position:relative;}
 .chat-head{background:var(--card2);padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
@@ -122,7 +138,6 @@ section{padding:96px 40px;}
 .quick-btns{display:flex;gap:8px;flex-wrap:wrap;padding:0 16px 14px;}
 .qb{background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:20px;font-size:12px;cursor:pointer;transition:all .2s;font-family:inherit;}
 .qb:hover{border-color:var(--blue);color:var(--white);}
-
 /* PRICING */
 #pricing{background:var(--card);}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:56px;}
@@ -132,6 +147,7 @@ section{padding:96px 40px;}
 .pname{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:12px;letter-spacing:1px;}
 .pamount{font-size:48px;font-weight:800;line-height:1;margin-bottom:6px;}
 .pamount s{font-size:20px;font-weight:400;color:var(--muted);}
+.pamount .per{font-size:18px;font-weight:500;color:var(--muted);}
 .pdesc{font-size:14px;color:var(--muted);margin-bottom:24px;}
 .pfeats{list-style:none;margin-bottom:32px;}
 .pfeats li{font-size:14px;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
@@ -143,21 +159,18 @@ section{padding:96px 40px;}
 .pcta-f:hover{opacity:.9;}
 .pcta-g{border:1.5px solid var(--orange);color:var(--orange);}
 .pcta-g:hover{background:rgba(249,115,22,.1);}
-
 /* WHY */
 #why{background:var(--bg);}
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:56px;}
-.wc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px;}
+.wc-why{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px;}
 .wnum{font-size:40px;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;}
-.wc h4{font-size:17px;font-weight:700;margin-bottom:8px;}
-.wc p{font-size:14px;color:var(--muted);line-height:1.6;}
-
+.wc-why h4{font-size:17px;font-weight:700;margin-bottom:8px;}
+.wc-why p{font-size:14px;color:var(--muted);line-height:1.6;}
 /* CTA */
 #cta{background:linear-gradient(135deg,rgba(37,99,235,.15),rgba(124,58,237,.15));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 40px;text-align:center;}
 #cta h2{font-size:clamp(26px,4vw,52px);font-weight:800;margin-bottom:16px;}
 #cta p{font-size:17px;color:var(--muted);margin-bottom:40px;}
 @media(max-width:768px){#cta{padding:60px 20px;}}
-
 /* FOOTER */
 footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--border);}
 .fi{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
@@ -170,15 +183,14 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
 </style>
 </head>
 <body>
-
 <nav>
   <div class="logo">STRAND <span>PERFORMANCE</span></div>
   <div class="nav-center">
+    <a href="#outreach" data-en="Outreach" data-sv="Outreach">Outreach</a>
     <a href="#services" data-en="Services" data-sv="Tjänster">Services</a>
     <a href="#work" data-en="Our Work" data-sv="Vårt arbete">Our Work</a>
     <a href="#demo" data-en="Demo" data-sv="Demo">Demo</a>
     <a href="#pricing" data-en="Pricing" data-sv="Priser">Pricing</a>
-    <a href="#why" data-en="Why us" data-sv="Varför oss">Why us</a>
   </div>
   <div class="nav-right">
     <div class="lang-toggle">
@@ -188,32 +200,87 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
     <a href="https://calendly.com/tobiass306/30min" target="_blank" class="nav-cta" data-en="Book free call" data-sv="Boka gratis">Book free call</a>
   </div>
 </nav>
-
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge">⚡ <span data-en="Digital services that actually work" data-sv="Digitala tjänster som faktiskt fungerar">Digital services that actually work</span></div>
-    <h1 data-en="Grow your business<br>with <span class='grad'>smart digital<br>tools.</span>" data-sv="Väx ditt företag<br>med <span class='grad'>smarta digitala<br>verktyg.</span>">Grow your business<br>with <span class="grad">smart digital<br>tools.</span></h1>
-    <p data-en="AI chatbots, modern websites, social media, SEO and automation — built for businesses that want to grow without working more hours." data-sv="AI-chatbottar, moderna hemsidor, sociala medier, SEO och automatisering — byggt för företag som vill växa utan att jobba mer.">AI chatbots, modern websites, social media, SEO and automation — built for businesses that want to grow without working more hours.</p>
+    <div class="hero-badge">🎯 <span data-en="5–15 booked B2B meetings per month — done for you" data-sv="5–15 bokade B2B-möten i månaden — gjort åt dig">5–15 booked B2B meetings per month — done for you</span></div>
+    <h1 data-en="Fill your calendar<br>with <span class='grad'>meetings that<br>actually close.</span>" data-sv="Fyll din kalender<br>med <span class='grad'>möten som<br>faktiskt stänger.</span>">Fill your calendar<br>with <span class="grad">meetings that<br>actually close.</span></h1>
+    <p data-en="Strand Outreach delivers 5–15 booked B2B meetings every month via personalised cold email — no calling, no manual prospecting. We also build AI chatbots, modern websites and digital automation." data-sv="Strand Outreach levererar 5–15 bokade B2B-möten varje månad via personaliserade kallmejl — ingen kallringning, ingen manuell prospektering. Vi bygger även AI-chatbottar, moderna hemsidor och digital automatisering.">Strand Outreach delivers 5–15 booked B2B meetings every month via personalised cold email — no calling, no manual prospecting. We also build AI chatbots, modern websites and digital automation.</p>
     <div class="hero-btns">
-      <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-primary" data-en="Book a free 30-min call" data-sv="Boka ett gratis 30-minuterssamtal">Book a free 30-min call</a>
-      <a href="#demo" class="btn-secondary" data-en="Try the live demo →" data-sv="Prova live-demon →">Try the live demo →</a>
+      <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-primary" data-en="Book a free 30-min call" data-sv="Boka ett gratis 30-min samtal">Book a free 30-min call</a>
+      <a href="#outreach" class="btn-secondary" data-en="See how it works →" data-sv="Se hur det fungerar →">See how it works →</a>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-num">24/7</div><div class="stat-label" data-en="Always online" data-sv="Alltid online">Always online</div></div>
-      <div><div class="stat-num">€500</div><div class="stat-label" data-en="Starting price" data-sv="Startpris">Starting price</div></div>
-      <div><div class="stat-num">3s</div><div class="stat-label" data-en="AI response time" data-sv="AI-svarstid">AI response time</div></div>
+      <div><div class="stat-num">5–15</div><div class="stat-label" data-en="Meetings / month" data-sv="Möten / månad">Meetings / month</div></div>
+      <div><div class="stat-num">24/7</div><div class="stat-label" data-en="Always working" data-sv="Alltid igång">Always working</div></div>
+      <div><div class="stat-num">€1,500</div><div class="stat-label" data-en="Per month" data-sv="Per månad">Per month</div></div>
+      <div><div class="stat-num">7 days</div><div class="stat-label" data-en="To first booked meeting" data-sv="Till första bokade möte">To first booked meeting</div></div>
     </div>
   </div>
 </section>
-
+<!-- FEATURED OUTREACH -->
+<section id="outreach">
+  <div class="max">
+    <div class="outreach-grid">
+      <div class="outreach-text">
+        <div class="tag" data-en="NEW · STRAND OUTREACH" data-sv="NYTT · STRAND OUTREACH">NEW · STRAND OUTREACH</div>
+        <h2 data-en="We do the cold email. You take the meetings." data-sv="Vi sköter kallmejlen. Du tar mötena.">We do the cold email. You take the meetings.</h2>
+        <p data-en="500–1,000 personalised emails go out every month from sender domains in your name. Replies are filtered. You only see prospects who actually want to talk — typically 5–15 booked meetings per month, depending on your ICP." data-sv="500–1 000 personaliserade mejl skickas varje månad från sender-domäner i ditt namn. Svar filtreras. Du ser bara prospekt som faktiskt vill prata — vanligtvis 5–15 bokade möten per månad, beroende på er ICP.">500–1,000 personalised emails go out every month from sender domains in your name. Replies are filtered. You only see prospects who actually want to talk — typically 5–15 booked meetings per month, depending on your ICP.</p>
+        <ul class="outreach-bullets">
+          <li data-en="Dedicated sender domains + warmup" data-sv="Dedikerade sender-domäner + warmup">Dedicated sender domains + warmup</li>
+          <li data-en="AI-personalised copy, A/B tested weekly" data-sv="AI-personaliserad copy, A/B-testad varje vecka">AI-personalised copy, A/B tested weekly</li>
+          <li data-en="Replies forwarded — you take the meeting" data-sv="Svar vidarebefordras — du tar mötet">Replies forwarded — you take the meeting</li>
+          <li data-en="Monthly reporting & optimisation" data-sv="Månadsrapportering & optimering">Monthly reporting & optimisation</li>
+          <li data-en="Multilingual: Swedish, English, German, Nordic languages" data-sv="Flerspråkig: svenska, engelska, tyska, nordiska språk">Multilingual: Swedish, English, German, Nordic languages</li>
+        </ul>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-primary" data-en="Book a 30-min strategy call" data-sv="Boka 30-min strategimöte">Book a 30-min strategy call</a>
+      </div>
+      <div class="outreach-visual">
+        <div style="font-size:13px;color:var(--muted);letter-spacing:2px;font-weight:700;margin-bottom:20px;" data-en="EXPECTED MONTHLY RESULTS" data-sv="FÖRVÄNTADE MÅNADSRESULTAT">EXPECTED MONTHLY RESULTS</div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label" data-en="Emails sent" data-sv="Mejl skickade">Emails sent</div>
+            <div class="metric-meta" data-en="From your domain" data-sv="Från din domän">From your domain</div>
+          </div>
+          <div class="metric-value">500–1,000</div>
+        </div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label" data-en="Open rate" data-sv="Öppningsfrekvens">Open rate</div>
+            <div class="metric-meta" data-en="Personalised cold email" data-sv="Personaliserade kallmejl">Personalised cold email</div>
+          </div>
+          <div class="metric-value">35–55%</div>
+        </div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label" data-en="Positive replies" data-sv="Positiva svar">Positive replies</div>
+            <div class="metric-meta" data-en="Filtered to you" data-sv="Filtrerade till dig">Filtered to you</div>
+          </div>
+          <div class="metric-value">15–40</div>
+        </div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label" data-en="Booked meetings" data-sv="Bokade möten">Booked meetings</div>
+            <div class="metric-meta" data-en="Calendar-ready" data-sv="Klart att stänga">Calendar-ready</div>
+          </div>
+          <div class="metric-value">5–15</div>
+        </div>
+        <div class="outreach-cta-box">
+          <div class="price">€1,500<span class="per" data-en="/month" data-sv="/månad">/month</span></div>
+          <div class="price-sub" data-en="+ €1,500 one-time setup · First 3 clients: 50% off (€750/mo)" data-sv="+ €1 500 i uppstart · Första 3 kunder: 50% rabatt (€750/mån)">+ €1,500 one-time setup · First 3 clients: 50% off (€750/mo)</div>
+          <a href="https://calendly.com/tobiass306/30min" target="_blank" class="pcta pcta-f" data-en="Claim a founding-client slot" data-sv="Säkra en grundkund-plats">Claim a founding-client slot</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- SERVICES -->
 <section id="services">
   <div class="max">
-    <div class="section-label" data-en="WHAT WE DO" data-sv="VAD VI GÖR">WHAT WE DO</div>
-    <h2 class="section-title" data-en="Everything your business needs to grow online." data-sv="Allt ditt företag behöver för att växa online.">Everything your business needs to grow online.</h2>
-    <p class="section-sub" data-en="We handle the digital side — you focus on running your business." data-sv="Vi hanterar det digitala — du fokuserar på att driva ditt företag.">We handle the digital side — you focus on running your business.</p>
+    <div class="section-label" data-en="WHAT ELSE WE DO" data-sv="VAD VI MER GÖR">WHAT ELSE WE DO</div>
+    <h2 class="section-title" data-en="Beyond outreach — everything else you need." data-sv="Utöver outreach — allt annat du behöver.">Beyond outreach — everything else you need.</h2>
+    <p class="section-sub" data-en="When clients need more than meetings, we handle the digital side end-to-end." data-sv="När kunder behöver mer än möten hanterar vi den digitala sidan från början till slut.">When clients need more than meetings, we handle the digital side end-to-end.</p>
     <div class="services-grid">
       <div class="sc"><div class="si ib">🤖</div><h3 data-en="AI Chat Assistants" data-sv="AI-chatassistenter">AI Chat Assistants</h3><p data-en="Answer client questions, handle bookings and FAQs automatically — 24/7, even when you're asleep." data-sv="Svara på kundfrågor, hantera bokningar och vanliga frågor automatiskt — dygnet runt, även när du sover.">Answer client questions, handle bookings and FAQs automatically — 24/7, even when you're asleep.</p><div class="sp" data-en="From €500 one-time" data-sv="Från €500 engångsbetalning">From €500 one-time</div></div>
       <div class="sc"><div class="si ip">🌐</div><h3 data-en="Modern Websites" data-sv="Moderna hemsidor">Modern Websites</h3><p data-en="Fast, beautiful, mobile-first websites that convert visitors into clients. Built to represent your brand properly." data-sv="Snabba, vackra, mobilanpassade hemsidor som omvandlar besökare till kunder.">Fast, beautiful, mobile-first websites that convert visitors into clients. Built to represent your brand properly.</p><div class="sp" data-en="Custom pricing" data-sv="Prissättning efter behov">Custom pricing</div></div>
@@ -224,7 +291,6 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
     </div>
   </div>
 </section>
-
 <!-- PORTFOLIO -->
 <section id="work">
   <div class="max">
@@ -232,7 +298,6 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
     <h2 class="section-title" data-en="Websites we've built." data-sv="Hemsidor vi har byggt.">Websites we've built.</h2>
     <p class="section-sub" data-en="Every site is designed for performance — fast, mobile-first, and built to convert visitors into clients." data-sv="Varje hemsida är designad för prestanda — snabb, mobilanpassad och byggd för att omvandla besökare till kunder.">Every site is designed for performance — fast, mobile-first, and built to convert visitors into clients.</p>
     <div class="work-grid">
-
       <div class="wc">
         <div class="wc-preview">
           <iframe src="https://www.blondelab.com/" loading="lazy" scrolling="no" title="Blonde Lab"></iframe>
@@ -243,7 +308,6 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
           <a href="https://www.blondelab.com/" target="_blank" class="wc-link">Visit site →</a>
         </div>
       </div>
-
       <div class="wc">
         <div class="wc-preview">
           <iframe src="https://www.brucestudios.com/nb" loading="lazy" scrolling="no" title="Bruce Studios"></iframe>
@@ -254,7 +318,6 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
           <a href="https://www.brucestudios.com/nb" target="_blank" class="wc-link">Visit site →</a>
         </div>
       </div>
-
       <div class="wc">
         <div class="wc-preview">
           <iframe src="https://meliva.ee/en/arstid-ja-spetsialistid" loading="lazy" scrolling="no" title="Meliva"></iframe>
@@ -265,7 +328,6 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
           <a href="https://meliva.ee/en/arstid-ja-spetsialistid" target="_blank" class="wc-link">Visit site →</a>
         </div>
       </div>
-
       <div class="wc">
         <div class="wc-preview">
           <iframe src="https://www.eriklarsen.dk/" loading="lazy" scrolling="no" title="Erik Larsen"></iframe>
@@ -276,11 +338,9 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
           <a href="https://www.eriklarsen.dk/" target="_blank" class="wc-link">Visit site →</a>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
 <!-- DEMO -->
 <section id="demo">
   <div class="max">
@@ -314,7 +374,6 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
     </div>
   </div>
 </section>
-
 <!-- PRICING -->
 <section id="pricing">
   <div class="max">
@@ -323,30 +382,32 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
     <p class="section-sub" data-en="No hidden fees. No long contracts. Start when you're ready." data-sv="Inga dolda avgifter. Inga långa kontrakt. Börja när du är redo.">No hidden fees. No long contracts. Start when you're ready.</p>
     <div class="pricing-grid">
       <div class="pc">
-        <div class="pname" data-en="AI CHAT — STARTER" data-sv="AI-CHAT — STARTER">AI CHAT — STARTER</div>
+        <div class="pname" data-en="AI CHAT ASSISTANT" data-sv="AI-CHATASSISTENT">AI CHAT ASSISTANT</div>
         <div class="pamount">€500<s data-en=" one-time" data-sv=" engång"> one-time</s></div>
-        <div class="pdesc" data-en="+ €150/month maintenance (optional)" data-sv="+ €150/mån underhåll (valfritt)">+ €150/month maintenance (optional)</div>
+        <div class="pdesc" data-en="Starter from €500 · Pro €900 · + €150/mo maintenance (optional)" data-sv="Starter från €500 · Pro €900 · + €150/mån underhåll (valfritt)">Starter from €500 · Pro €900 · + €150/mo maintenance (optional)</div>
         <ul class="pfeats">
           <li data-en="AI assistant on your website" data-sv="AI-assistent på din hemsida">AI assistant on your website</li>
           <li data-en="Answers FAQs & takes bookings" data-sv="Svarar på frågor & tar bokningar">Answers FAQs & takes bookings</li>
-          <li data-en="Works 24/7 automatically" data-sv="Fungerar dygnet runt">Works 24/7 automatically</li>
+          <li data-en="Custom personality & tone (Pro)" data-sv="Anpassad personlighet & ton (Pro)">Custom personality & tone (Pro)</li>
+          <li data-en="Booking system integration (Pro)" data-sv="Bokningssystem-integration (Pro)">Booking system integration (Pro)</li>
           <li data-en="Setup in 5–7 days" data-sv="Driftsatt på 5–7 dagar">Setup in 5–7 days</li>
         </ul>
         <a href="https://calendly.com/tobiass306/30min" target="_blank" class="pcta pcta-o" data-en="Book a call" data-sv="Boka ett samtal">Book a call</a>
       </div>
       <div class="pc feat">
         <div class="pbadge" data-en="MOST POPULAR" data-sv="MEST POPULÄR">MOST POPULAR</div>
-        <div class="pname" data-en="AI CHAT — PRO" data-sv="AI-CHAT — PRO">AI CHAT — PRO</div>
-        <div class="pamount">€900<s data-en=" one-time" data-sv=" engång"> one-time</s></div>
-        <div class="pdesc" data-en="+ €150/month maintenance (optional)" data-sv="+ €150/mån underhåll (valfritt)">+ €150/month maintenance (optional)</div>
+        <div class="pname" data-en="STRAND OUTREACH" data-sv="STRAND OUTREACH">STRAND OUTREACH</div>
+        <div class="pamount">€1,500<span class="per" data-en="/month" data-sv="/månad">/month</span></div>
+        <div class="pdesc" data-en="+ €1,500 setup · First 3 clients: 50% off (€750/mo)" data-sv="+ €1 500 i uppstart · Första 3 kunder: 50% rabatt (€750/mån)">+ €1,500 setup · First 3 clients: 50% off (€750/mo)</div>
         <ul class="pfeats">
-          <li data-en="Everything in Starter" data-sv="Allt i Starter">Everything in Starter</li>
-          <li data-en="Custom personality & tone" data-sv="Anpassad personlighet & ton">Custom personality & tone</li>
-          <li data-en="Booking system integration" data-sv="Integration med bokningssystem">Booking system integration</li>
-          <li data-en="Lead capture & follow-up" data-sv="Leadkapturering & uppföljning">Lead capture & follow-up</li>
-          <li data-en="Priority support" data-sv="Prioriterad support">Priority support</li>
+          <li data-en="500–1,000 personalised emails/mo" data-sv="500–1 000 personaliserade mejl/mån">500–1,000 personalised emails/mo</li>
+          <li data-en="5–15 booked meetings/mo target" data-sv="5–15 bokade möten/mån som mål">5–15 booked meetings/mo target</li>
+          <li data-en="Dedicated sender domains + warmup" data-sv="Dedikerade sender-domäner + warmup">Dedicated sender domains + warmup</li>
+          <li data-en="AI-personalised copy + weekly A/B" data-sv="AI-personaliserad copy + veckovis A/B">AI-personalised copy + weekly A/B</li>
+          <li data-en="Replies forwarded — you just close" data-sv="Svar vidarebefordras — du stänger bara">Replies forwarded — you just close</li>
+          <li data-en="Monthly reporting + optimisation" data-sv="Månadsrapport + optimering">Monthly reporting + optimisation</li>
         </ul>
-        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="pcta pcta-f" data-en="Book a call" data-sv="Boka ett samtal">Book a call</a>
+        <a href="https://calendly.com/tobiass306/30min" target="_blank" class="pcta pcta-f" data-en="Book a strategy call" data-sv="Boka strategimöte">Book a strategy call</a>
       </div>
       <div class="pc">
         <div class="pname" data-en="WEBSITES & MORE" data-sv="HEMSIDOR & MER">WEBSITES & MORE</div>
@@ -363,34 +424,32 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
     </div>
   </div>
 </section>
-
 <!-- WHY -->
 <section id="why">
   <div class="max">
     <div class="section-label" data-en="WHY STRAND" data-sv="VARFÖR STRAND">WHY STRAND</div>
     <h2 class="section-title" data-en="Built for business owners, not tech teams." data-sv="Byggt för företagare, inte teknikteam.">Built for business owners, not tech teams.</h2>
     <div class="why-grid">
-      <div class="wc"><div class="wnum">01</div><h4 data-en="No tech skills needed" data-sv="Ingen teknisk kunskap krävs">No tech skills needed</h4><p data-en="We handle everything. You just tell us what you want — we make it happen." data-sv="Vi hanterar allt. Du berättar bara vad du vill ha — vi ser till att det händer.">We handle everything. You just tell us what you want — we make it happen.</p></div>
-      <div class="wc"><div class="wnum">02</div><h4 data-en="Fast turnaround" data-sv="Snabb leverans">Fast turnaround</h4><p data-en="AI assistants live in 5–7 days. Websites in 2–3 weeks. No endless back-and-forth." data-sv="AI-assistenter live på 5–7 dagar. Hemsidor på 2–3 veckor.">AI assistants live in 5–7 days. Websites in 2–3 weeks. No endless back-and-forth.</p></div>
-      <div class="wc"><div class="wnum">03</div><h4 data-en="One person you can actually reach" data-sv="En person du faktiskt kan nå">One person you can actually reach</h4><p data-en="You work directly with Tobias — not an agency, not a helpdesk. Real answers, fast." data-sv="Du jobbar direkt med Tobias — inte en byrå, inte en helpdesk. Riktiga svar, snabbt.">You work directly with Tobias — not an agency, not a helpdesk. Real answers, fast.</p></div>
-      <div class="wc"><div class="wnum">04</div><h4 data-en="Results you can measure" data-sv="Resultat du kan mäta">Results you can measure</h4><p data-en="More bookings. More visibility. Less admin. We track what's working and adjust." data-sv="Fler bokningar. Mer synlighet. Mindre administration. Vi spårar vad som fungerar.">More bookings. More visibility. Less admin. We track what's working and adjust.</p></div>
+      <div class="wc-why"><div class="wnum">01</div><h4 data-en="We use it on ourselves" data-sv="Vi använder det själva">We use it on ourselves</h4><p data-en="Strand Outreach is the same system that fills our own calendar. You're buying something we live and breathe — not a theory." data-sv="Strand Outreach är samma system som fyller vår egen kalender. Du köper något vi lever med — inte en teori.">Strand Outreach is the same system that fills our own calendar. You're buying something we live and breathe — not a theory.</p></div>
+      <div class="wc-why"><div class="wnum">02</div><h4 data-en="Fast turnaround" data-sv="Snabb leverans">Fast turnaround</h4><p data-en="First booked meeting within 7 days of starting. AI chat assistants live in 5–7 days. Websites in 2–3 weeks. No back-and-forth." data-sv="Första bokade möte inom 7 dagar från start. AI-chatassistenter live på 5–7 dagar. Hemsidor på 2–3 veckor.">First booked meeting within 7 days of starting. AI chat assistants live in 5–7 days. Websites in 2–3 weeks. No back-and-forth.</p></div>
+      <div class="wc-why"><div class="wnum">03</div><h4 data-en="One person you can actually reach" data-sv="En person du faktiskt kan nå">One person you can actually reach</h4><p data-en="You work directly with Tobias — not an agency, not a helpdesk. Real answers, fast." data-sv="Du jobbar direkt med Tobias — inte en byrå, inte en helpdesk. Riktiga svar, snabbt.">You work directly with Tobias — not an agency, not a helpdesk. Real answers, fast.</p></div>
+      <div class="wc-why"><div class="wnum">04</div><h4 data-en="Results you can measure" data-sv="Resultat du kan mäta">Results you can measure</h4><p data-en="Meetings booked. Open rates. Reply rates. Conversion. Every month you see exactly what you got — no fluff." data-sv="Bokade möten. Öppningsfrekvens. Svarsfrekvens. Konvertering. Varje månad ser du exakt vad du fick — inget filler.">Meetings booked. Open rates. Reply rates. Conversion. Every month you see exactly what you got — no fluff.</p></div>
     </div>
   </div>
 </section>
-
 <!-- CTA -->
 <section id="cta">
   <div class="max">
-    <h2 data-en="Ready to see what this looks like for your business?" data-sv="Redo att se hur det här ser ut för ditt företag?">Ready to see what this looks like for your business?</h2>
-    <p data-en="30-minute call. No pitch, no pressure. Just an honest look at what's possible." data-sv="30-minuterssamtal. Ingen pitch, inget tryck. Bara en ärlig titt på vad som är möjligt.">30-minute call. No pitch, no pressure. Just an honest look at what's possible.</p>
+    <h2 data-en="Ready to fill your calendar?" data-sv="Redo att fylla din kalender?">Ready to fill your calendar?</h2>
+    <p data-en="30-minute call. No pitch, no pressure. Just an honest look at how Strand Outreach would work for your business." data-sv="30-minuters samtal. Ingen pitch, inget tryck. Bara en ärlig titt på hur Strand Outreach skulle fungera för ditt företag.">30-minute call. No pitch, no pressure. Just an honest look at how Strand Outreach would work for your business.</p>
     <a href="https://calendly.com/tobiass306/30min" target="_blank" class="btn-primary" style="font-size:18px;padding:20px 48px;" data-en="Book your free call →" data-sv="Boka ditt gratis samtal →">Book your free call →</a>
   </div>
 </section>
-
 <footer>
   <div class="fi">
-    <div><div class="fl">STRAND <span>PERFORMANCE</span></div><div style="color:var(--muted);font-size:13px;margin-top:6px;" data-en="Åland, Finland · Serving clients globally" data-sv="Åland, Finland · Betjänar kunder globalt">Åland, Finland · Serving clients globally</div></div>
+    <div><div class="fl">STRAND <span>PERFORMANCE</span></div><div style="color:var(--muted);font-size:13px;margin-top:6px;" data-en="Åland, Finland · Serving B2B clients across the Nordics & beyond" data-sv="Åland, Finland · Betjänar B2B-kunder i Norden och världen">Åland, Finland · Serving B2B clients across the Nordics & beyond</div></div>
     <div class="flinks">
+      <a href="#outreach" data-en="Outreach" data-sv="Outreach">Outreach</a>
       <a href="#services" data-en="Services" data-sv="Tjänster">Services</a>
       <a href="#work" data-en="Our Work" data-sv="Vårt arbete">Our Work</a>
       <a href="#demo">Demo</a>
@@ -400,7 +459,6 @@ footer{background:var(--card);padding:48px 40px;border-top:1px solid var(--borde
     <div style="color:var(--muted);font-size:13px;">© 2025 Strand Performance</div>
   </div>
 </footer>
-
 <script>
 // ── LANGUAGE ──────────────────────────────────────────────────────
 let lang='en';
@@ -416,7 +474,6 @@ function setLang(l){
   const inp=document.getElementById('chatInput');
   if(inp) inp.placeholder=l==='en'?'Type a message...':'Skriv ett meddelande...';
 }
-
 // ── CHAT ──────────────────────────────────────────────────────────
 const responses={
   en:{
@@ -440,7 +497,6 @@ const responses={
     default:"Tack för ditt meddelande! Kan du berätta lite mer om vad du letar efter — vill du boka, veta mer om priser eller något annat?"
   }
 };
-
 function getReply(msg){
   const m=msg.toLowerCase();
   const r=responses[lang];
@@ -452,7 +508,6 @@ function getReply(msg){
   if(/thank|tack|great|bra|perfect|perfekt/.test(m)) return r.thanks;
   return r.default;
 }
-
 function addMsg(text,who){
   const msgs=document.getElementById('chatMsgs');
   const now=new Date();
@@ -463,7 +518,6 @@ function addMsg(text,who){
   msgs.appendChild(wrap);
   msgs.scrollTop=msgs.scrollHeight;
 }
-
 function addTyping(){
   const msgs=document.getElementById('chatMsgs');
   const el=document.createElement('div');
@@ -474,13 +528,11 @@ function addTyping(){
   msgs.scrollTop=msgs.scrollHeight;
   return el;
 }
-
 function sendMsg(){
   const inp=document.getElementById('chatInput');
   const txt=inp.value.trim();
   if(!txt) return;
   inp.value='';
-  // hide quick buttons after first message
   document.getElementById('quickBtns').style.display='none';
   addMsg(txt,'user');
   const typing=addTyping();
@@ -489,7 +541,6 @@ function sendMsg(){
     addMsg(getReply(txt),'ai');
   },900+Math.random()*600);
 }
-
 function sendQuick(btn){
   const txt=btn.textContent;
   document.getElementById('quickBtns').style.display='none';
@@ -500,13 +551,9 @@ function sendQuick(btn){
     addMsg(getReply(txt),'ai');
   },900+Math.random()*600);
 }
-
-// init greeting
 window.addEventListener('load',()=>{
   setTimeout(()=>addMsg(responses[lang].greeting,'ai'),400);
 });
-
-// smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
