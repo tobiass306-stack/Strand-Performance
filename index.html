@@ -531,9 +531,11 @@ a{color:inherit}
       <h2 id="kH">Redo att synas?</h2>
       <p class="lead">Beskriv kort vad du behöver så återkommer vi inom 1–2 arbetsdagar med förslag och pris.</p>
       <div class="form-card">
-        <form class="form" id="form" novalidate>
+        <form class="form" id="form" action="https://formspree.io/f/xkokkjwl" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Ny förfrågan från strandperformance.se">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <div class="field"><label for="fn">Namn</label><input id="fn" name="namn" autocomplete="name"></div>
-          <div class="field"><label for="fe">E-post</label><input id="fe" name="epost" type="email" autocomplete="email" inputmode="email"></div>
+          <div class="field"><label for="fe">E-post</label><input id="fe" name="email" type="email" autocomplete="email" inputmode="email"></div>
           <div class="field"><label for="fp">Vilket paket är du intresserad av?</label>
             <select id="fp" name="paket">
               <option>Vet inte än</option>
@@ -895,15 +897,28 @@ new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){$$('.plan:not(.hide) .p
 $$('[data-pick]').forEach(a=>a.addEventListener('click',()=>{$('#fp').value=a.dataset.pick;}));
 
 // form
-$('#form').addEventListener('submit',e=>{
+$('#form').addEventListener('submit',async e=>{
   e.preventDefault();
-  const f=e.target, m=$('#msg');
+  const f=e.target, m=$('#msg'), btn=f.querySelector('button[type="submit"]');
   if(!f.namn.value.trim()){m.textContent='Skriv ditt namn så vi vet vem vi svarar.';f.namn.focus();return;}
-  if(!/^\S+@\S+\.\S+$/.test(f.epost.value)){m.textContent='Ange en e-postadress, till exempel namn@foretag.se.';f.epost.focus();return;}
-  const body=`Namn: ${f.namn.value}\nE-post: ${f.epost.value}\nPaket: ${f.paket.value}\n\n${f.meddelande.value}`;
-  const href='mailto:info@strandperformance.com?subject='+encodeURIComponent('Förfrågan från hemsidan')+'&body='+encodeURIComponent(body);
-  m.textContent='Din e-postapp öppnas med förfrågan ifylld. Öppnas inget? Mejla info@strandperformance.com.';
-  try{ if(!window.open(href,'_blank')) location.href=href; }catch(err){}
+  if(!/^\S+@\S+\.\S+$/.test(f.email.value)){m.textContent='Ange en e-postadress, till exempel namn@foretag.se.';f.email.focus();return;}
+  btn.disabled=true; const label=btn.textContent; btn.textContent='Skickar…'; m.textContent='';
+  try{
+    const res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
+    if(res.ok){
+      f.reset();
+      m.textContent='Tack! Förfrågan är skickad. Vi återkommer inom 1–2 arbetsdagar.';
+      btn.textContent='Skickat';
+      setTimeout(()=>{btn.textContent=label;btn.disabled=false;},4000);
+      return;
+    }
+    let detail='';
+    try{const j=await res.json(); if(j&&j.errors) detail=j.errors.map(x=>x.message).join(' ');}catch(_){}
+    m.textContent=(detail||'Förfrågan kunde inte skickas.')+' Mejla gärna info@strandperformance.com istället.';
+  }catch(err){
+    m.textContent='Ingen anslutning just nu. Försök igen eller mejla info@strandperformance.com.';
+  }
+  btn.textContent=label; btn.disabled=false;
 });
 })();
 </script>
