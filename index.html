@@ -3,625 +3,833 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Strand Performance — Vi bygger hemsidor som konverterar</title>
-<meta name="description" content="Strand Performance bygger snabba, moderna hemsidor för svenska och nordiska företag. Design, utveckling och lansering — fast pris, snabb leverans.">
+
+<meta name="description" content="Strand Performance bygger moderna, snabba hemsidor för företag i Sverige och Norden. Design, utveckling och lansering — tydliga priser och personlig kontakt.">
 <meta name="theme-color" content="#0a0e1a">
 
-<!-- Open Graph -->
 <meta property="og:title" content="Strand Performance — Vi bygger hemsidor som konverterar">
-<meta property="og:description" content="Moderna, snabba hemsidor för företag i Sverige och Norden. Fast pris, tydlig process, personlig kontakt.">
+<meta property="og:description" content="Moderna, snabba hemsidor för företag i Sverige och Norden. Tydlig process, fasta priser och personlig kontakt.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://strandperformance.se/">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234f7cff'/%3E%3Cstop offset='100%25' stop-color='%2335d0c8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%230a0e1a'/%3E%3Crect x='8' y='8' width='48' height='48' rx='12' fill='url(%23g)'/%3E%3Ctext x='32' y='41' font-family='Arial, sans-serif' font-weight='800' font-size='24' fill='%2306090f' text-anchor='middle'%3ESP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ==========================================================================
-   Strand Performance — stylesheet
-   Dark, minimalist, high-contrast. Single accent gradient (blue -> teal).
-   ========================================================================== */
-
 :root{
-  --bg:            #0a0e1a;
-  --bg-alt:        #0d1220;
-  --surface:       #11172a;
-  --surface-2:     #161d33;
-  --border:        #232b45;
-  --text:          #eef1fb;
-  --text-dim:      #9aa3c0;
-  --text-faint:    #6b7396;
-  --accent:        #4f7cff;
-  --accent-2:      #35d0c8;
-  --accent-grad:   linear-gradient(120deg, #4f7cff 0%, #35d0c8 100%);
-  --danger:        #ff6b6b;
-  --radius-sm:     8px;
-  --radius-md:     14px;
-  --radius-lg:     22px;
-  --shadow-lg:     0 20px 60px -20px rgba(0,0,0,0.6);
-  --container-w:   1160px;
-  --font-body:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-head:     'Space Grotesk', 'Inter', sans-serif;
+  --bg:#0a0e1a;
+  --bg-alt:#0d1220;
+  --surface:#11172a;
+  --surface-2:#161d33;
+  --border:#232b45;
+  --text:#eef1fb;
+  --text-dim:#9aa3c0;
+  --text-faint:#6b7396;
+  --accent:#4f7cff;
+  --accent-2:#35d0c8;
+  --accent-grad:linear-gradient(120deg,#4f7cff 0%,#35d0c8 100%);
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:22px;
+  --shadow-lg:0 20px 60px -20px rgba(0,0,0,.6);
+  --container-w:1160px;
+  --font-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-head:'Space Grotesk','Inter',sans-serif;
 }
 
-*, *::before, *::after{ box-sizing: border-box; }
+*,*::before,*::after{box-sizing:border-box}
 
-html{ scroll-behavior: smooth; }
+html{scroll-behavior:smooth}
 
 body{
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 
-img{ max-width: 100%; display: block; }
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
 
-a{ color: inherit; text-decoration: none; }
-
-h1, h2, h3, h4{
-  font-family: var(--font-head);
-  font-weight: 700;
-  line-height: 1.15;
-  margin: 0 0 0.5em;
-  letter-spacing: -0.01em;
+h1,h2,h3,h4{
+  font-family:var(--font-head);
+  font-weight:700;
+  line-height:1.15;
+  margin:0 0 .5em;
 }
 
-h1{ font-size: clamp(2.4rem, 5.5vw, 4.2rem); }
-h2{ font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
-h3{ font-size: 1.2rem; margin-bottom: 0.4em; }
+h1{font-size:clamp(2.4rem,5.5vw,4.2rem)}
+h2{font-size:clamp(1.8rem,3.2vw,2.6rem)}
+h3{font-size:1.2rem}
 
-p{ margin: 0 0 1em; color: var(--text-dim); }
+p{margin:0 0 1em;color:var(--text-dim)}
 
 .container{
-  max-width: var(--container-w);
-  margin: 0 auto;
-  padding: 0 24px;
+  max-width:var(--container-w);
+  margin:0 auto;
+  padding:0 24px;
 }
 
 .text-gradient{
-  background: var(--accent-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  background:var(--accent-grad);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
-/* subtle grain overlay for texture */
-.noise-overlay{
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 999;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+/* BUTTONS */
 
-/* ============ BUTTONS ============ */
 .btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 14px 26px;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  font-size: 0.95rem;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
-  white-space: nowrap;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:14px 26px;
+  border-radius:var(--radius-sm);
+  font-weight:600;
+  font-size:.95rem;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:.15s ease;
+  white-space:nowrap;
 }
-.btn:hover{ transform: translateY(-2px); }
+
+.btn:hover{transform:translateY(-2px)}
+
 .btn-primary{
-  background: var(--accent-grad);
-  color: #06090f;
+  background:var(--accent-grad);
+  color:#06090f;
 }
-.btn-primary:hover{ box-shadow: 0 10px 30px -8px rgba(79,124,255,0.55); }
-.btn-ghost{
-  background: transparent;
-  color: var(--text);
-  border-color: var(--border);
+
+.btn-primary:hover{
+  box-shadow:0 10px 30px -8px rgba(79,124,255,.55);
 }
-.btn-ghost:hover{ border-color: var(--accent); }
+
+.btn-ghost,
 .btn-outline{
-  background: transparent;
-  color: var(--text);
-  border-color: var(--border);
+  background:transparent;
+  color:var(--text);
+  border-color:var(--border);
 }
-.btn-outline:hover{ border-color: var(--accent-2); color: var(--accent-2); }
-.btn-sm{ padding: 10px 18px; font-size: 0.85rem; }
-.btn-block{ width: 100%; }
 
-/* ============ HEADER ============ */
+.btn-ghost:hover{border-color:var(--accent)}
+.btn-outline:hover{
+  border-color:var(--accent-2);
+  color:var(--accent-2);
+}
+
+.btn-sm{
+  padding:10px 18px;
+  font-size:.85rem;
+}
+
+.btn-block{width:100%}
+
+/* HEADER */
+
 .site-header{
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(10,14,26,0.75);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(10,14,26,.75);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
 }
+
 .header-inner{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:76px;
 }
+
 .logo{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-head);
-  font-weight: 600;
-  font-size: 1.05rem;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--font-head);
+  font-weight:600;
+  font-size:1.05rem;
 }
+
 .logo-mark{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px; height: 34px;
-  border-radius: 9px;
-  background: var(--accent-grad);
-  color: #06090f;
-  font-weight: 800;
-  font-size: 0.8rem;
-  letter-spacing: -0.02em;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:9px;
+  background:var(--accent-grad);
+  color:#06090f;
+  font-weight:800;
+  font-size:.8rem;
 }
-.logo-text strong{ font-weight: 700; color: var(--text); }
-.logo-text{ color: var(--text-dim); }
 
-.main-nav{ display: flex; gap: 32px; }
+.logo-text strong{font-weight:700}
+.logo-text{color:var(--text-dim)}
+
+.main-nav{
+  display:flex;
+  gap:32px;
+}
+
 .main-nav a{
-  color: var(--text-dim);
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: color .15s ease;
+  color:var(--text-dim);
+  font-size:.95rem;
+  font-weight:500;
+  transition:.15s;
 }
-.main-nav a:hover{ color: var(--text); }
 
-.header-actions{ display: flex; align-items: center; gap: 14px; }
+.main-nav a:hover{color:var(--text)}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
 
 .nav-toggle{
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 38px; height: 38px;
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  cursor: pointer;
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:38px;
+  height:38px;
+  background:transparent;
+  border:1px solid var(--border);
+  border-radius:8px;
+  cursor:pointer;
 }
-.nav-toggle span{
-  display: block;
-  width: 16px; height: 2px;
-  margin: 0 auto;
-  background: var(--text);
-  border-radius: 2px;
-  transition: transform .2s ease, opacity .2s ease;
-}
-.nav-toggle.is-open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
-.nav-toggle.is-open span:nth-child(2){ opacity: 0; }
-.nav-toggle.is-open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
 
-/* ============ HERO ============ */
+.nav-toggle span{
+  display:block;
+  width:16px;
+  height:2px;
+  margin:0 auto;
+  background:var(--text);
+  border-radius:2px;
+  transition:.2s;
+}
+
+/* HERO */
+
 .hero{
-  position: relative;
-  padding: 120px 0 90px;
-  overflow: hidden;
+  position:relative;
+  padding:120px 0 90px;
+  overflow:hidden;
 }
+
 .hero-glow{
-  position: absolute;
-  top: -220px; left: 50%;
-  transform: translateX(-50%);
-  width: 900px; height: 620px;
-  background: radial-gradient(closest-side, rgba(79,124,255,0.30), rgba(53,208,200,0.10) 55%, transparent 75%);
-  filter: blur(10px);
-  pointer-events: none;
+  position:absolute;
+  top:-220px;
+  left:50%;
+  transform:translateX(-50%);
+  width:900px;
+  height:620px;
+  background:radial-gradient(
+    closest-side,
+    rgba(79,124,255,.30),
+    rgba(53,208,200,.10) 55%,
+    transparent 75%
+  );
+  filter:blur(10px);
+  pointer-events:none;
 }
-.hero-inner{ position: relative; max-width: 820px; }
+
+.hero-inner{
+  position:relative;
+  max-width:820px;
+}
+
 .eyebrow{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--accent-2);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 20px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:.85rem;
+  font-weight:600;
+  color:var(--accent-2);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin-bottom:20px;
 }
+
 .eyebrow .dot{
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--accent-2);
-  box-shadow: 0 0 0 4px rgba(53,208,200,0.15);
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--accent-2);
+  box-shadow:0 0 0 4px rgba(53,208,200,.15);
 }
-.eyebrow-plain{ color: var(--accent-2); }
 
 .hero-lead{
-  font-size: 1.15rem;
-  max-width: 640px;
-  color: var(--text-dim);
+  font-size:1.15rem;
+  max-width:640px;
 }
+
 .hero-actions{
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin: 34px 0 56px;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin:34px 0 56px;
 }
+
 .hero-stats{
-  display: flex;
-  gap: 48px;
-  flex-wrap: wrap;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
+  display:flex;
+  gap:48px;
+  flex-wrap:wrap;
+  padding-top:32px;
+  border-top:1px solid var(--border);
 }
-.stat{ display: flex; flex-direction: column; }
+
+.stat{
+  display:flex;
+  flex-direction:column;
+}
+
 .stat-num{
-  font-family: var(--font-head);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--text);
+  font-family:var(--font-head);
+  font-size:1.6rem;
+  font-weight:700;
 }
-.stat-label{ font-size: 0.85rem; color: var(--text-faint); }
 
-/* ============ TRUST STRIP ============ */
+.stat-label{
+  font-size:.85rem;
+  color:var(--text-faint);
+}
+
+/* TRUST */
+
 .trust-strip{
-  padding: 28px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-alt);
+  padding:28px 0;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:var(--bg-alt);
 }
+
 .trust-label{
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-faint);
-  margin-bottom: 14px;
+  font-size:.8rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--text-faint);
+  margin-bottom:14px;
 }
+
 .trust-items{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px 28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px 28px;
 }
+
 .trust-items span{
-  font-family: var(--font-head);
-  font-weight: 600;
-  color: var(--text-dim);
-  font-size: 0.95rem;
+  font-family:var(--font-head);
+  font-weight:600;
+  color:var(--text-dim);
+  font-size:.95rem;
 }
 
-/* ============ SECTIONS ============ */
-.section{ padding: 100px 0; }
-.section-alt{ background: var(--bg-alt); }
-.section-head{ max-width: 640px; margin-bottom: 56px; }
-.section-lead{ font-size: 1.05rem; }
+/* SECTIONS */
 
-.grid{ display: grid; gap: 24px; }
-.grid-3{ grid-template-columns: repeat(3, 1fr); }
+.section{padding:100px 0}
+.section-alt{background:var(--bg-alt)}
 
-/* ============ SERVICE CARDS ============ */
+.section-head{
+  max-width:640px;
+  margin-bottom:56px;
+}
+
+.section-lead{font-size:1.05rem}
+
+.grid{
+  display:grid;
+  gap:24px;
+}
+
+.grid-3{
+  grid-template-columns:repeat(3,1fr);
+}
+
+/* CARDS */
+
 .card{
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 30px;
-  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:30px;
+  transition:.18s ease;
 }
+
 .card:hover{
-  transform: translateY(-4px);
-  border-color: rgba(79,124,255,0.4);
-  background: var(--surface-2);
+  transform:translateY(-4px);
+  border-color:rgba(79,124,255,.4);
+  background:var(--surface-2);
 }
+
 .card-icon{
-  width: 44px; height: 44px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 10px;
-  background: rgba(79,124,255,0.12);
-  color: var(--accent-2);
-  margin-bottom: 18px;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  background:rgba(79,124,255,.12);
+  color:var(--accent-2);
+  margin-bottom:18px;
 }
-.card-icon svg{ width: 22px; height: 22px; }
-.card p{ font-size: 0.95rem; margin-bottom: 0; }
 
-/* ============ PROCESS ============ */
+.card-icon svg{
+  width:22px;
+  height:22px;
+}
+
+.card p{
+  font-size:.95rem;
+  margin-bottom:0;
+}
+
+/* PROCESS */
+
 .process-list{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px 48px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:32px 48px;
 }
-.process-step{ display: flex; gap: 20px; }
+
+.process-step{
+  display:flex;
+  gap:20px;
+}
+
 .process-num{
-  font-family: var(--font-head);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--accent-2);
-  flex-shrink: 0;
-  line-height: 1;
-  padding-top: 4px;
+  font-family:var(--font-head);
+  font-size:1.6rem;
+  font-weight:700;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--accent-2);
+  flex-shrink:0;
+  line-height:1;
+  padding-top:4px;
 }
-.process-step p{ font-size: 0.95rem; margin-bottom: 0; }
 
-/* ============ PRICING ============ */
-.pricing-grid{ align-items: stretch; }
+.process-step p{
+  font-size:.95rem;
+  margin-bottom:0;
+}
+
+/* PRICING */
+
+.pricing-grid{
+  align-items:stretch;
+}
+
 .price-card{
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 34px 30px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:34px 30px;
+  display:flex;
+  flex-direction:column;
+  position:relative;
 }
+
 .price-card-featured{
-  background: var(--surface-2);
-  border-color: var(--accent);
-  box-shadow: var(--shadow-lg);
+  background:var(--surface-2);
+  border-color:var(--accent);
+  box-shadow:var(--shadow-lg);
 }
+
 .price-badge{
-  position: absolute;
-  top: -13px; left: 30px;
-  background: var(--accent-grad);
-  color: #06090f;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 5px 12px;
-  border-radius: 999px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  position:absolute;
+  top:-13px;
+  left:30px;
+  background:var(--accent-grad);
+  color:#06090f;
+  font-size:.75rem;
+  font-weight:700;
+  padding:5px 12px;
+  border-radius:999px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
 }
-.price-desc{ font-size: 0.9rem; min-height: 42px; }
+
+.price-desc{
+  font-size:.9rem;
+  min-height:48px;
+}
+
 .price-tag{
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin: 8px 0 26px;
-  flex-wrap: wrap;
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  margin:8px 0 26px;
+  flex-wrap:wrap;
 }
+
 .price-amount{
-  font-family: var(--font-head);
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text);
+  font-family:var(--font-head);
+  font-size:1.8rem;
+  font-weight:700;
+  color:var(--text);
 }
-.price-alt{ font-size: 0.9rem; color: var(--text-faint); }
+
+.price-period{
+  font-size:.9rem;
+  color:var(--text-faint);
+}
+
 .price-features{
-  list-style: none;
-  padding: 0;
-  margin: 0 0 30px;
-  flex-grow: 1;
+  list-style:none;
+  padding:0;
+  margin:0 0 30px;
+  flex-grow:1;
 }
+
 .price-features li{
-  position: relative;
-  padding-left: 26px;
-  margin-bottom: 12px;
-  font-size: 0.92rem;
-  color: var(--text-dim);
+  position:relative;
+  padding-left:26px;
+  margin-bottom:12px;
+  font-size:.92rem;
+  color:var(--text-dim);
 }
+
 .price-features li::before{
-  content: "";
-  position: absolute;
-  left: 0; top: 5px;
-  width: 16px; height: 16px;
-  border-radius: 5px;
-  background: rgba(53,208,200,0.15);
-  box-shadow: inset 0 0 0 1px rgba(53,208,200,0.4);
+  content:"";
+  position:absolute;
+  left:0;
+  top:5px;
+  width:16px;
+  height:16px;
+  border-radius:5px;
+  background:rgba(53,208,200,.15);
+  box-shadow:inset 0 0 0 1px rgba(53,208,200,.4);
 }
+
 .price-features li::after{
-  content: "";
-  position: absolute;
-  left: 4px; top: 8.5px;
-  width: 8px; height: 4px;
-  border-left: 2px solid var(--accent-2);
-  border-bottom: 2px solid var(--accent-2);
-  transform: rotate(-45deg);
+  content:"";
+  position:absolute;
+  left:4px;
+  top:8.5px;
+  width:8px;
+  height:4px;
+  border-left:2px solid var(--accent-2);
+  border-bottom:2px solid var(--accent-2);
+  transform:rotate(-45deg);
 }
+
 .price-footnote{
-  margin-top: 40px;
-  text-align: center;
-  font-size: 0.92rem;
-  color: var(--text-faint);
+  margin-top:40px;
+  text-align:center;
+  font-size:.92rem;
+  color:var(--text-faint);
 }
-.price-footnote strong{ color: var(--text); }
 
-/* ============ ABOUT ============ */
+.price-footnote strong{
+  color:var(--text);
+}
+
+/* ABOUT */
+
 .about-grid{
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 56px;
-  align-items: start;
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:56px;
+  align-items:start;
 }
+
 .about-points{
-  list-style: none;
-  padding: 0;
-  margin: 24px 0 0;
+  list-style:none;
+  padding:0;
+  margin:24px 0 0;
 }
+
 .about-points li{
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: 12px;
-  color: var(--text-dim);
-  font-size: 0.95rem;
+  position:relative;
+  padding-left:24px;
+  margin-bottom:12px;
+  color:var(--text-dim);
+  font-size:.95rem;
 }
+
 .about-points li::before{
-  content: "→";
-  position: absolute;
-  left: 0;
-  color: var(--accent-2);
-  font-weight: 700;
+  content:"→";
+  position:absolute;
+  left:0;
+  color:var(--accent-2);
+  font-weight:700;
 }
+
 .about-card{
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 30px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:30px;
 }
-.about-card dl{ margin: 18px 0 0; }
+
+.about-card dl{
+  margin:18px 0 0;
+}
+
 .about-card dl div{
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.9rem;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+  font-size:.9rem;
 }
-.about-card dl div:last-child{ border-bottom: none; }
-.about-card dt{ color: var(--text-faint); }
-.about-card dd{ margin: 0; font-weight: 600; text-align: right; }
 
-/* ============ FAQ ============ */
-.faq-list{ max-width: 760px; }
+.about-card dl div:last-child{
+  border-bottom:none;
+}
+
+.about-card dt{color:var(--text-faint)}
+.about-card dd{
+  margin:0;
+  font-weight:600;
+  text-align:right;
+}
+
+/* FAQ */
+
+.faq-list{
+  max-width:760px;
+}
+
 .faq-item{
-  border-bottom: 1px solid var(--border);
-  padding: 20px 0;
+  border-bottom:1px solid var(--border);
+  padding:20px 0;
 }
+
 .faq-item summary{
-  cursor: pointer;
-  font-family: var(--font-head);
-  font-weight: 600;
-  font-size: 1.02rem;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  cursor:pointer;
+  font-family:var(--font-head);
+  font-weight:600;
+  font-size:1.02rem;
+  list-style:none;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-.faq-item summary::-webkit-details-marker{ display: none; }
+
+.faq-item summary::-webkit-details-marker{
+  display:none;
+}
+
 .faq-item summary::after{
-  content: "+";
-  font-size: 1.4rem;
-  color: var(--accent-2);
-  font-weight: 400;
-  margin-left: 16px;
-  transition: transform .2s ease;
+  content:"+";
+  font-size:1.4rem;
+  color:var(--accent-2);
 }
-.faq-item[open] summary::after{ content: "–"; }
+
+.faq-item[open] summary::after{
+  content:"–";
+}
+
 .faq-item p{
-  margin: 14px 0 0;
-  font-size: 0.95rem;
-  max-width: 640px;
+  margin:14px 0 0;
+  font-size:.95rem;
+  max-width:640px;
 }
 
-/* ============ CTA / CONTACT ============ */
-.cta-section{ padding-bottom: 120px; }
+/* CTA */
+
+.cta-section{
+  padding-bottom:120px;
+}
+
 .cta-box{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 56px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:56px;
 }
-.contact-details{ margin-top: 26px; }
-.contact-link{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 600;
-  color: var(--text);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 4px;
-  transition: color .15s ease, border-color .15s ease;
-}
-.contact-link svg{ width: 18px; height: 18px; color: var(--accent-2); }
-.contact-link:hover{ color: var(--accent-2); border-color: var(--accent-2); }
 
-.contact-form{ display: flex; flex-direction: column; gap: 16px; }
-.form-row{ display: flex; flex-direction: column; gap: 6px; }
-.form-row label{ font-size: 0.85rem; color: var(--text-faint); }
+.contact-details{
+  margin-top:26px;
+}
+
+.contact-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
+  color:var(--text);
+  border-bottom:1px solid var(--border);
+  padding-bottom:4px;
+}
+
+.contact-link:hover{
+  color:var(--accent-2);
+  border-color:var(--accent-2);
+}
+
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.form-row{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.form-row label{
+  font-size:.85rem;
+  color:var(--text-faint);
+}
+
 .form-row input,
 .form-row select,
 .form-row textarea{
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  resize: vertical;
+  background:var(--bg-alt);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:12px 14px;
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:.95rem;
+  resize:vertical;
 }
+
 .form-row input:focus,
 .form-row select:focus,
 .form-row textarea:focus{
-  outline: none;
-  border-color: var(--accent);
+  outline:none;
+  border-color:var(--accent);
 }
+
 .form-note{
-  font-size: 0.85rem;
-  color: var(--accent-2);
-  min-height: 1.2em;
-  margin: 0;
+  font-size:.85rem;
+  color:var(--accent-2);
+  min-height:1.2em;
+  margin:0;
 }
 
-/* ============ FOOTER ============ */
+/* FOOTER */
+
 .site-footer{
-  border-top: 1px solid var(--border);
-  padding: 40px 0;
+  border-top:1px solid var(--border);
+  padding:40px 0;
 }
+
 .footer-inner{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.footer-nav{ display: flex; gap: 24px; }
-.footer-nav a{ color: var(--text-faint); font-size: 0.9rem; }
-.footer-nav a:hover{ color: var(--text); }
-.footer-copy{ color: var(--text-faint); font-size: 0.85rem; margin: 0; }
-
-/* ============ RESPONSIVE ============ */
-@media (max-width: 900px){
-  .grid-3{ grid-template-columns: repeat(2, 1fr); }
-  .process-list{ grid-template-columns: 1fr; }
-  .about-grid{ grid-template-columns: 1fr; }
-  .cta-box{ grid-template-columns: 1fr; padding: 40px 28px; }
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
 }
 
-@media (max-width: 700px){
-  .main-nav{ display: none; }
-  .nav-toggle{ display: flex; }
+.footer-nav{
+  display:flex;
+  gap:24px;
+}
 
-  .site-header.nav-open .main-nav{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 76px; left: 0; right: 0;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 24px 28px;
-    gap: 18px;
+.footer-nav a{
+  color:var(--text-faint);
+  font-size:.9rem;
+}
+
+.footer-nav a:hover{
+  color:var(--text);
+}
+
+.footer-copy{
+  color:var(--text-faint);
+  font-size:.85rem;
+  margin:0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+  .grid-3{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .grid-3{ grid-template-columns: 1fr; }
-  .hero{ padding: 96px 0 60px; }
-  .section{ padding: 70px 0; }
-  .hero-stats{ gap: 28px; }
+  .process-list{
+    grid-template-columns:1fr;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .cta-box{
+    grid-template-columns:1fr;
+    padding:40px 28px;
+  }
+}
+
+@media(max-width:700px){
+  .main-nav{
+    display:none;
+  }
+
+  .nav-toggle{
+    display:flex;
+  }
+
+  .site-header.nav-open .main-nav{
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    top:76px;
+    left:0;
+    right:0;
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    padding:20px 24px 28px;
+    gap:18px;
+  }
+
+  .grid-3{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:96px 0 60px;
+  }
+
+  .section{
+    padding:70px 0;
+  }
+
+  .hero-stats{
+    gap:28px;
+  }
+
+  .price-amount{
+    font-size:1.6rem;
+  }
 }
 </style>
 </head>
+
 <body>
 
-<div class="noise-overlay" aria-hidden="true"></div>
+<!-- HEADER -->
 
-<!-- ============ HEADER ============ -->
 <header class="site-header" id="top">
   <div class="container header-inner">
+
     <a href="#top" class="logo">
       <span class="logo-mark">SP</span>
       <span class="logo-text">Strand<strong>Performance</strong></span>
     </a>
 
-    <nav class="main-nav" id="main-nav">
+    <nav class="main-nav">
       <a href="#tjanster">Tjänster</a>
       <a href="#process">Så funkar det</a>
       <a href="#priser">Priser</a>
@@ -631,445 +839,796 @@ p{ margin: 0 0 1em; color: var(--text-dim); }
 
     <div class="header-actions">
       <a href="#kontakt" class="btn btn-primary btn-sm">Få en offert</a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Öppna meny" aria-expanded="false">
-        <span></span><span></span><span></span>
+
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Öppna meny"
+        aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
+
   </div>
 </header>
 
 <main>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="container hero-inner">
-      <p class="eyebrow"><span class="dot"></span> Webbdesign &amp; utveckling — Sverige &amp; Norden</p>
-      <h1>Vi bygger hemsidor <span class="text-gradient">som faktiskt konverterar.</span></h1>
-      <p class="hero-lead">
-        Strand Performance designar och utvecklar snabba, snygga och sökmotoranpassade
-        hemsidor för företag som vill synas — och sälja mer. Fast pris. Tydlig process.
-        Personlig kontakt med grundaren under hela projektet.
-      </p>
-      <div class="hero-actions">
-        <a href="#kontakt" class="btn btn-primary">Boka kostnadsfritt samtal</a>
-        <a href="#priser" class="btn btn-ghost">Se priser &amp; paket</a>
-      </div>
+<!-- HERO -->
 
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num">2–4</span>
-          <span class="stat-label">veckor till lansering</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">100%</span>
-          <span class="stat-label">mobilanpassat &amp; snabbt</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">Fast</span>
-          <span class="stat-label">pris — inga överraskningar</span>
-        </div>
-      </div>
+<section class="hero">
+
+  <div class="hero-glow"></div>
+
+  <div class="container hero-inner">
+
+    <p class="eyebrow">
+      <span class="dot"></span>
+      Webbdesign & utveckling — Sverige & Norden
+    </p>
+
+    <h1>
+      Vi bygger hemsidor
+      <span class="text-gradient">som faktiskt konverterar.</span>
+    </h1>
+
+    <p class="hero-lead">
+      Strand Performance designar och utvecklar snabba, snygga och
+      sökmotoranpassade hemsidor för företag som vill synas — och sälja mer.
+      Tydlig process. Professionell leverans. Personlig kontakt.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn btn-primary">
+        Boka kostnadsfritt samtal
+      </a>
+
+      <a href="#priser" class="btn btn-ghost">
+        Se priser & paket
+      </a>
     </div>
-  </section>
 
-  <!-- ============ LOGOS / TRUST ============ -->
-  <section class="trust-strip">
-    <div class="container">
-      <p class="trust-label">Byggt för branscher som</p>
-      <div class="trust-items">
-        <span>Konsultbolag</span>
-        <span>SaaS &amp; startups</span>
-        <span>Hantverkare</span>
-        <span>Butiker &amp; e-handel</span>
-        <span>Frilansare</span>
-        <span>Byråer</span>
+    <div class="hero-stats">
+
+      <div class="stat">
+        <span class="stat-num">2–4</span>
+        <span class="stat-label">veckor till lansering</span>
       </div>
+
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">mobilanpassat & snabbt</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat-num">Fast</span>
+        <span class="stat-label">pris — inga överraskningar</span>
+      </div>
+
     </div>
-  </section>
 
-  <!-- ============ TJÄNSTER ============ -->
-  <section class="section" id="tjanster">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow eyebrow-plain">Tjänster</p>
-        <h2>Allt du behöver för en hemsida som gör jobbet</h2>
-        <p class="section-lead">Från första skiss till lansering — och support efteråt.</p>
-      </div>
+  </div>
+</section>
 
-      <div class="grid grid-3">
-        <article class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16M4 12h16M4 19h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Webbdesign</h3>
-          <p>Skräddarsydd design som matchar ditt varumärke — inte ett generiskt mallutseende. Tydlig hierarki, bra läsbarhet, gjord för att leda besökare till att höra av sig.</p>
-        </article>
+<!-- TRUST -->
 
-        <article class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M8 9l-4 4 4 4M16 9l4 4-4 4M13 5l-2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3>Webbutveckling</h3>
-          <p>Snabb, ren kod utan onödigt krångel. Byggd för att prestera i Google, ladda blixtsnabbt och fungera perfekt på mobil, surfplatta och dator.</p>
-        </article>
+<section class="trust-strip">
+  <div class="container">
 
-        <article class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M3 9h18M3 9l1-4a2 2 0 012-2h12a2 2 0 012 2l1 4M3 9v9a2 2 0 002 2h14a2 2 0 002-2V9M9 13h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3>E-handel</h3>
-          <p>Webbutik med smidig kassa, produktsidor som säljer och koppling mot Klarna, Stripe eller Swish. Enkel att uppdatera själv.</p>
-        </article>
+    <p class="trust-label">Byggt för branscher som</p>
 
-        <article class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </div>
-          <h3>SEO-optimering</h3>
-          <p>Teknisk SEO, snabb laddningstid och rätt struktur från start, så att din sida faktiskt går att hitta på Google — inte bara snygg att titta på.</p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/></svg>
-          </div>
-          <h3>Underhåll &amp; support</h3>
-          <p>Vi sköter drift, säkerhetsuppdateringar och mindre ändringar efter lansering, så att du kan fokusera på din verksamhet.</p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H7l-3 3V4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-          </div>
-          <h3>Innehåll &amp; text</h3>
-          <p>Hjälp med säljande texter på svenska (eller andra nordiska språk) som förklarar vad du gör och varför kunden ska välja just dig.</p>
-        </article>
-      </div>
+    <div class="trust-items">
+      <span>Konsultbolag</span>
+      <span>SaaS & startups</span>
+      <span>Hantverkare</span>
+      <span>Butiker & e-handel</span>
+      <span>Frilansare</span>
+      <span>Byråer</span>
     </div>
-  </section>
 
-  <!-- ============ PROCESS ============ -->
-  <section class="section section-alt" id="process">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow eyebrow-plain">Så funkar det</p>
-        <h2>Fyra steg från idé till lansering</h2>
-        <p class="section-lead">Ingen krånglig process, inga otydliga fakturor. Du vet alltid vad som händer härnäst.</p>
-      </div>
+  </div>
+</section>
 
-      <div class="process-list">
-        <div class="process-step">
-          <span class="process-num">01</span>
-          <div>
-            <h3>Uppstartssamtal</h3>
-            <p>Vi går igenom vad du vill uppnå, vilka sidor du behöver och vilket paket som passar. Kostnadsfritt och utan krav.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="process-num">02</span>
-          <div>
-            <h3>Design</h3>
-            <p>Du får ett designförslag anpassat efter ditt varumärke innan någon kod skrivs — så det inte blir några överraskningar.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="process-num">03</span>
-          <div>
-            <h3>Utveckling</h3>
-            <p>Vi bygger sidan, kopplar formulär, betalningar och analys, och testar på alla enheter.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="process-num">04</span>
-          <div>
-            <h3>Lansering &amp; support</h3>
-            <p>Sidan går live. Du får en snabb genomgång, och vi finns kvar för uppdateringar och frågor efteråt.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- TJÄNSTER -->
 
-  <!-- ============ PRISER ============ -->
-  <section class="section" id="priser">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow eyebrow-plain">Priser</p>
-        <h2>Enkla paket, fasta priser</h2>
-        <p class="section-lead">Priser i SEK, ungefärligt euro-pris inom parentes. Behöver du något skräddarsytt? Hör av dig så tar vi fram ett förslag.</p>
-      </div>
+<section class="section" id="tjanster">
 
-      <div class="grid grid-3 pricing-grid">
+  <div class="container">
 
-        <article class="price-card">
-          <h3>Bas</h3>
-          <p class="price-desc">För dig som behöver en snygg, professionell sida snabbt.</p>
-          <div class="price-tag">
-            <span class="price-amount">4 900 kr</span>
-            <span class="price-alt">≈ 430 €</span>
-          </div>
-          <ul class="price-features">
-            <li>En sida (landningssida)</li>
-            <li>Responsiv design, mobil &amp; dator</li>
-            <li>Kontaktformulär</li>
-            <li>Grundläggande SEO-inställning</li>
-            <li>Leverans inom ~1 vecka</li>
-          </ul>
-          <a href="#kontakt" class="btn btn-outline btn-block">Kom igång</a>
-        </article>
+    <div class="section-head">
+      <p class="eyebrow">Tjänster</p>
 
-        <article class="price-card price-card-featured">
-          <span class="price-badge">Mest valda</span>
-          <h3>Business</h3>
-          <p class="price-desc">För företag som vill ha en komplett sajt med flera sidor.</p>
-          <div class="price-tag">
-            <span class="price-amount">12 900 kr</span>
-            <span class="price-alt">≈ 1 150 €</span>
-          </div>
-          <ul class="price-features">
-            <li>Upp till 6 sidor</li>
-            <li>Skräddarsydd design</li>
-            <li>Kontaktformulär &amp; bokning</li>
-            <li>SEO-optimerad struktur &amp; hastighet</li>
-            <li>Google Analytics/Search Console</li>
-            <li>Leverans inom ~2–3 veckor</li>
-          </ul>
-          <a href="#kontakt" class="btn btn-primary btn-block">Kom igång</a>
-        </article>
+      <h2>
+        Allt du behöver för en hemsida som gör jobbet
+      </h2>
 
-        <article class="card price-card">
-          <h3>Webshop &amp; skräddarsytt</h3>
-          <p class="price-desc">För e-handel eller mer avancerade lösningar.</p>
-          <div class="price-tag">
-            <span class="price-amount">från 24 900 kr</span>
-            <span class="price-alt">≈ från 2 200 €</span>
-          </div>
-          <ul class="price-features">
-            <li>Obegränsat antal produktsidor</li>
-            <li>Betalning via Klarna/Stripe/Swish</li>
-            <li>Skräddarsydd funktionalitet</li>
-            <li>Flerspråkigt om det behövs</li>
-            <li>Prissätts efter offert</li>
-          </ul>
-          <a href="#kontakt" class="btn btn-outline btn-block">Begär offert</a>
-        </article>
-      </div>
-
-      <p class="price-footnote">
-        Vill du bara ha löpande underhåll efter lansering? Vi erbjuder driftpaket från
-        <strong>495 kr/mån</strong> (≈ 45 €/mån) med uppdateringar, säkerhetskopior och mindre ändringar.
+      <p class="section-lead">
+        Från första skiss till lansering — och support efteråt.
       </p>
     </div>
-  </section>
 
-  <!-- ============ OM OSS ============ -->
-  <section class="section section-alt" id="om-oss">
-    <div class="container about-grid">
-      <div>
-        <p class="eyebrow eyebrow-plain">Om oss</p>
-        <h2>Byggt av en person som faktiskt svarar när du hör av dig</h2>
+    <div class="grid grid-3">
+
+      <article class="card">
+        <div class="card-icon">✦</div>
+        <h3>Webbdesign</h3>
         <p>
-          Strand Performance drivs av <strong>Tobias Sjöstrand</strong> och jobbar med företag i
-          Sverige och övriga Norden som vill ha en hemsida som ser proffsig ut och faktiskt
-          hjälper verksamheten att växa.
+          Skräddarsydd design som matchar ditt varumärke — inte ett
+          generiskt mallutseende. Tydlig struktur och design som leder
+          besökaren mot kontakt.
         </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">&lt;/&gt;</div>
+        <h3>Webbutveckling</h3>
         <p>
-          Inga stora byråarv, inga onödiga mellanhänder — du pratar direkt med den som bygger
-          din sida, från första samtalet till lansering och support efteråt.
+          Snabb, ren och modern utveckling byggd för att fungera perfekt
+          på mobil, surfplatta och dator.
         </p>
-        <ul class="about-points">
-          <li>Direktkontakt med grundaren genom hela projektet</li>
-          <li>Modern teknik — snabbt, säkert och lätt att underhålla</li>
-          <li>Erfarenhet av nordiska marknader och språk</li>
-          <li>Transparent kommunikation, inga dolda kostnader</li>
-        </ul>
-      </div>
-      <div class="about-card">
-        <h3>Snabba fakta</h3>
-        <dl>
-          <div><dt>Baserad i</dt><dd>Norden</dd></div>
-          <div><dt>Jobbar med</dt><dd>Sverige, Norge, Danmark, Finland</dd></div>
-          <div><dt>Språk</dt><dd>Svenska, engelska</dd></div>
-          <div><dt>Leveranstid</dt><dd>1–4 veckor beroende på paket</dd></div>
-        </dl>
-      </div>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">▣</div>
+        <h3>E-handel</h3>
+        <p>
+          Webbutiker med smidig köpupplevelse, produktsidor och
+          integrationer mot relevanta betalningslösningar.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">⌕</div>
+        <h3>SEO-optimering</h3>
+        <p>
+          Teknisk SEO, snabb laddning och rätt struktur från start så
+          att sidan kan hittas av rätt kunder.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">◉</div>
+        <h3>Underhåll & support</h3>
+        <p>
+          Vi sköter drift, uppdateringar och mindre ändringar efter
+          lansering så att du kan fokusera på verksamheten.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">✎</div>
+        <h3>Innehåll & text</h3>
+        <p>
+          Hjälp med tydliga och säljande texter som förklarar vad du
+          erbjuder och varför kunden ska välja dig.
+        </p>
+      </article>
+
     </div>
-  </section>
 
-  <!-- ============ FAQ ============ -->
-  <section class="section" id="faq">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow eyebrow-plain">Vanliga frågor</p>
-        <h2>Bra att veta innan vi börjar</h2>
-      </div>
+  </div>
+</section>
 
-      <div class="faq-list">
-        <details class="faq-item" open>
-          <summary>Hur lång tid tar det att få en hemsida?</summary>
-          <p>En sida i paketet Bas tar oftast omkring en vecka. Business-paketet tar vanligtvis 2–3 veckor, och webshopar/skräddarsydda projekt planeras individuellt beroende på omfattning.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Vad ingår i priset?</summary>
-          <p>Design, utveckling, mobilanpassning, grundläggande SEO och lansering ingår alltid. Domän och webbhotell tillkommer separat om du inte redan har det, men vi hjälper gärna till att sätta upp det.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Kan jag uppdatera sidan själv efteråt?</summary>
-          <p>Ja. Vi bygger sidor som är enkla att uppdatera själv, och visar dig hur. Vill du slippa tänka på det alls erbjuder vi även löpande driftpaket.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Jobbar ni bara med svenska företag?</summary>
-          <p>Nej — vi jobbar med företag i hela Norden, och kan leverera texter på svenska, norska, danska och engelska.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Vad händer om jag inte vet exakt vad jag vill ha?</summary>
-          <p>Helt normalt! Vi börjar med ett kostnadsfritt samtal där vi hjälper dig reda ut vad sidan behöver innehålla och vilket paket som passar bäst.</p>
-        </details>
-      </div>
+<!-- PROCESS -->
+
+<section class="section section-alt" id="process">
+
+  <div class="container">
+
+    <div class="section-head">
+      <p class="eyebrow">Så funkar det</p>
+
+      <h2>Fyra steg från idé till lansering</h2>
+
+      <p class="section-lead">
+        Ingen krånglig process. Du vet alltid vad som händer härnäst.
+      </p>
     </div>
-  </section>
 
-  <!-- ============ KONTAKT / CTA ============ -->
-  <section class="section cta-section" id="kontakt">
-    <div class="container">
-      <div class="cta-box">
-        <div class="cta-copy">
-          <p class="eyebrow eyebrow-plain">Kontakt</p>
-          <h2>Redo att få en hemsida som gör jobbet?</h2>
-          <p class="section-lead">
-            Beskriv kort vad du behöver så återkommer vi inom 1–2 arbetsdagar med förslag och pris.
-            Du kan också maila oss direkt.
+    <div class="process-list">
+
+      <div class="process-step">
+        <span class="process-num">01</span>
+        <div>
+          <h3>Uppstartssamtal</h3>
+          <p>
+            Vi går igenom verksamheten, målen och vilken typ av hemsida
+            som passar bäst. Kostnadsfritt och utan krav.
           </p>
-          <div class="contact-details">
-            <a href="mailto:info@strandperformance.com" class="contact-link">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3V6zm0 0l9 7 9-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              info@strandperformance.com
-            </a>
-          </div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <span class="process-num">02</span>
+        <div>
+          <h3>Design</h3>
+          <p>
+            Du får ett designförslag anpassat efter ditt varumärke innan
+            utvecklingen börjar.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <span class="process-num">03</span>
+        <div>
+          <h3>Utveckling</h3>
+          <p>
+            Vi bygger sidan, kopplar formulär och funktioner och testar
+            på olika enheter.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <span class="process-num">04</span>
+        <div>
+          <h3>Lansering & support</h3>
+          <p>
+            Sidan går live och vi finns kvar efter lanseringen för support,
+            drift och vidare ändringar.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- PRISER -->
+
+<section class="section" id="priser">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <p class="eyebrow">Priser</p>
+
+      <h2>Professionella hemsidor med tydlig prissättning</h2>
+
+      <p class="section-lead">
+        Alla priser anges i euro. Exakt pris fastställs efter projektets
+        omfattning och behov.
+      </p>
+
+    </div>
+
+    <div class="grid grid-3 pricing-grid">
+
+      <!-- ENKEL SAJT -->
+
+      <article class="price-card">
+
+        <h3>Enkel sajt</h3>
+
+        <p class="price-desc">
+          För företag som behöver en modern och professionell
+          presentationssajt som leder till kontakt.
+        </p>
+
+        <div class="price-tag">
+          <span class="price-amount">3 500–5 000 €</span>
         </div>
 
-        <form class="contact-form" id="contact-form">
-          <div class="form-row">
-            <label for="name">Namn</label>
-            <input type="text" id="name" name="name" required autocomplete="name">
-          </div>
-          <div class="form-row">
-            <label for="email">E-post</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
-          </div>
-          <div class="form-row">
-            <label for="package">Vilket paket är du intresserad av?</label>
-            <select id="package" name="package">
-              <option value="bas">Bas – 4 900 kr</option>
-              <option value="business" selected>Business – 12 900 kr</option>
-              <option value="webshop">Webshop / skräddarsytt</option>
-              <option value="vetinte">Vet inte än</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="message">Berätta kort om projektet</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Skicka förfrågan</button>
-          <p class="form-note" id="form-note"></p>
-        </form>
-      </div>
+        <ul class="price-features">
+          <li>Skräddarsydd design</li>
+          <li>Professionell företagswebb</li>
+          <li>Mobilanpassad</li>
+          <li>Grundläggande SEO</li>
+          <li>Kontaktformulär</li>
+          <li>Snabb och modern teknisk grund</li>
+          <li>Lansering</li>
+        </ul>
+
+        <a href="#kontakt" class="btn btn-outline btn-block">
+          Begär offert
+        </a>
+
+      </article>
+
+      <!-- SAJT MED FUNKTIONER -->
+
+      <article class="price-card price-card-featured">
+
+        <span class="price-badge">Mest valda</span>
+
+        <h3>Sajt med funktioner</h3>
+
+        <p class="price-desc">
+          För företag som behöver mer än en vanlig presentationssajt —
+          exempelvis bokning, medlemskap eller integrationer.
+        </p>
+
+        <div class="price-tag">
+          <span class="price-amount">6 500–9 000 €</span>
+        </div>
+
+        <ul class="price-features">
+          <li>Allt i Enkel sajt</li>
+          <li>Avancerad skräddarsydd design</li>
+          <li>Bokningsfunktioner</li>
+          <li>Medlemskap / inloggning</li>
+          <li>Integrationer</li>
+          <li>Avancerade formulär och flöden</li>
+          <li>Analys & optimering</li>
+        </ul>
+
+        <a href="#kontakt" class="btn btn-primary btn-block">
+          Begär offert
+        </a>
+
+      </article>
+
+      <!-- DRIFT -->
+
+      <article class="price-card">
+
+        <h3>Drift</h3>
+
+        <p class="price-desc">
+          För dig som vill slippa tänka på tekniken efter lanseringen.
+        </p>
+
+        <div class="price-tag">
+          <span class="price-amount">99 €</span>
+          <span class="price-period">/ mån</span>
+        </div>
+
+        <ul class="price-features">
+          <li>Hosting</li>
+          <li>Löpande uppdateringar</li>
+          <li>Backup</li>
+          <li>Övervakning</li>
+          <li>Teknisk support</li>
+        </ul>
+
+        <a href="#kontakt" class="btn btn-outline btn-block">
+          Välj drift
+        </a>
+
+      </article>
+
     </div>
-  </section>
+
+    <!-- PREMIUM DRIFT -->
+
+    <div style="
+      max-width:760px;
+      margin:50px auto 0;
+      padding:34px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--radius-md);
+      text-align:center;
+    ">
+
+      <p class="eyebrow" style="justify-content:center;">
+        För dig som vill ha en partner
+      </p>
+
+      <h3>Drift & ändringar — 240 €/mån</h3>
+
+      <p>
+        Allt som ingår i Drift, plus <strong>1 timmes ändringar per månad</strong>
+        och support inom 24 timmar. Perfekt för företag som vill kunna
+        skicka över löpande uppdateringar utan att tänka på tekniken själva.
+      </p>
+
+      <a href="#kontakt" class="btn btn-primary">
+        Prata med oss
+      </a>
+
+    </div>
+
+    <p class="price-footnote">
+      Behöver du något annat? Hör av dig så tar vi fram ett
+      <strong>skräddarsytt förslag</strong>.
+    </p>
+
+  </div>
+</section>
+
+<!-- OM OSS -->
+
+<section class="section section-alt" id="om-oss">
+
+  <div class="container about-grid">
+
+    <div>
+
+      <p class="eyebrow">Om oss</p>
+
+      <h2>
+        Byggt av en person som faktiskt svarar när du hör av dig
+      </h2>
+
+      <p>
+        Strand Performance drivs av <strong>Tobias Sjöstrand</strong>
+        och hjälper företag i Sverige och övriga Norden att bygga
+        moderna hemsidor som ser professionella ut och faktiskt
+        hjälper verksamheten att växa.
+      </p>
+
+      <p>
+        Inga stora byråarv, inga onödiga mellanhänder — du pratar
+        direkt med personen som bygger din sida.
+      </p>
+
+      <ul class="about-points">
+        <li>Direktkontakt genom hela projektet</li>
+        <li>Modern teknik — snabbt och säkert</li>
+        <li>Erfarenhet av nordiska marknader</li>
+        <li>Transparent kommunikation</li>
+        <li>Inga onödiga mellanhänder</li>
+      </ul>
+
+    </div>
+
+    <div class="about-card">
+
+      <h3>Snabba fakta</h3>
+
+      <dl>
+        <div>
+          <dt>Baserad i</dt>
+          <dd>Norden</dd>
+        </div>
+
+        <div>
+          <dt>Jobbar med</dt>
+          <dd>Sverige & Norden</dd>
+        </div>
+
+        <div>
+          <dt>Språk</dt>
+          <dd>Svenska & engelska</dd>
+        </div>
+
+        <div>
+          <dt>Leveranstid</dt>
+          <dd>2–4 veckor</dd>
+        </div>
+      </dl>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+
+<section class="section" id="faq">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <p class="eyebrow">Vanliga frågor</p>
+
+      <h2>Bra att veta innan vi börjar</h2>
+
+    </div>
+
+    <div class="faq-list">
+
+      <details class="faq-item" open>
+        <summary>Hur mycket kostar en hemsida?</summary>
+        <p>
+          En enkel presentationssajt kostar normalt 3 500–5 000 €.
+          Sidor med mer avancerade funktioner kostar normalt
+          6 500–9 000 €. Exakt pris beror på projektets omfattning.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Vad ingår i priset?</summary>
+        <p>
+          Design, utveckling, mobilanpassning, grundläggande SEO och
+          lansering ingår. Domän och externa tjänster kan tillkomma
+          beroende på projekt.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Kan jag uppdatera sidan själv?</summary>
+        <p>
+          Ja. Vi bygger lösningen så att du kan uppdatera relevant
+          innehåll själv. Vi erbjuder även drift och löpande ändringar
+          om du hellre vill att vi sköter det.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Vad ingår i Drift & ändringar?</summary>
+        <p>
+          Hosting, uppdateringar, backup och övervakning ingår.
+          Dessutom ingår en timmes ändringar varje månad samt
+          support inom 24 timmar.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Vad händer om jag inte vet exakt vad jag behöver?</summary>
+        <p>
+          Det är helt normalt. Vi börjar med ett kostnadsfritt samtal
+          där vi går igenom verksamheten och rekommenderar rätt
+          lösning.
+        </p>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- KONTAKT -->
+
+<section class="section cta-section" id="kontakt">
+
+  <div class="container">
+
+    <div class="cta-box">
+
+      <div class="cta-copy">
+
+        <p class="eyebrow">Kontakt</p>
+
+        <h2>
+          Redo att få en hemsida som gör jobbet?
+        </h2>
+
+        <p class="section-lead">
+          Beskriv kort vad du behöver så återkommer vi med förslag
+          och pris. Du kan också maila oss direkt.
+        </p>
+
+        <div class="contact-details">
+
+          <a
+            href="mailto:info@strandperformance.com"
+            class="contact-link">
+            ✉ info@strandperformance.com
+          </a>
+
+        </div>
+
+      </div>
+
+      <form class="contact-form" id="contact-form">
+
+        <div class="form-row">
+          <label for="name">Namn</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            autocomplete="name">
+        </div>
+
+        <div class="form-row">
+          <label for="email">E-post</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email">
+        </div>
+
+        <div class="form-row">
+
+          <label for="package">
+            Vad är du intresserad av?
+          </label>
+
+          <select id="package" name="package">
+
+            <option value="enkel">
+              Enkel sajt — 3 500–5 000 €
+            </option>
+
+            <option value="funktioner" selected>
+              Sajt med funktioner — 6 500–9 000 €
+            </option>
+
+            <option value="drift">
+              Drift — 99 €/mån
+            </option>
+
+            <option value="drift-andringar">
+              Drift & ändringar — 240 €/mån
+            </option>
+
+            <option value="vetinte">
+              Vet inte än
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-row">
+
+          <label for="message">
+            Berätta kort om projektet
+          </label>
+
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            required></textarea>
+
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary btn-block">
+          Skicka förfrågan
+        </button>
+
+        <p class="form-note" id="form-note"></p>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>
 
 </main>
 
-<!-- ============ FOOTER ============ -->
+<!-- FOOTER -->
+
 <footer class="site-footer">
+
   <div class="container footer-inner">
+
     <a href="#top" class="logo">
       <span class="logo-mark">SP</span>
       <span class="logo-text">Strand<strong>Performance</strong></span>
     </a>
+
     <nav class="footer-nav">
       <a href="#tjanster">Tjänster</a>
       <a href="#priser">Priser</a>
       <a href="#om-oss">Om oss</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <p class="footer-copy">© <span id="year"></span> Strand Performance. Alla rättigheter förbehållna.</p>
+
+    <p class="footer-copy">
+      © <span id="year"></span> Strand Performance.
+      Alla rättigheter förbehållna.
+    </p>
+
   </div>
+
 </footer>
 
 <script>
-// ============================================================
-// Strand Performance — site scripts
-// Mobile nav toggle, footer year, and a simple contact-form handler.
-// ============================================================
+document.addEventListener("DOMContentLoaded", function(){
 
-document.addEventListener('DOMContentLoaded', function () {
+  /* Mobile navigation */
 
-  // --- Mobile navigation toggle ---
-  var header = document.querySelector('.site-header');
-  var toggle = document.getElementById('nav-toggle');
+  const header = document.querySelector(".site-header");
+  const toggle = document.getElementById("nav-toggle");
 
-  if (toggle && header) {
-    toggle.addEventListener('click', function () {
-      var isOpen = header.classList.toggle('nav-open');
-      toggle.classList.toggle('is-open', isOpen);
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      toggle.setAttribute('aria-label', isOpen ? 'Stäng meny' : 'Öppna meny');
-    });
+  if(toggle && header){
 
-    // Close the mobile menu after clicking a nav link
-    document.querySelectorAll('.main-nav a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        header.classList.remove('nav-open');
-        toggle.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
+    toggle.addEventListener("click", function(){
 
-  // --- Footer year ---
-  var yearEl = document.getElementById('year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+      const isOpen = header.classList.toggle("nav-open");
 
-  // --- Contact form ---
-  // NOTE: This is a static site with no backend. The form below does not
-  // send email on its own. To make it work, either:
-  //   1) Point the form's submission at a service like Formspree
-  //      (https://formspree.io) or EmailJS, and remove/adjust the JS
-  //      below, or
-  //   2) Keep this JS, which currently opens the visitor's email client
-  //      via a mailto: link pre-filled with what they typed.
-  var form = document.getElementById('contact-form');
-  var note = document.getElementById('form-note');
-
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var name = form.name.value.trim();
-      var email = form.email.value.trim();
-      var pkg = form.package.options[form.package.selectedIndex].text;
-      var message = form.message.value.trim();
-
-      var subject = encodeURIComponent('Offertförfrågan från ' + name + ' (' + pkg + ')');
-      var body = encodeURIComponent(
-        'Namn: ' + name + '\n' +
-        'E-post: ' + email + '\n' +
-        'Paket: ' + pkg + '\n\n' +
-        'Meddelande:\n' + message
+      toggle.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
       );
 
-      window.location.href = 'mailto:info@strandperformance.com?subject=' + subject + '&body=' + body;
+      toggle.setAttribute(
+        "aria-label",
+        isOpen ? "Stäng meny" : "Öppna meny"
+      );
 
-      if (note) {
-        note.textContent = 'Öppnar din e-postklient — skicka iväg mejlet så hör vi av oss så snart vi kan!';
-      }
     });
+
+    document.querySelectorAll(".main-nav a").forEach(function(link){
+
+      link.addEventListener("click", function(){
+
+        header.classList.remove("nav-open");
+
+        toggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      });
+
+    });
+
+  }
+
+  /* Footer year */
+
+  const year = document.getElementById("year");
+
+  if(year){
+    year.textContent = new Date().getFullYear();
+  }
+
+  /* Contact form */
+
+  const form = document.getElementById("contact-form");
+  const note = document.getElementById("form-note");
+
+  if(form){
+
+    form.addEventListener("submit", function(e){
+
+      e.preventDefault();
+
+      const name =
+        form.name.value.trim();
+
+      const email =
+        form.email.value.trim();
+
+      const pkg =
+        form.package.options[
+          form.package.selectedIndex
+        ].text;
+
+      const message =
+        form.message.value.trim();
+
+      const subject =
+        encodeURIComponent(
+          "Offertförfrågan från " +
+          name +
+          " (" +
+          pkg +
+          ")"
+        );
+
+      const body =
+        encodeURIComponent(
+          "Namn: " +
+          name +
+          "\n" +
+          "E-post: " +
+          email +
+          "\n" +
+          "Intresserad av: " +
+          pkg +
+          "\n\n" +
+          "Meddelande:\n" +
+          message
+        );
+
+      window.location.href =
+        "mailto:info@strandperformance.com?subject=" +
+        subject +
+        "&body=" +
+        body;
+
+      if(note){
+
+        note.textContent =
+          "Öppnar din e-postklient — skicka iväg mejlet så hör vi av oss!";
+
+      }
+
+    });
+
   }
 
 });
 </script>
+
 </body>
 </html>
