@@ -1,2216 +1,911 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Strand Performance — Vi bygger hemsidor som konverterar</title>
-
-<meta name="description" content="Strand Performance bygger snabba, moderna hemsidor för svenska och nordiska företag. Design, utveckling och lansering — fast pris, snabb leverans.">
-
-<meta name="theme-color" content="#0a0e1a">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Strand Performance — Vi bygger hemsidor som konverterar">
-<meta property="og:description" content="Moderna, snabba hemsidor för företag i Sverige och Norden. Fast pris, tydlig process, personlig kontakt.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Strand Performance – hemsidor som konverterar</title>
+<meta name="description" content="Strand Performance bygger snabba, moderna hemsidor för företag i Sverige och Norden. Fast pris, tydlig process, personlig kontakt.">
+<meta name="theme-color" content="#060B14">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://strandperformance.se/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://strandperformance.se/">
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234f7cff'/%3E%3Cstop offset='100%25' stop-color='%2335d0c8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%230a0e1a'/%3E%3Crect x='8' y='8' width='48' height='48' rx='12' fill='url(%23g)'/%3E%3Ctext x='32' y='41' font-family='Arial, sans-serif' font-weight='800' font-size='24' fill='%2306090f' text-anchor='middle'%3ESP%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Strand Performance – hemsidor som konverterar">
+<meta property="og:description" content="Moderna, snabba hemsidor för företag i Sverige och Norden. Fast pris, tydlig process, personlig kontakt.">
+<meta property="og:image" content="https://strandperformance.se/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
 <style>
-
-/* ==========================================================================
-   Strand Performance
-   ========================================================================== */
-
 :root{
-  --bg:            #0a0e1a;
-  --bg-alt:        #0d1220;
-  --surface:       #11172a;
-  --surface-2:     #161d33;
-  --border:        #232b45;
-  --text:          #eef1fb;
-  --text-dim:      #9aa3c0;
-  --text-faint:    #6b7396;
-  --accent:        #4f7cff;
-  --accent-2:      #35d0c8;
-  --accent-grad:   linear-gradient(120deg, #4f7cff 0%, #35d0c8 100%);
-  --danger:        #ff6b6b;
-
-  --radius-sm:     8px;
-  --radius-md:     14px;
-  --radius-lg:     22px;
-
-  --shadow-lg:     0 20px 60px -20px rgba(0,0,0,0.6);
-
-  --container-w:   1160px;
-
-  --font-body:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-head:     'Space Grotesk', 'Inter', sans-serif;
-}
-
-*,
-*::before,
-*::after{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-
-img{
-  max-width:100%;
-  display:block;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-h1,
-h2,
-h3,
-h4{
-  font-family:var(--font-head);
-  font-weight:700;
-  line-height:1.15;
-  margin:0 0 .5em;
-  letter-spacing:-.01em;
-}
-
-h1{
-  font-size:clamp(2.4rem,5.5vw,4.2rem);
-}
-
-h2{
-  font-size:clamp(1.8rem,3.2vw,2.6rem);
-}
-
-h3{
-  font-size:1.2rem;
-  margin-bottom:.4em;
-}
-
-p{
-  margin:0 0 1em;
-  color:var(--text-dim);
-}
-
-.container{
-  max-width:var(--container-w);
-  margin:0 auto;
-  padding:0 24px;
-}
-
-.text-gradient{
-  background:var(--accent-grad);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-
-.noise-overlay{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:999;
-  opacity:.025;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* ==========================================================================
-   BUTTONS
-   ========================================================================== */
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:14px 26px;
-  border-radius:var(--radius-sm);
-  font-weight:600;
-  font-size:.95rem;
-  border:1px solid transparent;
-  cursor:pointer;
-  transition:
-    transform .15s ease,
-    box-shadow .15s ease,
-    background .15s ease,
-    border-color .15s ease,
-    opacity .15s ease;
-  white-space:nowrap;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-}
-
-.btn-primary{
-  background:var(--accent-grad);
-  color:#06090f;
-}
-
-.btn-primary:hover{
-  box-shadow:0 10px 30px -8px rgba(79,124,255,.55);
-}
-
-.btn-primary:disabled{
-  opacity:.65;
-  cursor:not-allowed;
-  transform:none;
-  box-shadow:none;
-}
-
-.btn-ghost{
-  background:transparent;
-  color:var(--text);
-  border-color:var(--border);
-}
-
-.btn-ghost:hover{
-  border-color:var(--accent);
-}
-
-.btn-outline{
-  background:transparent;
-  color:var(--text);
-  border-color:var(--border);
-}
-
-.btn-outline:hover{
-  border-color:var(--accent-2);
-  color:var(--accent-2);
-}
-
-.btn-sm{
-  padding:10px 18px;
-  font-size:.85rem;
-}
-
-.btn-block{
-  width:100%;
-}
-
-/* ==========================================================================
-   HEADER
-   ========================================================================== */
-
-.site-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(10,14,26,.75);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-}
-
-.header-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:76px;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-family:var(--font-head);
-  font-weight:600;
-  font-size:1.05rem;
-}
-
-.logo-mark{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:34px;
-  height:34px;
-  border-radius:9px;
-  background:var(--accent-grad);
-  color:#06090f;
-  font-weight:800;
-  font-size:.8rem;
-  letter-spacing:-.02em;
-}
-
-.logo-text{
-  color:var(--text-dim);
-}
-
-.logo-text strong{
-  font-weight:700;
-  color:var(--text);
-}
-
-.main-nav{
-  display:flex;
-  gap:32px;
-}
-
-.main-nav a{
-  color:var(--text-dim);
-  font-size:.95rem;
-  font-weight:500;
-  transition:color .15s ease;
-}
-
-.main-nav a:hover{
-  color:var(--text);
-}
-
-.header-actions{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.nav-toggle{
-  display:none;
-  flex-direction:column;
-  justify-content:center;
-  gap:5px;
-  width:38px;
-  height:38px;
-  background:transparent;
-  border:1px solid var(--border);
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.nav-toggle span{
-  display:block;
-  width:16px;
-  height:2px;
-  margin:0 auto;
-  background:var(--text);
-  border-radius:2px;
-  transition:transform .2s ease,opacity .2s ease;
-}
-
-.nav-toggle.is-open span:nth-child(1){
-  transform:translateY(7px) rotate(45deg);
-}
-
-.nav-toggle.is-open span:nth-child(2){
-  opacity:0;
-}
-
-.nav-toggle.is-open span:nth-child(3){
-  transform:translateY(-7px) rotate(-45deg);
-}
-
-/* ==========================================================================
-   HERO
-   ========================================================================== */
-
-.hero{
-  position:relative;
-  padding:120px 0 90px;
-  overflow:hidden;
-}
-
-.hero-glow{
-  position:absolute;
-  top:-220px;
-  left:50%;
-  transform:translateX(-50%);
-  width:900px;
-  height:620px;
-  background:radial-gradient(
-    closest-side,
-    rgba(79,124,255,.30),
-    rgba(53,208,200,.10) 55%,
-    transparent 75%
-  );
-  filter:blur(10px);
-  pointer-events:none;
-}
-
-.hero-inner{
-  position:relative;
-  max-width:820px;
-}
-
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-size:.85rem;
-  font-weight:600;
-  color:var(--accent-2);
-  text-transform:uppercase;
-  letter-spacing:.06em;
-  margin-bottom:20px;
-}
-
-.eyebrow .dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--accent-2);
-  box-shadow:0 0 0 4px rgba(53,208,200,.15);
-}
-
-.eyebrow-plain{
-  color:var(--accent-2);
-}
-
-.hero-lead{
-  font-size:1.15rem;
-  max-width:640px;
-  color:var(--text-dim);
-}
-
-.hero-actions{
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-  margin:34px 0 56px;
-}
-
-.hero-stats{
-  display:flex;
-  gap:48px;
-  flex-wrap:wrap;
-  padding-top:32px;
-  border-top:1px solid var(--border);
-}
-
-.stat{
-  display:flex;
-  flex-direction:column;
-}
-
-.stat-num{
-  font-family:var(--font-head);
-  font-size:1.6rem;
-  font-weight:700;
-  color:var(--text);
-}
-
-.stat-label{
-  font-size:.85rem;
-  color:var(--text-faint);
-}
-
-/* ==========================================================================
-   TRUST STRIP
-   ========================================================================== */
-
-.trust-strip{
-  padding:28px 0;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  background:var(--bg-alt);
-}
-
-.trust-label{
-  font-size:.8rem;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  color:var(--text-faint);
-  margin-bottom:14px;
-}
-
-.trust-items{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px 28px;
-}
-
-.trust-items span{
-  font-family:var(--font-head);
-  font-weight:600;
-  color:var(--text-dim);
-  font-size:.95rem;
-}
-
-/* ==========================================================================
-   SECTIONS
-   ========================================================================== */
-
-.section{
-  padding:100px 0;
-}
-
-.section-alt{
-  background:var(--bg-alt);
-}
-
-.section-head{
-  max-width:640px;
-  margin-bottom:56px;
-}
-
-.section-lead{
-  font-size:1.05rem;
-}
-
-.grid{
-  display:grid;
-  gap:24px;
-}
-
-.grid-3{
-  grid-template-columns:repeat(3,1fr);
-}
-
-/* ==========================================================================
-   SERVICE CARDS
-   ========================================================================== */
-
-.card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius-md);
-  padding:30px;
-  transition:
-    transform .18s ease,
-    border-color .18s ease,
-    background .18s ease;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(79,124,255,.4);
-  background:var(--surface-2);
-}
-
-.card-icon{
-  width:44px;
-  height:44px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:10px;
-  background:rgba(79,124,255,.12);
-  color:var(--accent-2);
-  margin-bottom:18px;
-}
-
-.card-icon svg{
-  width:22px;
-  height:22px;
-}
-
-.card p{
-  font-size:.95rem;
-  margin-bottom:0;
-}
-
-/* ==========================================================================
-   PROCESS
-   ========================================================================== */
-
-.process-list{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:32px 48px;
-}
-
-.process-step{
-  display:flex;
-  gap:20px;
-}
-
-.process-num{
-  font-family:var(--font-head);
-  font-size:1.6rem;
-  font-weight:700;
-  color:transparent;
-  -webkit-text-stroke:1.5px var(--accent-2);
-  flex-shrink:0;
-  line-height:1;
-  padding-top:4px;
-}
-
-.process-step p{
-  font-size:.95rem;
-  margin-bottom:0;
-}
-
-/* ==========================================================================
-   PRICING
-   ========================================================================== */
-
-.pricing-grid{
-  align-items:stretch;
-}
-
-.price-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius-md);
-  padding:34px 30px;
-  display:flex;
-  flex-direction:column;
-  position:relative;
-}
-
-.price-card-featured{
-  background:var(--surface-2);
-  border-color:var(--accent);
-  box-shadow:var(--shadow-lg);
-}
-
-.price-badge{
-  position:absolute;
-  top:-13px;
-  left:30px;
-  background:var(--accent-grad);
-  color:#06090f;
-  font-size:.75rem;
-  font-weight:700;
-  padding:5px 12px;
-  border-radius:999px;
-  text-transform:uppercase;
-  letter-spacing:.04em;
-}
-
-.price-desc{
-  font-size:.9rem;
-  min-height:42px;
-}
-
-.price-tag{
-  display:flex;
-  align-items:baseline;
-  gap:10px;
-  margin:8px 0 26px;
-  flex-wrap:wrap;
-}
-
-.price-amount{
-  font-family:var(--font-head);
-  font-size:1.8rem;
-  font-weight:700;
-  color:var(--text);
-}
-
-.price-alt{
-  font-size:.9rem;
-  color:var(--text-faint);
-}
-
-.price-features{
-  list-style:none;
-  padding:0;
-  margin:0 0 30px;
-  flex-grow:1;
-}
-
-.price-features li{
-  position:relative;
-  padding-left:26px;
-  margin-bottom:12px;
-  font-size:.92rem;
-  color:var(--text-dim);
-}
-
-.price-features li::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:5px;
-  width:16px;
-  height:16px;
-  border-radius:5px;
-  background:rgba(53,208,200,.15);
-  box-shadow:inset 0 0 0 1px rgba(53,208,200,.4);
-}
-
-.price-features li::after{
-  content:"";
-  position:absolute;
-  left:4px;
-  top:8.5px;
-  width:8px;
-  height:4px;
-  border-left:2px solid var(--accent-2);
-  border-bottom:2px solid var(--accent-2);
-  transform:rotate(-45deg);
-}
-
-.price-footnote{
-  margin-top:40px;
-  text-align:center;
-  font-size:.92rem;
-  color:var(--text-faint);
-}
-
-.price-footnote strong{
-  color:var(--text);
-}
-
-/* ==========================================================================
-   ABOUT
-   ========================================================================== */
-
-.about-grid{
-  display:grid;
-  grid-template-columns:1.3fr 1fr;
-  gap:56px;
-  align-items:start;
-}
-
-.about-points{
-  list-style:none;
-  padding:0;
-  margin:24px 0 0;
-}
-
-.about-points li{
-  position:relative;
-  padding-left:24px;
-  margin-bottom:12px;
-  color:var(--text-dim);
-  font-size:.95rem;
-}
-
-.about-points li::before{
-  content:"→";
-  position:absolute;
-  left:0;
-  color:var(--accent-2);
-  font-weight:700;
-}
-
-.about-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius-md);
-  padding:30px;
-}
-
-.about-card dl{
-  margin:18px 0 0;
-}
-
-.about-card dl div{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  padding:12px 0;
-  border-bottom:1px solid var(--border);
-  font-size:.9rem;
-}
-
-.about-card dl div:last-child{
-  border-bottom:none;
-}
-
-.about-card dt{
-  color:var(--text-faint);
-}
-
-.about-card dd{
-  margin:0;
-  font-weight:600;
-  text-align:right;
-}
-
-/* ==========================================================================
-   FAQ
-   ========================================================================== */
-
-.faq-list{
-  max-width:760px;
-}
-
-.faq-item{
-  border-bottom:1px solid var(--border);
-  padding:20px 0;
-}
-
-.faq-item summary{
-  cursor:pointer;
-  font-family:var(--font-head);
-  font-weight:600;
-  font-size:1.02rem;
-  list-style:none;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.faq-item summary::-webkit-details-marker{
-  display:none;
-}
-
-.faq-item summary::after{
-  content:"+";
-  font-size:1.4rem;
-  color:var(--accent-2);
-  font-weight:400;
-  margin-left:16px;
-}
-
-.faq-item[open] summary::after{
-  content:"–";
-}
-
-.faq-item p{
-  margin:14px 0 0;
-  font-size:.95rem;
-  max-width:640px;
-}
-
-/* ==========================================================================
-   CONTACT
-   ========================================================================== */
-
-.cta-section{
-  padding-bottom:120px;
-}
-
-.cta-box{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius-lg);
-  padding:56px;
-}
-
-.contact-details{
-  margin-top:26px;
-}
-
-.contact-link{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  font-weight:600;
-  color:var(--text);
-  border-bottom:1px solid var(--border);
-  padding-bottom:4px;
-  transition:color .15s ease,border-color .15s ease;
-}
-
-.contact-link svg{
-  width:18px;
-  height:18px;
-  color:var(--accent-2);
-}
-
-.contact-link:hover{
-  color:var(--accent-2);
-  border-color:var(--accent-2);
-}
-
-.contact-form{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
-
-.form-row{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.form-row label{
-  font-size:.85rem;
-  color:var(--text-faint);
-}
-
-.form-row input,
-.form-row select,
-.form-row textarea{
-  background:var(--bg-alt);
-  border:1px solid var(--border);
-  border-radius:var(--radius-sm);
-  padding:12px 14px;
-  color:var(--text);
-  font-family:var(--font-body);
-  font-size:.95rem;
-  resize:vertical;
-}
-
-.form-row input:focus,
-.form-row select:focus,
-.form-row textarea:focus{
-  outline:none;
-  border-color:var(--accent);
-}
-
-.form-note{
-  font-size:.85rem;
-  color:var(--accent-2);
-  min-height:1.2em;
-  margin:0;
-}
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-
-.site-footer{
-  border-top:1px solid var(--border);
-  padding:40px 0;
-}
-
-.footer-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:20px;
-}
-
-.footer-nav{
-  display:flex;
-  gap:24px;
-}
-
-.footer-nav a{
-  color:var(--text-faint);
-  font-size:.9rem;
-}
-
-.footer-nav a:hover{
-  color:var(--text);
-}
-
-.footer-copy{
-  color:var(--text-faint);
-  font-size:.85rem;
-  margin:0;
-}
-
-/* ==========================================================================
-   RESPONSIVE
-   ========================================================================== */
-
-@media (max-width:900px){
-
-  .grid-3{
-    grid-template-columns:repeat(2,1fr);
+  --bg:#EEF1F0; --ink:#08111D; --muted:#4A5866; --panel:rgba(238,241,240,.92); --panel-solid:#EEF1F0;
+  --line:rgba(8,17,29,.14); --sun:#F4A259; --sun-ink:#1B0E03; --tide:#1F6F6C; --btn-ink:#EEF1F0;
+  --font:"Archivo","Helvetica Neue",Arial,system-ui,sans-serif;
+  --ocean-ink:#F4F6F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#060B14; --ink:#F1F4F3; --muted:#A7B4BF; --panel:rgba(6,11,20,.82); --panel-solid:#0B1320;
+    --line:rgba(241,244,243,.14); --tide:#7FC4C2; --btn-ink:#060B14;
   }
-
-  .process-list{
-    grid-template-columns:1fr;
-  }
-
-  .about-grid{
-    grid-template-columns:1fr;
-  }
-
-  .cta-box{
-    grid-template-columns:1fr;
-    padding:40px 28px;
-  }
-
 }
-
-@media (max-width:700px){
-
-  .main-nav{
-    display:none;
-  }
-
-  .nav-toggle{
-    display:flex;
-  }
-
-  .site-header.nav-open .main-nav{
-    display:flex;
-    flex-direction:column;
-    position:absolute;
-    top:76px;
-    left:0;
-    right:0;
-    background:var(--bg);
-    border-bottom:1px solid var(--border);
-    padding:20px 24px 28px;
-    gap:18px;
-  }
-
-  .grid-3{
-    grid-template-columns:1fr;
-  }
-
-  .hero{
-    padding:96px 0 60px;
-  }
-
-  .section{
-    padding:70px 0;
-  }
-
-  .hero-stats{
-    gap:28px;
-  }
-
+:root[data-theme="dark"]{
+  --bg:#060B14; --ink:#F1F4F3; --muted:#A7B4BF; --panel:rgba(6,11,20,.82); --panel-solid:#0B1320;
+  --line:rgba(241,244,243,.14); --tide:#7FC4C2; --btn-ink:#060B14;
 }
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.55;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+.x{font-stretch:125%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
+/* Ocean canvas */
+#ocean{position:fixed;left:0;top:0;width:100vw;height:100lvh;z-index:-1;display:block;background:linear-gradient(#1a2150,#8c4a5c 45%,#f09a58 58%,#0a1a26 60%,#03080f)}
+.no-gl .hero-fallback{display:block}
+
+/* Header */
+.site-top{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;padding-top:max(12px,env(safe-area-inset-top));transition:background .3s,border-color .3s;border-bottom:1px solid transparent;color:var(--ink)}
+.site-top.on-ocean{color:var(--ocean-ink)}
+.site-top.solid{background:var(--panel-solid);border-color:var(--line);color:var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.brand svg{width:34px;height:34px;flex:none}
+.brand-name{display:flex;flex-direction:column;line-height:1;font-stretch:125%;font-weight:800;font-size:14px;letter-spacing:.02em;white-space:nowrap}
+.brand-name small{font-weight:400;font-size:10.5px;letter-spacing:.24em;margin-top:3px;font-stretch:100%}
+.top-actions{display:flex;gap:8px;align-items:center;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:inherit;font-weight:700;font-size:15px;border-radius:999px;padding:12px 20px;text-decoration:none;cursor:pointer;border:0;background:var(--sun);color:var(--sun-ink);white-space:nowrap;transition:transform .2s ease}
+.btn:active{transform:scale(.97)}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.btn.small{padding:9px 14px;font-size:14px}
+.menu-btn{width:40px;height:40px;border-radius:50%;border:0;box-shadow:inset 0 0 0 1.5px currentColor;opacity:.9;background:transparent;color:inherit;cursor:pointer;position:relative}
+.menu-btn i{position:absolute;left:12px;right:12px;height:1.5px;background:currentColor;transition:transform .3s}
+.menu-btn i:first-child{top:16px}.menu-btn i:last-child{top:22px}
+.menu-open .menu-btn i:first-child{transform:translateY(3px) rotate(45deg)}
+.menu-open .menu-btn i:last-child{transform:translateY(-3px) rotate(-45deg)}
+.menu-open .site-top{background:transparent;border-color:transparent;color:var(--ocean-ink)}
+.nav{position:fixed;inset:0;z-index:45;background:#060B14;color:#F1F4F3;display:flex;flex-direction:column;justify-content:center;padding:80px 24px 40px;clip-path:circle(0 at calc(100% - 36px) 32px);transition:clip-path .7s cubic-bezier(.7,0,.2,1);visibility:hidden}
+.menu-open .nav{clip-path:circle(160% at calc(100% - 36px) 32px);visibility:visible}
+.nav a{font-size:clamp(34px,10vw,72px);font-weight:800;font-stretch:125%;line-height:1.1;text-decoration:none;letter-spacing:-.01em;display:block;padding:2px 0;transform:translateY(20px);opacity:0;transition:transform .5s, opacity .5s, color .2s}
+.menu-open .nav a{transform:none;opacity:1}
+.menu-open .nav a:nth-child(2){transition-delay:.05s}.menu-open .nav a:nth-child(3){transition-delay:.1s}.menu-open .nav a:nth-child(4){transition-delay:.15s}.menu-open .nav a:nth-child(5){transition-delay:.2s}
+.nav a:hover{color:#F4A259}
+.nav p{margin-top:28px;color:#A7B4BF;font-size:15px}
+
+/* Hero */
+.hero{position:relative;height:280svh}
+.hero-stick{position:sticky;top:0;height:100svh;overflow:hidden;color:var(--ocean-ink)}
+.hero-under{position:absolute;left:0;right:0;top:var(--under,60%);text-align:center;padding:0 20px;transition:opacity .2s}
+.hero-under .tagline{font-stretch:125%;font-weight:600;font-size:clamp(12px,3.2vw,16px);letter-spacing:.34em;padding-left:.34em;color:var(--ink)}
+.hero-under .place{margin-top:10px;font-size:14px;color:var(--muted)}
+.hint{position:absolute;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12px;color:var(--muted);letter-spacing:.08em}
+.hint i{width:22px;height:34px;border-radius:12px;box-shadow:inset 0 0 0 1.5px currentColor;position:relative}
+.hint i::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:currentColor;transform:translateX(-50%);animation:wheel 1.6s ease-in-out infinite}
+@keyframes wheel{60%{transform:translate(-50%,9px);opacity:0}100%{opacity:0}}
+.hero-copy{position:absolute;left:0;right:0;bottom:0;padding:0 20px max(34px,env(safe-area-inset-bottom));opacity:0;transform:translateY(40px);will-change:transform,opacity}
+.hero-copy .wrap{width:min(1120px,100%)}
+.hero-copy h1{font-size:clamp(36px,10.5vw,96px);line-height:.95;font-weight:800;font-stretch:125%;letter-spacing:-.02em;max-width:11ch;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hero-copy p{margin-top:16px;max-width:38ch;font-size:16px;opacity:.9;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.hero-copy .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.proof{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:22px;font-size:13px;opacity:.85}
+.proof span{display:flex;align-items:center;gap:6px}
+.proof span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sun)}
+.hero-fallback{display:none;position:absolute;left:0;right:0;top:34%;text-align:center;font-size:clamp(64px,22vw,260px);font-weight:900;font-stretch:125%;line-height:1;letter-spacing:-.02em;color:#F4F6F5}
+
+/* Ticker */
+.ticker{background:var(--sun);color:var(--sun-ink);overflow:hidden;padding:14px 0;white-space:nowrap}
+.ticker-track{display:inline-flex;gap:28px;font-size:clamp(20px,5vw,34px);font-weight:800;font-stretch:125%;will-change:transform}
+.ticker-track span{display:inline-flex;align-items:center;gap:28px}
+.ticker-track span::after{content:"";width:.5em;height:.5em;border-radius:50%;box-shadow:inset 0 0 0 2px currentColor}
+
+/* Generic section */
+.sec{position:relative;padding:88px 0}
+.panel{background:var(--panel);border-block:1px solid var(--line)}
+.h2{font-size:clamp(32px,8.6vw,76px);line-height:.98;font-weight:800;font-stretch:125%;letter-spacing:-.02em;max-width:14ch}
+.intro{color:var(--muted);max-width:44ch;margin-top:14px}
+
+/* Process (sticky build) */
+.build{position:relative;height:250svh}
+.build-stick{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--panel)}
+.build-grid{height:100%;max-width:1120px;margin:0 auto;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:10px;padding:76px 20px max(18px,env(safe-area-inset-bottom))}
+.build-title{font-size:clamp(22px,5.8vw,44px);font-weight:800;font-stretch:125%;line-height:1;letter-spacing:-.01em}
+.build-title span{color:var(--muted);font-weight:500;font-stretch:100%;font-size:.5em;display:block;margin-top:8px;letter-spacing:0}
+.stage{position:relative;min-height:0;display:flex;align-items:center;justify-content:center}
+.phone{position:relative;height:min(100%,560px);aspect-ratio:9/18.5;border-radius:12%/6%;background:#05080E;padding:2.2%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6),inset 0 0 0 1.5px rgba(255,255,255,.12)}
+.screen{position:relative;width:100%;height:100%;border-radius:10%/5%;overflow:hidden;background:#fff;container-type:size;color:#12302A}
+.s-url{height:7cqh;display:flex;align-items:center;justify-content:center;gap:1.5cqw;background:#eef0ef;color:#6b7a78;font-size:3.6cqw;transition:background .5s,color .5s}
+.dot{width:2.2cqw;height:2.2cqw;border-radius:50%;background:#bbb;transition:.4s}
+.s-body{height:93cqh;padding:5cqw 6cqw;display:flex;flex-direction:column;gap:3.4cqh;transition:background .6s}
+.b{border-radius:2.4cqw;transition:all .6s cubic-bezier(.3,.7,.2,1);position:relative;overflow:hidden}
+.s-nav{display:flex;justify-content:space-between;align-items:center;height:4cqh}
+.s-logo{width:28%;height:100%;outline:1px dashed #a9b3b1;outline-offset:-1px}
+.s-burg{width:11%;height:100%;outline:1px dashed #a9b3b1;outline-offset:-1px}
+.s-hero{height:34cqh;outline:1px dashed #a9b3b1;outline-offset:-1px;display:flex;flex-direction:column;justify-content:flex-end;padding:6cqw}
+.s-hero h4{position:relative;font-size:8.6cqw;line-height:.95;font-weight:800;font-stretch:125%;opacity:0;transform:translateY(20%);transition:.6s .15s}
+.s-art{position:absolute;inset:0;opacity:0;transition:opacity .8s;background:
+  radial-gradient(circle at 70% 36%, #F7C08A 0 13%, transparent 13.5%),
+  linear-gradient(#2B4A43 0 58%, #1C3630 58% 100%)}
+.s-art::after{content:"";position:absolute;left:0;right:0;top:60%;height:2px;background:repeating-linear-gradient(90deg,#F7C08A 0 10%,transparent 10% 16%);opacity:.6;box-shadow:0 8px 0 -0.5px rgba(247,192,138,.35),0 16px 0 -1px rgba(247,192,138,.2)}
+.s-lines{display:flex;flex-direction:column;gap:1.3cqh}
+.s-lines i{display:block;height:1.3cqh;border-radius:9px;background:#dfe4e3;transition:.6s}
+.s-lines i:nth-child(2){width:82%}.s-lines i:nth-child(3){width:56%}
+.s-cards{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;height:17cqh}
+.s-cards .b{outline:1px dashed #a9b3b1;outline-offset:-1px}
+.s-btn{height:6.4cqh;border-radius:99px;outline:1px dashed #a9b3b1;outline-offset:-1px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:3.8cqw;color:transparent}
+.code{position:absolute;left:5cqw;right:5cqw;bottom:4cqw;background:#0B1624;border-radius:3cqw;padding:4cqw 5cqw;font:500 3.4cqw/1.65 ui-monospace,Menlo,monospace;color:#cfe3e0;transform:translateY(130%);transition:transform .6s cubic-bezier(.3,.7,.2,1)}
+.code b{color:#7FC4C2;font-weight:500}.code em{color:#F4A259;font-style:normal}
+.score{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(6,11,20,.74);opacity:0;transition:opacity .5s}
+.score svg{width:56cqw;height:56cqw}
+.score circle{fill:none;stroke-width:6}
+.score .tr{stroke:rgba(255,255,255,.15)}
+.score .br{stroke:#6fdc9c;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset 1.4s cubic-bezier(.3,.7,.2,1)}
+.score text{fill:#fff;font-family:var(--font);font-weight:800;font-size:26px}
+.score .lb{font-size:8px;font-weight:500;fill:#cfe3e0}
+
+.phone:not([data-s="0"]) .s-body{background:#FBF7F1}
+.phone:not([data-s="0"]) .s-logo{outline:0;background:#12302A;width:22%}
+.phone:not([data-s="0"]) .s-burg{outline:0;background:linear-gradient(#12302A 0 0) top/100% 20% no-repeat,linear-gradient(#12302A 0 0) bottom/100% 20% no-repeat;height:45%}
+.phone:not([data-s="0"]) .s-hero{outline:0;color:#FBF7F1}
+.phone:not([data-s="0"]) .s-art{opacity:1}
+.phone:not([data-s="0"]) .s-hero h4{opacity:1;transform:none}
+.phone:not([data-s="0"]) .s-lines i{background:#d6c7b5}
+.phone:not([data-s="0"]) .s-cards .b{outline:0;background:#F7C08A}
+.phone:not([data-s="0"]) .s-cards .b+.b{background:#DCE8E3}
+.phone:not([data-s="0"]) .s-btn{outline:0;background:#12302A;color:#FBF7F1}
+.phone[data-s="2"] .code{transform:none}
+.phone[data-s="3"] .score{opacity:1}
+.phone[data-s="3"] .score .br{stroke-dashoffset:0}
+.phone[data-s="3"] .dot{background:#2fbf71;box-shadow:0 0 0 1.2cqw rgba(47,191,113,.25)}
+.phone[data-s="3"] .s-url{background:#e3f3ea;color:#12302A}
+
+.chip{position:absolute;display:flex;align-items:center;gap:7px;padding:7px 10px 7px 7px;border-radius:12px;background:var(--panel-solid);box-shadow:0 12px 30px -10px rgba(0,0,0,.45),inset 0 0 0 1px var(--line);font-size:11.5px;font-weight:700;white-space:nowrap;opacity:0;transform:translateY(16px) scale(.94);transition:opacity .5s, transform .6s cubic-bezier(.3,.7,.2,1);z-index:2}
+.chip i{width:20px;height:20px;border-radius:6px;flex:none;display:grid;place-items:center;font-style:normal;font-size:10px;font-weight:800;background:var(--sun);color:var(--sun-ink)}
+.chip.on{opacity:1;transform:none}
+.c1{right:72%;top:16%}
+.c2{left:72%;top:36%}
+.c3{right:72%;top:58%}
+.c4{left:72%;top:78%}
+
+.steps{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 14px;align-items:start}
+.num{font-size:clamp(44px,12vw,80px);line-height:.82;font-weight:900;font-stretch:125%;color:var(--sun);font-variant-numeric:tabular-nums}
+.step-box{position:relative;height:5.6em}
+.step{position:absolute;inset:0;opacity:0;transform:translateY(8px);transition:.4s}
+.step.on{opacity:1;transform:none}
+.step h3{font-size:19px;font-weight:800;font-stretch:112%;line-height:1.15}
+.step p{color:var(--muted);font-size:14.5px;line-height:1.4;margin-top:4px}
+.bars{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.bars i{height:3px;border-radius:3px;background:var(--line);overflow:hidden}
+.bars b{display:block;height:100%;background:var(--sun);transform:scaleX(0);transform-origin:left}
+
+/* Services stacking cards */
+.svc-head{padding:88px 0 20px}
+.stack{padding-bottom:18svh}
+.card{position:sticky;top:calc(72px + var(--i) * 10px);margin:0 auto 18px;width:min(1120px,100% - 24px);min-height:min(66svh,560px);border-radius:26px;padding:22px;display:grid;grid-template-rows:minmax(150px,1fr) auto;gap:18px;background:var(--panel-solid);box-shadow:0 -12px 40px -18px rgba(0,0,0,.5),inset 0 0 0 1px var(--line);transform-origin:50% 0;will-change:transform}
+.card h3{font-size:clamp(28px,7.4vw,52px);line-height:.95;font-weight:800;font-stretch:125%;letter-spacing:-.01em}
+.card p{color:var(--muted);margin-top:10px;max-width:42ch;font-size:15.5px}
+.card-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.card-top small{font-size:13px;color:var(--muted);white-space:nowrap}
+.viz{border-radius:18px;background:linear-gradient(160deg,#0E1B2B,#17314A);color:#EAF0EF;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:18px;min-height:150px}
+@media (min-width:860px){
+  .card{grid-template-rows:none;grid-template-columns:1.1fr 1fr;align-items:stretch;padding:28px}
+  .card .txt{display:flex;flex-direction:column;justify-content:flex-end;order:-1}
+}
+/* viz contents */
+.v-type{display:flex;align-items:baseline;gap:4%;width:100%;justify-content:center}
+.v-type b{font-size:clamp(56px,18vw,120px);line-height:.9;font-weight:900;font-stretch:125%}
+.v-type em{font-size:clamp(56px,18vw,120px);line-height:.9;font-style:normal;font-weight:300;font-stretch:62%}
+.v-sw{position:absolute;left:16px;bottom:16px;display:flex;gap:6px}
+.v-sw i{width:20px;height:20px;border-radius:50%}
+.v-speed{width:100%;max-width:340px}
+.v-speed .big{font-size:clamp(48px,14vw,84px);font-weight:900;font-stretch:125%;line-height:.9;font-variant-numeric:tabular-nums}
+.v-speed .big small{font-size:.26em;font-weight:500;font-stretch:100%;opacity:.7;margin-left:6px}
+.meter{height:8px;border-radius:8px;background:rgba(255,255,255,.12);margin-top:14px;overflow:hidden}
+.meter b{display:block;height:100%;border-radius:8px;background:#F4A259;width:var(--w,18%)}
+.meter.slow b{background:rgba(255,255,255,.35)}
+.mlbl{display:flex;justify-content:space-between;font-size:12px;opacity:.7;margin-top:5px}
+.v-cart{width:100%;max-width:320px;display:grid;gap:8px}
+.item{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border-radius:12px;padding:8px}
+.item i{width:36px;height:36px;border-radius:9px;flex:none}
+.item span{flex:1;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item b{font-size:14px;white-space:nowrap}
+.pay{display:flex;gap:6px;flex-wrap:wrap}
+.pay span{font-size:12px;border-radius:99px;padding:3px 10px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.pay .go{margin-left:auto;background:#F4A259;color:#1B0E03;box-shadow:none;font-weight:700}
+.v-serp{width:100%;max-width:340px;display:grid;gap:8px}
+.res{border-radius:12px;padding:9px 12px;background:rgba(255,255,255,.07);font-size:12.5px;line-height:1.35;overflow:hidden}
+.res b{display:block;font-size:14px;color:#9ED8D5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.res.hit{background:rgba(244,162,89,.16);box-shadow:inset 0 0 0 1.5px #F4A259}
+.res.hit b{color:#F7C08A}
+.res.dim{opacity:.45}
+.v-up{width:100%;max-width:340px}
+.upbars{display:grid;grid-template-columns:repeat(30,1fr);gap:3px;height:44px;align-items:end}
+.upbars i{height:100%;border-radius:2px;background:#6fdc9c}
+.upbars i:nth-child(17){height:62%;background:#F4A259}
+.v-up p{font-size:13px;margin-top:12px;opacity:.85}
+.v-up .big{font-size:clamp(40px,12vw,68px);font-weight:900;font-stretch:125%;line-height:1}
+.v-text{width:100%;max-width:340px;font-size:clamp(20px,5.4vw,28px);line-height:1.25;font-weight:600;min-height:3.8em}
+.caret{display:inline-block;width:2px;height:1em;background:#F4A259;vertical-align:-.12em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* Prices */
+.seg{display:inline-grid;grid-template-columns:1fr 1fr;border-radius:999px;padding:4px;margin-top:26px;position:relative;box-shadow:inset 0 0 0 1px var(--line);max-width:100%}
+.seg button{font:inherit;font-size:14.5px;font-weight:700;background:none;border:0;color:var(--muted);padding:10px 16px;border-radius:999px;cursor:pointer;position:relative;z-index:1;transition:color .3s;white-space:nowrap}
+.seg button[aria-selected="true"]{color:var(--btn-ink)}
+.seg .pill{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:var(--ink);transition:transform .45s cubic-bezier(.3,.7,.2,1)}
+.seg[data-i="1"] .pill{transform:translateX(100%)}
+.plans{margin-top:24px;display:grid;gap:14px}
+.plan{border-radius:22px;padding:22px;box-shadow:inset 0 0 0 1px var(--line);display:grid;gap:12px;align-content:start;background:var(--panel-solid)}
+.plan.hot{box-shadow:inset 0 0 0 2px var(--sun)}
+.plan.hide{display:none}
+.plan-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.plan h3{font-size:22px;font-weight:800;font-stretch:112%}
+.tag{font-size:12px;font-weight:700;background:var(--sun);color:var(--sun-ink);border-radius:99px;padding:3px 10px}
+.price{font-size:clamp(34px,9.6vw,58px);font-weight:900;font-stretch:112%;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.price small{font-size:.36em;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:4px}
+.plan p{color:var(--muted);font-size:15px}
+.plan ul{list-style:none;display:grid;gap:6px;font-size:14.5px}
+.plan li{display:flex;gap:10px;align-items:baseline}
+.plan li::before{content:"";flex:none;width:10px;height:5px;border-left:2px solid var(--tide);border-bottom:2px solid var(--tide);transform:rotate(-45deg) translateY(-2px)}
+.plan .btn{justify-self:start;margin-top:4px}
+@media (min-width:760px){.plans{grid-template-columns:1fr 1fr}}
+
+/* About */
+.about{font-size:clamp(24px,6.2vw,48px);line-height:1.15;font-weight:600;letter-spacing:-.01em;max-width:24ch}
+.about .w{opacity:.16}
+.about strong{font-weight:800;font-stretch:125%;color:var(--sun)}
+.facts{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.facts div{padding:14px 0;border-top:1px solid var(--line)}
+.facts dt{font-size:13px;color:var(--muted)}
+.facts dd{font-weight:700;margin-top:2px;font-size:15.5px}
+.perks{margin-top:26px;display:grid;gap:10px;list-style:none;max-width:52ch}
+.perks li{display:flex;gap:12px;align-items:baseline}
+.perks li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--sun);transform:translateY(-1px)}
+
+/* FAQ */
+.faq{margin-top:30px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 44px 18px 0;font-size:18px;font-weight:700;position:relative;line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:4px;top:50%;width:28px;height:28px;margin-top:-14px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line);background:linear-gradient(currentColor 0 0) center/11px 1.5px no-repeat,linear-gradient(currentColor 0 0) center/1.5px 11px no-repeat;transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .ans{color:var(--muted);padding:0 0 20px;max-width:58ch}
+
+/* Contact finale */
+.finale{position:relative;padding:22svh 0 0;color:var(--ocean-ink)}
+.finale h2{font-size:clamp(52px,17vw,190px);line-height:.84;font-weight:900;font-stretch:125%;letter-spacing:-.03em;text-shadow:0 4px 40px rgba(0,0,0,.4)}
+.finale .lead{margin-top:18px;max-width:38ch;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.form-card{margin-top:34px;background:var(--panel-solid);color:var(--ink);border-radius:26px;padding:22px;box-shadow:inset 0 0 0 1px var(--line);max-width:620px}
+.form{display:grid;gap:14px}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+.field input,.field select,.field textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:transparent;border:0;border-radius:12px;box-shadow:inset 0 0 0 1.5px var(--line);padding:12px 14px;outline:none;transition:box-shadow .2s;-webkit-appearance:none;appearance:none}
+.field select{background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 15px) 55%;background-size:5px 5px;background-repeat:no-repeat;padding-right:36px}
+.field select option{color:#08111D;background:#fff}
+.field input:focus,.field select:focus,.field textarea:focus{box-shadow:inset 0 0 0 2px var(--sun)}
+.field textarea{min-height:96px;resize:vertical}
+.form .btn{justify-self:start;padding:14px 26px;font-size:16px}
+.msg{font-size:14px;min-height:1.3em;color:var(--tide)}
+.mail{display:block;margin-top:14px;font-weight:700;overflow-wrap:anywhere}
+.foot{margin-top:18svh;padding:22px 0 max(22px,env(safe-area-inset-bottom));border-top:1px solid rgba(255,255,255,.18);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:14px}
+.foot nav{display:flex;gap:16px}
+.foot a{text-decoration:none;opacity:.8}
+
+@media (min-width:900px){
+  .build-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto minmax(0,1fr);padding:96px 40px 40px;column-gap:40px}
+  .build-title{grid-column:1/-1}
+  .stage{grid-column:2;grid-row:2}
+  .steps{grid-column:1;grid-row:2;align-self:center}
+  .step-box{height:7em}
+  .step h3{font-size:26px}
+  .step p{font-size:16px}
+  .c1,.c3{right:84%}.c2,.c4{left:84%}
+  .chip{font-size:14px;padding:10px 14px}
+  .form-card{padding:32px}
+}
+@media (max-height:620px){ .build-title span{display:none} .step p{font-size:13px} .step-box{height:5em} }
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero{height:auto}
+  .hero-stick{position:relative;height:100svh}
+  .hero-under,.hint{display:none}
+  .hero-copy{opacity:1;transform:none}
+  .about .w{opacity:1}
+}
 </style>
 </head>
-
 <body>
+<canvas id="ocean" aria-hidden="true"></canvas>
 
-<div class="noise-overlay" aria-hidden="true"></div>
-
-<!-- ============================================================
-     HEADER
-     ============================================================ -->
-
-<header class="site-header" id="top">
-
-  <div class="container header-inner">
-
-    <a href="#top" class="logo">
-      <span class="logo-mark">SP</span>
-      <span class="logo-text">Strand<strong>Performance</strong></span>
-    </a>
-
-    <nav class="main-nav" id="main-nav">
-      <a href="#tjanster">Tjänster</a>
-      <a href="#process">Så funkar det</a>
-      <a href="#priser">Priser</a>
-      <a href="#om-oss">Om oss</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-
-    <div class="header-actions">
-
-      <a href="#kontakt" class="btn btn-primary btn-sm">
-        Få en offert
-      </a>
-
-      <button
-        class="nav-toggle"
-        id="nav-toggle"
-        aria-label="Öppna meny"
-        aria-expanded="false"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-    </div>
-
+<header class="site-top" id="top">
+  <a class="brand" href="#start" aria-label="Strand Performance, till början">
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M13 21.5a7 7 0 0 1 14 0z" fill="#F4A259"/>
+      <path d="M7 24.5c3-2.2 6-2.2 9 0s6 2.2 9 0 6-2.2 8 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M10 29c2.6-1.8 5.3-1.8 8 0s5.3 1.8 8 0 4.4-1.4 5 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>
+    </svg>
+    <span class="brand-name">STRAND<small>PERFORMANCE</small></span>
+  </a>
+  <div class="top-actions">
+    <a class="btn small" href="#kontakt">Få en offert</a>
+    <button class="menu-btn" aria-label="Öppna meny" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
   </div>
-
 </header>
+<nav class="nav" id="nav" aria-label="Huvudmeny">
+  <a href="#process">Så funkar det</a>
+  <a href="#tjanster">Tjänster</a>
+  <a href="#priser">Priser</a>
+  <a href="#om-oss">Om oss</a>
+  <a href="#kontakt">Kontakt</a>
+  <p>info@strandperformance.com</p>
+</nav>
 
-
-<main>
-
-<!-- ============================================================
-     HERO
-     ============================================================ -->
-
-<section class="hero">
-
-  <div class="hero-glow" aria-hidden="true"></div>
-
-  <div class="container hero-inner">
-
-    <p class="eyebrow">
-      <span class="dot"></span>
-      Webbdesign &amp; utveckling — Sverige &amp; Norden
-    </p>
-
-    <h1>
-      Vi bygger hemsidor
-      <span class="text-gradient">
-        som faktiskt konverterar.
-      </span>
-    </h1>
-
-    <p class="hero-lead">
-      Strand Performance designar och utvecklar snabba, snygga och
-      sökmotoranpassade hemsidor för företag som vill synas — och sälja mer.
-      Fast pris. Tydlig process. Personlig kontakt med grundaren under hela projektet.
-    </p>
-
-    <div class="hero-actions">
-
-      <a href="#kontakt" class="btn btn-primary">
-        Boka kostnadsfritt samtal
-      </a>
-
-      <a href="#priser" class="btn btn-ghost">
-        Se priser &amp; paket
-      </a>
-
+<main id="start">
+  <section class="hero" id="hero" aria-labelledby="h1">
+    <div class="hero-stick">
+      <p class="sr">Strand Performance</p>
+      <div class="hero-fallback" aria-hidden="true">STRAND</div>
+      <div class="hero-under" id="under">
+        <div class="tagline">PERFORMANCE</div>
+        <div class="place">Webbdesign och utveckling för Sverige och Norden</div>
+      </div>
+      <div class="hint" id="hint" aria-hidden="true"><i></i>Scrolla</div>
+      <div class="hero-copy" id="heroCopy">
+        <div class="wrap">
+          <h1 id="h1">Hemsidor som faktiskt konverterar.</h1>
+          <p>Snabba, snygga och sökmotoranpassade sajter för företag som vill synas och sälja mer.</p>
+          <div class="cta">
+            <a class="btn" href="#kontakt">Boka kostnadsfritt samtal</a>
+            <a class="btn line" href="#priser">Se priser</a>
+          </div>
+          <div class="proof"><span>2–4 veckor till lansering</span><span>100 % mobilanpassat</span><span>Fast pris</span></div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="hero-stats">
-
-      <div class="stat">
-        <span class="stat-num">2–4</span>
-        <span class="stat-label">veckor till lansering</span>
-      </div>
-
-      <div class="stat">
-        <span class="stat-num">100%</span>
-        <span class="stat-label">mobilanpassat &amp; snabbt</span>
-      </div>
-
-      <div class="stat">
-        <span class="stat-num">Fast</span>
-        <span class="stat-label">pris — inga överraskningar</span>
-      </div>
-
+  <div class="ticker" aria-label="Branscher vi bygger för">
+    <div class="ticker-track" id="ticker">
+      <span>Konsultbolag</span><span>SaaS och startups</span><span>Hantverkare</span><span>Butiker och e-handel</span><span>Frilansare</span><span>Byråer</span><span>Konsultbolag</span><span>SaaS och startups</span><span>Hantverkare</span><span>Butiker och e-handel</span><span>Frilansare</span><span>Byråer</span>
     </div>
-
   </div>
 
-</section>
-
-
-<!-- ============================================================
-     TRUST
-     ============================================================ -->
-
-<section class="trust-strip">
-
-  <div class="container">
-
-    <p class="trust-label">
-      Byggt för branscher som
-    </p>
-
-    <div class="trust-items">
-      <span>Konsultbolag</span>
-      <span>SaaS &amp; startups</span>
-      <span>Hantverkare</span>
-      <span>Butiker &amp; e-handel</span>
-      <span>Frilansare</span>
-      <span>Byråer</span>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ============================================================
-     TJÄNSTER
-     ============================================================ -->
-
-<section class="section" id="tjanster">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <p class="eyebrow eyebrow-plain">
-        Tjänster
-      </p>
-
-      <h2>
-        Allt du behöver för en hemsida som gör jobbet
-      </h2>
-
-      <p class="section-lead">
-        Från första skiss till lansering — och support efteråt.
-      </p>
-
-    </div>
-
-
-    <div class="grid grid-3">
-
-      <article class="card">
-
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path
-              d="M4 5h16M4 12h16M4 19h10"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-            />
-          </svg>
+  <section class="build" id="process" aria-label="Så funkar det">
+    <div class="build-stick">
+      <div class="build-grid">
+        <h2 class="build-title">Från idé till lansering<span>Scrolla och se en sajt byggas i fyra steg.</span></h2>
+        <div class="stage">
+          <div class="phone" id="phone" data-s="0" aria-hidden="true">
+            <div class="chip c1" data-at="1"><i>✓</i>Design klar</div>
+            <div class="chip c2" data-at="2"><i>kr</i>Betalning kopplad</div>
+            <div class="chip c3" data-at="2"><i>@</i>Formulär kopplat</div>
+            <div class="chip c4" data-at="3"><i>1</i>Plats 1 på Google</div>
+            <div class="screen">
+              <div class="s-url"><span class="dot"></span>dittforetag.se</div>
+              <div class="s-body">
+                <div class="s-nav"><div class="b s-logo"></div><div class="b s-burg"></div></div>
+                <div class="b s-hero"><div class="s-art"></div><h4>Kaffe vid<br>vattnet.</h4></div>
+                <div class="s-lines"><i></i><i></i><i></i></div>
+                <div class="s-cards"><div class="b"></div><div class="b"></div></div>
+                <div class="b s-btn">Boka bord</div>
+              </div>
+              <div class="code"><b>form</b>.send(<em>"boka"</em>)<br><b>stripe</b>.connect()<br><b>seo</b>.index(<em>"/"</em>)</div>
+              <div class="score"><svg viewBox="0 0 100 100"><circle class="tr" cx="50" cy="50" r="45"/><circle class="br" cx="50" cy="50" r="45"/><text x="50" y="55" text-anchor="middle" id="scoreNum">0</text><text x="50" y="69" text-anchor="middle" class="lb">prestanda</text></svg></div>
+            </div>
+          </div>
         </div>
-
-        <h3>Webbdesign</h3>
-
-        <p>
-          Skräddarsydd design som matchar ditt varumärke — inte ett generiskt
-          mallutseende. Tydlig hierarki, bra läsbarhet, gjord för att leda
-          besökare till att höra av sig.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path
-              d="M8 9l-4 4 4 4M16 9l4 4-4 4M13 5l-2 16"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+        <div class="steps">
+          <div class="num" id="stepNum" aria-hidden="true">01</div>
+          <div class="step-box">
+            <div class="step on"><h3>Uppstartssamtal</h3><p>Vi går igenom mål, sidor och vilket paket som passar. Kostnadsfritt och utan krav.</p></div>
+            <div class="step"><h3>Design</h3><p>Du får ett designförslag efter ditt varumärke innan någon kod skrivs.</p></div>
+            <div class="step"><h3>Utveckling</h3><p>Vi bygger, kopplar formulär, betalningar och analys och testar på alla enheter.</p></div>
+            <div class="step"><h3>Lansering och support</h3><p>Sidan går live, du får en genomgång och vi finns kvar efteråt.</p></div>
+          </div>
+          <div class="bars" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
         </div>
-
-        <h3>Webbutveckling</h3>
-
-        <p>
-          Snabb, ren kod utan onödigt krångel. Byggd för att prestera i Google,
-          ladda blixtsnabbt och fungera perfekt på mobil, surfplatta och dator.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path
-              d="M3 9h18M3 9l1-4a2 2 0 012-2h12a2 2 0 012 2l1 4M3 9v9a2 2 0 002 2h14a2 2 0 002-2V9M9 13h6"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </div>
-
-        <h3>E-handel</h3>
-
-        <p>
-          Webbutik med smidig kassa, produktsidor som säljer och koppling mot
-          Klarna, Stripe eller Swish. Enkel att uppdatera själv.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <circle
-              cx="11"
-              cy="11"
-              r="7"
-              stroke="currentColor"
-              stroke-width="1.8"
-            />
-            <path
-              d="M21 21l-4.3-4.3"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-            />
-          </svg>
-        </div>
-
-        <h3>SEO-optimering</h3>
-
-        <p>
-          Teknisk SEO, snabb laddningstid och rätt struktur från start,
-          så att din sida faktiskt går att hitta på Google — inte bara snygg
-          att titta på.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-            />
-            <circle
-              cx="12"
-              cy="12"
-              r="4"
-              stroke="currentColor"
-              stroke-width="1.8"
-            />
-          </svg>
-        </div>
-
-        <h3>Underhåll &amp; support</h3>
-
-        <p>
-          Vi sköter drift, säkerhetsuppdateringar och mindre ändringar efter
-          lansering, så att du kan fokusera på din verksamhet.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path
-              d="M4 4h16v12H7l-3 3V4z"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </div>
-
-        <h3>Innehåll &amp; text</h3>
-
-        <p>
-          Hjälp med säljande texter på svenska eller andra nordiska språk
-          som förklarar vad du gör och varför kunden ska välja just dig.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ============================================================
-     PROCESS
-     ============================================================ -->
-
-<section class="section section-alt" id="process">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <p class="eyebrow eyebrow-plain">
-        Så funkar det
-      </p>
-
-      <h2>
-        Fyra steg från idé till lansering
-      </h2>
-
-      <p class="section-lead">
-        Ingen krånglig process, inga otydliga fakturor.
-        Du vet alltid vad som händer härnäst.
-      </p>
-
-    </div>
-
-
-    <div class="process-list">
-
-      <div class="process-step">
-
-        <span class="process-num">01</span>
-
-        <div>
-
-          <h3>Uppstartssamtal</h3>
-
-          <p>
-            Vi går igenom vad du vill uppnå, vilka sidor du behöver och
-            vilket paket som passar. Kostnadsfritt och utan krav.
-          </p>
-
-        </div>
-
       </div>
-
-
-      <div class="process-step">
-
-        <span class="process-num">02</span>
-
-        <div>
-
-          <h3>Design</h3>
-
-          <p>
-            Du får ett designförslag anpassat efter ditt varumärke innan
-            någon kod skrivs — så det inte blir några överraskningar.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="process-step">
-
-        <span class="process-num">03</span>
-
-        <div>
-
-          <h3>Utveckling</h3>
-
-          <p>
-            Vi bygger sidan, kopplar formulär, betalningar och analys,
-            och testar på alla enheter.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="process-step">
-
-        <span class="process-num">04</span>
-
-        <div>
-
-          <h3>Lansering &amp; support</h3>
-
-          <p>
-            Sidan går live. Du får en snabb genomgång, och vi finns kvar
-            för uppdateringar och frågor efteråt.
-          </p>
-
-        </div>
-
-      </div>
-
     </div>
+  </section>
 
-  </div>
-
-</section>
-
-
-<!-- ============================================================
-     PRISER
-     ============================================================ -->
-
-<section class="section" id="priser">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <p class="eyebrow eyebrow-plain">
-        Priser
-      </p>
-
-      <h2>
-        Enkla paket, fasta priser
-      </h2>
-
-      <p class="section-lead">
-        Tydliga priser i euro. Behöver du något skräddarsytt?
-        Hör av dig så tar vi fram ett förslag.
-      </p>
-
+  <section id="tjanster" aria-labelledby="svcH">
+    <div class="svc-head panel" style="border-bottom:0">
+      <div class="wrap">
+        <h2 class="h2" id="svcH">Allt en hemsida behöver.</h2>
+        <p class="intro">Från första skiss till lansering, och support efteråt.</p>
+      </div>
     </div>
-
-
-    <div class="grid grid-3 pricing-grid">
-
-
-      <!-- ENKEL SAJT -->
-
-      <article class="price-card">
-
-        <h3>Enkel sajt</h3>
-
-        <p class="price-desc">
-          För företag som behöver en professionell hemsida
-          som leder besökaren till kontakt.
-        </p>
-
-        <div class="price-tag">
-
-          <span class="price-amount">
-            3 500–5 000 €
-          </span>
-
-        </div>
-
-        <ul class="price-features">
-
-          <li>Skräddarsydd design</li>
-          <li>Mobilanpassad</li>
-          <li>Kontaktformulär</li>
-          <li>Grundläggande SEO</li>
-          <li>Snabb laddning</li>
-          <li>Lansering</li>
-
-        </ul>
-
-        <a href="#kontakt" class="btn btn-outline btn-block">
-          Kom igång
-        </a>
-
+    <div class="stack" id="stack">
+      <article class="card" style="--i:0">
+        <div class="viz"><div class="v-type"><b>Aa</b><em>Aa</em></div><div class="v-sw"><i style="background:#12302A;box-shadow:0 0 0 1px rgba(255,255,255,.3)"></i><i style="background:#F7C08A"></i><i style="background:#7FC4C2"></i><i style="background:#FBF7F1"></i></div></div>
+        <div class="txt"><div class="card-top"><h3>Webb&shy;design</h3><small>1 av 6</small></div><p>Skräddarsydd design som matchar ditt varumärke, inte ett mallutseende. Tydlig hierarki som leder besökare till att höra av sig.</p></div>
       </article>
-
-
-      <!-- SAJT MED FUNKTIONER -->
-
-      <article class="price-card price-card-featured">
-
-        <span class="price-badge">
-          Mest valda
-        </span>
-
-        <h3>Sajt med funktioner</h3>
-
-        <p class="price-desc">
-          För företag som behöver mer än en vanlig presentationssajt.
-        </p>
-
-        <div class="price-tag">
-
-          <span class="price-amount">
-            6 500–9 000 €
-          </span>
-
-        </div>
-
-        <ul class="price-features">
-
-          <li>Allt i Enkel sajt</li>
-          <li>Bokningsfunktioner</li>
-          <li>Medlemskap</li>
-          <li>Integrationer</li>
-          <li>Avancerad funktionalitet</li>
-          <li>SEO &amp; prestanda</li>
-
-        </ul>
-
-        <a href="#kontakt" class="btn btn-primary btn-block">
-          Kom igång
-        </a>
-
+      <article class="card" style="--i:1">
+        <div class="viz"><div class="v-speed"><div class="big"><span data-count="0.8" data-dec="1">0,8</span><small>sekunder</small></div>
+          <div class="meter"><b></b></div><div class="mlbl"><span>Din nya sajt</span><span>0,8 s</span></div>
+          <div class="meter slow"><b style="--w:88%"></b></div><div class="mlbl"><span>Typisk mallsajt</span><span>4,2 s</span></div></div></div>
+        <div class="txt"><div class="card-top"><h3>Webb&shy;utveckling</h3><small>2 av 6</small></div><p>Ren kod som laddar blixtsnabbt, presterar i Google och fungerar på mobil, surfplatta och dator.</p></div>
       </article>
-
-
-      <!-- DRIFT -->
-
-      <article class="price-card">
-
-        <h3>Drift</h3>
-
-        <p class="price-desc">
-          För dig som vill att vi sköter det tekniska efter lanseringen.
-        </p>
-
-        <div class="price-tag">
-
-          <span class="price-amount">
-            99 €/mån
-          </span>
-
-        </div>
-
-        <ul class="price-features">
-
-          <li>Hosting</li>
-          <li>Uppdateringar</li>
-          <li>Säkerhetskopiering</li>
-          <li>Övervakning</li>
-          <li>Teknisk support</li>
-
-        </ul>
-
-        <a href="#kontakt" class="btn btn-outline btn-block">
-          Läs mer
-        </a>
-
+      <article class="card" style="--i:2">
+        <div class="viz"><div class="v-cart">
+          <div class="item"><i style="background:linear-gradient(135deg,#F7C08A,#E08A4B)"></i><span>Keramikmugg</span><b>249 kr</b></div>
+          <div class="item"><i style="background:linear-gradient(135deg,#9ED8D5,#3E8D89)"></i><span>Linneduk, sand</span><b>389 kr</b></div>
+          <div class="pay"><span>Klarna</span><span>Stripe</span><span>Swish</span><span class="go">Till kassan</span></div></div></div>
+        <div class="txt"><div class="card-top"><h3>E-handel</h3><small>3 av 6</small></div><p>Webbutik med smidig kassa och produktsidor som säljer. Enkel att uppdatera själv.</p></div>
       </article>
-
-
-      <!-- DRIFT & ÄNDRINGAR -->
-
-      <article class="price-card">
-
-        <h3>Drift &amp; ändringar</h3>
-
-        <p class="price-desc">
-          För företag som vill slippa tänka på hemsidan helt.
-        </p>
-
-        <div class="price-tag">
-
-          <span class="price-amount">
-            240 €/mån
-          </span>
-
-        </div>
-
-        <ul class="price-features">
-
-          <li>Allt i Drift</li>
-          <li>1 h ändringar per månad</li>
-          <li>Support inom 24 h</li>
-          <li>Löpande mindre förbättringar</li>
-          <li>Personlig kontakt</li>
-
-        </ul>
-
-        <a href="#kontakt" class="btn btn-outline btn-block">
-          Läs mer
-        </a>
-
+      <article class="card" style="--i:3">
+        <div class="viz"><div class="v-serp">
+          <div class="res hit"><b>Ditt företag – snickare i Umeå</b>dittforetag.se</div>
+          <div class="res dim"><b>Konkurrent AB</b>konkurrent.se</div>
+          <div class="res dim"><b>Företagskatalogen</b>katalog.se</div></div></div>
+        <div class="txt"><div class="card-top"><h3>SEO</h3><small>4 av 6</small></div><p>Teknisk SEO, snabb laddning och rätt struktur från start, så att sidan går att hitta och inte bara är snygg.</p></div>
       </article>
-
-
+      <article class="card" style="--i:4">
+        <div class="viz"><div class="v-up"><div class="big">99,9 %</div><p>Drifttid de senaste 30 dagarna</p><div class="upbars" id="upbars"></div></div></div>
+        <div class="txt"><div class="card-top"><h3>Underhåll och support</h3><small>5 av 6</small></div><p>Vi sköter drift, säkerhetsuppdateringar och mindre ändringar så att du kan fokusera på verksamheten.</p></div>
+      </article>
+      <article class="card" style="--i:5">
+        <div class="viz"><div class="v-text"><span id="typed"></span><span class="caret"></span></div></div>
+        <div class="txt"><div class="card-top"><h3>Innehåll och text</h3><small>6 av 6</small></div><p>Säljande texter på svenska eller andra nordiska språk som förklarar varför kunden ska välja just dig.</p></div>
+      </article>
     </div>
+  </section>
 
-  </div>
+  <section class="sec panel" id="priser" aria-labelledby="prisH">
+    <div class="wrap">
+      <h2 class="h2" id="prisH">Fasta priser. Inga överraskningar.</h2>
+      <p class="intro">Priser i euro. Behöver du något skräddarsytt tar vi fram ett förslag.</p>
+      <div class="seg" role="tablist" aria-label="Typ av paket" data-i="0">
+        <span class="pill" aria-hidden="true"></span>
+        <button role="tab" aria-selected="true" data-tab="projekt">Nytt projekt</button>
+        <button role="tab" aria-selected="false" data-tab="drift">Efter lansering</button>
+      </div>
+      <div class="plans">
+        <div class="plan" data-g="projekt">
+          <div class="plan-top"><h3>Enkel sajt</h3></div>
+          <div class="price" data-min="3500" data-max="5000">3 500–5 000<small>€</small></div>
+          <p>En professionell hemsida som leder besökaren till kontakt.</p>
+          <ul><li>Skräddarsydd design</li><li>Mobilanpassad</li><li>Kontaktformulär</li><li>Grundläggande SEO</li><li>Snabb laddning och lansering</li></ul>
+          <a class="btn line" href="#kontakt" data-pick="Enkel sajt – 3 500–5 000 €">Kom igång</a>
+        </div>
+        <div class="plan hot" data-g="projekt">
+          <div class="plan-top"><h3>Sajt med funktioner</h3><span class="tag">Mest valda</span></div>
+          <div class="price" data-min="6500" data-max="9000">6 500–9 000<small>€</small></div>
+          <p>För företag som behöver mer än en presentationssajt.</p>
+          <ul><li>Allt i Enkel sajt</li><li>Bokningsfunktioner och medlemskap</li><li>Integrationer</li><li>Avancerad funktionalitet</li><li>SEO och prestanda</li></ul>
+          <a class="btn" href="#kontakt" data-pick="Sajt med funktioner – 6 500–9 000 €">Kom igång</a>
+        </div>
+        <div class="plan hide" data-g="drift">
+          <div class="plan-top"><h3>Drift</h3></div>
+          <div class="price" data-min="99">99<small>€/mån</small></div>
+          <p>Vi sköter det tekniska efter lanseringen.</p>
+          <ul><li>Hosting</li><li>Uppdateringar</li><li>Säkerhetskopiering</li><li>Övervakning</li><li>Teknisk support</li></ul>
+          <a class="btn line" href="#kontakt" data-pick="Drift – 99 €/mån">Välj Drift</a>
+        </div>
+        <div class="plan hot hide" data-g="drift">
+          <div class="plan-top"><h3>Drift och ändringar</h3></div>
+          <div class="price" data-min="240">240<small>€/mån</small></div>
+          <p>För dig som vill slippa tänka på hemsidan helt.</p>
+          <ul><li>Allt i Drift</li><li>1 h ändringar per månad</li><li>Support inom 24 h</li><li>Löpande förbättringar</li><li>Personlig kontakt</li></ul>
+          <a class="btn" href="#kontakt" data-pick="Drift & ändringar – 240 €/mån">Välj Drift och ändringar</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</section>
-
-
-<!-- ============================================================
-     OM OSS
-     ============================================================ -->
-
-<section class="section section-alt" id="om-oss">
-
-  <div class="container about-grid">
-
-    <div>
-
-      <p class="eyebrow eyebrow-plain">
-        Om oss
-      </p>
-
-      <h2>
-        Byggt av en person som faktiskt svarar när du hör av dig
-      </h2>
-
-      <p>
-        Strand Performance drivs av
-        <strong>Tobias Sjöstrand</strong>
-        och jobbar med företag i Sverige och övriga Norden som vill ha
-        en hemsida som ser proffsig ut och faktiskt hjälper verksamheten
-        att växa.
-      </p>
-
-      <p>
-        Inga stora byråarv, inga onödiga mellanhänder — du pratar direkt
-        med den som bygger din sida, från första samtalet till lansering
-        och support efteråt.
-      </p>
-
-      <ul class="about-points">
-
-        <li>
-          Direktkontakt med grundaren genom hela projektet
-        </li>
-
-        <li>
-          Modern teknik — snabbt, säkert och lätt att underhålla
-        </li>
-
-        <li>
-          Erfarenhet av nordiska marknader och språk
-        </li>
-
-        <li>
-          Transparent kommunikation, inga dolda kostnader
-        </li>
-
+  <section class="sec panel" id="om-oss" aria-label="Om oss" style="border-top:0;padding-top:24px">
+    <div class="wrap">
+      <p class="about" id="about">Strand Performance drivs av <strong>Tobias Sjöstrand.</strong> Inga byråarvoden, inga mellanhänder. Du pratar direkt med den som bygger din sida, från första samtalet till support efteråt.</p>
+      <ul class="perks">
+        <li>Direktkontakt med grundaren genom hela projektet</li>
+        <li>Modern teknik som är snabb, säker och lätt att underhålla</li>
+        <li>Erfarenhet av nordiska marknader och språk</li>
+        <li>Transparent kommunikation utan dolda kostnader</li>
       </ul>
-
-    </div>
-
-
-    <div class="about-card">
-
-      <h3>
-        Snabba fakta
-      </h3>
-
-      <dl>
-
-        <div>
-          <dt>Baserad i</dt>
-          <dd>Norden</dd>
-        </div>
-
-        <div>
-          <dt>Jobbar med</dt>
-          <dd>Sverige, Norge, Danmark, Finland</dd>
-        </div>
-
-        <div>
-          <dt>Språk</dt>
-          <dd>Svenska, engelska</dd>
-        </div>
-
-        <div>
-          <dt>Leveranstid</dt>
-          <dd>1–4 veckor beroende på projekt</dd>
-        </div>
-
+      <dl class="facts">
+        <div><dt>Baserad i</dt><dd>Norden</dd></div>
+        <div><dt>Leveranstid</dt><dd>1–4 veckor</dd></div>
+        <div><dt>Marknader</dt><dd>Sverige, Norge, Danmark, Finland</dd></div>
+        <div><dt>Språk</dt><dd>Svenska, engelska</dd></div>
       </dl>
 
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ============================================================
-     FAQ
-     ============================================================ -->
-
-<section class="section" id="faq">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <p class="eyebrow eyebrow-plain">
-        Vanliga frågor
-      </p>
-
-      <h2>
-        Bra att veta innan vi börjar
-      </h2>
-
-    </div>
-
-
-    <div class="faq-list">
-
-      <details class="faq-item" open>
-
-        <summary>
-          Hur lång tid tar det att få en hemsida?
-        </summary>
-
-        <p>
-          En enklare presentationssajt tar vanligtvis omkring 1–2 veckor.
-          Större projekt med fler funktioner tar vanligtvis 2–4 veckor
-          beroende på omfattning.
-        </p>
-
-      </details>
-
-
-      <details class="faq-item">
-
-        <summary>
-          Vad ingår i priset?
-        </summary>
-
-        <p>
-          Design, utveckling, mobilanpassning, grundläggande SEO och
-          lansering ingår alltid. Domän och webbhotell tillkommer separat
-          om du inte redan har det, men vi hjälper gärna till att sätta upp det.
-        </p>
-
-      </details>
-
-
-      <details class="faq-item">
-
-        <summary>
-          Kan jag uppdatera sidan själv efteråt?
-        </summary>
-
-        <p>
-          Ja. Vi bygger sidor som är enkla att uppdatera själv och visar
-          dig hur. Vill du slippa tänka på det alls erbjuder vi även
-          löpande driftpaket.
-        </p>
-
-      </details>
-
-
-      <details class="faq-item">
-
-        <summary>
-          Jobbar ni bara med svenska företag?
-        </summary>
-
-        <p>
-          Nej — vi jobbar med företag i hela Norden och kan leverera
-          texter på svenska, norska, danska och engelska.
-        </p>
-
-      </details>
-
-
-      <details class="faq-item">
-
-        <summary>
-          Vad händer om jag inte vet exakt vad jag vill ha?
-        </summary>
-
-        <p>
-          Helt normalt! Vi börjar med ett kostnadsfritt samtal där vi
-          hjälper dig reda ut vad sidan behöver innehålla och vilket
-          upplägg som passar bäst.
-        </p>
-
-      </details>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ============================================================
-     KONTAKT
-     ============================================================ -->
-
-<section class="section cta-section" id="kontakt">
-
-  <div class="container">
-
-    <div class="cta-box">
-
-
-      <div class="cta-copy">
-
-        <p class="eyebrow eyebrow-plain">
-          Kontakt
-        </p>
-
-        <h2>
-          Redo att få en hemsida som gör jobbet?
-        </h2>
-
-        <p class="section-lead">
-          Beskriv kort vad du behöver så återkommer vi inom
-          1–2 arbetsdagar med förslag och pris.
-          Du kan också mejla oss direkt.
-        </p>
-
-        <div class="contact-details">
-
-          <a
-            href="mailto:info@strandperformance.com"
-            class="contact-link"
-          >
-
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M3 6h18v12H3V6zm0 0l9 7 9-7"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-
-            info@strandperformance.com
-
-          </a>
-
-        </div>
-
+      <h2 class="h2" style="margin-top:88px">Bra att veta.</h2>
+      <div class="faq">
+        <details><summary>Hur lång tid tar det att få en hemsida?</summary><p class="ans">En enklare presentationssajt tar vanligtvis 1–2 veckor. Större projekt med fler funktioner tar 2–4 veckor beroende på omfattning.</p></details>
+        <details><summary>Vad ingår i priset?</summary><p class="ans">Design, utveckling, mobilanpassning, grundläggande SEO och lansering ingår alltid. Domän och webbhotell tillkommer om du inte redan har det, men vi hjälper gärna till.</p></details>
+        <details><summary>Kan jag uppdatera sidan själv efteråt?</summary><p class="ans">Ja. Vi bygger sidor som är enkla att uppdatera och visar dig hur. Vill du slippa det helt finns våra driftpaket.</p></details>
+        <details><summary>Jobbar ni bara med svenska företag?</summary><p class="ans">Nej, vi jobbar med företag i hela Norden och levererar texter på svenska, norska, danska och engelska.</p></details>
+        <details><summary>Vad händer om jag inte vet exakt vad jag vill ha?</summary><p class="ans">Helt normalt. Vi börjar med ett kostnadsfritt samtal och reder ut vad sidan behöver och vilket upplägg som passar.</p></details>
       </div>
-
-
-      <!-- FORMULÄR -->
-
-      <form
-        class="contact-form"
-        id="contact-form"
-        action="https://formspree.io/f/xkokkjwl"
-        method="POST"
-      >
-
-        <div class="form-row">
-
-          <label for="name">
-            Namn
-          </label>
-
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            autocomplete="name"
-          >
-
-        </div>
-
-
-        <div class="form-row">
-
-          <label for="email">
-            E-post
-          </label>
-
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            autocomplete="email"
-          >
-
-        </div>
-
-
-        <div class="form-row">
-
-          <label for="package">
-            Vilket paket är du intresserad av?
-          </label>
-
-          <select
-            id="package"
-            name="package"
-          >
-
-            <option value="Enkel sajt – 3 500–5 000 €">
-              Enkel sajt – 3 500–5 000 €
-            </option>
-
-            <option value="Sajt med funktioner – 6 500–9 000 €">
-              Sajt med funktioner – 6 500–9 000 €
-            </option>
-
-            <option value="Drift – 99 €/mån">
-              Drift – 99 €/mån
-            </option>
-
-            <option value="Drift & ändringar – 240 €/mån">
-              Drift &amp; ändringar – 240 €/mån
-            </option>
-
-            <option value="Vet inte än">
-              Vet inte än
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="form-row">
-
-          <label for="message">
-            Berätta kort om projektet
-          </label>
-
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            required
-          ></textarea>
-
-        </div>
-
-
-        <!--
-          Formspree använder detta fält för att sätta
-          ämnesraden på mejlet som skickas till dig.
-        -->
-
-        <input
-          type="hidden"
-          name="_subject"
-          value="Ny offertförfrågan – Strand Performance"
-        >
-
-
-        <button
-          type="submit"
-          class="btn btn-primary btn-block"
-          id="submit-button"
-        >
-          Skicka förfrågan
-        </button>
-
-        <p
-          class="form-note"
-          id="form-note"
-          aria-live="polite"
-        ></p>
-
-      </form>
-
     </div>
+  </section>
 
-  </div>
-
-</section>
-
-
+  <section class="finale" id="kontakt" aria-labelledby="kH">
+    <div class="wrap">
+      <h2 id="kH">Redo att synas?</h2>
+      <p class="lead">Beskriv kort vad du behöver så återkommer vi inom 1–2 arbetsdagar med förslag och pris.</p>
+      <div class="form-card">
+        <form class="form" id="form" novalidate>
+          <div class="field"><label for="fn">Namn</label><input id="fn" name="namn" autocomplete="name"></div>
+          <div class="field"><label for="fe">E-post</label><input id="fe" name="epost" type="email" autocomplete="email" inputmode="email"></div>
+          <div class="field"><label for="fp">Vilket paket är du intresserad av?</label>
+            <select id="fp" name="paket">
+              <option>Vet inte än</option>
+              <option>Enkel sajt – 3 500–5 000 €</option>
+              <option>Sajt med funktioner – 6 500–9 000 €</option>
+              <option>Drift – 99 €/mån</option>
+              <option>Drift & ändringar – 240 €/mån</option>
+            </select></div>
+          <div class="field"><label for="fm">Berätta kort om projektet</label><textarea id="fm" name="meddelande"></textarea></div>
+          <button class="btn" type="submit">Skicka förfrågan</button>
+          <p class="msg" id="msg" role="status"></p>
+        </form>
+        <a class="mail" href="mailto:info@strandperformance.com">info@strandperformance.com</a>
+      </div>
+      <footer class="foot">
+        <span>© <span id="yr"></span> Strand Performance</span>
+        <nav aria-label="Sidfot"><a href="#tjanster">Tjänster</a><a href="#priser">Priser</a><a href="#om-oss">Om oss</a></nav>
+      </footer>
+    </div>
+  </section>
 </main>
 
-
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
-
-<footer class="site-footer">
-
-  <div class="container footer-inner">
-
-    <a href="#top" class="logo">
-
-      <span class="logo-mark">
-        SP
-      </span>
-
-      <span class="logo-text">
-        Strand<strong>Performance</strong>
-      </span>
-
-    </a>
-
-
-    <nav class="footer-nav">
-
-      <a href="#tjanster">
-        Tjänster
-      </a>
-
-      <a href="#priser">
-        Priser
-      </a>
-
-      <a href="#om-oss">
-        Om oss
-      </a>
-
-      <a href="#kontakt">
-        Kontakt
-      </a>
-
-    </nav>
-
-
-    <p class="footer-copy">
-      © <span id="year"></span> Strand Performance.
-      Alla rättigheter förbehållna.
-    </p>
-
-  </div>
-
-</footer>
-
-
-<!-- ============================================================
-     JAVASCRIPT
-     ============================================================ -->
-
 <script>
+(function(){
+"use strict";
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (s,c=document)=>c.querySelector(s);
+const $$ = (s,c=document)=>Array.from(c.querySelectorAll(s));
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const smooth=(a,b,v)=>{const t=clamp((v-a)/(b-a));return t*t*(3-2*t);};
+$('#yr').textContent=new Date().getFullYear();
 
-document.addEventListener('DOMContentLoaded', function () {
+/* ---------- Menu ---------- */
+const mb=$('.menu-btn');
+const setMenu=o=>{document.body.classList.toggle('menu-open',o);mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?'Stäng meny':'Öppna meny');};
+mb.addEventListener('click',()=>setMenu(!document.body.classList.contains('menu-open')));
+$$('.nav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false);});
 
-  /* ------------------------------------------------------------
-     Mobile navigation
-     ------------------------------------------------------------ */
+/* ---------- WebGL ocean ---------- */
+const cv=$('#ocean');
+let gl=null;
+try{ gl=cv.getContext('webgl',{antialias:false,alpha:false,powerPreference:'low-power'}); }catch(e){}
+const U={};
+let maskCanvas=document.createElement('canvas'), mctx=maskCanvas.getContext('2d');
+let maskTex=null, origin=[.5,.5], lastW=0, lastH=0;
+const state={night:0,scale:1,maskOn:reduce?0:1,time:0};
 
-  var header = document.querySelector('.site-header');
-  var toggle = document.getElementById('nav-toggle');
+function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+function hexToRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return[(n>>16&255)/255,(n>>8&255)/255,(n&255)/255];}
 
-  if (toggle && header) {
+const VS='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+const FS=`precision mediump float;
+uniform vec2 uRes;uniform float uTime;uniform float uNight;
+uniform sampler2D uMask;uniform float uMaskOn;uniform float uScale;uniform vec2 uOrigin;uniform vec3 uBg;
+float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+ float a=hash(i),b=hash(i+vec2(1.,0.)),c=hash(i+vec2(0.,1.)),d=hash(i+vec2(1.,1.));
+ return mix(mix(a,b,f.x),mix(c,d,f.x),f.y);}
+float sea(vec2 p,float t){float h=0.,a=.5;
+ for(int i=0;i<4;i++){h+=a*noise(p+vec2(t*.6,t*.35));p=mat2(1.6,1.2,-1.2,1.6)*p;a*=.5;t*=1.25;}
+ return h;}
+vec3 sky(vec2 uv,float hor,vec2 sun){
+ float n=uNight;
+ vec3 top=mix(vec3(.09,.12,.30),vec3(.012,.02,.05),n);
+ vec3 mid=mix(vec3(.58,.30,.42),vec3(.03,.06,.13),n);
+ vec3 low=mix(vec3(1.,.58,.30),vec3(.07,.11,.21),n);
+ float y=max(uv.y-hor,0.);
+ vec3 c=mix(low,mid,smoothstep(0.,.2,y));
+ c=mix(c,top,smoothstep(.12,.75,y));
+ float d=length(uv-sun);
+ float sv=1.-smoothstep(.5,.85,n);
+ c+=vec3(1.,.84,.58)*smoothstep(.066,.058,d)*sv;
+ c+=vec3(1.,.55,.30)*.2/(1.+d*d*70.)*sv;
+ vec2 mo=vec2(-.28,.30);float md=length(uv-mo);
+ float mv=smoothstep(.55,1.,n);
+ c+=vec3(.92,.94,1.)*smoothstep(.034,.03,md)*mv;
+ c+=vec3(.5,.6,.9)*.05/(1.+md*md*40.)*mv;
+ vec2 g=floor(uv*170.);
+ c+=vec3(step(.9965,hash(g)))*smoothstep(.3,1.,n)*smoothstep(.03,.25,y)*(.6+.4*sin(uTime*2.+hash(g)*20.));
+ return c;}
+void main(){
+ vec2 fuv=gl_FragCoord.xy/uRes;
+ vec2 uv=(gl_FragCoord.xy-.5*uRes)/uRes.y;
+ float hor=-.04-uNight*.04;
+ vec2 sun=vec2(.2,hor+.1-uNight*.24);
+ vec3 col;
+ if(uv.y>hor){col=sky(uv,hor,sun);}
+ else{
+  float dep=hor-uv.y+.003;
+  float z=.6/dep;
+  vec2 wp=vec2(uv.x*z*1.1,z*1.8);
+  float t=uTime*.32;
+  float e=.06;
+  float h=sea(wp,t);
+  vec2 nr=vec2(sea(wp+vec2(e,0.),t)-h,sea(wp+vec2(0.,e),t)-h)/e;
+  nr*=1./(1.+z*.06);
+  vec2 ruv=vec2(uv.x+nr.x*.05,hor+dep*.55+nr.y*.035);
+  vec3 refl=sky(ruv,hor,sun);
+  vec3 deep=mix(vec3(.02,.08,.12),vec3(.005,.018,.04),uNight);
+  float fr=clamp(1.-dep*2.6,.12,.92);
+  col=mix(deep,refl,fr);
+  float gl=smoothstep(.7,.96,sea(wp*2.6+nr*.5,t*1.8)+nr.x*.25);
+  col+=vec3(1.,.72,.46)*gl*exp(-abs(uv.x-sun.x)*(8.+dep*14.))*(1.-smoothstep(.35,.85,uNight))*1.5;
+  col+=vec3(.7,.78,1.)*gl*exp(-abs(uv.x+.28)*(12.+dep*14.))*smoothstep(.6,1.,uNight)*.7;
+  col=mix(col,sky(vec2(uv.x,hor+.002),hor,sun),smoothstep(.035,0.,dep)*.85);
+ }
+ if(uMaskOn>.001){
+  vec2 tuv=(fuv-uOrigin)/uScale+uOrigin;
+  float m=texture2D(uMask,tuv).r;
+  m*=step(0.,tuv.x)*step(tuv.x,1.)*step(0.,tuv.y)*step(tuv.y,1.);
+  col=mix(col,mix(uBg,col,m),uMaskOn);
+ }
+ vec2 v=fuv-.5;
+ col*=1.-.35*dot(v,v);
+ gl_FragColor=vec4(col,1.);
+}`;
 
-    toggle.addEventListener('click', function () {
+function initGL(){
+  if(!gl) return false;
+  const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)){console.warn(gl.getShaderInfoLog(o));return null;}return o;};
+  const v=sh(gl.VERTEX_SHADER,VS), f=sh(gl.FRAGMENT_SHADER,FS);
+  if(!v||!f) return false;
+  const pr=gl.createProgram();gl.attachShader(pr,v);gl.attachShader(pr,f);gl.linkProgram(pr);
+  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) return false;
+  gl.useProgram(pr);
+  const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);
+  gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+  const loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+  ['uRes','uTime','uNight','uMask','uMaskOn','uScale','uOrigin','uBg'].forEach(n=>U[n]=gl.getUniformLocation(pr,n));
+  maskTex=gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D,maskTex);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+  gl.uniform1i(U.uMask,0);
+  return true;
+}
 
-      var isOpen = header.classList.toggle('nav-open');
+let M=null, lastScaleDrawn=-1;
+function layoutMask(){
+  const W=cv.width,H=cv.height;
+  maskCanvas.width=W;maskCanvas.height=H;
+  const c=mctx;
+  const word='STRAND';
+  const setFont=s=>{c.font=`900 ${s}px Archivo, "Arial Black", sans-serif`;try{c.fontStretch='ultra-expanded';}catch(e){}};
+  let fs=100; setFont(fs);
+  const wRatio=innerWidth<700?0.9:0.8;
+  fs=Math.min(fs*(W*wRatio)/c.measureText(word).width, H*0.3);
+  setFont(fs);
+  const m=c.measureText(word);
+  const cap=m.actualBoundingBoxAscent||fs*0.72;
+  const x0=(W-m.width)/2, base=H*0.42+cap/2;
+  const ox=x0+c.measureText('S').width+c.measureText('T').width/2, oy=base-cap*0.32;
+  M={W,H,fs,x0,base,ox,oy,word,setFont};
+  origin=[ox/W,1-oy/H];
+  const cssScale=cv.clientHeight/H;
+  document.documentElement.style.setProperty('--under',(base*cssScale+18)+'px');
+  lastScaleDrawn=-1;
+  paintMask(state.scale);
+}
+function paintMask(sc){
+  if(!M) return;
+  if(lastScaleDrawn>0 && Math.abs(sc-lastScaleDrawn)/lastScaleDrawn<0.004) return;
+  lastScaleDrawn=sc;
+  const c=mctx;
+  c.setTransform(1,0,0,1,0,0);
+  c.fillStyle='#000';c.fillRect(0,0,M.W,M.H);
+  // Draw the zoomed word directly at full resolution so edges stay razor sharp
+  c.setTransform(sc,0,0,sc,M.ox*(1-sc),M.oy*(1-sc));
+  M.setFont(M.fs);
+  c.fillStyle='#fff';c.textBaseline='alphabetic';
+  c.fillText(M.word,M.x0,M.base);
+  c.setTransform(1,0,0,1,0,0);
+  gl.bindTexture(gl.TEXTURE_2D,maskTex);
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);
+  gl.texImage2D(gl.TEXTURE_2D,0,gl.LUMINANCE,gl.LUMINANCE,gl.UNSIGNED_BYTE,maskCanvas);
+}
+function drawMask(){layoutMask();}
 
-      toggle.classList.toggle('is-open', isOpen);
+let hiRes=true;
+function resize(force){
+  const w=innerWidth, h=Math.max(innerHeight, document.documentElement.clientHeight);
+  if(!force && w===lastW && Math.abs(h-lastH)<160) return;
+  lastW=w;lastH=h;
+  const dpr=Math.min(devicePixelRatio||1,2.5);
+  // Full sharpness while the STRAND intro is on screen, lighter afterwards to save battery
+  const q=hiRes?1:(w<700?0.55:0.7);
+  let W=Math.round(w*dpr*q), H=Math.round(cv.clientHeight*dpr*q);
+  const cap=hiRes?2600:1500; if(W>cap){H=Math.round(H*cap/W);W=cap;}
+  cv.width=W;cv.height=H;
+  if(gl){gl.viewport(0,0,W,H);drawMask();}
+}
+function setHiRes(v){ if(v===hiRes) return; hiRes=v; resize(true); }
 
-      toggle.setAttribute(
-        'aria-expanded',
-        isOpen ? 'true' : 'false'
-      );
+const glOK=initGL();
+if(!glOK){document.documentElement.classList.add('no-gl');}
+else{
+  resize(true);
+  if(document.fonts&&document.fonts.load){document.fonts.load('900 100px Archivo').then(()=>resize(true)).catch(()=>{});}
+  addEventListener('resize',()=>resize(false));
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{dirty=true;});
+}
 
-      toggle.setAttribute(
-        'aria-label',
-        isOpen ? 'Stäng meny' : 'Öppna meny'
-      );
+let dirty=true, visibleTab=true;
+document.addEventListener('visibilitychange',()=>{visibleTab=!document.hidden;});
+function render(t){
+  if(!glOK) return;
+  const bg=hexToRgb(cssVar('--bg')||'#060B14');
+  gl.uniform2f(U.uRes,cv.width,cv.height);
+  gl.uniform1f(U.uTime,reduce?4.0:(t/1000)%600);
+  gl.uniform1f(U.uNight,state.night);
+  gl.uniform1f(U.uMaskOn,state.maskOn);
+  gl.uniform1f(U.uScale,1.0);
+  gl.uniform2f(U.uOrigin,origin[0],origin[1]);
+  gl.uniform3f(U.uBg,bg[0],bg[1],bg[2]);
+  gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,maskTex);
+  gl.drawArrays(gl.TRIANGLES,0,3);
+}
 
-    });
+/* ---------- Scroll-driven scenes ---------- */
+const hero=$('#hero'), under=$('#under'), hint=$('#hint'), heroCopy=$('#heroCopy'), top=$('#top');
+const build=$('#process'), phone=$('#phone'), steps=$$('.step'), stepNum=$('#stepNum'), barsB=$$('.bars b'), chips=$$('.chip'), scoreNum=$('#scoreNum');
+const ticker=$('#ticker'), cards=$$('.card'), words=[], finale=$('#kontakt');
+let stage=-1, scoreTimer=null;
 
+function setStage(s){
+  if(s===stage) return; stage=s;
+  phone.dataset.s=s;
+  steps.forEach((el,i)=>el.classList.toggle('on',i===s));
+  stepNum.textContent='0'+(s+1);
+  chips.forEach(c=>c.classList.toggle('on',+c.dataset.at<=s));
+  clearInterval(scoreTimer);
+  if(s===3){let n=0;scoreTimer=setInterval(()=>{n+=5;scoreNum.textContent=Math.min(n,100);if(n>=100)clearInterval(scoreTimer);},45);}
+  else scoreNum.textContent='0';
+}
 
-    document.querySelectorAll('.main-nav a').forEach(function (link) {
-
-      link.addEventListener('click', function () {
-
-        header.classList.remove('nav-open');
-
-        toggle.classList.remove('is-open');
-
-        toggle.setAttribute(
-          'aria-expanded',
-          'false'
-        );
-
+// About words
+const about=$('#about');
+(function split(node){
+  Array.from(node.childNodes).forEach(ch=>{
+    if(ch.nodeType===3){
+      const frag=document.createDocumentFragment();
+      ch.textContent.split(/(\s+)/).forEach(p=>{
+        if(!p) return;
+        if(/^\s+$/.test(p)){frag.appendChild(document.createTextNode(p));return;}
+        const s=document.createElement('span');s.className='w';s.textContent=p;words.push(s);frag.appendChild(s);
       });
+      ch.replaceWith(frag);
+    } else split(ch);
+  });
+})(about);
 
-    });
+function prog(el,startOffset,endOffset){
+  const r=el.getBoundingClientRect(), vh=innerHeight;
+  const total=r.height-vh+(endOffset||0);
+  return clamp((-r.top+(startOffset||0))/Math.max(1,total));
+}
 
+function update(){
+  const vh=innerHeight;
+  // hero
+  const hr=hero.getBoundingClientRect();
+  const hp=clamp(-hr.top/Math.max(1,hr.height-vh));
+  if(!reduce){
+    const z=smooth(0.08,0.72,hp);
+    state.scale=1+Math.pow(z,3)*90;
+    state.maskOn=1-smooth(0.6,0.74,hp);
+    if(glOK){ setHiRes(hp<0.9); if(state.maskOn>0.001) paintMask(state.scale); }
+    under.style.opacity=String(1-smooth(0.02,0.14,hp));
+    hint.style.opacity=String(1-smooth(0,0.06,hp));
+    const c=smooth(0.64,0.86,hp);
+    heroCopy.style.opacity=String(c);
+    heroCopy.style.transform=`translateY(${(1-c)*40}px)`;
+    heroCopy.style.pointerEvents=c>0.5?'auto':'none';
+  }
+  top.classList.toggle('solid', hr.bottom<vh*0.6);
+  top.classList.toggle('on-ocean', hr.bottom>=vh*0.6 && (reduce || state.maskOn<0.5));
+
+  // night: from end of hero to finale
+  const docH=document.documentElement.scrollHeight;
+  const heroEnd=hero.offsetTop+hero.offsetHeight-vh;
+  const n=clamp((scrollY-heroEnd)/Math.max(1,docH-vh-heroEnd));
+  state.night=smooth(0,1,n);
+
+  // ticker
+  const tr=ticker.parentElement.getBoundingClientRect();
+  if(tr.bottom>0&&tr.top<vh){ticker.style.transform=`translateX(${-(1-(tr.top+tr.height)/(vh+tr.height))*40}%)`;}
+
+  // build
+  const bp=prog(build);
+  const s=Math.min(3,Math.floor(bp*4));
+  setStage(s);
+  barsB.forEach((b,i)=>b.style.transform=`scaleX(${clamp(bp*4-i)})`);
+
+  // stacking cards: shrink the ones being covered
+  for(let i=0;i<cards.length-1;i++){
+    const cur=cards[i].getBoundingClientRect(), nxt=cards[i+1].getBoundingClientRect();
+    const cover=clamp(1-(nxt.top-cur.top)/Math.max(1,cur.height));
+    cards[i].style.transform=`scale(${1-cover*0.06})`;
+    cards[i].style.filter=cover>0.02?`brightness(${1-cover*0.35})`:'';
   }
 
+  // about words
+  const ar=about.getBoundingClientRect();
+  const ap=clamp((vh*0.85-ar.top)/(ar.height+vh*0.35));
+  const lit=Math.floor(ap*words.length*1.05);
+  words.forEach((w,i)=>{const o=i<lit?1:.16; if(w._o!==o){w._o=o;w.style.opacity=o;}});
 
-  /* ------------------------------------------------------------
-     Footer year
-     ------------------------------------------------------------ */
+  dirty=true;
+}
 
-  var yearEl = document.getElementById('year');
+let ticking=false;
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(()=>{ticking=false;update();if(reduce)render(0);});}},{passive:true});
+addEventListener('resize',()=>requestAnimationFrame(update));
 
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+function loop(t){
+  if(visibleTab && glOK) render(t);
+  requestAnimationFrame(loop);
+}
+update();
+if(reduce){ if(glOK) render(0); } else requestAnimationFrame(loop);
 
+/* ---------- Small pieces ---------- */
+// uptime bars
+const ub=$('#upbars'); for(let i=0;i<30;i++){ub.appendChild(document.createElement('i'));}
+// typing
+const typed=$('#typed'), phrase='Vi skriver det dina kunder behöver läsa för att välja dig.';
+if(reduce){typed.textContent=phrase;}
+else{
+  let i=0,d=1,running=false;
+  const io=new IntersectionObserver(e=>{running=e[0].isIntersecting;},{threshold:.2});
+  io.observe(typed);
+  setInterval(()=>{if(!running)return;i+=d;if(i>phrase.length+14){d=-1;i=phrase.length;}if(i<0){d=1;i=0;}typed.textContent=phrase.slice(0,clamp(i,0,phrase.length));},65);
+}
+// speed meter animates when visible
+const meter=$('.v-speed .meter b');
+meter.style.width='0%';meter.style.transition='width 1.2s cubic-bezier(.3,.7,.2,1)';
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){meter.style.width='18%';o.disconnect();}},{threshold:.5}).observe(meter);
 
-  /* ------------------------------------------------------------
-     Formspree contact form
-     ------------------------------------------------------------ */
+// prices
+const seg=$('.seg'), tabs=$$('.seg button');
+const fmt=n=>Math.round(n).toLocaleString('sv-SE');
+function countUp(el){
+  if(reduce) return;
+  const min=+el.dataset.min, max=el.dataset.max?+el.dataset.max:0, unit=el.querySelector('small').outerHTML;
+  const t0=performance.now();
+  (function st(now){const p=Math.min(1,(now-t0)/900),e=1-Math.pow(1-p,3);
+    el.innerHTML=(max?fmt(min*e)+'–'+fmt(max*e):fmt(min*e))+unit; if(p<1)requestAnimationFrame(st);})(t0);
+}
+tabs.forEach((b,idx)=>b.addEventListener('click',()=>{
+  seg.dataset.i=idx;
+  tabs.forEach(x=>x.setAttribute('aria-selected',x===b));
+  $$('.plan').forEach(p=>{const on=p.dataset.g===b.dataset.tab;p.classList.toggle('hide',!on);if(on)countUp($('.price',p));});
+  update();
+}));
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){$$('.plan:not(.hide) .price').forEach(countUp);o.disconnect();}},{threshold:.3}).observe($('.plans'));
+$$('[data-pick]').forEach(a=>a.addEventListener('click',()=>{$('#fp').value=a.dataset.pick;}));
 
-  var form = document.getElementById('contact-form');
-
-  var note = document.getElementById('form-note');
-
-  var button = document.getElementById('submit-button');
-
-
-  if (form) {
-
-    form.addEventListener('submit', async function (e) {
-
-      e.preventDefault();
-
-
-      if (button) {
-
-        button.disabled = true;
-
-        button.textContent = 'Skickar...';
-
-      }
-
-
-      if (note) {
-
-        note.textContent = '';
-
-      }
-
-
-      try {
-
-        var response = await fetch(
-          'https://formspree.io/f/xkokkjwl',
-          {
-            method: 'POST',
-
-            body: new FormData(form),
-
-            headers: {
-              'Accept': 'application/json'
-            }
-          }
-        );
-
-
-        if (response.ok) {
-
-          form.reset();
-
-
-          if (note) {
-
-            note.textContent =
-              'Tack! Din förfrågan är skickad. Vi återkommer inom 1–2 arbetsdagar.';
-
-            note.style.color = 'var(--accent-2)';
-
-          }
-
-
-          if (button) {
-
-            button.textContent =
-              'Förfrågan skickad ✓';
-
-          }
-
-
-        } else {
-
-          var data = await response.json().catch(function () {
-            return {};
-          });
-
-          throw new Error(
-            data.error || 'Form submission failed'
-          );
-
-        }
-
-
-      } catch (error) {
-
-        console.error(
-          'Formspree error:',
-          error
-        );
-
-
-        if (note) {
-
-          note.textContent =
-            'Något gick fel. Försök igen eller mejla oss direkt på info@strandperformance.com.';
-
-          note.style.color = 'var(--danger)';
-
-        }
-
-
-        if (button) {
-
-          button.disabled = false;
-
-          button.textContent =
-            'Skicka förfrågan';
-
-        }
-
-      }
-
-    });
-
-  }
-
+// form
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target, m=$('#msg');
+  if(!f.namn.value.trim()){m.textContent='Skriv ditt namn så vi vet vem vi svarar.';f.namn.focus();return;}
+  if(!/^\S+@\S+\.\S+$/.test(f.epost.value)){m.textContent='Ange en e-postadress, till exempel namn@foretag.se.';f.epost.focus();return;}
+  const body=`Namn: ${f.namn.value}\nE-post: ${f.epost.value}\nPaket: ${f.paket.value}\n\n${f.meddelande.value}`;
+  const href='mailto:info@strandperformance.com?subject='+encodeURIComponent('Förfrågan från hemsidan')+'&body='+encodeURIComponent(body);
+  m.textContent='Din e-postapp öppnas med förfrågan ifylld. Öppnas inget? Mejla info@strandperformance.com.';
+  try{ if(!window.open(href,'_blank')) location.href=href; }catch(err){}
 });
-
+})();
 </script>
-
 </body>
 </html>
