@@ -1,0 +1,21 @@
+# Strand Performance
+
+> Webbyrå som bygger snabba, moderna och sökmotoranpassade hemsidor för företag i Sverige, Norge, Danmark och Finland. Drivs av grundaren Tobias Sjöstrand. Fasta priser, lansering på 1–4 veckor och direktkontakt med den som bygger sidan.
+
+## Tjänster
+- Webbdesign: skräddarsydd design efter företagets varumärke
+- Webbutveckling: snabba, mobilanpassade sajter
+- E-handel: webbutiker med Klarna, Stripe och Swish
+- SEO: teknisk sökmotoroptimering från start
+- Underhåll och support: drift, säkerhetsuppdateringar och ändringar
+- Innehåll och text: säljande texter på svenska och andra nordiska språk
+
+## Priser (euro)
+- Enkel sajt: 3 500–5 000 €
+- Sajt med funktioner (bokning, medlemskap, integrationer): 6 500–9 000 €
+- Drift: 99 €/månad
+- Drift och ändringar: 240 €/månad
+
+## Kontakt
+- Webbplats: https://strandperformance.se/
+- E-post: info@strandperformance.com
