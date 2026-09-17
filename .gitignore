@@ -1,0 +1,19 @@
+# Lokalt arbetsmaterial och underlag – publiceras aldrig via GitHub Pages.
+# Allt som committas till main går direkt ut live på strandperformance.se.
+
+# Arkiv
+*.zip
+
+# Uppackade underlagspaket
+/hemsida-uppdatering/
+/some-oktober-2026/
+/strand-startpaket/
+
+# Lösa mediefiler i roten (dubbletter / arbetskopior)
+/2026-10-14-om-tobias.jpg
+/reel-strand.mp4
+
+# Skräp från operativsystem
+Thumbs.db
+desktop.ini
+.DS_Store
