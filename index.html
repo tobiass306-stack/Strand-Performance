@@ -179,12 +179,9 @@
  ]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" href="/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:"Archivo";src:url("/archivo.woff2") format("woff2-variations"),url("/archivo.woff2") format("woff2");font-weight:300 900;font-stretch:62% 125%;font-style:normal;font-display:swap}
 :root{
   --bg:#EEF1F0; --ink:#08111D; --muted:#4A5866; --panel:rgba(238,241,240,.92); --panel-solid:#EEF1F0;
   --line:rgba(8,17,29,.14); --sun:#F4A259; --sun-ink:#1B0E03; --tide:#1F6F6C; --btn-ink:#EEF1F0;
@@ -822,6 +819,7 @@ function hexToRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+
 
 const VS='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
 const FS=`precision mediump float;
+#define OCT 4
 uniform vec2 uRes;uniform float uTime;uniform float uNight;
 uniform sampler2D uMask;uniform float uMaskOn;uniform float uScale;uniform vec2 uOrigin;uniform vec3 uBg;
 float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
@@ -829,7 +827,7 @@ float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
  float a=hash(i),b=hash(i+vec2(1.,0.)),c=hash(i+vec2(0.,1.)),d=hash(i+vec2(1.,1.));
  return mix(mix(a,b,f.x),mix(c,d,f.x),f.y);}
 float sea(vec2 p,float t){float h=0.,a=.5;
- for(int i=0;i<4;i++){h+=a*noise(p+vec2(t*.6,t*.35));p=mat2(1.6,1.2,-1.2,1.6)*p;a*=.5;t*=1.25;}
+ for(int i=0;i<OCT;i++){h+=a*noise(p+vec2(t*.6,t*.35));p=mat2(1.6,1.2,-1.2,1.6)*p;a*=.5;t*=1.25;}
  return h;}
 vec3 sky(vec2 uv,float hor,vec2 sun){
  float n=uNight;
@@ -1089,7 +1087,13 @@ function update(){
   dirty=true;
 }
 
-let heroP=0;
+let heroP=0, oceanVisible=true;
+// Havet syns bara i introt, bakom tjänstekorten och i avslutningen
+(function(){
+  const watch=[hero, document.getElementById('stack'), finale];
+  const io=new IntersectionObserver(es=>{ oceanVisible = watch.some(el=>el && el.getBoundingClientRect().bottom>0 && el.getBoundingClientRect().top<innerHeight); dirty=true; if(glOK) render(performance.now()); },{threshold:0});
+  watch.forEach(el=>el && io.observe(el));
+})();
 function diveIn(){
   const target=hero.offsetTop+hero.offsetHeight-innerHeight;
   if(reduce){scrollTo(0,target);return;}
@@ -1108,9 +1112,11 @@ addEventListener('resize',()=>requestAnimationFrame(update));
 const loadT=performance.now();
 let lastFrame=0;
 function loop(t){
-  const cap = heroP<0.999 ? 0 : 33;   // fullt flyt i introt, halv takt sedan
+  const mobile = innerWidth < 700;
+  const cap = heroP<0.999 ? 0 : (mobile ? 50 : 33);
   if(cap && t-lastFrame < cap){ requestAnimationFrame(loop); return; }
   lastFrame=t;
+  if(!oceanVisible){ requestAnimationFrame(loop); return; }
   if(!reduce && glOK && heroP<0.001){
     // gentle breathing after a moment, hinting that the word leads somewhere
     const k=Math.max(0,(t-loadT-1800)/1000);
