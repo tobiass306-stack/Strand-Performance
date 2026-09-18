@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gratis hemsidekoll – testa din hemsida på 30 sekunder | Strand Performance</title>
+<meta name="description" content="Testa din hemsida gratis. Du får riktiga mätvärden för hastighet, mobilanpassning och SEO, plus konkreta förbättringar från Strand Performance.">
+<meta name="theme-color" content="#060B14">
+<link rel="canonical" href="https://strandperformance.se/hemsidekoll/">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sv_SE">
+<meta property="og:url" content="https://strandperformance.se/hemsidekoll/">
+<meta property="og:title" content="Gratis hemsidekoll – testa din hemsida på 30 sekunder">
+<meta property="og:description" content="Riktiga mätvärden för hastighet, mobilanpassning och SEO, plus konkreta förbättringar.">
+<meta property="og:image" content="https://strandperformance.se/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060B14; --bg2:#0B1320; --ink:#F1F4F3; --muted:#A7B4BF; --line:rgba(241,244,243,.14);
+  --sun:#F4A259; --sun-ink:#1B0E03; --tide:#7FC4C2; --good:#6fdc9c; --warn:#F4A259; --bad:#ff7a6b;
+  --font:"Archivo","Helvetica Neue",Arial,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#060B14}
+body{background:
+  radial-gradient(120% 60% at 70% 0%, rgba(244,162,89,.16), transparent 60%),
+  linear-gradient(#0A1220, #060B14 60%);
+  color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.55;min-height:100svh}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{width:min(860px,100% - 32px);margin-inline:auto}
+header{padding:18px 0}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:34px;height:34px}
+.brand b{font-stretch:125%;font-weight:800;font-size:14px;line-height:1;display:block}
+.brand small{display:block;font-size:10px;letter-spacing:.24em;margin-top:3px}
+h1{font-size:clamp(34px,8vw,62px);line-height:.98;font-weight:800;font-stretch:125%;letter-spacing:-.02em;margin-top:24px}
+.lead{color:var(--muted);margin-top:14px;max-width:46ch}
+form{margin-top:26px;display:grid;gap:12px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+input{flex:1 1 240px;min-width:0;font:inherit;font-size:16px;color:var(--ink);background:rgba(255,255,255,.06);border:0;border-radius:14px;padding:15px 16px;box-shadow:inset 0 0 0 1.5px var(--line);outline:none}
+input:focus{box-shadow:inset 0 0 0 2px var(--sun)}
+button{font:inherit;font-weight:800;font-size:16px;border:0;border-radius:999px;padding:15px 26px;background:var(--sun);color:var(--sun-ink);cursor:pointer;white-space:nowrap}
+button:disabled{opacity:.6;cursor:default}
+.hint{font-size:13px;color:var(--muted)}
+.status{margin-top:18px;font-size:15px;color:var(--tide);min-height:1.4em}
+.bar{height:4px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:10px;display:none}
+.bar b{display:block;height:100%;width:8%;background:var(--sun);transition:width .8s ease}
+.result{margin-top:34px;display:none}
+.scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.score{background:var(--bg2);border-radius:18px;padding:18px;box-shadow:inset 0 0 0 1px var(--line);text-align:center}
+.ring{position:relative;width:96px;height:96px;margin:0 auto 10px}
+.ring svg{transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:8}
+.ring .tr{stroke:rgba(255,255,255,.12)}
+.ring .br{stroke-linecap:round;stroke-dasharray:264;stroke-dashoffset:264;transition:stroke-dashoffset 1.2s cubic-bezier(.3,.7,.2,1)}
+.ring span{position:absolute;inset:0;display:grid;place-items:center;font-size:26px;font-weight:900;font-stretch:112%}
+.score p{font-size:14px;color:var(--muted)}
+.metrics{margin-top:14px;display:grid;gap:8px}
+.metric{display:flex;justify-content:space-between;gap:12px;background:var(--bg2);border-radius:12px;padding:12px 14px;box-shadow:inset 0 0 0 1px var(--line);font-size:15px}
+.metric b{white-space:nowrap}
+.findings{margin-top:26px;display:grid;gap:10px}
+.find{background:var(--bg2);border-radius:14px;padding:14px 16px;box-shadow:inset 0 0 0 1px var(--line);display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.find i{flex:none;width:10px;height:10px;border-radius:50%;margin-top:7px}
+.find p{color:var(--muted);font-size:14px;margin-top:3px}
+.cta{margin-top:30px;background:linear-gradient(135deg,rgba(244,162,89,.16),rgba(127,196,194,.1));border-radius:22px;padding:22px;box-shadow:inset 0 0 0 1px var(--line)}
+.cta h2{font-size:clamp(24px,5.5vw,34px);font-weight:800;font-stretch:112%;line-height:1.05}
+.cta p{color:var(--muted);margin-top:8px;max-width:48ch}
+.msg{font-size:14px;color:var(--tide);min-height:1.3em;margin-top:8px}
+footer{margin-top:60px;padding:24px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{text-decoration:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 21.5a7 7 0 0 1 14 0z" fill="#F4A259"/><path d="M7 24.5c3-2.2 6-2.2 9 0s6 2.2 9 0 6-2.2 8 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M10 29c2.6-1.8 5.3-1.8 8 0s5.3 1.8 8 0 4.4-1.4 5 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/></svg>
+      <span><b>STRAND</b><small>PERFORMANCE</small></span>
+    </a>
+  </header>
+
+  <main>
+    <h1>Hur bra är din hemsida egentligen?</h1>
+    <p class="lead">Skriv in adressen så mäter vi hastighet, mobilanpassning och SEO med Googles egna verktyg. Det tar ungefär 30 sekunder och kostar ingenting.</p>
+
+    <form id="f" novalidate>
+      <div class="row">
+        <input id="url" type="text" inputmode="url" autocomplete="url" placeholder="dittforetag.se" aria-label="Din webbadress">
+        <button type="submit" id="go">Testa gratis</button>
+      </div>
+      <p class="hint">Ingen registrering. Vi sparar ingenting om du inte själv ber om rapporten.</p>
+    </form>
+    <p class="status" id="status" role="status"></p>
+    <div class="bar" id="bar"><b></b></div>
+
+    <section class="result" id="result" aria-live="polite">
+      <div class="scores" id="scores"></div>
+      <div class="metrics" id="metrics"></div>
+      <div class="findings" id="findings"></div>
+
+      <div class="cta">
+        <h2>Vill du ha en åtgärdsplan?</h2>
+        <p>Skriv din e-post så går jag igenom sidan personligen och skickar de tre viktigaste sakerna att fixa först, i prioritetsordning. Fortfarande gratis, och du binder dig inte till något.</p>
+        <form id="lead" novalidate style="margin-top:16px">
+          <div class="row">
+            <input id="mail" type="email" inputmode="email" autocomplete="email" placeholder="din@epost.se" aria-label="Din e-post">
+            <button type="submit" id="send">Skicka rapporten</button>
+          </div>
+          <p class="msg" id="msg"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="yr"></span> Strand Performance</span>
+    <nav><a href="/">Till startsidan</a></nav>
+  </footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* ===== KLISTRA IN DIN API-NYCKEL MELLAN CITATTECKNEN NEDAN ===== */
+const PSI_KEY = "";
+/* =============================================================== */
+const ENDPOINT = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
+const FORMSPREE = "https://formspree.io/f/xkokkjwl";
+
+const $ = s => document.querySelector(s);
+$('#yr').textContent = new Date().getFullYear();
+let last = null;
+
+function clean(v){
+  v = (v||'').trim().replace(/\s+/g,'');
+  if(!v) return '';
+  if(!/^https?:\/\//i.test(v)) v = 'https://' + v;
+  try { const u = new URL(v); return u.hostname.includes('.') ? u.href : ''; } catch(e){ return ''; }
+}
+function color(n){ return n >= 90 ? 'var(--good)' : n >= 50 ? 'var(--warn)' : 'var(--bad)'; }
+function ring(label, n){
+  const off = 264 - 264 * (n/100);
+  return `<div class="score"><div class="ring"><svg viewBox="0 0 96 96" width="96" height="96">
+    <circle class="tr" cx="48" cy="48" r="42"></circle>
+    <circle class="br" cx="48" cy="48" r="42" style="stroke:${color(n)};stroke-dashoffset:${off}"></circle>
+  </svg><span style="color:${color(n)}">${n}</span></div><p>${label}</p></div>`;
+}
+function find(level, title, text){
+  const c = level === 'bad' ? 'var(--bad)' : level === 'warn' ? 'var(--warn)' : 'var(--good)';
+  return `<div class="find"><i style="background:${c}"></i><div><b>${title}</b><p>${text}</p></div></div>`;
+}
+
+$('#f').addEventListener('submit', async e => {
+  e.preventDefault();
+  const url = clean($('#url').value);
+  const status = $('#status'), bar = $('#bar'), go = $('#go');
+  if(!url){ status.style.color='var(--bad)'; status.textContent = 'Skriv en adress, till exempel dittforetag.se'; return; }
+  status.style.color=''; status.textContent = 'Hämtar din sida och mäter. Det tar 20 till 40 sekunder.';
+  bar.style.display='block'; bar.firstElementChild.style.width='12%';
+  go.disabled = true; $('#result').style.display='none';
+  const grow = setInterval(()=>{
+    const w = parseFloat(bar.firstElementChild.style.width) || 12;
+    if(w < 88) bar.firstElementChild.style.width = (w + 6) + '%';
+  }, 2200);
+
+  const cats = ['performance','seo','accessibility','best-practices'].map(c=>'category='+c).join('&');
+  const key = PSI_KEY ? '&key=' + PSI_KEY : '';
+  try {
+    const res = await fetch(`${ENDPOINT}?url=${encodeURIComponent(url)}&strategy=mobile&${cats}${key}`);
+    const data = await res.json();
+    if(data.error) throw new Error(data.error.message || 'fel');
+    render(url, data);
+    status.textContent = 'Klart. Så här ser din sida ut på mobil.';
+    bar.firstElementChild.style.width='100%';
+    setTimeout(()=>{ bar.style.display='none'; }, 800);
+  } catch(err){
+    status.style.color='var(--bad)';
+    status.textContent = 'Det gick inte att mäta den adressen. Kontrollera att den är rätt skriven och att sidan är publik, eller mejla info@strandperformance.com så kollar jag manuellt.';
+    bar.style.display='none';
+  } finally {
+    clearInterval(grow); go.disabled = false;
+  }
+});
+
+function render(url, data){
+  const lr = data.lighthouseResult || {};
+  const c = lr.categories || {}, a = lr.audits || {};
+  const pct = x => Math.round(((c[x] && c[x].score) || 0) * 100);
+  const perf = pct('performance'), seo = pct('seo'), acc = pct('accessibility'), bp = pct('best-practices');
+
+  $('#scores').innerHTML = ring('Hastighet', perf) + ring('SEO', seo) + ring('Tillgänglighet', acc) + ring('Teknik', bp);
+
+  const m = k => (a[k] && a[k].displayValue) || '–';
+  const sec = k => (a[k] && a[k].numericValue) || 0;
+  $('#metrics').innerHTML =
+    `<div class="metric"><span>Tid tills sidan syns</span><b>${m('first-contentful-paint')}</b></div>` +
+    `<div class="metric"><span>Tid tills det mesta laddat</span><b>${m('largest-contentful-paint')}</b></div>` +
+    `<div class="metric"><span>Hoppar innehållet omkring?</span><b>${m('cumulative-layout-shift')}</b></div>` +
+    `<div class="metric"><span>Sidans totala storlek</span><b>${m('total-byte-weight')}</b></div>`;
+
+  const out = [];
+  out.push(perf >= 90 ? find('ok','Snabb sida','Din sida laddar snabbt på mobil. Bra jobbat.')
+        : perf >= 50 ? find('warn','Sidan kan bli snabbare','Besökare på mobil får vänta. Ofta räcker det att komprimera bilderna och ta bort tunga tillägg.')
+        : find('bad','Sidan är långsam på mobil','Många lämnar innan den laddat klart. Det här är det första jag skulle åtgärda.'));
+
+  if(sec('largest-contentful-paint') > 2500) out.push(find('warn','Det tar tid innan huvudinnehållet syns','Bilder i fel format och för stora filer är den vanligaste orsaken.'));
+  if(sec('cumulative-layout-shift') > 0.1) out.push(find('warn','Innehållet hoppar när sidan laddar','Det gör att folk klickar fel. Beror oftast på bilder utan angivna mått.'));
+  if(!/^https:/i.test(url)) out.push(find('bad','Sidan saknar HTTPS','Webbläsaren visar "Inte säker" för dina besökare och Google rankar sidan lägre.'));
+  if(seo < 90) out.push(find('warn','SEO kan förbättras','Titlar, beskrivningar och rubriker är ofta det som saknas. Det avgör om du syns när folk söker på din tjänst och ort.'));
+  if(acc < 90) out.push(find('warn','Svårt för alla att använda','Låg kontrast eller bilder utan beskrivning stänger ute besökare, och Google märker det.'));
+  if(bp >= 90 && perf >= 90 && seo >= 90) out.push(find('ok','Tekniskt välbyggd sida','Det mesta är på plats. Då handlar nästa steg om innehåll och att få fler att höra av sig.'));
+
+  $('#findings').innerHTML = out.join('');
+  $('#result').style.display = 'block';
+  last = { url, perf, seo, acc, bp,
+    fcp: m('first-contentful-paint'), lcp: m('largest-contentful-paint'),
+    cls: m('cumulative-layout-shift'), weight: m('total-byte-weight') };
+  $('#result').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+$('#lead').addEventListener('submit', async e => {
+  e.preventDefault();
+  const mail = $('#mail').value.trim(), msg = $('#msg'), btn = $('#send');
+  if(!/^\S+@\S+\.\S+$/.test(mail)){ msg.style.color='var(--bad)'; msg.textContent='Ange en e-postadress, till exempel namn@foretag.se.'; return; }
+  if(!last){ msg.textContent='Kör testet först.'; return; }
+  msg.style.color=''; btn.disabled = true; const label = btn.textContent; btn.textContent = 'Skickar…';
+  const body = new FormData();
+  body.append('_subject', 'Hemsidekoll: ' + last.url);
+  body.append('email', mail);
+  body.append('sajt', last.url);
+  body.append('resultat', `Hastighet ${last.perf}, SEO ${last.seo}, Tillgänglighet ${last.acc}, Teknik ${last.bp}. FCP ${last.fcp}, LCP ${last.lcp}, CLS ${last.cls}, storlek ${last.weight}.`);
+  try{
+    const r = await fetch(FORMSPREE, { method:'POST', body, headers:{ 'Accept':'application/json' } });
+    if(r.ok){ msg.textContent = 'Tack! Du får din åtgärdsplan inom en arbetsdag.'; e.target.reset(); }
+    else { msg.style.color='var(--bad)'; msg.textContent = 'Det gick inte just nu. Mejla gärna info@strandperformance.com i stället.'; }
+  } catch(err){
+    msg.style.color='var(--bad)'; msg.textContent = 'Ingen anslutning. Mejla info@strandperformance.com i stället.';
+  } finally { btn.disabled = false; btn.textContent = label; }
+});
+})();
+</script>
+</body>
+</html>
