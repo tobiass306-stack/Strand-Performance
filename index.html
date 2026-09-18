@@ -460,6 +460,38 @@ a{color:inherit}
 .foot nav{display:flex;gap:16px}
 .foot a{text-decoration:none;opacity:.8}
 
+
+/* Hemsidekoll-band */
+.check{background:linear-gradient(135deg,rgba(244,162,89,.18),rgba(127,196,194,.12));border-block:1px solid var(--line);padding:64px 0}
+.check .wrap{display:grid;gap:18px;align-items:center}
+.check h2{font-size:clamp(28px,7vw,52px);font-weight:800;font-stretch:125%;line-height:1;letter-spacing:-.02em;max-width:16ch}
+.check p{color:var(--muted);max-width:44ch}
+.check .btn{justify-self:start}
+@media (min-width:820px){.check .wrap{grid-template-columns:1.2fr auto}.check .btn{justify-self:end}}
+
+/* Case */
+.case{padding:88px 0}
+.case .tag{display:inline-block;background:none;padding:0;border-radius:0;font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--sun)}
+.case h2{font-size:clamp(32px,8vw,64px);font-weight:800;font-stretch:125%;line-height:.98;letter-spacing:-.02em;margin-top:10px}
+.case .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;list-style:none}
+.case .facts li{font-size:14px;border-radius:99px;padding:5px 12px;box-shadow:inset 0 0 0 1px var(--line)}
+.compare{position:relative;margin-top:26px;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.7),inset 0 0 0 1px var(--line);aspect-ratio:16/10;background:var(--panel-solid);touch-action:pan-y;user-select:none}
+.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;pointer-events:none}
+.compare .after{clip-path:inset(0 0 0 var(--x,50%))}
+.compare .handle{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;background:var(--sun);cursor:ew-resize}
+.compare .handle::after{content:"";position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--sun);box-shadow:0 8px 20px rgba(0,0,0,.4);
+  background-image:linear-gradient(90deg,transparent 46%,#1B0E03 46% 48%,transparent 48% 52%,#1B0E03 52% 54%,transparent 54%)}
+.compare .lbl{position:absolute;bottom:14px;font-size:12px;font-weight:700;letter-spacing:.1em;padding:6px 12px;border-radius:99px;background:rgba(6,11,20,.72);color:#F4F6F5}
+.compare .lbl.l{left:14px}.compare .lbl.r{right:14px}
+.case-note{color:var(--muted);margin-top:16px;max-width:52ch}
+.case-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+
+/* Porträtt i om oss */
+.me{display:grid;gap:22px;align-items:start;margin-top:34px}
+.me img{width:100%;max-width:340px;border-radius:22px;box-shadow:0 24px 50px -24px rgba(0,0,0,.6),inset 0 0 0 1px var(--line)}
+.me .cap{color:var(--muted);font-size:15px;margin-top:10px}
+@media (min-width:760px){.me{grid-template-columns:340px 1fr;gap:34px}}
+
 @media (min-width:900px){
   .build-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto minmax(0,1fr);padding:96px 40px 40px;column-gap:40px}
   .build-title{grid-column:1/-1}
@@ -502,6 +534,8 @@ a{color:inherit}
   </div>
 </header>
 <nav class="nav" id="nav" aria-label="Huvudmeny">
+  <a href="#case">Case</a>
+  <a href="/hemsidekoll/">Gratis hemsidekoll</a>
   <a href="#process">Så funkar det</a>
   <a href="#tjanster">Tjänster</a>
   <a href="#priser">Priser</a>
@@ -539,6 +573,16 @@ a{color:inherit}
       <span>Konsultbolag</span><span>SaaS och startups</span><span>Hantverkare</span><span>Butiker och e-handel</span><span>Frilansare</span><span>Byråer</span><span>Konsultbolag</span><span>SaaS och startups</span><span>Hantverkare</span><span>Butiker och e-handel</span><span>Frilansare</span><span>Byråer</span>
     </div>
   </div>
+
+  <section class="check" aria-labelledby="checkH">
+    <div class="wrap">
+      <div>
+        <h2 id="checkH">Hur bra är din hemsida egentligen?</h2>
+        <p>Testa den gratis. Du får riktiga mätvärden för hastighet, mobilanpassning och SEO, plus vad som bör åtgärdas först. Tar 30 sekunder.</p>
+      </div>
+      <a class="btn" href="/hemsidekoll/">Testa din hemsida</a>
+    </div>
+  </section>
 
   <section class="build" id="process" aria-label="Så funkar det">
     <div class="build-stick">
@@ -621,6 +665,25 @@ a{color:inherit}
     </div>
   </section>
 
+  <section class="case panel" id="case" aria-labelledby="caseH">
+    <div class="wrap">
+      <span class="tag">KUNDCASE</span>
+      <h2 id="caseH">Avancia</h2>
+      <ul class="facts"><li>Gym med tre anläggningar</li><li>Mariehamn och Jomala</li><li>Medlemskap och bokning</li><li>Live sedan 2026</li></ul>
+      <div class="compare" id="compare">
+        <img class="before" src="/case-avancia-fore.jpg" alt="Avancias hemsida före omgörningen">
+        <img class="after" src="/case-avancia-efter.jpg" alt="Avancias hemsida efter omgörningen">
+        <span class="lbl l">FÖRE</span><span class="lbl r">EFTER</span>
+        <div class="handle" role="slider" tabindex="0" aria-label="Dra för att jämföra före och efter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+      </div>
+      <p class="case-note">Tre anläggningar, alla medlemskap och gruppträningen samlades på en sajt som går snabbt på mobilen. Medlemskapen jämförs sida vid sida, och bokningen ligger ett klick bort från varje sida.</p>
+      <div class="case-links">
+        <a class="btn" href="https://avancia.ax" target="_blank" rel="noopener">Se sajten live</a>
+        <a class="btn line" href="#kontakt">Vill du ha något liknande?</a>
+      </div>
+    </div>
+  </section>
+
   <section class="sec panel" id="priser" aria-labelledby="prisH">
     <div class="wrap">
       <h2 class="h2" id="prisH">Fasta priser. Inga överraskningar.</h2>
@@ -665,7 +728,13 @@ a{color:inherit}
 
   <section class="sec panel" id="om-oss" aria-label="Om oss" style="border-top:0;padding-top:24px">
     <div class="wrap">
-      <p class="about" id="about">Strand Performance drivs av <strong>Tobias Sjöstrand.</strong> Inga byråarvoden, inga mellanhänder. Du pratar direkt med den som bygger din sida, från första samtalet till support efteråt.</p>
+      <div class="me">
+        <div>
+          <img src="/om-tobias.jpg" alt="Tobias Sjöstrand, grundare av Strand Performance" width="900" height="1125" loading="lazy">
+          <p class="cap">Tobias Sjöstrand, grundare. Du pratar med mig hela vägen.</p>
+        </div>
+        <p class="about" id="about">Strand Performance drivs av <strong>Tobias Sjöstrand.</strong> Inga byråarvoden, inga mellanhänder. Du pratar direkt med den som bygger din sida, från första samtalet till support efteråt.</p>
+      </div>
       <ul class="perks">
         <li>Direktkontakt med grundaren genom hela projektet</li>
         <li>Modern teknik som är snabb, säker och lätt att underhålla</li>
@@ -1105,6 +1174,25 @@ $('#form').addEventListener('submit',async e=>{
   }
   btn.textContent=label; btn.disabled=false;
 });
+
+/* ---------- Före och efter ---------- */
+(function(){
+  const box=document.getElementById('compare'); if(!box) return;
+  const before=box.querySelector('.before'), after=box.querySelector('.after'), handle=box.querySelector('.handle');
+  [before,after].forEach(img=>{ img.addEventListener('error',()=>{ box.remove(); }); });
+  const set=p=>{ p=Math.max(0,Math.min(100,p)); box.style.setProperty('--x',p+'%'); handle.setAttribute('aria-valuenow',Math.round(p)); };
+  const move=e=>{ const r=box.getBoundingClientRect(); const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left; set(x/r.width*100); };
+  let drag=false;
+  box.addEventListener('pointerdown',e=>{drag=true;box.setPointerCapture(e.pointerId);move(e);});
+  box.addEventListener('pointermove',e=>{ if(drag) move(e); });
+  box.addEventListener('pointerup',()=>{drag=false;});
+  handle.addEventListener('keydown',e=>{
+    const cur=parseFloat(getComputedStyle(box).getPropertyValue('--x'))||50;
+    if(e.key==='ArrowLeft'){ set(cur-4); e.preventDefault(); }
+    if(e.key==='ArrowRight'){ set(cur+4); e.preventDefault(); }
+  });
+  set(50);
+})();
 })();
 </script>
 </body>
