@@ -181,7 +181,9 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{
   --bg:#EEF1F0; --ink:#08111D; --muted:#4A5866; --panel:rgba(238,241,240,.92); --panel-solid:#EEF1F0;
@@ -671,8 +673,8 @@ a{color:inherit}
       <h2 id="caseH">Avancia</h2>
       <ul class="facts"><li>Gym med tre anläggningar</li><li>Mariehamn och Jomala</li><li>Medlemskap och bokning</li><li>Live sedan 2026</li></ul>
       <div class="compare" id="compare">
-        <img class="before" src="/case-avancia-fore.jpg" alt="Avancias hemsida före omgörningen">
-        <img class="after" src="/case-avancia-efter.jpg" alt="Avancias hemsida efter omgörningen">
+        <img class="before" src="/case-avancia-fore.webp" alt="Avancias hemsida före omgörningen" width="1600" height="1000" decoding="async">
+        <img class="after" src="/case-avancia-efter.webp" alt="Avancias hemsida efter omgörningen" width="1600" height="1000" decoding="async">
         <span class="lbl l">FÖRE</span><span class="lbl r">EFTER</span>
         <div class="handle" role="slider" tabindex="0" aria-label="Dra för att jämföra före och efter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
       </div>
@@ -729,7 +731,7 @@ a{color:inherit}
   <section class="sec panel" id="om-oss" aria-label="Om oss" style="border-top:0;padding-top:24px">
     <div class="wrap">
       <div class="me">
-        <img src="/om-tobias.jpg" alt="Tobias Sjöstrand, grundare av Strand Performance" width="400" height="400" loading="lazy">
+        <picture><source srcset="/om-tobias.webp" type="image/webp"><img src="/om-tobias.jpg" alt="Tobias Sjöstrand, grundare av Strand Performance" width="400" height="400" loading="lazy" decoding="async"></picture>
         <div><b>Tobias Sjöstrand</b><p class="cap">Grundare. Du pratar med mig hela vägen.</p></div>
       </div>
       <p class="about" id="about">Strand Performance drivs av <strong>Tobias Sjöstrand.</strong> Inga byråarvoden, inga mellanhänder. Du pratar direkt med den som bygger din sida, från första samtalet till support efteråt.</p>
@@ -953,24 +955,29 @@ function resize(force){
   const w=innerWidth, h=Math.max(innerHeight, document.documentElement.clientHeight);
   if(!force && w===lastW && Math.abs(h-lastH)<160) return;
   lastW=w;lastH=h;
-  const dpr=Math.min(devicePixelRatio||1,2.5);
+  const dpr=Math.min(devicePixelRatio||1, hiRes?2:1.4);
   // Full sharpness while the STRAND intro is on screen, lighter afterwards to save battery
   const q=hiRes?1:(w<700?0.55:0.7);
   let W=Math.round(w*dpr*q), H=Math.round(cv.clientHeight*dpr*q);
-  const cap=hiRes?2600:1500; if(W>cap){H=Math.round(H*cap/W);W=cap;}
+  const cap=hiRes?2000:1200; if(W>cap){H=Math.round(H*cap/W);W=cap;}
   cv.width=W;cv.height=H;
   if(gl){gl.viewport(0,0,W,H);drawMask();}
 }
 function setHiRes(v){ if(v===hiRes) return; hiRes=v; resize(true); }
 
-const glOK=initGL();
-if(!glOK){document.documentElement.classList.add('no-gl');}
-else{
+let glOK=false;
+function bootGL(){
+  if(glOK) return;
+  glOK=initGL();
+  if(!glOK){ document.documentElement.classList.add('no-gl'); return; }
   resize(true);
   if(document.fonts&&document.fonts.load){document.fonts.load('900 100px Archivo').then(()=>resize(true)).catch(()=>{});}
   addEventListener('resize',()=>resize(false));
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{dirty=true;});
+  update();
+  if(reduce){ render(0); } else requestAnimationFrame(loop);
 }
+const glOKInit=false;
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{dirty=true;});
 
 let dirty=true, visibleTab=true;
 document.addEventListener('visibilitychange',()=>{visibleTab=!document.hidden;});
@@ -1099,7 +1106,11 @@ addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame((
 addEventListener('resize',()=>requestAnimationFrame(update));
 
 const loadT=performance.now();
+let lastFrame=0;
 function loop(t){
+  const cap = heroP<0.999 ? 0 : 33;   // fullt flyt i introt, halv takt sedan
+  if(cap && t-lastFrame < cap){ requestAnimationFrame(loop); return; }
+  lastFrame=t;
   if(!reduce && glOK && heroP<0.001){
     // gentle breathing after a moment, hinting that the word leads somewhere
     const k=Math.max(0,(t-loadT-1800)/1000);
@@ -1110,7 +1121,8 @@ function loop(t){
   requestAnimationFrame(loop);
 }
 update();
-if(reduce){ if(glOK) render(0); } else requestAnimationFrame(loop);
+if(document.readyState==='complete') setTimeout(bootGL,0);
+else addEventListener('load',()=>setTimeout(bootGL,0));
 
 /* ---------- Small pieces ---------- */
 // uptime bars
