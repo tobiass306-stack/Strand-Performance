@@ -462,7 +462,7 @@ a{color:inherit}
 
 
 /* Hemsidekoll-band */
-.check{background:linear-gradient(135deg,rgba(244,162,89,.18),rgba(127,196,194,.12));border-block:1px solid var(--line);padding:64px 0}
+.check{background-color:var(--panel-solid);background-image:linear-gradient(135deg,rgba(244,162,89,.22),rgba(127,196,194,.10));border-block:1px solid var(--line);padding:64px 0}
 .check .wrap{display:grid;gap:18px;align-items:center}
 .check h2{font-size:clamp(28px,7vw,52px);font-weight:800;font-stretch:125%;line-height:1;letter-spacing:-.02em;max-width:16ch}
 .check p{color:var(--muted);max-width:44ch}
@@ -487,10 +487,10 @@ a{color:inherit}
 .case-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 
 /* Porträtt i om oss */
-.me{display:grid;gap:22px;align-items:start;margin-top:34px}
-.me img{width:100%;max-width:340px;border-radius:22px;box-shadow:0 24px 50px -24px rgba(0,0,0,.6),inset 0 0 0 1px var(--line)}
-.me .cap{color:var(--muted);font-size:15px;margin-top:10px}
-@media (min-width:760px){.me{grid-template-columns:340px 1fr;gap:34px}}
+.me{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.me img{width:84px;height:84px;flex:none;border-radius:50%;object-fit:cover;object-position:50% 22%;box-shadow:0 10px 26px -10px rgba(0,0,0,.6),0 0 0 2px var(--sun)}
+.me b{display:block;font-size:17px;font-weight:800;font-stretch:112%}
+.me .cap{color:var(--muted);font-size:14px;margin-top:2px}
 
 @media (min-width:900px){
   .build-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto minmax(0,1fr);padding:96px 40px 40px;column-gap:40px}
@@ -729,12 +729,10 @@ a{color:inherit}
   <section class="sec panel" id="om-oss" aria-label="Om oss" style="border-top:0;padding-top:24px">
     <div class="wrap">
       <div class="me">
-        <div>
-          <img src="/om-tobias.jpg" alt="Tobias Sjöstrand, grundare av Strand Performance" width="900" height="1125" loading="lazy">
-          <p class="cap">Tobias Sjöstrand, grundare. Du pratar med mig hela vägen.</p>
-        </div>
-        <p class="about" id="about">Strand Performance drivs av <strong>Tobias Sjöstrand.</strong> Inga byråarvoden, inga mellanhänder. Du pratar direkt med den som bygger din sida, från första samtalet till support efteråt.</p>
+        <img src="/om-tobias.jpg" alt="Tobias Sjöstrand, grundare av Strand Performance" width="400" height="400" loading="lazy">
+        <div><b>Tobias Sjöstrand</b><p class="cap">Grundare. Du pratar med mig hela vägen.</p></div>
       </div>
+      <p class="about" id="about">Strand Performance drivs av <strong>Tobias Sjöstrand.</strong> Inga byråarvoden, inga mellanhänder. Du pratar direkt med den som bygger din sida, från första samtalet till support efteråt.</p>
       <ul class="perks">
         <li>Direktkontakt med grundaren genom hela projektet</li>
         <li>Modern teknik som är snabb, säker och lätt att underhålla</li>
