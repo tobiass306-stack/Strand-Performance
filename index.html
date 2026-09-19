@@ -201,6 +201,10 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html{background:#060B14}
+html.no-gl{background:
+   radial-gradient(60% 26% at 78% 56%, rgba(255,214,160,.7), rgba(244,162,89,0) 70%),
+   linear-gradient(#131a3e 0%,#3d2b52 26%,#8c4a5c 44%,#f09a58 56%,#7a4a44 57.5%,#12222e 61%,#050b12 100%) no-repeat;
+  background-attachment:fixed;background-size:cover}
 body{background:transparent;color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.55;overflow-x:hidden}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--sun);outline-offset:3px;border-radius:6px}
@@ -209,7 +213,10 @@ a{color:inherit}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* Ocean canvas */
-#ocean{position:fixed;left:0;top:0;width:100vw;height:100lvh;z-index:-1;display:block;background:linear-gradient(#1a2150,#8c4a5c 45%,#f09a58 58%,#0a1a26 60%,#03080f)}
+#ocean{position:fixed;left:0;top:0;width:100vw;height:100lvh;z-index:-1;display:block;
+  background:
+   radial-gradient(60% 26% at 78% 56%, rgba(255,214,160,.75), rgba(244,162,89,0) 70%),
+   linear-gradient(#131a3e 0%,#3d2b52 28%,#8c4a5c 46%,#f09a58 57%,#7a4a44 58.5%,#12222e 62%,#050b12 100%)}
 .no-gl .hero-fallback{display:block}
 
 /* Header */
@@ -259,7 +266,7 @@ a{color:inherit}
 .proof{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:22px;font-size:13px;opacity:.85}
 .proof span{display:flex;align-items:center;gap:6px}
 .proof span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sun)}
-.hero-fallback{display:none;position:absolute;left:0;right:0;top:34%;text-align:center;font-size:clamp(64px,22vw,260px);font-weight:900;font-stretch:125%;line-height:1;letter-spacing:-.02em;color:#F4F6F5}
+.hero-fallback{display:none;position:absolute;left:0;right:0;top:30%;text-align:center;white-space:nowrap;font-size:min(15vw,190px);font-stretch:75%;font-weight:900;font-stretch:125%;line-height:1;letter-spacing:-.02em;color:#F4F6F5}
 
 /* Ticker */
 .ticker{background:var(--sun);color:var(--sun-ink);overflow:hidden;padding:14px 0;white-space:nowrap}
@@ -808,7 +815,7 @@ $$('.nav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false);});
 
 /* ---------- WebGL ocean ---------- */
-const cv=$('#ocean');
+let cv=$('#ocean');
 let gl=null;
 try{ gl=cv.getContext('webgl',{antialias:false,alpha:false,powerPreference:'low-power'}); }catch(e){}
 const U={};
@@ -820,8 +827,9 @@ function cssVar(n){return getComputedStyle(document.documentElement).getProperty
 function hexToRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return[(n>>16&255)/255,(n>>8&255)/255,(n&255)/255];}
 
 const VS='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+const MOBILE=innerWidth<700;
 const FS=`precision mediump float;
-#define OCT 4
+#define OCT ${MOBILE?3:4}
 uniform vec2 uRes;uniform float uTime;uniform float uNight;
 uniform sampler2D uMask;uniform float uMaskOn;uniform float uScale;uniform vec2 uOrigin;uniform vec3 uBg;
 float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
@@ -887,8 +895,16 @@ void main(){
  gl_FragColor=vec4(col,1.);
 }`;
 
+function softwareRenderer(){
+  try{
+    const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+    const r = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : '';
+    return /swiftshader|llvmpipe|software|basic render|mesa offscreen/i.test(r);
+  }catch(e){ return false; }
+}
 function initGL(){
   if(!gl) return false;
+  if(softwareRenderer()) return false;   // ingen GPU: stillbild i stället för animation
   const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)){console.warn(gl.getShaderInfoLog(o));return null;}return o;};
   const v=sh(gl.VERTEX_SHADER,VS), f=sh(gl.FRAGMENT_SHADER,FS);
   if(!v||!f) return false;
@@ -966,10 +982,45 @@ function resize(force){
 function setHiRes(v){ if(v===hiRes) return; hiRes=v; resize(true); }
 
 let glOK=false;
+function stillOcean(){
+  // Ingen grafikacceleration: rita ett stillbildshav en gång.
+  // Canvasen är redan låst till 3D-läge, så vi byter ut elementet.
+  let el=cv.getContext('2d') ? cv : null;
+  if(!el){
+    el=document.createElement('canvas');
+    el.id='ocean'; el.setAttribute('aria-hidden','true');
+    cv.replaceWith(el); cv=el;
+  }
+  const c=cv.getContext('2d'); if(!c) return;
+  const draw=()=>{
+    const w=cv.clientWidth,h=cv.clientHeight,d=Math.min(devicePixelRatio||1,2);
+    cv.width=Math.round(w*d); cv.height=Math.round(h*d); c.setTransform(d,0,0,d,0,0);
+    const hor=h*0.62;
+    const sky=c.createLinearGradient(0,0,0,hor);
+    sky.addColorStop(0,'#131a3e'); sky.addColorStop(.45,'#54325a'); sky.addColorStop(.8,'#c8654f'); sky.addColorStop(1,'#f09a58');
+    c.fillStyle=sky; c.fillRect(0,0,w,hor);
+    const sx=w*0.74, sy=hor-h*0.07, r=Math.min(w,h)*0.09;
+    const glow=c.createRadialGradient(sx,sy,0,sx,sy,r*4);
+    glow.addColorStop(0,'rgba(255,214,160,.85)'); glow.addColorStop(1,'rgba(244,162,89,0)');
+    c.fillStyle=glow; c.beginPath(); c.arc(sx,sy,r*4,0,7); c.fill();
+    c.fillStyle='#ffe0b0'; c.beginPath(); c.arc(sx,sy,r,0,7); c.fill();
+    const sea=c.createLinearGradient(0,hor,0,h);
+    sea.addColorStop(0,'#7a4a44'); sea.addColorStop(.12,'#24313c'); sea.addColorStop(1,'#050b12');
+    c.fillStyle=sea; c.fillRect(0,hor,w,h-hor);
+    c.strokeStyle='rgba(255,196,140,.5)';
+    for(let i=0;i<26;i++){
+      const k=i/25, y=hor+Math.pow(k,1.7)*(h-hor), ww=r*(2.6-k*2)*(0.7+0.3*Math.sin(i*2.1));
+      c.globalAlpha=(1-k)*0.55; c.lineWidth=1+k*2.5;
+      c.beginPath(); c.moveTo(sx-ww,y); c.lineTo(sx+ww,y); c.stroke();
+    }
+    c.globalAlpha=1;
+  };
+  draw(); addEventListener('resize',()=>{ clearTimeout(cv._t); cv._t=setTimeout(draw,200); });
+}
 function bootGL(){
   if(glOK) return;
   glOK=initGL();
-  if(!glOK){ document.documentElement.classList.add('no-gl'); return; }
+  if(!glOK){ document.documentElement.classList.add('no-gl'); stillOcean(); return; }
   resize(true);
   if(document.fonts&&document.fonts.load){document.fonts.load('900 100px Archivo').then(()=>resize(true)).catch(()=>{});}
   addEventListener('resize',()=>resize(false));
