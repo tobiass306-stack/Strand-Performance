@@ -770,7 +770,7 @@ a{color:inherit}
       <h2 id="kH">Redo att synas?</h2>
       <p class="lead">Beskriv kort vad du behöver så återkommer vi inom 1–2 arbetsdagar med förslag och pris.</p>
       <div class="form-card">
-        <form class="form" id="form" action="https://formspree.io/f/xkokkjwl" method="POST" novalidate>
+        <form class="form" id="form" method="POST" novalidate>
           <input type="hidden" name="_subject" value="Ny förfrågan från strandperformance.se">
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <div class="field"><label for="fn">Namn</label><input id="fn" name="namn" autocomplete="name"></div>
@@ -1220,14 +1220,31 @@ new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){$$('.plan:not(.hide) .p
 $$('[data-pick]').forEach(a=>a.addEventListener('click',()=>{$('#fp').value=a.dataset.pick;}));
 
 // form
+const FORM_URL='https://formspree.'+'io/f/'+'xkokkjwl';
+// Skydd mot robotar: räkna riktiga tangenttryck och tid sedan första inmatningen
+let firstInput=0, keys=0;
+$('#form').addEventListener('input',e=>{ if(!e.isTrusted) return; if(!firstInput) firstInput=Date.now(); keys++; });
+function looksLikeSpam(f){
+  const text=(f.meddelande?f.meddelande.value:'')+' '+(f.namn?f.namn.value:'');
+  const swedish=/[åäöÅÄÖ]/.test(text) || /\b(hej|och|jag|vi|ni|hemsida|företag|behöver|tack)\b/i.test(text);
+  const englishPitch=/\b(hi there|hello|dear|i'd like|i would like|we are|our (company|team|agency)|seo services|guest post|backlinks?|crypto|investment|loan)\b/i.test(text);
+  return englishPitch && !swedish;
+}
 $('#form').addEventListener('submit',async e=>{
   e.preventDefault();
   const f=e.target, m=$('#msg'), btn=f.querySelector('button[type="submit"]');
+  // Skickat utan riktiga tangenttryck, eller på under tre sekunder: troligen en robot.
+  // Vi låtsas att det gick bra men skickar ingenting.
+  const tooFast = !firstInput || (Date.now()-firstInput) < 3000 || keys < 5;
+  if(tooFast || (f._gotcha && f._gotcha.value)){
+    f.reset(); m.textContent='Tack! Förfrågan är skickad. Vi återkommer inom 1–2 arbetsdagar.'; return;
+  }
+  if(looksLikeSpam(f)) f._subject.value='[Trolig spam] Ny förfrågan från strandperformance.se';
   if(!f.namn.value.trim()){m.textContent='Skriv ditt namn så vi vet vem vi svarar.';f.namn.focus();return;}
   if(!/^\S+@\S+\.\S+$/.test(f.email.value)){m.textContent='Ange en e-postadress, till exempel namn@foretag.se.';f.email.focus();return;}
   btn.disabled=true; const label=btn.textContent; btn.textContent='Skickar…'; m.textContent='';
   try{
-    const res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
+    const res=await fetch(FORM_URL,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
     if(res.ok){
       f.reset();
       m.textContent='Tack! Förfrågan är skickad. Vi återkommer inom 1–2 arbetsdagar.';
