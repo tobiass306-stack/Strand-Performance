@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Webbyrå – hemsidor för företag i Sverige och Norden | Strand Performance</title>
-<meta name="description" content="Strand Performance är en webbyrå som bygger snabba, moderna hemsidor för företag i Sverige och Norden. Fast pris från 3 500 €, lansering på 1–4 veckor och personlig kontakt.">
+<meta name="description" content="Strand Performance är en webbyrå som bygger snabba, moderna hemsidor för företag i Sverige och Norden. Ny hemsida från 0 kr i start och 1 295 kr/mån, eller skräddarsydd till fast pris. Lansering på 1–4 veckor och personlig kontakt.">
 <meta name="theme-color" content="#060B14">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -75,13 +75,26 @@
     "itemListElement": [
      {
       "@type": "Offer",
+      "name": "Hemsida som tjänst",
+      "description": "Hemsida från mall i företagets profil, upp till fem sidor, med hosting, drift och ändringar. 0 kr i start, 12 månaders bindning.",
+      "url": "https://strandperformance.se/hemsida-som-tjanst/",
+      "priceSpecification": {
+       "@type": "UnitPriceSpecification",
+       "price": 1295,
+       "priceCurrency": "SEK",
+       "unitText": "månad",
+       "valueAddedTaxIncluded": false
+      }
+     },
+     {
+      "@type": "Offer",
       "name": "Enkel sajt",
       "description": "Skräddarsydd, mobilanpassad hemsida med kontaktformulär, grundläggande SEO och lansering.",
       "priceSpecification": {
        "@type": "PriceSpecification",
-       "minPrice": 3500,
-       "maxPrice": 5000,
-       "priceCurrency": "EUR"
+       "minPrice": 38000,
+       "maxPrice": 55000,
+       "priceCurrency": "SEK"
       }
      },
      {
@@ -90,9 +103,9 @@
       "description": "Hemsida med bokning, medlemskap, integrationer och avancerad funktionalitet.",
       "priceSpecification": {
        "@type": "PriceSpecification",
-       "minPrice": 6500,
-       "maxPrice": 9000,
-       "priceCurrency": "EUR"
+       "minPrice": 70000,
+       "maxPrice": 98000,
+       "priceCurrency": "SEK"
       }
      },
      {
@@ -101,8 +114,8 @@
       "description": "Hosting, uppdateringar, säkerhetskopiering, övervakning och teknisk support.",
       "priceSpecification": {
        "@type": "UnitPriceSpecification",
-       "price": 99,
-       "priceCurrency": "EUR",
+       "price": 1095,
+       "priceCurrency": "SEK",
        "unitText": "månad"
       }
      },
@@ -112,8 +125,8 @@
       "description": "Allt i Drift plus en timmes ändringar per månad och support inom 24 timmar.",
       "priceSpecification": {
        "@type": "UnitPriceSpecification",
-       "price": 240,
-       "priceCurrency": "EUR",
+       "price": 2595,
+       "priceCurrency": "SEK",
        "unitText": "månad"
       }
      }
@@ -404,11 +417,15 @@ a{color:inherit}
 @keyframes blink{50%{opacity:0}}
 
 /* Prices */
-.seg{display:inline-grid;grid-template-columns:1fr 1fr;border-radius:999px;padding:4px;margin-top:26px;position:relative;box-shadow:inset 0 0 0 1px var(--line);max-width:100%}
+.seg{display:inline-grid;grid-template-columns:1fr 1fr 1fr;border-radius:999px;padding:4px;margin-top:26px;position:relative;box-shadow:inset 0 0 0 1px var(--line);max-width:100%}
 .seg button{font:inherit;font-size:14.5px;font-weight:700;background:none;border:0;color:var(--muted);padding:10px 16px;border-radius:999px;cursor:pointer;position:relative;z-index:1;transition:color .3s;white-space:nowrap}
 .seg button[aria-selected="true"]{color:var(--btn-ink)}
-.seg .pill{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:var(--ink);transition:transform .45s cubic-bezier(.3,.7,.2,1)}
+.seg .pill{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:999px;background:var(--ink);transition:transform .45s cubic-bezier(.3,.7,.2,1)}
 .seg[data-i="1"] .pill{transform:translateX(100%)}
+.seg[data-i="2"] .pill{transform:translateX(200%)}
+@media (max-width:480px){.seg button{padding:10px 11px;font-size:13.5px}}
+.plan.wide{grid-column:1/-1}
+.price.range{font-size:clamp(28px,7.2vw,50px)}
 .plans{margin-top:24px;display:grid;gap:14px}
 .plan{border-radius:22px;padding:22px;box-shadow:inset 0 0 0 1px var(--line);display:grid;gap:12px;align-content:start;background:var(--panel-solid)}
 .plan.hot{box-shadow:inset 0 0 0 2px var(--sun)}
@@ -722,41 +739,48 @@ a{color:inherit}
   <section class="sec panel" id="priser" aria-labelledby="prisH">
     <div class="wrap">
       <h2 class="h2" id="prisH">Fasta priser. Inga överraskningar.</h2>
-      <p class="intro">Priser i euro. Behöver du något skräddarsytt tar vi fram ett förslag.</p>
-      <p class="intro"><strong>Företag i Sverige:</strong> <a href="/hemsida-som-tjanst/" style="text-decoration:underline;text-underline-offset:3px">Hemsida som tjänst – 0&nbsp;kr i start, 1&nbsp;295&nbsp;kr/mån exkl. moms</a>.</p>
+      <p class="intro">Priser i kronor, exkl. moms. Välj fast månadspris med en hemsida från mall i din profil, eller en skräddarsydd sajt till fast projektpris.</p>
       <div class="seg" role="tablist" aria-label="Typ av paket" data-i="0">
         <span class="pill" aria-hidden="true"></span>
-        <button role="tab" aria-selected="true" data-tab="projekt">Nytt projekt</button>
-        <button role="tab" aria-selected="false" data-tab="drift">Efter lansering</button>
+        <button role="tab" aria-selected="true" data-tab="manad">Månadspris</button>
+        <button role="tab" aria-selected="false" data-tab="projekt">Skräddarsytt</button>
+        <button role="tab" aria-selected="false" data-tab="drift">Drift</button>
       </div>
       <div class="plans">
-        <div class="plan" data-g="projekt">
-          <div class="plan-top"><h3>Enkel sajt</h3></div>
-          <div class="price" data-min="3500" data-max="5000">3 500–5 000<small>€</small></div>
-          <p>En professionell hemsida som leder besökaren till kontakt.</p>
-          <ul><li>Skräddarsydd design</li><li>Mobilanpassad</li><li>Kontaktformulär</li><li>Grundläggande SEO</li><li>Snabb laddning och lansering</li></ul>
-          <a class="btn line" href="#kontakt" data-pick="Enkel sajt – 3 500–5 000 €">Kom igång</a>
+        <div class="plan hot wide" data-g="manad">
+          <div class="plan-top"><h3>Hemsida som tjänst</h3><span class="tag">Mall i din profil</span></div>
+          <div class="price" data-min="1295">1&nbsp;295<small>kr/mån</small></div>
+          <p>Ny hemsida utan startkostnad. 0 kr i start och 12 månaders bindning. Introduktionspris för de tio första kunderna, därefter 1&nbsp;495&nbsp;kr/mån.</p>
+          <ul><li>Upp till fem sidor i din profil</li><li>Mobilanpassad, med ringknapp och formulär</li><li>Hosting, drift och uppdateringar</li><li>Ändringar upp till 30 min/mån</li><li>Gratis förslag innan du bestämmer dig</li></ul>
+          <a class="btn" href="/hemsida-som-tjanst/">Läs mer och få ett förslag</a>
         </div>
-        <div class="plan hot" data-g="projekt">
-          <div class="plan-top"><h3>Sajt med funktioner</h3><span class="tag">Mest valda</span></div>
-          <div class="price" data-min="6500" data-max="9000">6 500–9 000<small>€</small></div>
+        <div class="plan hide" data-g="projekt">
+          <div class="plan-top"><h3>Enkel sajt</h3></div>
+          <div class="price range" data-min="38000" data-max="55000">38&nbsp;000–55&nbsp;000<small>kr</small></div>
+          <p>En skräddarsydd hemsida som leder besökaren till kontakt.</p>
+          <ul><li>Skräddarsydd design</li><li>Mobilanpassad</li><li>Kontaktformulär</li><li>Grundläggande SEO</li><li>Snabb laddning och lansering</li></ul>
+          <a class="btn line" href="#kontakt" data-pick="Enkel sajt – 38 000–55 000 kr">Kom igång</a>
+        </div>
+        <div class="plan hot hide" data-g="projekt">
+          <div class="plan-top"><h3>Sajt med funktioner</h3></div>
+          <div class="price range" data-min="70000" data-max="98000">70&nbsp;000–98&nbsp;000<small>kr</small></div>
           <p>För företag som behöver mer än en presentationssajt.</p>
           <ul><li>Allt i Enkel sajt</li><li>Bokningsfunktioner och medlemskap</li><li>Integrationer</li><li>Avancerad funktionalitet</li><li>SEO och prestanda</li></ul>
-          <a class="btn" href="#kontakt" data-pick="Sajt med funktioner – 6 500–9 000 €">Kom igång</a>
+          <a class="btn" href="#kontakt" data-pick="Sajt med funktioner – 70 000–98 000 kr">Kom igång</a>
         </div>
         <div class="plan hide" data-g="drift">
           <div class="plan-top"><h3>Drift</h3></div>
-          <div class="price" data-min="99">99<small>€/mån</small></div>
-          <p>Vi sköter det tekniska efter lanseringen.</p>
+          <div class="price" data-min="1095">1&nbsp;095<small>kr/mån</small></div>
+          <p>Vi sköter det tekniska efter lanseringen av en skräddarsydd sajt.</p>
           <ul><li>Hosting</li><li>Uppdateringar</li><li>Säkerhetskopiering</li><li>Övervakning</li><li>Teknisk support</li></ul>
-          <a class="btn line" href="#kontakt" data-pick="Drift – 99 €/mån">Välj Drift</a>
+          <a class="btn line" href="#kontakt" data-pick="Drift – 1 095 kr/mån">Välj Drift</a>
         </div>
         <div class="plan hot hide" data-g="drift">
           <div class="plan-top"><h3>Drift och ändringar</h3></div>
-          <div class="price" data-min="240">240<small>€/mån</small></div>
+          <div class="price" data-min="2595">2&nbsp;595<small>kr/mån</small></div>
           <p>För dig som vill slippa tänka på hemsidan helt.</p>
           <ul><li>Allt i Drift</li><li>1 h ändringar per månad</li><li>Support inom 24 h</li><li>Löpande förbättringar</li><li>Personlig kontakt</li></ul>
-          <a class="btn" href="#kontakt" data-pick="Drift & ändringar – 240 €/mån">Välj Drift och ändringar</a>
+          <a class="btn" href="#kontakt" data-pick="Drift & ändringar – 2 595 kr/mån">Välj Drift och ändringar</a>
         </div>
       </div>
     </div>
@@ -806,10 +830,11 @@ a{color:inherit}
           <div class="field"><label for="fp">Vilket paket är du intresserad av?</label>
             <select id="fp" name="paket">
               <option>Vet inte än</option>
-              <option>Enkel sajt – 3 500–5 000 €</option>
-              <option>Sajt med funktioner – 6 500–9 000 €</option>
-              <option>Drift – 99 €/mån</option>
-              <option>Drift & ändringar – 240 €/mån</option>
+              <option>Hemsida som tjänst – 1 295 kr/mån</option>
+              <option>Enkel sajt – 38 000–55 000 kr</option>
+              <option>Sajt med funktioner – 70 000–98 000 kr</option>
+              <option>Drift – 1 095 kr/mån</option>
+              <option>Drift & ändringar – 2 595 kr/mån</option>
             </select></div>
           <div class="field"><label for="fm">Berätta kort om projektet</label><textarea id="fm" name="meddelande"></textarea></div>
           <button class="btn" type="submit">Skicka förfrågan</button>
