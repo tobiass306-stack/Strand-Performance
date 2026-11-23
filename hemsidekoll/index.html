@@ -238,7 +238,7 @@ $('#lead').addEventListener('submit', async e => {
   body.append('sajt', last.url);
   body.append('resultat', `Hastighet ${last.perf}, SEO ${last.seo}, Tillgänglighet ${last.acc}, Teknik ${last.bp}. FCP ${last.fcp}, LCP ${last.lcp}, CLS ${last.cls}, storlek ${last.weight}.`);
   try{
-    const r = await fetch(FORMSPREE, { method:'POST', body, headers:{ 'Accept':'application/json' } });
+    const r = await fetch(FORMSPREE, { method:'POST', body, headers:{ 'Accept':'application/json' }, referrerPolicy:'strict-origin-when-cross-origin' });
     if(r.ok){ msg.textContent = 'Tack! Du får din åtgärdsplan inom en arbetsdag.'; e.target.reset(); }
     else { msg.style.color='var(--bad)'; msg.textContent = 'Det gick inte just nu. Mejla gärna info@strandperformance.com i stället.'; }
   } catch(err){

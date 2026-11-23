@@ -1247,14 +1247,17 @@ new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){$$('.plan:not(.hide) .p
 $$('[data-pick]').forEach(a=>a.addEventListener('click',()=>{$('#fp').value=a.dataset.pick;}));
 
 // form
+const formLoadedAt=Date.now();
 $('#form').addEventListener('submit',async e=>{
   e.preventDefault();
   const f=e.target, m=$('#msg'), btn=f.querySelector('button[type="submit"]');
+  /* Robotskydd: ifyllt honeypot-fält eller inskick inom 3 s efter sidladdning skickas aldrig */
+  if((f._gotcha&&f._gotcha.value)||Date.now()-formLoadedAt<3000){f.reset();m.textContent='Tack! Förfrågan är skickad. Vi återkommer inom 1–2 arbetsdagar.';return;}
   if(!f.namn.value.trim()){m.textContent='Skriv ditt namn så vi vet vem vi svarar.';f.namn.focus();return;}
   if(!/^\S+@\S+\.\S+$/.test(f.email.value)){m.textContent='Ange en e-postadress, till exempel namn@foretag.se.';f.email.focus();return;}
   btn.disabled=true; const label=btn.textContent; btn.textContent='Skickar…'; m.textContent='';
   try{
-    const res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
+    const res=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'},referrerPolicy:'strict-origin-when-cross-origin'});
     if(res.ok){
       f.reset();
       m.textContent='Tack! Förfrågan är skickad. Vi återkommer inom 1–2 arbetsdagar.';
