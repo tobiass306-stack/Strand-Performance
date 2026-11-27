@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Förslag: ny startsida för ERA Revisorer | Strand Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1D2316;
+    --olive:#486028;
+    --olive-deep:#26331A;
+    --sage:#D0D8C8;
+    --mist:#F3F5EF;
+    --line:#C5CDBB;
+    --muted:#56604C;
+    --white:#FFFFFF;
+    --serif:"Spectral", Georgia, serif;
+    --sans:"IBM Plex Sans", system-ui, sans-serif;
+    --cond:"IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
+    --wrap:1180px;
+    --ribbon:44px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:120px}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 1}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--olive);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  /* Proposal ribbon */
+  .ribbon{position:sticky;top:0;z-index:60;background:var(--ink);color:#E7EBE1;font-size:14px;line-height:1.35}
+  .ribbon .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:var(--ribbon);padding-top:7px;padding-bottom:7px}
+  .ribbon strong{color:#fff;font-weight:600}
+  .ribbon button{flex:none;font:inherit;font-weight:600;color:var(--ink);background:var(--sage);border:0;border-radius:999px;padding:7px 14px;cursor:pointer}
+  .ribbon button[aria-pressed="true"]{background:#fff}
+
+  /* Header */
+  .site-head{position:sticky;top:var(--ribbon);z-index:50;background:rgba(243,245,239,.96);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line)}
+  .site-head .wrap{display:flex;align-items:center;gap:32px;height:78px}
+  .mark{display:flex;flex-direction:column;text-decoration:none;color:var(--olive);line-height:1}
+  .mark-top{display:flex;align-items:flex-end;gap:7px}
+  .mark-era{font-family:var(--cond);font-weight:700;font-size:40px;letter-spacing:-.01em;line-height:.8}
+  .mark-names{font-family:var(--sans);font-size:9.5px;line-height:1.12;color:var(--ink);font-weight:500;padding-bottom:1px}
+  .mark-sub{margin-top:5px;font-family:var(--cond);font-weight:600;font-size:11.5px;letter-spacing:.24em;color:var(--ink);border-top:1.5px solid var(--olive);padding-top:4px}
+  .nav{display:flex;gap:26px;margin-left:auto}
+  .nav a{text-decoration:none;font-weight:500;font-size:16px;padding:6px 0;border-bottom:2px solid transparent}
+  .nav a:hover{border-color:var(--olive)}
+  .head-actions{display:flex;align-items:center;gap:18px}
+  .head-phone{text-decoration:none;font-weight:600;white-space:nowrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:600;text-decoration:none;border-radius:4px;padding:13px 22px;border:1.5px solid transparent;cursor:pointer;line-height:1.2}
+  .btn-olive{background:var(--olive);color:#fff}
+  .btn-olive:hover{background:var(--olive-deep)}
+  .btn-light{background:var(--sage);color:var(--ink)}
+  .btn-light:hover{background:#fff}
+  .btn-ghost{border-color:rgba(255,255,255,.7);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+  .menu-btn{display:none;margin-left:auto;font:inherit;font-weight:600;background:none;border:1.5px solid var(--ink);border-radius:4px;padding:8px 14px;cursor:pointer;color:var(--ink)}
+
+  /* Hero */
+  .hero{position:relative;min-height:calc(92vh - 122px);min-height:calc(92svh - 122px);display:flex;align-items:flex-end;color:#fff;background:var(--olive-deep) url("https://erarevisorer.se/wp-content/uploads/2023/12/start-hero-revisor-i-varberg-2.webp") center 55%/cover no-repeat;isolation:isolate}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(15deg,rgba(22,28,16,.92) 0%,rgba(22,28,16,.62) 42%,rgba(22,28,16,.05) 78%)}
+  .hero .wrap{width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end;padding-top:120px;padding-bottom:64px}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,7vw,96px);line-height:.98;letter-spacing:-.015em;margin:0 0 26px}
+  .nw{white-space:nowrap}
+  .mobile-only,body.show-notes .note.mobile-only{display:none}
+  .hero p.lede{font-size:clamp(17px,1.6vw,20px);line-height:1.55;max-width:34em;margin:0 0 32px;color:#EEF1E9}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+  .moved{max-width:250px;background:rgba(243,245,239,.95);color:var(--ink);border-radius:4px;padding:18px 20px;font-size:15px;line-height:1.45}
+  .moved b{display:block;font-family:var(--serif);font-weight:500;font-size:20px;margin-bottom:4px}
+  .moved a{font-weight:600;color:var(--olive)}
+  @media (prefers-reduced-motion:no-preference){
+    .hero h1,.hero .lede,.hero-ctas,.moved{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+    .hero .lede{animation-delay:.12s}.hero-ctas{animation-delay:.22s}.moved{animation-delay:.45s}
+    @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  }
+
+  /* Notes (proposal explanations) */
+  .note{display:none;margin:18px 0 0;max-width:460px;background:#fff;color:var(--ink);border:1.5px dashed var(--olive);border-radius:4px;padding:12px 14px 12px 14px;font-size:14.5px;line-height:1.5;text-align:left}
+  .note b{color:var(--olive)}
+  body.show-notes .note{display:block}
+  .hero .note{max-width:420px}
+
+  /* Intro */
+  .intro{padding:96px 0 88px}
+  .intro .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:72px;align-items:start}
+  .intro .statement{font-family:var(--serif);font-size:clamp(26px,2.7vw,36px);line-height:1.3;margin:0;font-weight:400}
+  .facts{margin:6px 0 0;border-top:1.5px solid var(--ink)}
+  .facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .facts dt{color:var(--muted);font-size:15px}
+  .facts dd{margin:0;font-weight:500}
+
+  /* Services */
+  .services{padding:24px 0 104px}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:40px}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.6vw,48px);line-height:1.1;letter-spacing:-.01em;margin:0}
+  .sec-head p{margin:0;max-width:30em;color:var(--muted)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1.5px solid var(--ink)}
+  .svc{padding:30px 32px 8px 0}
+  .svc + .svc{padding-left:32px;border-left:1px solid var(--line)}
+  .svc h3{font-family:var(--serif);font-weight:500;font-size:28px;margin:0 0 12px;line-height:1.15}
+  .svc p{margin:0 0 18px}
+  .svc ul{list-style:none;margin:0 0 22px;padding:0}
+  .svc li{padding:9px 0;border-bottom:1px solid var(--line);font-size:16px}
+  .svc li:first-child{border-top:1px solid var(--line)}
+  .text-link{font-weight:600;color:var(--olive);text-decoration-thickness:1.5px;text-underline-offset:4px}
+
+  /* Ways of working */
+  .ways{background:var(--olive-deep);color:#EEF1E9;padding:96px 0}
+  .ways h2{color:#fff;max-width:14ch}
+  .ways-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;margin-top:48px}
+  .ways h3{font-family:var(--serif);font-weight:500;font-size:24px;color:#fff;margin:0 0 10px}
+  .ways p{margin:0}
+  .apps{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .apps span{border:1px solid rgba(208,216,200,.55);border-radius:999px;padding:4px 12px;font-size:14.5px;color:var(--sage)}
+  .ways .note{background:#fff}
+
+  /* Team */
+  .team{padding:104px 0 96px}
+  .team .sec-head{align-items:flex-end}
+  .filters{display:inline-flex;border:1.5px solid var(--ink);border-radius:4px;overflow:hidden;flex:none}
+  .filters button{font:inherit;font-size:15px;font-weight:500;background:transparent;border:0;padding:9px 16px;cursor:pointer;color:var(--ink)}
+  .filters button + button{border-left:1.5px solid var(--ink)}
+  .filters button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  table.people{width:100%;border-collapse:collapse;border-top:1.5px solid var(--ink)}
+  .people th{text-align:left;font-weight:500;font-size:14px;color:var(--muted);padding:12px 16px 10px 0;border-bottom:1px solid var(--line)}
+  .people td{padding:15px 16px 15px 0;border-bottom:1px solid var(--line);vertical-align:middle}
+  .people tbody tr:hover{background:rgba(208,216,200,.35)}
+  .people .name{font-family:var(--serif);font-size:21px;font-weight:500}
+  .people .role{color:var(--muted)}
+  .people a{text-decoration:none;font-weight:500}
+  .people a:hover{color:var(--olive);text-decoration:underline;text-underline-offset:3px}
+  .people .num{white-space:nowrap}
+  .people tr[hidden]{display:none}
+  .team-foot{margin-top:18px;color:var(--muted);font-size:15px}
+
+  /* Recruit */
+  .recruit{background:var(--sage)}
+  .recruit .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:30px;padding-bottom:30px}
+  .recruit p{margin:0;font-family:var(--serif);font-size:24px;line-height:1.3}
+  .recruit span{display:block;font-family:var(--sans);font-size:16px;color:var(--muted);margin-top:2px}
+
+  /* Contact */
+  .contact{padding:104px 0}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:80px}
+  .contact h2{margin-bottom:18px}
+  .contact-list{margin:32px 0 0;border-top:1.5px solid var(--ink)}
+  .contact-list div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .contact-list dt{color:var(--muted)}
+  .contact-list dd{margin:0;font-weight:500}
+  .contact-list a{text-decoration:none}
+  .contact-list a:hover{color:var(--olive);text-decoration:underline}
+  form{background:#fff;border:1px solid var(--line);border-radius:4px;padding:36px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  label{display:block;font-size:15px;font-weight:500;margin:0 0 6px}
+  .field{margin-bottom:18px}
+  input,select,textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--mist);border:1px solid var(--line);border-radius:4px;padding:12px 13px}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--olive);outline-offset:0;border-color:var(--olive);background:#fff}
+  textarea{min-height:130px;resize:vertical}
+  form .btn{width:100%;margin-top:4px;padding:15px}
+  .form-hint{font-size:14px;color:var(--muted);margin:12px 0 0}
+
+  /* Footer */
+  footer{background:var(--ink);color:#C9D0BF;padding:64px 0 28px;font-size:15.5px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(208,216,200,.25)}
+  footer .mark{color:var(--sage)}
+  footer .mark-names,footer .mark-sub{color:#E7EBE1}
+  footer .mark-sub{border-color:var(--sage)}
+  footer h4{font-family:var(--sans);font-weight:600;font-size:15px;color:#fff;margin:0 0 10px}
+  footer p{margin:0}
+  footer a{text-decoration:none}
+  footer a:hover{color:#fff;text-decoration:underline}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin:0 0 6px}
+  .foot-base{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:22px;font-size:14px;color:#9AA48E}
+
+  /* Mobile call bar */
+  .callbar{display:none}
+
+  /* Toast */
+  .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);z-index:80;background:var(--ink);color:#fff;padding:14px 20px;border-radius:4px;font-size:15px;max-width:min(92vw,460px);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;box-shadow:0 10px 30px rgba(29,35,22,.25)}
+  .toast.on{opacity:1;transform:translate(-50%,0)}
+
+  /* Mobile menu panel */
+  .menu-panel{display:none}
+
+  @media (max-width:1020px){
+    .nav{display:none}
+    .head-actions .head-phone{display:none}
+    .intro .wrap,.contact .wrap{grid-template-columns:1fr;gap:44px}
+    .ways-grid{grid-template-columns:1fr;gap:36px}
+    .svc-grid{grid-template-columns:1fr}
+    .svc,.svc + .svc{padding:28px 0 6px;border-left:0}
+    .svc + .svc{border-top:1.5px solid var(--ink)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    :root{--ribbon:0px}
+    body{font-size:16.5px;padding-bottom:72px}
+    .wrap{padding:0 20px}
+    .ribbon{position:static}
+    .ribbon .wrap{flex-direction:column;align-items:flex-start;gap:8px;padding-top:10px;padding-bottom:10px}
+    .site-head{top:0}
+    .site-head .wrap{height:66px;gap:12px}
+    .mark-era{font-size:34px}
+    .head-actions{display:none}
+    .menu-btn{display:inline-block}
+    .menu-panel.open{display:block;border-top:1px solid var(--line);background:var(--mist)}
+    .menu-panel a{display:block;padding:14px 20px;border-bottom:1px solid var(--line);text-decoration:none;font-weight:500}
+    .hero{min-height:auto;background-position:72% center}
+    .hero .wrap{grid-template-columns:1fr;padding-top:160px;padding-bottom:40px;gap:28px}
+    .hero::before{background:linear-gradient(0deg,rgba(22,28,16,.94) 0%,rgba(22,28,16,.7) 55%,rgba(22,28,16,.15) 100%)}
+    .hero-ctas .btn{flex:1 1 auto}
+    .moved{max-width:none}
+    .intro{padding:64px 0}
+    .facts div,.contact-list div{grid-template-columns:1fr;gap:2px}
+    .services{padding:8px 0 72px}
+    .sec-head{flex-direction:column;align-items:flex-start;gap:16px}
+    .ways,.team,.contact{padding:72px 0}
+    .filters{width:100%}
+    .filters button{flex:1;padding:10px 6px}
+    .people thead{display:none}
+    .people,.people tbody,.people tr,.people td{display:block;width:100%}
+    .people tr{padding:16px 0;border-bottom:1px solid var(--line)}
+    .people td{border:0;padding:0}
+    .people .role{margin:2px 0 8px;font-size:15px}
+    .people .num,.people .mail{display:inline-block;width:auto;margin-right:18px}
+    .recruit .wrap{flex-direction:column;align-items:flex-start}
+    .row{grid-template-columns:1fr;gap:0}
+    form{padding:24px}
+    .foot-grid{grid-template-columns:1fr}
+    .callbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(243,245,239,.97);border-top:1px solid var(--line)}
+    .callbar .btn{padding:13px 10px}
+    body.show-notes .note.mobile-only{display:block}
+    .toast{bottom:90px}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon" role="region" aria-label="Om förslaget">
+  <div class="wrap">
+    <span><strong>Förslag på ny startsida för ERA Revisorer</strong>, framtaget av Strand Performance. Sidan är inte publicerad och formuläret skickar inget.</span>
+    <button type="button" id="notesBtn" aria-pressed="false">Visa vad som är nytt</button>
+  </div>
+</div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="ERA Revisorer, till startsidan">
+      <span class="mark-top"><span class="mark-era">ERA</span><span class="mark-names">Ekstrand<br>Rask<br>Andersson</span></span>
+      <span class="mark-sub">REVISORER AB</span>
+    </a>
+    <nav class="nav" aria-label="Huvudmeny">
+      <a href="#tjanster" data-demo>Revision</a>
+      <a href="#tjanster" data-demo>Redovisning</a>
+      <a href="#tjanster" data-demo>Skatter</a>
+      <a href="#om" data-demo>Om oss</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="head-actions">
+      <a class="head-phone" href="tel:+4634019520">0340-195 20</a>
+      <a class="btn btn-olive" href="#kontakt">Boka ett möte</a>
+    </div>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menuPanel">Meny</button>
+  </div>
+  <div class="menu-panel" id="menuPanel">
+    <a href="#tjanster">Revision</a>
+    <a href="#tjanster">Redovisning</a>
+    <a href="#tjanster">Skatter</a>
+    <a href="#medarbetare">Medarbetare</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="wrap">
+      <div>
+        <h1 id="heroTitle">Din revisionsbyrå <span class="nw">i Varberg</span></h1>
+        <p class="lede">Revision, redovisning och skatter för små och medelstora företag i Halland. Auktoriserade revisorer och redovisningskonsulter under samma tak sedan år 2000.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-light" href="#kontakt">Boka ett första samtal</a>
+          <a class="btn btn-ghost" href="tel:+4634019520">Ring 0340-195 20</a>
+        </div>
+        <p class="note"><b>Nytt:</b> Bilden på kallbadhuset från er nuvarande sajt får hela ytan. Telefonnummer och mötesbokning syns direkt, utan att besökaren behöver scrolla.</p>
+        <p class="note mobile-only"><b>Nytt:</b> På mobilen ligger Ring oss och Boka ett möte alltid längst ner på skärmen.</p>
+      </div>
+      <aside class="moved" aria-label="Nytt kontor">
+        <b>Nytt kontor</b>
+        Nu finns vi på Vagnvägen 16B i Varberg.
+        <br><a href="https://www.google.com/maps/search/?api=1&query=Vagnv%C3%A4gen+16B%2C+432+32+Varberg" target="_blank" rel="noopener">Vägbeskrivning</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="intro" id="om" aria-label="Om ERA Revisorer">
+    <div class="wrap">
+      <div>
+        <p class="statement">Vi vill förstå hur ert företag fungerar innan vi ger råd. Därför får varje kund en kontaktperson som följer företaget över tid och som går att nå när frågorna kommer.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Grundad</dt><dd>2000, i Varberg</dd></div>
+        <div><dt>Revisorer</dt><dd>Auktoriserade</dd></div>
+        <div><dt>Medlemskap</dt><dd>FAR och Srf konsulterna</dd></div>
+        <div><dt>Program</dt><dd>Fortnox, Visma och Speedledger</dd></div>
+        <div><dt>Kontor</dt><dd>Vagnvägen 16B, Varberg</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="services" id="tjanster" aria-labelledby="svcTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="svcTitle">Det här hjälper vi till med</h2>
+        <p>Tre områden som hänger ihop. Har ni flera av dem hos oss samordnar vi arbetet.</p>
+      </div>
+      <div class="svc-grid">
+        <article class="svc">
+          <h3>Revision</h3>
+          <p>Auktoriserade revisorer med erfarenhet från många branscher. Ni får en revisor som lär känna företaget och följer det år efter år.</p>
+          <ul>
+            <li>Råd om vilken revision ert företag behöver</li>
+            <li>Samma kontaktperson över tid</li>
+            <li>Snabba svar på frågor under året</li>
+          </ul>
+          <a class="text-link" href="#tjanster" data-demo>Läs mer om revision</a>
+        </article>
+        <article class="svc">
+          <h3>Redovisning</h3>
+          <p>Vi blir er externa ekonomiavdelning, från den löpande bokföringen till årsredovisningen.</p>
+          <ul>
+            <li>Löpande bokföring</li>
+            <li>Bokslut och årsredovisning</li>
+            <li>Moms, skatter och avgifter till Skatteverket</li>
+          </ul>
+          <a class="text-link" href="#tjanster" data-demo>Läs mer om redovisning</a>
+        </article>
+        <article class="svc">
+          <h3>Skatter</h3>
+          <p>Hjälp med företagets beskattning och med deklarationen, för både företag och privatpersoner.</p>
+          <ul>
+            <li>Skatterådgivning för företag</li>
+            <li>Inkomstdeklaration</li>
+            <li>Bostadsförsäljning, aktieaffärer och utdelning</li>
+          </ul>
+          <a class="text-link" href="#tjanster" data-demo>Läs mer om skatter</a>
+        </article>
+      </div>
+      <p class="note"><b>Nytt:</b> Varje tjänst sammanfattad direkt på startsidan, med det som kunden oftast letar efter. Undersidorna finns kvar för den som vill läsa mer.</p>
+    </div>
+  </section>
+
+  <section class="ways" aria-labelledby="waysTitle">
+    <div class="wrap">
+      <h2 id="waysTitle">Jobba med oss på det sätt som passar er</h2>
+      <div class="ways-grid">
+        <div>
+          <h3>Lämna underlagen hos oss</h3>
+          <p>Kom förbi kontoret på Vagnvägen med papper och kvitton, så tar vi hand om resten.</p>
+        </div>
+        <div>
+          <h3>Bokför digitalt</h3>
+          <p>Arbeta själv i ert bokföringsprogram med oss som stöd när det behövs.</p>
+          <div class="apps" aria-label="Program"><span>Fortnox</span><span>Visma</span><span>Speedledger</span></div>
+        </div>
+        <div>
+          <h3>Revision och redovisning samlat</h3>
+          <p>Har ni både revision och redovisning hos oss får ni en sammanhållen lösning där båda delarna samordnas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team" id="medarbetare" aria-labelledby="teamTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2 id="teamTitle">Ring direkt till den du vill prata med</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Visa medarbetare">
+          <button type="button" data-filter="alla" aria-pressed="true">Alla</button>
+          <button type="button" data-filter="revision" aria-pressed="false">Revision</button>
+          <button type="button" data-filter="redovisning" aria-pressed="false">Redovisning</button>
+        </div>
+      </div>
+      <table class="people">
+        <caption class="sr">Medarbetare på ERA Revisorer med direktnummer och e-post</caption>
+        <thead><tr><th scope="col">Namn</th><th scope="col">Roll</th><th scope="col">Direktnummer</th><th scope="col">E-post</th></tr></thead>
+        <tbody id="peopleBody"></tbody>
+      </table>
+      <p class="team-foot">Växel 0340-195 20 eller <a class="text-link" href="mailto:info@erarevisorer.se">info@erarevisorer.se</a></p>
+      <p class="note"><b>Nytt:</b> Hela teamet med direktnummer på startsidan. Den som redan är kund når sin kontaktperson med ett klick, även från mobilen. Porträttbilder kan läggas till på varje rad.</p>
+    </div>
+  </section>
+
+  <section class="recruit" aria-label="Lediga jobb">
+    <div class="wrap">
+      <p>Vi söker en revisorsassistent till kontoret i Varberg.<span>Tjänsten tillsätts löpande.</span></p>
+      <a class="btn btn-olive" href="#top" data-demo>Läs om tjänsten och ansök</a>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt" aria-labelledby="contactTitle">
+    <div class="wrap">
+      <div>
+        <h2 id="contactTitle">Kontakta oss</h2>
+        <p>Ring, mejla eller skriv några rader om vad det gäller, så hör vi av oss.</p>
+        <dl class="contact-list">
+          <div><dt>Telefon</dt><dd><a href="tel:+4634019520">0340-195 20</a></dd></div>
+          <div><dt>E-post</dt><dd><a href="mailto:info@erarevisorer.se">info@erarevisorer.se</a></dd></div>
+          <div><dt>Besök</dt><dd>Vagnvägen 16B, 432 32 Varberg<br><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Vagnv%C3%A4gen+16B%2C+432+32+Varberg" target="_blank" rel="noopener">Vägbeskrivning</a></dd></div>
+        </dl>
+      </div>
+      <div>
+        <form id="contactForm" novalidate>
+          <div class="row">
+            <div class="field"><label for="f-company">Företag</label><input id="f-company" name="company" autocomplete="organization"></div>
+            <div class="field"><label for="f-name">Namn</label><input id="f-name" name="name" autocomplete="name"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="f-email">E-post</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+            <div class="field"><label for="f-phone">Telefon</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="field">
+            <label for="f-topic">Vad gäller det?</label>
+            <select id="f-topic" name="topic">
+              <option>Revision</option>
+              <option>Redovisning</option>
+              <option>Skatter</option>
+              <option>Vi funderar på att byta byrå</option>
+              <option>Något annat</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-msg">Meddelande</label><textarea id="f-msg" name="message"></textarea></div>
+          <button class="btn btn-olive" type="submit">Skicka meddelande</button>
+          <p class="form-hint">Vi återkommer så snart vi kan.</p>
+        </form>
+        <p class="note"><b>Nytt:</b> Formuläret frågar vad det gäller, så att förfrågan kan gå till rätt person från början.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="mark" href="#top" aria-label="ERA Revisorer, till startsidan">
+          <span class="mark-top"><span class="mark-era">ERA</span><span class="mark-names">Ekstrand<br>Rask<br>Andersson</span></span>
+          <span class="mark-sub">REVISORER AB</span>
+        </a>
+      </div>
+      <div>
+        <h4>Besök oss</h4>
+        <p>Vagnvägen 16B<br>432 32 Varberg</p>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+4634019520">0340-195 20</a></li>
+          <li><a href="mailto:info@erarevisorer.se">info@erarevisorer.se</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Innehåll</h4>
+        <ul>
+          <li><a href="#tjanster" data-demo>Revision</a></li>
+          <li><a href="#tjanster" data-demo>Redovisning</a></li>
+          <li><a href="#tjanster" data-demo>Skatter</a></li>
+          <li><a href="#top" data-demo>Arbeta hos oss</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 ERA Revisorer AB</span>
+      <span><a href="#top" data-demo>Integritetspolicy</a>&nbsp;&nbsp;&nbsp;<a href="#top" data-demo>Cookiepolicy</a></span>
+      <span>Förslag från <a href="https://strandperformance.se" target="_blank" rel="noopener">Strand Performance</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar" aria-label="Snabbkontakt">
+  <a class="btn btn-olive" href="tel:+4634019520">Ring oss</a>
+  <a class="btn btn-light" href="#kontakt">Boka ett möte</a>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var people = [
+    ["Greger Ekstrand","Auktoriserad revisor","0340-195 22","greger","revision"],
+    ["Jimmy Störkersen","Auktoriserad revisor","0340-59 33 11","jimmy","revision"],
+    ["Lena Fält","Auktoriserad revisor","0340-195 26","lena","revision"],
+    ["Leif Andersson","Konsult","0340-195 21","leif",""],
+    ["Christoffer Lindroos","Redovisningskonsult","0340-195 27","christoffer","redovisning"],
+    ["Kristina Wallner","Redovisningskonsult","0340-195 29","kristina","redovisning"],
+    ["Sofia Berntsson","Redovisningskonsult","0340-195 23","sofia","redovisning"],
+    ["William Ekstrand","Redovisningskonsult","0340-195 24","william","redovisning"],
+    ["Emelie Andersson","Redovisningskonsult","0340-195 25","emelie","redovisning"],
+    ["Emma Helgesson","Receptionist och redovisningskonsult","0340-59 33 12","emma","redovisning"],
+    ["Carolin Nilsson","Revisorsassistent","0340-195 28","carolin","revision"],
+    ["Matilda Darhult","Revisorsassistent","0340-59 33 13","matilda","revision"]
+  ];
+  var body = document.getElementById("peopleBody");
+  people.forEach(function(p){
+    var tel = "+46" + p[2].replace(/\D/g,"").replace(/^0/,"");
+    var tr = document.createElement("tr");
+    tr.dataset.group = p[4];
+    tr.innerHTML = '<td class="name">'+p[0]+'</td><td class="role">'+p[1]+'</td>'+
+      '<td class="num"><a href="tel:'+tel+'" aria-label="Ring '+p[0]+', '+p[2]+'">'+p[2]+'</a></td>'+
+      '<td class="mail"><a href="mailto:'+p[3]+'@erarevisorer.se">'+p[3]+'@erarevisorer.se</a></td>';
+    body.appendChild(tr);
+  });
+  document.querySelectorAll(".filters button").forEach(function(b){
+    b.addEventListener("click", function(){
+      var f = b.dataset.filter;
+      document.querySelectorAll(".filters button").forEach(function(x){ x.setAttribute("aria-pressed", x===b ? "true" : "false"); });
+      body.querySelectorAll("tr").forEach(function(tr){ tr.hidden = !(f==="alla" || tr.dataset.group===f); });
+    });
+  });
+
+  var toast = document.getElementById("toast"), t;
+  function say(msg){ toast.textContent = msg; toast.classList.add("on"); clearTimeout(t); t = setTimeout(function(){ toast.classList.remove("on"); }, 3600); }
+  document.querySelectorAll("[data-demo]").forEach(function(a){
+    a.addEventListener("click", function(e){ e.preventDefault(); say("I förslaget finns bara startsidan. Undersidorna byggs i samma stil."); });
+  });
+  document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault(); say("Formuläret skickar inget i förslaget. På den riktiga sajten hamnar meddelandet i er inkorg.");
+  });
+
+  var notesBtn = document.getElementById("notesBtn");
+  notesBtn.addEventListener("click", function(){
+    var on = document.body.classList.toggle("show-notes");
+    notesBtn.setAttribute("aria-pressed", on ? "true" : "false");
+    notesBtn.textContent = on ? "Dölj förklaringarna" : "Visa vad som är nytt";
+  });
+
+  var mb = document.querySelector(".menu-btn"), mp = document.getElementById("menuPanel");
+  mb.addEventListener("click", function(){
+    var open = mp.classList.toggle("open"); mb.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  mp.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ mp.classList.remove("open"); mb.setAttribute("aria-expanded","false"); }); });
+})();
+</script>
+</body>
+</html>
